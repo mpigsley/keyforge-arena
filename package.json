@@ -12,10 +12,12 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "npm run build && firebase deploy"
+    "deploy": "npm run build && firebase deploy",
+    "scrape": "node bin/scrape-aembertree.js"
   },
   "dependencies": {
     "firebase": "^5.5.8",
+    "lodash": "^4.17.11",
     "react": "^16.6.1",
     "react-dom": "^16.6.1",
     "react-scripts": "2.1.1"
@@ -31,7 +33,10 @@
     "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-react": "^7.11.1",
     "firebase-tools": "^6.0.1",
-    "prettier": "^1.15.2"
+    "prettier": "^1.15.2",
+    "puppeteer": "^1.10.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2"
   },
   "jest": {
     "collectCoverageFrom": [
