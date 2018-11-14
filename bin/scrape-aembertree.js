@@ -1,28 +1,37 @@
 const fs = require('fs');
+const dotenv = require('dotenv');
 const prettier = require('prettier');
 const { map, chunk, zipObject, sortBy } = require('lodash');
 const request = require('request-promise');
 const puppeteer = require('puppeteer');
+const Firebase = require('firebase/app');
+require('firebase/storage');
+
+global.XMLHttpRequest = require('xhr2');
+
+dotenv.config({ path: './.env.local' });
+Firebase.initializeApp({
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_DATABASE_URL,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_SENDER_ID,
+});
 
 const CHUNK_SIZE = 50;
 
 const getText = (page, className) =>
   page.$eval(className, element => element.innerText).catch(() => '');
 
-const downloadImage = async uri => {
-  const splitUri = uri.split('/');
-  const fileName = splitUri[splitUri.length - 1];
-  await new Promise((resolve, reject) =>
-    request(uri)
-      .pipe(fs.createWriteStream(`./public/images/${fileName}`))
-      .on('close', err => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve();
-        }
-      }),
-  );
+const fetchAndUploadImage = async (set, id) => {
+  const img = await request(`http://aembertree.com/cards/${set}-${id}.jpg`, {
+    encoding: null,
+  });
+  await Firebase.storage()
+    .ref()
+    .child(`${set}/${id}.jpg`)
+    .put(img, { contentType: 'image/jpeg' });
 };
 
 const scrape = async () => {
@@ -68,7 +77,7 @@ const scrape = async () => {
 
             await Promise.all([
               cardPage.close(),
-              downloadImage(`http://aembertree.com/cards/core-${id}.jpg`),
+              fetchAndUploadImage('core', id),
             ]);
 
             return {

@@ -13,7 +13,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "deploy": "npm run build && firebase deploy",
-    "scrape": "node bin/scrape-aembertree.js"
+    "scrape": "node -r dotenv/config bin/scrape-aembertree.js"
   },
   "dependencies": {
     "firebase": "^5.5.8",
@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^9.0.0",
+    "dotenv": "^6.1.0",
     "eslint": "5.6.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-airbnb-base": "^13.1.0",
@@ -36,7 +37,8 @@
     "prettier": "^1.15.2",
     "puppeteer": "^1.10.0",
     "request": "^2.88.0",
-    "request-promise": "^4.2.2"
+    "request-promise": "^4.2.2",
+    "xhr2": "^0.1.4"
   },
   "jest": {
     "collectCoverageFrom": [
