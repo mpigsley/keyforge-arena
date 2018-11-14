@@ -6,10 +6,11 @@ import { Provider } from 'react-redux';
 import Firebase from 'firebase/app';
 
 import store, { history } from 'store';
-import * as serviceWorker from './serviceWorker';
+import * as serviceWorker from 'serviceWorker';
 
-import './index.css';
-import App from './App';
+import GameBoard from 'components/game-board';
+
+import 'styles/global.scss';
 
 Firebase.initializeApp({
   apiKey: process.env.REACT_APP_API_KEY,
@@ -24,7 +25,7 @@ ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <Switch>
-        <Route exact path="/" component={App} />
+        <Route exact path="/" component={GameBoard} />
       </Switch>
     </ConnectedRouter>
   </Provider>,

@@ -1,0 +1,11 @@
+@import '~styles/theme';
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: $dark;
+}
+
+* {
+  font-family: 'Roboto', sans-serif !important;
+}

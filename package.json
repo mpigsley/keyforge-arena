@@ -20,6 +20,7 @@
     "firebase": "^5.5.8",
     "history": "^4.7.2",
     "lodash": "^4.17.11",
+    "node-sass": "^4.10.0",
     "react": "^16.6.1",
     "react-dom": "^16.6.1",
     "react-redux": "^5.1.1",
