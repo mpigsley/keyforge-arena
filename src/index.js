@@ -1,10 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Switch, Route } from 'react-router-dom';
+import { ConnectedRouter } from 'connected-react-router';
+import { Provider } from 'react-redux';
 import Firebase from 'firebase/app';
+
+import store, { history } from 'store';
+import * as serviceWorker from './serviceWorker';
 
 import './index.css';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
 
 Firebase.initializeApp({
   apiKey: process.env.REACT_APP_API_KEY,
@@ -15,6 +20,15 @@ Firebase.initializeApp({
   messagingSenderId: process.env.REACT_APP_SENDER_ID,
 });
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+  <Provider store={store}>
+    <ConnectedRouter history={history}>
+      <Switch>
+        <Route exact path="/" component={App} />
+      </Switch>
+    </ConnectedRouter>
+  </Provider>,
+  document.getElementById('root'),
+);
 
 serviceWorker.unregister();
