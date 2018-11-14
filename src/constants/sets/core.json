@@ -1,7 +1,5 @@
 {
   "100": {
-    "id": "100",
-    "set": "core",
     "name": "Tentacus",
     "house": "Dis",
     "type": "Creature",
@@ -13,8 +11,6 @@
     "artist": "Caio Monteiro"
   },
   "101": {
-    "id": "101",
-    "set": "core",
     "name": "The Terror",
     "house": "Dis",
     "type": "Creature",
@@ -26,8 +22,6 @@
     "artist": "Matthew Mizak"
   },
   "102": {
-    "id": "102",
-    "set": "core",
     "name": "Tocsin",
     "house": "Dis",
     "type": "Creature",
@@ -39,8 +33,6 @@
     "artist": "Gabriel Rubio"
   },
   "103": {
-    "id": "103",
-    "set": "core",
     "name": "Tolas",
     "house": "Dis",
     "type": "Creature",
@@ -52,8 +44,6 @@
     "artist": "Caravan Studios"
   },
   "104": {
-    "id": "104",
-    "set": "core",
     "name": "Truebaru",
     "house": "Dis",
     "type": "Creature",
@@ -65,8 +55,6 @@
     "artist": "Nicholas Gregory"
   },
   "105": {
-    "id": "105",
-    "set": "core",
     "name": "Collar of Subordination",
     "house": "Dis",
     "type": "Upgrade",
@@ -78,8 +66,6 @@
     "artist": "Bogdan Tauciuc"
   },
   "106": {
-    "id": "106",
-    "set": "core",
     "name": "Flame-Wreathed",
     "house": "Dis",
     "type": "Upgrade",
@@ -91,8 +77,6 @@
     "artist": "Brolkin"
   },
   "107": {
-    "id": "107",
-    "set": "core",
     "name": "Bouncing Deathquark",
     "house": "Logos",
     "type": "Action",
@@ -104,8 +88,6 @@
     "artist": "Jason Juta"
   },
   "108": {
-    "id": "108",
-    "set": "core",
     "name": "Dimension Door",
     "house": "Logos",
     "type": "Action",
@@ -117,8 +99,6 @@
     "artist": "Gong Studios"
   },
   "109": {
-    "id": "109",
-    "set": "core",
     "name": "Effervescent Principle",
     "house": "Logos",
     "type": "Action",
@@ -130,8 +110,6 @@
     "artist": "Gong Studios"
   },
   "110": {
-    "id": "110",
-    "set": "core",
     "name": "Foggify",
     "house": "Logos",
     "type": "Action",
@@ -143,8 +121,6 @@
     "artist": "Gabriel Rubio"
   },
   "111": {
-    "id": "111",
-    "set": "core",
     "name": "Help from Future Self",
     "house": "Logos",
     "type": "Action",
@@ -156,8 +132,6 @@
     "artist": "Gizelle Karen Baluso"
   },
   "112": {
-    "id": "112",
-    "set": "core",
     "name": "Interdimensional Graft",
     "house": "Logos",
     "type": "Action",
@@ -169,8 +143,6 @@
     "artist": "Konstantin Turovec"
   },
   "113": {
-    "id": "113",
-    "set": "core",
     "name": "Knowledge is Power",
     "house": "Logos",
     "type": "Artifact",
@@ -182,8 +154,6 @@
     "artist": "Artist:"
   },
   "114": {
-    "id": "114",
-    "set": "core",
     "name": "Labwork",
     "house": "Logos",
     "type": "Action",
@@ -195,8 +165,6 @@
     "artist": "Hans Krill"
   },
   "115": {
-    "id": "115",
-    "set": "core",
     "name": "Library Access",
     "house": "Logos",
     "type": "Action",
@@ -208,8 +176,6 @@
     "artist": "Atha Kanaani"
   },
   "116": {
-    "id": "116",
-    "set": "core",
     "name": "Neuro Syphon",
     "house": "Logos",
     "type": "Action",
@@ -221,8 +187,6 @@
     "artist": "Limetown Studios"
   },
   "117": {
-    "id": "117",
-    "set": "core",
     "name": "Phase Shift",
     "house": "Logos",
     "type": "Action",
@@ -234,8 +198,6 @@
     "artist": "Konstantin Turovec"
   },
   "118": {
-    "id": "118",
-    "set": "core",
     "name": "Positron Bolt",
     "house": "Logos",
     "type": "Action",
@@ -247,8 +209,6 @@
     "artist": "Pedro Duta"
   },
   "119": {
-    "id": "119",
-    "set": "core",
     "name": "Random Access Archives",
     "house": "Logos",
     "type": "Action",
@@ -260,8 +220,6 @@
     "artist": "Gong Studios"
   },
   "120": {
-    "id": "120",
-    "set": "core",
     "name": "Remote Access",
     "house": "Logos",
     "type": "Action",
@@ -273,8 +231,6 @@
     "artist": "Michele Giorgi"
   },
   "121": {
-    "id": "121",
-    "set": "core",
     "name": "Reverse Time",
     "house": "Logos",
     "type": "Action",
@@ -286,8 +242,6 @@
     "artist": "Gong Studios"
   },
   "122": {
-    "id": "122",
-    "set": "core",
     "name": "Scrambler Storm",
     "house": "Logos",
     "type": "Action",
@@ -299,8 +253,6 @@
     "artist": "Jessada Sutthi"
   },
   "123": {
-    "id": "123",
-    "set": "core",
     "name": "Sloppy Labwork",
     "house": "Logos",
     "type": "Action",
@@ -312,8 +264,6 @@
     "artist": "Hans Krill"
   },
   "124": {
-    "id": "124",
-    "set": "core",
     "name": "Twin Bolt Emission",
     "house": "Logos",
     "type": "Action",
@@ -325,8 +275,6 @@
     "artist": "Michele Giorgi"
   },
   "125": {
-    "id": "125",
-    "set": "core",
     "name": "Wild Wormhole",
     "house": "Logos",
     "type": "Action",
@@ -338,8 +286,6 @@
     "artist": "Ivan Tao"
   },
   "126": {
-    "id": "126",
-    "set": "core",
     "name": "Anomaly Exploiter",
     "house": "Logos",
     "type": "Artifact",
@@ -351,8 +297,6 @@
     "artist": "Gong Studios"
   },
   "127": {
-    "id": "127",
-    "set": "core",
     "name": "Chaos Portal",
     "house": "Logos",
     "type": "Artifact",
@@ -364,8 +308,6 @@
     "artist": "Gong Studios"
   },
   "128": {
-    "id": "128",
-    "set": "core",
     "name": "Crazy Killing Machine",
     "house": "Logos",
     "type": "Artifact",
@@ -377,8 +319,6 @@
     "artist": "Gong Studios"
   },
   "129": {
-    "id": "129",
-    "set": "core",
     "name": "Library of Babble",
     "house": "Logos",
     "type": "Artifact",
@@ -390,8 +330,6 @@
     "artist": "BalanceSheet"
   },
   "130": {
-    "id": "130",
-    "set": "core",
     "name": "Mobius Scroll",
     "house": "Logos",
     "type": "Artifact",
@@ -403,8 +341,6 @@
     "artist": "Gong Studios"
   },
   "131": {
-    "id": "131",
-    "set": "core",
     "name": "Pocket Universe",
     "house": "Logos",
     "type": "Artifact",
@@ -416,8 +352,6 @@
     "artist": "Atha Kanaani"
   },
   "132": {
-    "id": "132",
-    "set": "core",
     "name": "Spangler Box",
     "house": "Logos",
     "type": "Artifact",
@@ -429,8 +363,6 @@
     "artist": "Gong Studios"
   },
   "133": {
-    "id": "133",
-    "set": "core",
     "name": "Spectral Tunneler",
     "house": "Logos",
     "type": "Artifact",
@@ -442,8 +374,6 @@
     "artist": "Angelica Alieva"
   },
   "134": {
-    "id": "134",
-    "set": "core",
     "name": "Strange Gizmo",
     "house": "Logos",
     "type": "Artifact",
@@ -455,8 +385,6 @@
     "artist": "Gong Studios"
   },
   "135": {
-    "id": "135",
-    "set": "core",
     "name": "The Howling Pit",
     "house": "Logos",
     "type": "Artifact",
@@ -468,8 +396,6 @@
     "artist": "BalanceSheet"
   },
   "136": {
-    "id": "136",
-    "set": "core",
     "name": "Batdrone",
     "house": "Logos",
     "type": "Creature",
@@ -481,8 +407,6 @@
     "artist": "David Auden Nash"
   },
   "137": {
-    "id": "137",
-    "set": "core",
     "name": "Brain Eater",
     "house": "Logos",
     "type": "Creature",
@@ -494,8 +418,6 @@
     "artist": "Gong Studios"
   },
   "138": {
-    "id": "138",
-    "set": "core",
     "name": "Dextre",
     "house": "Logos",
     "type": "Creature",
@@ -507,8 +429,6 @@
     "artist": "Nasrul Hakim"
   },
   "139": {
-    "id": "139",
-    "set": "core",
     "name": "Doc Bookton",
     "house": "Logos",
     "type": "Creature",
@@ -520,8 +440,6 @@
     "artist": "Gong Studios"
   },
   "140": {
-    "id": "140",
-    "set": "core",
     "name": "Dr Escotera",
     "house": "Logos",
     "type": "Creature",
@@ -533,8 +451,6 @@
     "artist": "Bogdan Tauciuc"
   },
   "141": {
-    "id": "141",
-    "set": "core",
     "name": "Dysania",
     "house": "Logos",
     "type": "Creature",
@@ -546,8 +462,6 @@
     "artist": "Gong Studios"
   },
   "142": {
-    "id": "142",
-    "set": "core",
     "name": "Ganymede Archivist",
     "house": "Logos",
     "type": "Creature",
@@ -559,8 +473,6 @@
     "artist": "Matt Zeilinger"
   },
   "143": {
-    "id": "143",
-    "set": "core",
     "name": "Harland Mindlock",
     "house": "Logos",
     "type": "Creature",
@@ -572,8 +484,6 @@
     "artist": "Bogdan Tauciuc"
   },
   "144": {
-    "id": "144",
-    "set": "core",
     "name": "Quixo the 'Adventurer",
     "house": "Logos",
     "type": "Creature",
@@ -585,8 +495,6 @@
     "artist": "David Auden Nash"
   },
   "145": {
-    "id": "145",
-    "set": "core",
     "name": "Mother",
     "house": "Logos",
     "type": "Creature",
@@ -598,8 +506,6 @@
     "artist": "JB Casacop"
   },
   "146": {
-    "id": "146",
-    "set": "core",
     "name": "Neutron Shark",
     "house": "Logos",
     "type": "Creature",
@@ -611,8 +517,6 @@
     "artist": "Jon Bosco"
   },
   "147": {
-    "id": "147",
-    "set": "core",
     "name": "Novu Archaeologist",
     "house": "Logos",
     "type": "Creature",
@@ -624,8 +528,6 @@
     "artist": "Jorge Ramos"
   },
   "148": {
-    "id": "148",
-    "set": "core",
     "name": "Ozmo, Martianologist",
     "house": "Logos",
     "type": "Creature",
@@ -637,8 +539,6 @@
     "artist": "Gong Studios"
   },
   "149": {
-    "id": "149",
-    "set": "core",
     "name": "Psychic Bug",
     "house": "Logos",
     "type": "Creature",
@@ -650,8 +550,6 @@
     "artist": "Gong Studios"
   },
   "150": {
-    "id": "150",
-    "set": "core",
     "name": "Replicator",
     "house": "Logos",
     "type": "Creature",
@@ -663,8 +561,6 @@
     "artist": "Gong Studios"
   },
   "151": {
-    "id": "151",
-    "set": "core",
     "name": "Research Smoko",
     "house": "Logos",
     "type": "Creature",
@@ -676,8 +572,6 @@
     "artist": "Gong Studios"
   },
   "152": {
-    "id": "152",
-    "set": "core",
     "name": "Skippy Timehog",
     "house": "Logos",
     "type": "Creature",
@@ -689,8 +583,6 @@
     "artist": "Gong Studios"
   },
   "153": {
-    "id": "153",
-    "set": "core",
     "name": "Timetraveller",
     "house": "Logos",
     "type": "Creature",
@@ -702,8 +594,6 @@
     "artist": "Gizelle Karen Baluso"
   },
   "154": {
-    "id": "154",
-    "set": "core",
     "name": "Titan Mechanic",
     "house": "Logos",
     "type": "Creature",
@@ -715,8 +605,6 @@
     "artist": "Grigory Serov"
   },
   "155": {
-    "id": "155",
-    "set": "core",
     "name": "Vespilion Theorist",
     "house": "Logos",
     "type": "Creature",
@@ -728,8 +616,6 @@
     "artist": "Ameen Naksewee"
   },
   "156": {
-    "id": "156",
-    "set": "core",
     "name": "Veylan Analyst",
     "house": "Logos",
     "type": "Creature",
@@ -741,8 +627,6 @@
     "artist": "Matt Zeilinger"
   },
   "157": {
-    "id": "157",
-    "set": "core",
     "name": "Experimental Therapy",
     "house": "Logos",
     "type": "Upgrade",
@@ -754,8 +638,6 @@
     "artist": "Gong Studios"
   },
   "158": {
-    "id": "158",
-    "set": "core",
     "name": "Rocket Boots",
     "house": "Logos",
     "type": "Upgrade",
@@ -767,8 +649,6 @@
     "artist": "Nasrul Hakim"
   },
   "159": {
-    "id": "159",
-    "set": "core",
     "name": "Transposition Sandals",
     "house": "Logos",
     "type": "Upgrade",
@@ -780,8 +660,6 @@
     "artist": "Atha Kanaani"
   },
   "160": {
-    "id": "160",
-    "set": "core",
     "name": "Ammonia Clouds",
     "house": "Mars",
     "type": "Action",
@@ -793,8 +671,6 @@
     "artist": "BalanceSheet"
   },
   "161": {
-    "id": "161",
-    "set": "core",
     "name": "Battle Fleet",
     "house": "Mars",
     "type": "Action",
@@ -806,8 +682,6 @@
     "artist": "BalanceSheet"
   },
   "162": {
-    "id": "162",
-    "set": "core",
     "name": "Deep Probe",
     "house": "Mars",
     "type": "Action",
@@ -819,8 +693,6 @@
     "artist": "Grigory Serov"
   },
   "163": {
-    "id": "163",
-    "set": "core",
     "name": "EMP Blast",
     "house": "Mars",
     "type": "Action",
@@ -832,8 +704,6 @@
     "artist": "Gong Studios"
   },
   "164": {
-    "id": "164",
-    "set": "core",
     "name": "Hypnotic Command",
     "house": "Mars",
     "type": "Action",
@@ -845,8 +715,6 @@
     "artist": "Andrew Bosley"
   },
   "165": {
-    "id": "165",
-    "set": "core",
     "name": "Irradiated Aember",
     "house": "Mars",
     "type": "Action",
@@ -858,8 +726,6 @@
     "artist": "Caravan Studio"
   },
   "166": {
-    "id": "166",
-    "set": "core",
     "name": "Key Abduction",
     "house": "Mars",
     "type": "Action",
@@ -871,8 +737,6 @@
     "artist": "Caravan Studio"
   },
   "167": {
-    "id": "167",
-    "set": "core",
     "name": "Martian Hounds",
     "house": "Mars",
     "type": "Action",
@@ -884,8 +748,6 @@
     "artist": "Gong Studios"
   },
   "168": {
-    "id": "168",
-    "set": "core",
     "name": "Martians Make Bad Allies",
     "house": "Mars",
     "type": "Action",
@@ -897,8 +759,6 @@
     "artist": "Gong Studios"
   },
   "169": {
-    "id": "169",
-    "set": "core",
     "name": "Mass Abduction",
     "house": "Mars",
     "type": "Action",
@@ -910,8 +770,6 @@
     "artist": "Caravan Studio"
   },
   "170": {
-    "id": "170",
-    "set": "core",
     "name": "Mating Season",
     "house": "Mars",
     "type": "Action",
@@ -923,8 +781,6 @@
     "artist": "Atha Kanaani"
   },
   "171": {
-    "id": "171",
-    "set": "core",
     "name": "Mothership Support",
     "house": "Mars",
     "type": "Action",
@@ -936,8 +792,6 @@
     "artist": "Caravan Studio"
   },
   "172": {
-    "id": "172",
-    "set": "core",
     "name": "Orbital Bombardment",
     "house": "Mars",
     "type": "Action",
@@ -949,8 +803,6 @@
     "artist": "Ameen Naksewee"
   },
   "173": {
-    "id": "173",
-    "set": "core",
     "name": "Phosphorus Stars",
     "house": "Mars",
     "type": "Action",
@@ -962,8 +814,6 @@
     "artist": "Gabriel Rubio"
   },
   "174": {
-    "id": "174",
-    "set": "core",
     "name": "Psychic Network",
     "house": "Mars",
     "type": "Action",
@@ -975,8 +825,6 @@
     "artist": "Limetown Studios"
   },
   "175": {
-    "id": "175",
-    "set": "core",
     "name": "Sample Collection",
     "house": "Mars",
     "type": "Action",
@@ -988,8 +836,6 @@
     "artist": "Gong Studios"
   },
   "176": {
-    "id": "176",
-    "set": "core",
     "name": "Shatter Storm",
     "house": "Mars",
     "type": "Action",
@@ -1001,8 +847,6 @@
     "artist": "Andrew Bosley"
   },
   "177": {
-    "id": "177",
-    "set": "core",
     "name": "Soft Landing",
     "house": "Mars",
     "type": "Action",
@@ -1014,8 +858,6 @@
     "artist": "Randal Makey"
   },
   "178": {
-    "id": "178",
-    "set": "core",
     "name": "Squawker",
     "house": "Mars",
     "type": "Action",
@@ -1027,8 +869,6 @@
     "artist": "Caravan Studio"
   },
   "179": {
-    "id": "179",
-    "set": "core",
     "name": "Total Recall",
     "house": "Mars",
     "type": "Action",
@@ -1040,8 +880,6 @@
     "artist": "Caravan Studio"
   },
   "180": {
-    "id": "180",
-    "set": "core",
     "name": "Combat Pheromones",
     "house": "Mars",
     "type": "Artifact",
@@ -1053,8 +891,6 @@
     "artist": "Regis Torres"
   },
   "181": {
-    "id": "181",
-    "set": "core",
     "name": "Commpod",
     "house": "Mars",
     "type": "Artifact",
@@ -1066,8 +902,6 @@
     "artist": "Grigory Serov"
   },
   "182": {
-    "id": "182",
-    "set": "core",
     "name": "Crystal Hive",
     "house": "Mars",
     "type": "Artifact",
@@ -1079,8 +913,6 @@
     "artist": "Randall Mackey"
   },
   "183": {
-    "id": "183",
-    "set": "core",
     "name": "Custom Virus",
     "house": "Mars",
     "type": "Artifact",
@@ -1092,8 +924,6 @@
     "artist": "Regis Torres"
   },
   "184": {
-    "id": "184",
-    "set": "core",
     "name": "Feeding Pit",
     "house": "Mars",
     "type": "Artifact",
@@ -1105,8 +935,6 @@
     "artist": "Kristen Pauline"
   },
   "185": {
-    "id": "185",
-    "set": "core",
     "name": "Invasion Portal",
     "house": "Mars",
     "type": "Artifact",
@@ -1118,8 +946,6 @@
     "artist": "Caravan Studio"
   },
   "186": {
-    "id": "186",
-    "set": "core",
     "name": "Incubation Chamber",
     "house": "Mars",
     "type": "Artifact",
@@ -1131,8 +957,6 @@
     "artist": "BalanceSheet"
   },
   "187": {
-    "id": "187",
-    "set": "core",
     "name": "Mother Gun",
     "house": "Mars",
     "type": "Artifact",
@@ -1144,8 +968,6 @@
     "artist": "Caravan Studio"
   },
   "188": {
-    "id": "188",
-    "set": "core",
     "name": "Sniffer",
     "house": "Mars",
     "type": "Artifact",
@@ -1157,8 +979,6 @@
     "artist": "Caravan Studio"
   },
   "189": {
-    "id": "189",
-    "set": "core",
     "name": "Swap Widget",
     "house": "Mars",
     "type": "Artifact",
@@ -1170,8 +990,6 @@
     "artist": "Caravan Studio"
   },
   "190": {
-    "id": "190",
-    "set": "core",
     "name": "Blypyp",
     "house": "Mars",
     "type": "Creature",
@@ -1183,8 +1001,6 @@
     "artist": "Maria Poliakova"
   },
   "191": {
-    "id": "191",
-    "set": "core",
     "name": "Chuff Ape",
     "house": "Mars",
     "type": "Creature",
@@ -1196,8 +1012,6 @@
     "artist": "Timur Shevtsov"
   },
   "192": {
-    "id": "192",
-    "set": "core",
     "name": "Ether Spider",
     "house": "Mars",
     "type": "Creature",
@@ -1209,8 +1023,6 @@
     "artist": "Randal Makey"
   },
   "193": {
-    "id": "193",
-    "set": "core",
     "name": "Grabber Jammer",
     "house": "Mars",
     "type": "Creature",
@@ -1222,8 +1034,6 @@
     "artist": "Regis Torres"
   },
   "194": {
-    "id": "194",
-    "set": "core",
     "name": "Grommid",
     "house": "Mars",
     "type": "Creature",
@@ -1235,8 +1045,6 @@
     "artist": "Gong Studios"
   },
   "195": {
-    "id": "195",
-    "set": "core",
     "name": "\"John Smyth\"",
     "house": "Mars",
     "type": "Creature",
@@ -1248,8 +1056,6 @@
     "artist": "Timun Shevtory"
   },
   "196": {
-    "id": "196",
-    "set": "core",
     "name": "Mindwarper",
     "house": "Mars",
     "type": "Creature",
@@ -1261,8 +1067,6 @@
     "artist": "Timur Shevtsov"
   },
   "197": {
-    "id": "197",
-    "set": "core",
     "name": "Phylyx the Disintegrator",
     "house": "Mars",
     "type": "Creature",
@@ -1274,8 +1078,6 @@
     "artist": "David Auden Nash"
   },
   "198": {
-    "id": "198",
-    "set": "core",
     "name": "Qyxxlyx Plauge Master",
     "house": "Mars",
     "type": "Creature",
@@ -1287,8 +1089,6 @@
     "artist": "Matthew Mizak"
   },
   "199": {
-    "id": "199",
-    "set": "core",
     "name": "Tunk",
     "house": "Mars",
     "type": "Creature",
@@ -1300,8 +1100,6 @@
     "artist": "Nicola Saviori"
   },
   "200": {
-    "id": "200",
-    "set": "core",
     "name": "Uliq Megamouth",
     "house": "Mars",
     "type": "Creature",
@@ -1313,8 +1111,6 @@
     "artist": "Grigory Serov"
   },
   "201": {
-    "id": "201",
-    "set": "core",
     "name": "Ulix the Zookeeper",
     "house": "Mars",
     "type": "Creature",
@@ -1326,8 +1122,6 @@
     "artist": "Nasrul Hakim"
   },
   "202": {
-    "id": "202",
-    "set": "core",
     "name": "Vezyma Thinkdrone",
     "house": "Mars",
     "type": "Creature",
@@ -1339,8 +1133,6 @@
     "artist": "Gong Studios"
   },
   "203": {
-    "id": "203",
-    "set": "core",
     "name": "Yxili Marauder",
     "house": "Mars",
     "type": "Creature",
@@ -1352,8 +1144,6 @@
     "artist": "Matt Zeilinger"
   },
   "204": {
-    "id": "204",
-    "set": "core",
     "name": "Yxilo Bolter",
     "house": "Mars",
     "type": "Creature",
@@ -1365,8 +1155,6 @@
     "artist": "Timur Shevtsov"
   },
   "205": {
-    "id": "205",
-    "set": "core",
     "name": "Yxilx Dominator",
     "house": "Mars",
     "type": "Creature",
@@ -1378,8 +1166,6 @@
     "artist": "Grigory Serov"
   },
   "206": {
-    "id": "206",
-    "set": "core",
     "name": "Zorg",
     "house": "Mars",
     "type": "Creature",
@@ -1391,8 +1177,6 @@
     "artist": "BalanceSheet"
   },
   "207": {
-    "id": "207",
-    "set": "core",
     "name": "Zyzzix the Many",
     "house": "Mars",
     "type": "Creature",
@@ -1404,8 +1188,6 @@
     "artist": "Bogdan Tauciuc"
   },
   "208": {
-    "id": "208",
-    "set": "core",
     "name": "Biomatrix Backup",
     "house": "Mars",
     "type": "Upgrade",
@@ -1417,8 +1199,6 @@
     "artist": "Caravan Studio"
   },
   "209": {
-    "id": "209",
-    "set": "core",
     "name": "Brain Stem Antenna",
     "house": "Mars",
     "type": "Upgrade",
@@ -1430,8 +1210,6 @@
     "artist": "Quentin de Warren"
   },
   "210": {
-    "id": "210",
-    "set": "core",
     "name": "Jammer Pack",
     "house": "Mars",
     "type": "Upgrade",
@@ -1443,8 +1221,6 @@
     "artist": "Caravan Studio"
   },
   "211": {
-    "id": "211",
-    "set": "core",
     "name": "Red Planet Ray Gun",
     "house": "Mars",
     "type": "Upgrade",
@@ -1456,8 +1232,6 @@
     "artist": "Caravan Studio"
   },
   "212": {
-    "id": "212",
-    "set": "core",
     "name": "Begone",
     "house": "Sanctum",
     "type": "Action",
@@ -1469,8 +1243,6 @@
     "artist": "Quentin de Warren"
   },
   "213": {
-    "id": "213",
-    "set": "core",
     "name": "Blinding Light",
     "house": "Sanctum",
     "type": "Action",
@@ -1482,8 +1254,6 @@
     "artist": "Hans Krill"
   },
   "214": {
-    "id": "214",
-    "set": "core",
     "name": "Charge!",
     "house": "Sanctum",
     "type": "Action",
@@ -1495,8 +1265,6 @@
     "artist": "Oscar Romer"
   },
   "215": {
-    "id": "215",
-    "set": "core",
     "name": "Cleansing Wave",
     "house": "Sanctum",
     "type": "Action",
@@ -1508,8 +1276,6 @@
     "artist": "Gong Studios"
   },
   "216": {
-    "id": "216",
-    "set": "core",
     "name": "Clear Mind",
     "house": "Sanctum",
     "type": "Action",
@@ -1521,8 +1287,6 @@
     "artist": "Gong Studios"
   },
   "217": {
-    "id": "217",
-    "set": "core",
     "name": "Doorstep to Heaven",
     "house": "Sanctum",
     "type": "Action",
@@ -1534,8 +1298,6 @@
     "artist": "Mark Bulahao"
   },
   "218": {
-    "id": "218",
-    "set": "core",
     "name": "Glorious Few",
     "house": "Sanctum",
     "type": "Action",
@@ -1547,8 +1309,6 @@
     "artist": "Matthew Mizak"
   },
   "219": {
-    "id": "219",
-    "set": "core",
     "name": "Honorable Claim",
     "house": "Sanctum",
     "type": "Action",
@@ -1560,8 +1320,6 @@
     "artist": "Moh Mükhtar"
   },
   "220": {
-    "id": "220",
-    "set": "core",
     "name": "Inspiration",
     "house": "Sanctum",
     "type": "Action",
@@ -1573,8 +1331,6 @@
     "artist": "Konstantin Turovec"
   },
   "221": {
-    "id": "221",
-    "set": "core",
     "name": "Mighty Lance",
     "house": "Sanctum",
     "type": "Action",
@@ -1586,8 +1342,6 @@
     "artist": "Gong Studios"
   },
   "222": {
-    "id": "222",
-    "set": "core",
     "name": "Oath of Poverty",
     "house": "Sanctum",
     "type": "Action",
@@ -1599,8 +1353,6 @@
     "artist": "Randall Mackey"
   },
   "223": {
-    "id": "223",
-    "set": "core",
     "name": "One Stood Against Many",
     "house": "Sanctum",
     "type": "Action",
@@ -1612,8 +1364,6 @@
     "artist": "Artist:"
   },
   "224": {
-    "id": "224",
-    "set": "core",
     "name": "Radiant Truth",
     "house": "Sanctum",
     "type": "Action",
@@ -1625,8 +1375,6 @@
     "artist": "Moh Mükhtar"
   },
   "225": {
-    "id": "225",
-    "set": "core",
     "name": "Shield of Justice",
     "house": "Sanctum",
     "type": "Action",
@@ -1638,8 +1386,6 @@
     "artist": "Gong Studios"
   },
   "226": {
-    "id": "226",
-    "set": "core",
     "name": "Take Hostages",
     "house": "Sanctum",
     "type": "Action",
@@ -1651,8 +1397,6 @@
     "artist": "Caravan Studio"
   },
   "227": {
-    "id": "227",
-    "set": "core",
     "name": "Terms of Redress",
     "house": "Sanctum",
     "type": "Action",
@@ -1664,8 +1408,6 @@
     "artist": "Gong Studios"
   },
   "228": {
-    "id": "228",
-    "set": "core",
     "name": "The Harder They Come",
     "house": "Sanctum",
     "type": "Action",
@@ -1677,8 +1419,6 @@
     "artist": "Konstantin Turovec"
   },
   "229": {
-    "id": "229",
-    "set": "core",
     "name": "The Spirit's Way",
     "house": "Sanctum",
     "type": "Action",
@@ -1690,8 +1430,6 @@
     "artist": "Caravan Studio"
   },
   "230": {
-    "id": "230",
-    "set": "core",
     "name": "Virtuous Works",
     "house": "Sanctum",
     "type": "Action",
@@ -1703,8 +1441,6 @@
     "artist": "Moh Mükhtar"
   },
   "231": {
-    "id": "231",
-    "set": "core",
     "name": "Epic Quest",
     "house": "Sanctum",
     "type": "Artifact",
@@ -1716,8 +1452,6 @@
     "artist": "Andrew Bosley"
   },
   "232": {
-    "id": "232",
-    "set": "core",
     "name": "Gorm of Omm",
     "house": "Sanctum",
     "type": "Artifact",
@@ -1729,8 +1463,6 @@
     "artist": "Caravan Studio"
   },
   "233": {
-    "id": "233",
-    "set": "core",
     "name": "Hallowed Blaster",
     "house": "Sanctum",
     "type": "Artifact",
@@ -1742,8 +1474,6 @@
     "artist": "Caravan Studio"
   },
   "234": {
-    "id": "234",
-    "set": "core",
     "name": "Potion of Invulnerability",
     "house": "Sanctum",
     "type": "Artifact",
@@ -1755,8 +1485,6 @@
     "artist": "Atha Kanaani"
   },
   "235": {
-    "id": "235",
-    "set": "core",
     "name": "Round Table",
     "house": "Sanctum",
     "type": "Artifact",
@@ -1768,8 +1496,6 @@
     "artist": "Gong Studios"
   },
   "236": {
-    "id": "236",
-    "set": "core",
     "name": "Sigil of Brotherhood",
     "house": "Sanctum",
     "type": "Artifact",
@@ -1781,8 +1507,6 @@
     "artist": "Caravan Studio"
   },
   "237": {
-    "id": "237",
-    "set": "core",
     "name": "Whispering Reliquary",
     "house": "Sanctum",
     "type": "Artifact",
@@ -1794,8 +1518,6 @@
     "artist": "Lorena Lammer"
   },
   "238": {
-    "id": "238",
-    "set": "core",
     "name": "Bulwark",
     "house": "Sanctum",
     "type": "Creature",
@@ -1807,8 +1529,6 @@
     "artist": "Eric Kenji Aoyagi"
   },
   "239": {
-    "id": "239",
-    "set": "core",
     "name": "Champion Anaphiel",
     "house": "Sanctum",
     "type": "Creature",
@@ -1820,8 +1540,6 @@
     "artist": "Forrest Imel"
   },
   "240": {
-    "id": "240",
-    "set": "core",
     "name": "Champion Tabris",
     "house": "Sanctum",
     "type": "Creature",
@@ -1833,8 +1551,6 @@
     "artist": "Matthew Mizak"
   },
   "241": {
-    "id": "241",
-    "set": "core",
     "name": "Commander Remiel",
     "house": "Sanctum",
     "type": "Creature",
@@ -1846,8 +1562,6 @@
     "artist": "Caravan Studio"
   },
   "242": {
-    "id": "242",
-    "set": "core",
     "name": "Duma the Martyr",
     "house": "Sanctum",
     "type": "Creature",
@@ -1859,8 +1573,6 @@
     "artist": "Artist:"
   },
   "243": {
-    "id": "243",
-    "set": "core",
     "name": "Francus",
     "house": "Sanctum",
     "type": "Creature",
@@ -1872,8 +1584,6 @@
     "artist": "Caravan Studio"
   },
   "244": {
-    "id": "244",
-    "set": "core",
     "name": "Grey Monk",
     "house": "Sanctum",
     "type": "Creature",
@@ -1885,8 +1595,6 @@
     "artist": "Mads Ahm"
   },
   "245": {
-    "id": "245",
-    "set": "core",
     "name": "Hayyel the Merchant",
     "house": "Sanctum",
     "type": "Creature",
@@ -1898,8 +1606,6 @@
     "artist": "Quentin de Warren"
   },
   "246": {
-    "id": "246",
-    "set": "core",
     "name": "Horseman of Death",
     "house": "Sanctum",
     "type": "Creature",
@@ -1911,8 +1617,6 @@
     "artist": "Eric Kenji Aoyagi"
   },
   "247": {
-    "id": "247",
-    "set": "core",
     "name": "Horseman of Famine",
     "house": "Sanctum",
     "type": "Creature",
@@ -1924,8 +1628,6 @@
     "artist": "Eric Kenji Aoyagi"
   },
   "248": {
-    "id": "248",
-    "set": "core",
     "name": "Horseman of Pestilence",
     "house": "Sanctum",
     "type": "Creature",
@@ -1937,8 +1639,6 @@
     "artist": "Eric Kenji Aoyagi"
   },
   "249": {
-    "id": "249",
-    "set": "core",
     "name": "Horseman of War",
     "house": "Sanctum",
     "type": "Creature",
@@ -1950,8 +1650,6 @@
     "artist": "Eric Kenji Aoyagi"
   },
   "250": {
-    "id": "250",
-    "set": "core",
     "name": "Jehu the Bureaucrat",
     "house": "Sanctum",
     "type": "Creature",
@@ -1963,8 +1661,6 @@
     "artist": "Andrew Bosley"
   },
   "251": {
-    "id": "251",
-    "set": "core",
     "name": "Lady Maxena",
     "house": "Sanctum",
     "type": "Creature",
@@ -1976,8 +1672,6 @@
     "artist": "Nicola Saviori"
   },
   "252": {
-    "id": "252",
-    "set": "core",
     "name": "Lord Golgotha",
     "house": "Sanctum",
     "type": "Creature",
@@ -1989,8 +1683,6 @@
     "artist": "Ilya Bondarenko"
   },
   "253": {
-    "id": "253",
-    "set": "core",
     "name": "Numquid the Fair",
     "house": "Sanctum",
     "type": "Creature",
@@ -2002,8 +1694,6 @@
     "artist": "Eric Kenji Aoyagi"
   },
   "254": {
-    "id": "254",
-    "set": "core",
     "name": "Protectrix",
     "house": "Sanctum",
     "type": "Creature",
@@ -2015,8 +1705,6 @@
     "artist": "Asap Aliyamo"
   },
   "255": {
-    "id": "255",
-    "set": "core",
     "name": "Raiding Knight",
     "house": "Sanctum",
     "type": "Creature",
@@ -2028,8 +1716,6 @@
     "artist": "Caio Monteiro"
   },
   "256": {
-    "id": "256",
-    "set": "core",
     "name": "Sanctum Guardian",
     "house": "Sanctum",
     "type": "Creature",
@@ -2041,8 +1727,6 @@
     "artist": "Andreas Zafiratos"
   },
   "257": {
-    "id": "257",
-    "set": "core",
     "name": "Sequis",
     "house": "Sanctum",
     "type": "Creature",
@@ -2054,8 +1738,6 @@
     "artist": "Josh Corpuz"
   },
   "258": {
-    "id": "258",
-    "set": "core",
     "name": "Sergeant Zakiel",
     "house": "Sanctum",
     "type": "Creature",
@@ -2067,8 +1749,6 @@
     "artist": "David Auden Nash"
   },
   "259": {
-    "id": "259",
-    "set": "core",
     "name": "Staunch Knight",
     "house": "Sanctum",
     "type": "Creature",
@@ -2080,8 +1760,6 @@
     "artist": "Mads Ahm"
   },
   "260": {
-    "id": "260",
-    "set": "core",
     "name": "Gatekeeper",
     "house": "Sanctum",
     "type": "Creature",
@@ -2093,8 +1771,6 @@
     "artist": "Grigory Serov"
   },
   "261": {
-    "id": "261",
-    "set": "core",
     "name": "The Vaultkeeper",
     "house": "Sanctum",
     "type": "Creature",
@@ -2106,8 +1782,6 @@
     "artist": "Grigory Serov"
   },
   "262": {
-    "id": "262",
-    "set": "core",
     "name": "Veemos Lightbringer",
     "house": "Sanctum",
     "type": "Creature",
@@ -2119,8 +1793,6 @@
     "artist": "Andreas Zafiratos"
   },
   "263": {
-    "id": "263",
-    "set": "core",
     "name": "Armageddon Cloak",
     "house": "Sanctum",
     "type": "Upgrade",
@@ -2132,8 +1804,6 @@
     "artist": "Andreas Zafiratos"
   },
   "264": {
-    "id": "264",
-    "set": "core",
     "name": "Mantle of the Zealot",
     "house": "Sanctum",
     "type": "Upgrade",
@@ -2145,8 +1815,6 @@
     "artist": "Caravan Studio"
   },
   "265": {
-    "id": "265",
-    "set": "core",
     "name": "Protect the Weak",
     "house": "Sanctum",
     "type": "Upgrade",
@@ -2158,8 +1826,6 @@
     "artist": "Jessada Sutthi"
   },
   "266": {
-    "id": "266",
-    "set": "core",
     "name": "Shoulder Armor",
     "house": "Sanctum",
     "type": "Upgrade",
@@ -2171,8 +1837,6 @@
     "artist": "Josh Corpuz"
   },
   "267": {
-    "id": "267",
-    "set": "core",
     "name": "Bait and Switch",
     "house": "Shadows",
     "type": "Action",
@@ -2184,8 +1848,6 @@
     "artist": "Gong Studios"
   },
   "268": {
-    "id": "268",
-    "set": "core",
     "name": "Booby Trap",
     "house": "Shadows",
     "type": "Action",
@@ -2197,8 +1859,6 @@
     "artist": "Gong Studios"
   },
   "269": {
-    "id": "269",
-    "set": "core",
     "name": "Finishing Blow",
     "house": "Shadows",
     "type": "Action",
@@ -2210,8 +1870,6 @@
     "artist": "Maria Poliakova"
   },
   "270": {
-    "id": "270",
-    "set": "core",
     "name": "Ghostly Hand",
     "house": "Shadows",
     "type": "Action",
@@ -2223,8 +1881,6 @@
     "artist": "Preston Stone"
   },
   "271": {
-    "id": "271",
-    "set": "core",
     "name": "Hidden Stash",
     "house": "Shadows",
     "type": "Action",
@@ -2236,8 +1892,6 @@
     "artist": "Caravan Studio"
   },
   "272": {
-    "id": "272",
-    "set": "core",
     "name": "Imperial Traitor",
     "house": "Shadows",
     "type": "Action",
@@ -2249,8 +1903,6 @@
     "artist": "Caravan Studio"
   },
   "273": {
-    "id": "273",
-    "set": "core",
     "name": "Key of Darkness",
     "house": "Shadows",
     "type": "Action",
@@ -2262,8 +1914,6 @@
     "artist": "Konstantin Turovec"
   },
   "274": {
-    "id": "274",
-    "set": "core",
     "name": "Lights Out",
     "house": "Shadows",
     "type": "Action",
@@ -2275,8 +1925,6 @@
     "artist": "Tey Bartolome"
   },
   "275": {
-    "id": "275",
-    "set": "core",
     "name": "Miasma",
     "house": "Shadows",
     "type": "Action",
@@ -2288,8 +1936,6 @@
     "artist": "Gong Studios"
   },
   "276": {
-    "id": "276",
-    "set": "core",
     "name": "Nerve Blast",
     "house": "Shadows",
     "type": "Action",
@@ -2301,8 +1947,6 @@
     "artist": "Timun Shevtory"
   },
   "277": {
-    "id": "277",
-    "set": "core",
     "name": "One Last Job",
     "house": "Shadows",
     "type": "Action",
@@ -2314,8 +1958,6 @@
     "artist": "Gong Studios"
   },
   "278": {
-    "id": "278",
-    "set": "core",
     "name": "Oubliette",
     "house": "Shadows",
     "type": "Action",
@@ -2327,8 +1969,6 @@
     "artist": "Gong Studios"
   },
   "279": {
-    "id": "279",
-    "set": "core",
     "name": "Pawn Sacrifice",
     "house": "Shadows",
     "type": "Action",
@@ -2340,8 +1980,6 @@
     "artist": "Gong Studios"
   },
   "280": {
-    "id": "280",
-    "set": "core",
     "name": "Poison Wave",
     "house": "Shadows",
     "type": "Action",
@@ -2353,8 +1991,6 @@
     "artist": "Gong Studios"
   },
   "281": {
-    "id": "281",
-    "set": "core",
     "name": "Relentless Whispers",
     "house": "Shadows",
     "type": "Action",
@@ -2366,8 +2002,6 @@
     "artist": "Tey Bartolome"
   },
   "282": {
-    "id": "282",
-    "set": "core",
     "name": "Routine Job",
     "house": "Shadows",
     "type": "Action",
@@ -2379,8 +2013,6 @@
     "artist": "Gong Studios"
   },
   "283": {
-    "id": "283",
-    "set": "core",
     "name": "Too Much to Protect",
     "house": "Shadows",
     "type": "Action",
@@ -2392,8 +2024,6 @@
     "artist": "Gong Studios"
   },
   "284": {
-    "id": "284",
-    "set": "core",
     "name": "Treasure Map",
     "house": "Shadows",
     "type": "Action",
@@ -2405,8 +2035,6 @@
     "artist": "Gong Studios"
   },
   "285": {
-    "id": "285",
-    "set": "core",
     "name": "Customs Office",
     "house": "Shadows",
     "type": "Artifact",
@@ -2418,8 +2046,6 @@
     "artist": "Gong Studios"
   },
   "286": {
-    "id": "286",
-    "set": "core",
     "name": "Evasion Sigil",
     "house": "Shadows",
     "type": "Artifact",
@@ -2431,8 +2057,6 @@
     "artist": "Gong Studios"
   },
   "287": {
-    "id": "287",
-    "set": "core",
     "name": "Longfused Mines",
     "house": "Shadows",
     "type": "Artifact",
@@ -2444,8 +2068,6 @@
     "artist": "Gong Studios"
   },
   "288": {
-    "id": "288",
-    "set": "core",
     "name": "Masterplan",
     "house": "Shadows",
     "type": "Artifact",
@@ -2457,8 +2079,6 @@
     "artist": "Gong Studios"
   },
   "289": {
-    "id": "289",
-    "set": "core",
     "name": "Safe Place",
     "house": "Shadows",
     "type": "Artifact",
@@ -2470,8 +2090,6 @@
     "artist": "Artist:"
   },
   "290": {
-    "id": "290",
-    "set": "core",
     "name": "Seeker Needle",
     "house": "Shadows",
     "type": "Artifact",
@@ -2483,8 +2101,6 @@
     "artist": "Timun Shevtory"
   },
   "291": {
-    "id": "291",
-    "set": "core",
     "name": "Skeleton Key",
     "house": "Shadows",
     "type": "Artifact",
@@ -2496,8 +2112,6 @@
     "artist": "Grigory Serov"
   },
   "292": {
-    "id": "292",
-    "set": "core",
     "name": "Special Delivery",
     "house": "Shadows",
     "type": "Artifact",
@@ -2509,8 +2123,6 @@
     "artist": "Preston Stone"
   },
   "293": {
-    "id": "293",
-    "set": "core",
     "name": "Speed Sigil",
     "house": "Shadows",
     "type": "Artifact",
@@ -2522,8 +2134,6 @@
     "artist": "Gong Studios"
   },
   "294": {
-    "id": "294",
-    "set": "core",
     "name": "Subtle Maul",
     "house": "Shadows",
     "type": "Artifact",
@@ -2535,8 +2145,6 @@
     "artist": "Gong Studios"
   },
   "295": {
-    "id": "295",
-    "set": "core",
     "name": "The Sting",
     "house": "Shadows",
     "type": "Artifact",
@@ -2548,8 +2156,6 @@
     "artist": "David Auden Nash"
   },
   "296": {
-    "id": "296",
-    "set": "core",
     "name": "Bad Penny",
     "house": "Shadows",
     "type": "Creature",
@@ -2561,8 +2167,6 @@
     "artist": "Nasrul Hakim"
   },
   "297": {
-    "id": "297",
-    "set": "core",
     "name": "Bulleteye",
     "house": "Shadows",
     "type": "Creature",
@@ -2574,8 +2178,6 @@
     "artist": "Gong Studios"
   },
   "298": {
-    "id": "298",
-    "set": "core",
     "name": "Carlo Phantom",
     "house": "Shadows",
     "type": "Creature",
@@ -2587,8 +2189,6 @@
     "artist": "Predro Dutra"
   },
   "299": {
-    "id": "299",
-    "set": "core",
     "name": "Deipno Spymaster",
     "house": "Shadows",
     "type": "Creature",
@@ -2600,8 +2200,6 @@
     "artist": "Gong Studios"
   },
   "300": {
-    "id": "300",
-    "set": "core",
     "name": "Faygin",
     "house": "Shadows",
     "type": "Creature",
@@ -2613,8 +2211,6 @@
     "artist": "Preston Stone"
   },
   "301": {
-    "id": "301",
-    "set": "core",
     "name": "Macis Asp",
     "house": "Shadows",
     "type": "Creature",
@@ -2626,8 +2222,6 @@
     "artist": "Pedro Dutra"
   },
   "302": {
-    "id": "302",
-    "set": "core",
     "name": "Mack the Knife",
     "house": "Shadows",
     "type": "Creature",
@@ -2639,8 +2233,6 @@
     "artist": "Anzka Nguyen"
   },
   "303": {
-    "id": "303",
-    "set": "core",
     "name": "Magda the Rat",
     "house": "Shadows",
     "type": "Creature",
@@ -2652,8 +2244,6 @@
     "artist": "Sasha Tudvaseva"
   },
   "304": {
-    "id": "304",
-    "set": "core",
     "name": "Mooncurser",
     "house": "Shadows",
     "type": "Creature",
@@ -2665,8 +2255,6 @@
     "artist": "Maria Poliakova"
   },
   "305": {
-    "id": "305",
-    "set": "core",
     "name": "Nexus",
     "house": "Shadows",
     "type": "Creature",
@@ -2678,8 +2266,6 @@
     "artist": "Gong Studios"
   },
   "306": {
-    "id": "306",
-    "set": "core",
     "name": "Noddy the Thief",
     "house": "Shadows",
     "type": "Creature",
@@ -2691,8 +2277,6 @@
     "artist": "Albert Bruun"
   },
   "307": {
-    "id": "307",
-    "set": "core",
     "name": "Old Bruno",
     "house": "Shadows",
     "type": "Creature",
@@ -2704,8 +2288,6 @@
     "artist": "Rodrigo Camilo"
   },
   "308": {
-    "id": "308",
-    "set": "core",
     "name": "Dodger",
     "house": "Shadows",
     "type": "Creature",
@@ -2717,8 +2299,6 @@
     "artist": "Nicola Saviori"
   },
   "309": {
-    "id": "309",
-    "set": "core",
     "name": "Selwyn the Fence",
     "house": "Shadows",
     "type": "Creature",
@@ -2730,8 +2310,6 @@
     "artist": "Gizelle Karen Baluso"
   },
   "310": {
-    "id": "310",
-    "set": "core",
     "name": "Shadow Self",
     "house": "Shadows",
     "type": "Creature",
@@ -2743,8 +2321,6 @@
     "artist": "Preston Stone"
   },
   "311": {
-    "id": "311",
-    "set": "core",
     "name": "Silvertooth",
     "house": "Shadows",
     "type": "Creature",
@@ -2756,8 +2332,6 @@
     "artist": "Sasha Tudvaseva"
   },
   "312": {
-    "id": "312",
-    "set": "core",
     "name": "Smiling Ruth",
     "house": "Shadows",
     "type": "Creature",
@@ -2769,8 +2343,6 @@
     "artist": "David Auden Nash"
   },
   "313": {
-    "id": "313",
-    "set": "core",
     "name": "Sneklifter",
     "house": "Shadows",
     "type": "Creature",
@@ -2782,8 +2354,6 @@
     "artist": "Gong Studios"
   },
   "314": {
-    "id": "314",
-    "set": "core",
     "name": "Umbra",
     "house": "Shadows",
     "type": "Creature",
@@ -2795,8 +2365,6 @@
     "artist": "Gabriel Rubio"
   },
   "315": {
-    "id": "315",
-    "set": "core",
     "name": "Urchin",
     "house": "Shadows",
     "type": "Creature",
@@ -2808,8 +2376,6 @@
     "artist": "Preston Stone"
   },
   "316": {
-    "id": "316",
-    "set": "core",
     "name": "Duskrunner",
     "house": "Shadows",
     "type": "Upgrade",
@@ -2821,8 +2387,6 @@
     "artist": "Matt Zeilinger"
   },
   "317": {
-    "id": "317",
-    "set": "core",
     "name": "Ring of Invisibility",
     "house": "Shadows",
     "type": "Upgrade",
@@ -2834,8 +2398,6 @@
     "artist": "Atha Kanaani"
   },
   "318": {
-    "id": "318",
-    "set": "core",
     "name": "Silent Dagger",
     "house": "Shadows",
     "type": "Upgrade",
@@ -2847,8 +2409,6 @@
     "artist": "Gong Studios"
   },
   "319": {
-    "id": "319",
-    "set": "core",
     "name": "Cooperative Hunting",
     "house": "Untamed",
     "type": "Action",
@@ -2860,8 +2420,6 @@
     "artist": "Sasha Tudvaseva"
   },
   "320": {
-    "id": "320",
-    "set": "core",
     "name": "Curiosity",
     "house": "Untamed",
     "type": "Action",
@@ -2873,8 +2431,6 @@
     "artist": "Grigory Serov"
   },
   "321": {
-    "id": "321",
-    "set": "core",
     "name": "Fertility Chant",
     "house": "Untamed",
     "type": "Action",
@@ -2886,8 +2442,6 @@
     "artist": "Quentin de Warren"
   },
   "322": {
-    "id": "322",
-    "set": "core",
     "name": "Fogbank",
     "house": "Untamed",
     "type": "Action",
@@ -2899,8 +2453,6 @@
     "artist": "Andrew Bosley"
   },
   "323": {
-    "id": "323",
-    "set": "core",
     "name": "Full Moon",
     "house": "Untamed",
     "type": "Action",
@@ -2912,8 +2464,6 @@
     "artist": "Randall Mackey"
   },
   "324": {
-    "id": "324",
-    "set": "core",
     "name": "Grasping Vines",
     "house": "Untamed",
     "type": "Action",
@@ -2925,8 +2475,6 @@
     "artist": "Adam Veltige"
   },
   "325": {
-    "id": "325",
-    "set": "core",
     "name": "Key Charge",
     "house": "Untamed",
     "type": "Action",
@@ -2938,8 +2486,6 @@
     "artist": "Gabriel Rubio"
   },
   "326": {
-    "id": "326",
-    "set": "core",
     "name": "Lifeweb",
     "house": "Untamed",
     "type": "Action",
@@ -2951,8 +2497,6 @@
     "artist": "Konstantin Turovec"
   },
   "327": {
-    "id": "327",
-    "set": "core",
     "name": "Lost in the Woods",
     "house": "Untamed",
     "type": "Action",
@@ -2964,8 +2508,6 @@
     "artist": "Andrew Bosley"
   },
   "328": {
-    "id": "328",
-    "set": "core",
     "name": "Mimicry",
     "house": "Untamed",
     "type": "Action",
@@ -2977,8 +2519,6 @@
     "artist": "Gong Studios"
   },
   "329": {
-    "id": "329",
-    "set": "core",
     "name": "Nature's Call",
     "house": "Untamed",
     "type": "Action",
@@ -2990,8 +2530,6 @@
     "artist": "Gong Studios"
   },
   "330": {
-    "id": "330",
-    "set": "core",
     "name": "Nocturnal Maneuver",
     "house": "Untamed",
     "type": "Action",
@@ -3003,8 +2541,6 @@
     "artist": "Atha Kanaani"
   },
   "331": {
-    "id": "331",
-    "set": "core",
     "name": "Perilous Wild",
     "house": "Untamed",
     "type": "Action",
@@ -3016,8 +2552,6 @@
     "artist": "Caravan Studio"
   },
   "332": {
-    "id": "332",
-    "set": "core",
     "name": "Regrowth",
     "house": "Untamed",
     "type": "Action",
@@ -3029,8 +2563,6 @@
     "artist": "Bogdan Tauciuc"
   },
   "333": {
-    "id": "333",
-    "set": "core",
     "name": "Save the Pack",
     "house": "Untamed",
     "type": "Action",
@@ -3042,8 +2574,6 @@
     "artist": "Quentin de Warren"
   },
   "334": {
-    "id": "334",
-    "set": "core",
     "name": "Scout",
     "house": "Untamed",
     "type": "Action",
@@ -3055,8 +2585,6 @@
     "artist": "Caravan Studio"
   },
   "335": {
-    "id": "335",
-    "set": "core",
     "name": "Stampede",
     "house": "Untamed",
     "type": "Action",
@@ -3068,8 +2596,6 @@
     "artist": "David Auden Nash"
   },
   "336": {
-    "id": "336",
-    "set": "core",
     "name": "The Common Cold",
     "house": "Untamed",
     "type": "Action",
@@ -3081,8 +2607,6 @@
     "artist": "Quentin de Warren"
   },
   "337": {
-    "id": "337",
-    "set": "core",
     "name": "Troop Call",
     "house": "Untamed",
     "type": "Action",
@@ -3094,8 +2618,6 @@
     "artist": "Caravan Studio"
   },
   "338": {
-    "id": "338",
-    "set": "core",
     "name": "Vigor",
     "house": "Untamed",
     "type": "Action",
@@ -3107,8 +2629,6 @@
     "artist": "Lorena Lammer"
   },
   "339": {
-    "id": "339",
-    "set": "core",
     "name": "Word of Returning",
     "house": "Untamed",
     "type": "Action",
@@ -3120,8 +2640,6 @@
     "artist": "Maria Poliakova"
   },
   "340": {
-    "id": "340",
-    "set": "core",
     "name": "Bear Flute",
     "house": "Untamed",
     "type": "Artifact",
@@ -3133,8 +2651,6 @@
     "artist": "Atha Kanaani"
   },
   "341": {
-    "id": "341",
-    "set": "core",
     "name": "Nepenthe Seed",
     "house": "Untamed",
     "type": "Artifact",
@@ -3146,8 +2662,6 @@
     "artist": "Gabriel Rubio"
   },
   "342": {
-    "id": "342",
-    "set": "core",
     "name": "Ritual of Balance",
     "house": "Untamed",
     "type": "Artifact",
@@ -3159,8 +2673,6 @@
     "artist": "Quentin de Warren"
   },
   "343": {
-    "id": "343",
-    "set": "core",
     "name": "Ritual of the Hunt",
     "house": "Untamed",
     "type": "Artifact",
@@ -3172,8 +2684,6 @@
     "artist": "Caravan Studio"
   },
   "344": {
-    "id": "344",
-    "set": "core",
     "name": "World Tree",
     "house": "Untamed",
     "type": "Artifact",
@@ -3185,8 +2695,6 @@
     "artist": "Andrew Bosley"
   },
   "345": {
-    "id": "345",
-    "set": "core",
     "name": "Ancient Bear",
     "house": "Untamed",
     "type": "Creature",
@@ -3198,8 +2706,6 @@
     "artist": "Timur Shevtsov"
   },
   "346": {
-    "id": "346",
-    "set": "core",
     "name": "Bigtwig",
     "house": "Untamed",
     "type": "Creature",
@@ -3211,8 +2717,6 @@
     "artist": "Adam Veltige"
   },
   "347": {
-    "id": "347",
-    "set": "core",
     "name": "Witch of the Wilds",
     "house": "Untamed",
     "type": "Creature",
@@ -3224,8 +2728,6 @@
     "artist": "Maerel Hibadita"
   },
   "348": {
-    "id": "348",
-    "set": "core",
     "name": "Briar Grubbling",
     "house": "Untamed",
     "type": "Creature",
@@ -3237,8 +2739,6 @@
     "artist": "Artist:"
   },
   "349": {
-    "id": "349",
-    "set": "core",
     "name": "Chota Hazri",
     "house": "Untamed",
     "type": "Creature",
@@ -3250,8 +2750,6 @@
     "artist": "Rodrigo Camilo"
   },
   "350": {
-    "id": "350",
-    "set": "core",
     "name": "Dew Faerie",
     "house": "Untamed",
     "type": "Creature",
@@ -3263,8 +2761,6 @@
     "artist": "Regis Torres"
   },
   "351": {
-    "id": "351",
-    "set": "core",
     "name": "Dust Pixie",
     "house": "Untamed",
     "type": "Creature",
@@ -3276,8 +2772,6 @@
     "artist": "Atha Kanaani"
   },
   "352": {
-    "id": "352",
-    "set": "core",
     "name": "Flaxia",
     "house": "Untamed",
     "type": "Creature",
@@ -3289,8 +2783,6 @@
     "artist": "Albert Bruun"
   },
   "353": {
-    "id": "353",
-    "set": "core",
     "name": "Fuzzy Gruen",
     "house": "Untamed",
     "type": "Creature",
@@ -3302,8 +2794,6 @@
     "artist": "Adam Veltige"
   },
   "354": {
-    "id": "354",
-    "set": "core",
     "name": "Giant Sloth",
     "house": "Untamed",
     "type": "Creature",
@@ -3315,8 +2805,6 @@
     "artist": "Artist:"
   },
   "355": {
-    "id": "355",
-    "set": "core",
     "name": "Halacor",
     "house": "Untamed",
     "type": "Creature",
@@ -3328,8 +2816,6 @@
     "artist": "Timur Shevtsov"
   },
   "356": {
-    "id": "356",
-    "set": "core",
     "name": "Inka the Spider",
     "house": "Untamed",
     "type": "Creature",
@@ -3341,8 +2827,6 @@
     "artist": "Melvin Chan"
   },
   "357": {
-    "id": "357",
-    "set": "core",
     "name": "Kindrith Longshot",
     "house": "Untamed",
     "type": "Creature",
@@ -3354,8 +2838,6 @@
     "artist": "Josh Corpuz"
   },
   "358": {
-    "id": "358",
-    "set": "core",
     "name": "Snufflegator",
     "house": "Untamed",
     "type": "Creature",
@@ -3367,8 +2849,6 @@
     "artist": "Caravan Studio"
   },
   "359": {
-    "id": "359",
-    "set": "core",
     "name": "Lupo the Scarred",
     "house": "Untamed",
     "type": "Creature",
@@ -3380,8 +2860,6 @@
     "artist": "Quentin de Warren"
   },
   "360": {
-    "id": "360",
-    "set": "core",
     "name": "Mighty Tiger",
     "house": "Untamed",
     "type": "Creature",
@@ -3393,8 +2871,6 @@
     "artist": "Adam Veltige"
   },
   "361": {
-    "id": "361",
-    "set": "core",
     "name": "Murmook",
     "house": "Untamed",
     "type": "Creature",
@@ -3406,8 +2882,6 @@
     "artist": "David Kegg"
   },
   "362": {
-    "id": "362",
-    "set": "core",
     "name": "Mushroom Man",
     "house": "Untamed",
     "type": "Creature",
@@ -3419,8 +2893,6 @@
     "artist": "Brolkin"
   },
   "363": {
-    "id": "363",
-    "set": "core",
     "name": "Niffle Ape",
     "house": "Untamed",
     "type": "Creature",
@@ -3432,8 +2904,6 @@
     "artist": "Bogdan Tauciuc"
   },
   "364": {
-    "id": "364",
-    "set": "core",
     "name": "Niffle Queen",
     "house": "Untamed",
     "type": "Creature",
@@ -3445,8 +2915,6 @@
     "artist": "Caio Monteiro"
   },
   "365": {
-    "id": "365",
-    "set": "core",
     "name": "Piranha Monkeys",
     "house": "Untamed",
     "type": "Creature",
@@ -3458,8 +2926,6 @@
     "artist": "Bogdan Tauciuc"
   },
   "366": {
-    "id": "366",
-    "set": "core",
     "name": "Teliga",
     "house": "Untamed",
     "type": "Creature",
@@ -3471,8 +2937,6 @@
     "artist": "Mads Ahm"
   },
   "367": {
-    "id": "367",
-    "set": "core",
     "name": "Hunting Witch",
     "house": "Untamed",
     "type": "Creature",
@@ -3484,8 +2948,6 @@
     "artist": "David Auden Nash"
   },
   "368": {
-    "id": "368",
-    "set": "core",
     "name": "Witch of the Eye",
     "house": "Untamed",
     "type": "Creature",
@@ -3497,8 +2959,6 @@
     "artist": "Maria Poliakova"
   },
   "369": {
-    "id": "369",
-    "set": "core",
     "name": "Way of the Bear",
     "house": "Untamed",
     "type": "Upgrade",
@@ -3510,8 +2970,6 @@
     "artist": "Gabriel Rubio"
   },
   "370": {
-    "id": "370",
-    "set": "core",
     "name": "Way of the Wolf",
     "house": "Untamed",
     "type": "Upgrade",
@@ -3523,8 +2981,6 @@
     "artist": "Konstantin Turovec"
   },
   "001": {
-    "id": "001",
-    "set": "core",
     "name": "Anger",
     "house": "Brobnar",
     "type": "Action",
@@ -3536,8 +2992,6 @@
     "artist": "Melvin Chan"
   },
   "002": {
-    "id": "002",
-    "set": "core",
     "name": "Barehanded",
     "house": "Brobnar",
     "type": "Action",
@@ -3549,8 +3003,6 @@
     "artist": "Michele Giorgi"
   },
   "003": {
-    "id": "003",
-    "set": "core",
     "name": "Blood Money",
     "house": "Brobnar",
     "type": "Action",
@@ -3562,8 +3014,6 @@
     "artist": "Gong Studios"
   },
   "004": {
-    "id": "004",
-    "set": "core",
     "name": "Brothers in Battle",
     "house": "Brobnar",
     "type": "Action",
@@ -3575,8 +3025,6 @@
     "artist": "Rodrigo Camilo"
   },
   "005": {
-    "id": "005",
-    "set": "core",
     "name": "Burn the Stockpile",
     "house": "Brobnar",
     "type": "Action",
@@ -3588,8 +3036,6 @@
     "artist": "BalanceSheet"
   },
   "006": {
-    "id": "006",
-    "set": "core",
     "name": "Champion's Challenge",
     "house": "Brobnar",
     "type": "Action",
@@ -3601,8 +3047,6 @@
     "artist": "Artist:"
   },
   "007": {
-    "id": "007",
-    "set": "core",
     "name": "Coward's End",
     "house": "Brobnar",
     "type": "Action",
@@ -3614,8 +3058,6 @@
     "artist": "Timun Shevtory"
   },
   "008": {
-    "id": "008",
-    "set": "core",
     "name": "Follow the Leader",
     "house": "Brobnar",
     "type": "Action",
@@ -3627,8 +3069,6 @@
     "artist": "Bogdan Tauciuc"
   },
   "009": {
-    "id": "009",
-    "set": "core",
     "name": "Lava Ball",
     "house": "Brobnar",
     "type": "Action",
@@ -3640,8 +3080,6 @@
     "artist": "Quentin de Warren"
   },
   "010": {
-    "id": "010",
-    "set": "core",
     "name": "Loot the Bodies",
     "house": "Brobnar",
     "type": "Action",
@@ -3653,8 +3091,6 @@
     "artist": "Grigory Serov"
   },
   "011": {
-    "id": "011",
-    "set": "core",
     "name": "Take that, Smartypants",
     "house": "Brobnar",
     "type": "Action",
@@ -3666,8 +3102,6 @@
     "artist": "Caravan Studios"
   },
   "012": {
-    "id": "012",
-    "set": "core",
     "name": "Punch",
     "house": "Brobnar",
     "type": "Action",
@@ -3679,8 +3113,6 @@
     "artist": "Ivan Tao"
   },
   "013": {
-    "id": "013",
-    "set": "core",
     "name": "Relentless Assault",
     "house": "Brobnar",
     "type": "Action",
@@ -3692,8 +3124,6 @@
     "artist": "Jordan Kerbow"
   },
   "014": {
-    "id": "014",
-    "set": "core",
     "name": "Smith",
     "house": "Brobnar",
     "type": "Action",
@@ -3705,8 +3135,6 @@
     "artist": "Gabriel Rubio"
   },
   "015": {
-    "id": "015",
-    "set": "core",
     "name": "Sound the Horns",
     "house": "Brobnar",
     "type": "Action",
@@ -3718,8 +3146,6 @@
     "artist": "Albert Bruun"
   },
   "016": {
-    "id": "016",
-    "set": "core",
     "name": "Tremor",
     "house": "Brobnar",
     "type": "Action",
@@ -3731,8 +3157,6 @@
     "artist": "Oscar Romer"
   },
   "017": {
-    "id": "017",
-    "set": "core",
     "name": "Unguarded Camp",
     "house": "Brobnar",
     "type": "Action",
@@ -3744,8 +3168,6 @@
     "artist": "Jon Bosco"
   },
   "018": {
-    "id": "018",
-    "set": "core",
     "name": "Warsong",
     "house": "Brobnar",
     "type": "Action",
@@ -3757,8 +3179,6 @@
     "artist": "Monztre"
   },
   "019": {
-    "id": "019",
-    "set": "core",
     "name": "Autocannon",
     "house": "Brobnar",
     "type": "Artifact",
@@ -3770,8 +3190,6 @@
     "artist": "Moh Mukhtar"
   },
   "020": {
-    "id": "020",
-    "set": "core",
     "name": "Banner of Battle",
     "house": "Brobnar",
     "type": "Artifact",
@@ -3783,8 +3201,6 @@
     "artist": "Caravan Studios"
   },
   "021": {
-    "id": "021",
-    "set": "core",
     "name": "Cannon",
     "house": "Brobnar",
     "type": "Artifact",
@@ -3796,8 +3212,6 @@
     "artist": "Konstantin Turovec"
   },
   "022": {
-    "id": "022",
-    "set": "core",
     "name": "Gauntlet of Command",
     "house": "Brobnar",
     "type": "Artifact",
@@ -3809,8 +3223,6 @@
     "artist": "Eric Kenji Aoyagi"
   },
   "023": {
-    "id": "023",
-    "set": "core",
     "name": "Iron Obelisk",
     "house": "Brobnar",
     "type": "Artifact",
@@ -3822,8 +3234,6 @@
     "artist": "Andrew Bosley"
   },
   "024": {
-    "id": "024",
-    "set": "core",
     "name": "Mighty Javelin",
     "house": "Brobnar",
     "type": "Artifact",
@@ -3835,8 +3245,6 @@
     "artist": "Limetown Studios"
   },
   "025": {
-    "id": "025",
-    "set": "core",
     "name": "Pile of Skulls",
     "house": "Brobnar",
     "type": "Artifact",
@@ -3848,8 +3256,6 @@
     "artist": "Caravan Studio"
   },
   "026": {
-    "id": "026",
-    "set": "core",
     "name": "Screechbomb",
     "house": "Brobnar",
     "type": "Artifact",
@@ -3861,8 +3267,6 @@
     "artist": "Albert Bruun"
   },
   "027": {
-    "id": "027",
-    "set": "core",
     "name": "The Warchest",
     "house": "Brobnar",
     "type": "Artifact",
@@ -3874,8 +3278,6 @@
     "artist": "Caravan Studio"
   },
   "028": {
-    "id": "028",
-    "set": "core",
     "name": "Bilgum Avalanche",
     "house": "Brobnar",
     "type": "Creature",
@@ -3887,8 +3289,6 @@
     "artist": "Konstantin Turovec"
   },
   "029": {
-    "id": "029",
-    "set": "core",
     "name": "Valdr",
     "house": "Brobnar",
     "type": "Creature",
@@ -3900,8 +3300,6 @@
     "artist": "Caio Monteiro"
   },
   "030": {
-    "id": "030",
-    "set": "core",
     "name": "Bumpsy",
     "house": "Brobnar",
     "type": "Creature",
@@ -3913,8 +3311,6 @@
     "artist": "Grigory Serov"
   },
   "031": {
-    "id": "031",
-    "set": "core",
     "name": "Earthshaker",
     "house": "Brobnar",
     "type": "Creature",
@@ -3926,8 +3322,6 @@
     "artist": "Monztre"
   },
   "032": {
-    "id": "032",
-    "set": "core",
     "name": "Firespitter",
     "house": "Brobnar",
     "type": "Creature",
@@ -3939,8 +3333,6 @@
     "artist": "Nicola Saviori"
   },
   "033": {
-    "id": "033",
-    "set": "core",
     "name": "Ganger Chieftain",
     "house": "Brobnar",
     "type": "Creature",
@@ -3952,8 +3344,6 @@
     "artist": "Forrest Imel"
   },
   "034": {
-    "id": "034",
-    "set": "core",
     "name": "Grenade Snib",
     "house": "Brobnar",
     "type": "Creature",
@@ -3965,8 +3355,6 @@
     "artist": "Taylor Ingvarsson"
   },
   "035": {
-    "id": "035",
-    "set": "core",
     "name": "Headhunter",
     "house": "Brobnar",
     "type": "Creature",
@@ -3978,8 +3366,6 @@
     "artist": "Nicola Saviori"
   },
   "036": {
-    "id": "036",
-    "set": "core",
     "name": "Hebe the Huge",
     "house": "Brobnar",
     "type": "Creature",
@@ -3991,8 +3377,6 @@
     "artist": "Eric Kenji Aoyagi"
   },
   "037": {
-    "id": "037",
-    "set": "core",
     "name": "Kelifi Dragon",
     "house": "Brobnar",
     "type": "Creature",
@@ -4004,8 +3388,6 @@
     "artist": "Caio Monteiro"
   },
   "038": {
-    "id": "038",
-    "set": "core",
     "name": "King of the Crag",
     "house": "Brobnar",
     "type": "Creature",
@@ -4017,8 +3399,6 @@
     "artist": "Melvin Chan"
   },
   "039": {
-    "id": "039",
-    "set": "core",
     "name": "Krump",
     "house": "Brobnar",
     "type": "Creature",
@@ -4030,8 +3410,6 @@
     "artist": "Brolkin"
   },
   "040": {
-    "id": "040",
-    "set": "core",
     "name": "Lomir Flamefist",
     "house": "Brobnar",
     "type": "Creature",
@@ -4043,8 +3421,6 @@
     "artist": "David Kegg"
   },
   "041": {
-    "id": "041",
-    "set": "core",
     "name": "Looter Goblin",
     "house": "Brobnar",
     "type": "Creature",
@@ -4056,8 +3432,6 @@
     "artist": "Rodrigo Camilo"
   },
   "042": {
-    "id": "042",
-    "set": "core",
     "name": "Mugwump",
     "house": "Brobnar",
     "type": "Creature",
@@ -4069,8 +3443,6 @@
     "artist": "Nicholas Gregory"
   },
   "043": {
-    "id": "043",
-    "set": "core",
     "name": "Pingle Who Annoys",
     "house": "Brobnar",
     "type": "Creature",
@@ -4082,8 +3454,6 @@
     "artist": "Rodrigo Camilo"
   },
   "044": {
-    "id": "044",
-    "set": "core",
     "name": "Rock-Hurling Giant",
     "house": "Brobnar",
     "type": "Creature",
@@ -4095,8 +3465,6 @@
     "artist": "Caio Monteiro"
   },
   "045": {
-    "id": "045",
-    "set": "core",
     "name": "Rogue Ogre",
     "house": "Brobnar",
     "type": "Creature",
@@ -4108,8 +3476,6 @@
     "artist": "Caio Monteiro"
   },
   "046": {
-    "id": "046",
-    "set": "core",
     "name": "Smaaash!",
     "house": "Brobnar",
     "type": "Creature",
@@ -4121,8 +3487,6 @@
     "artist": "Bogdan Tauciuc"
   },
   "047": {
-    "id": "047",
-    "set": "core",
     "name": "Tireless Crocag",
     "house": "Brobnar",
     "type": "Creature",
@@ -4134,8 +3498,6 @@
     "artist": "Gabriel Rubio"
   },
   "048": {
-    "id": "048",
-    "set": "core",
     "name": "Troll",
     "house": "Brobnar",
     "type": "Creature",
@@ -4147,8 +3509,6 @@
     "artist": "Timun Shevtory"
   },
   "049": {
-    "id": "049",
-    "set": "core",
     "name": "Wardrummer",
     "house": "Brobnar",
     "type": "Creature",
@@ -4160,8 +3520,6 @@
     "artist": "Nicola Saviori"
   },
   "050": {
-    "id": "050",
-    "set": "core",
     "name": "Blood of Titans",
     "house": "Brobnar",
     "type": "Upgrade",
@@ -4173,8 +3531,6 @@
     "artist": "Ivan Tao"
   },
   "051": {
-    "id": "051",
-    "set": "core",
     "name": "Phoenix Heart",
     "house": "Brobnar",
     "type": "Upgrade",
@@ -4186,8 +3542,6 @@
     "artist": "Caravan Studio"
   },
   "052": {
-    "id": "052",
-    "set": "core",
     "name": "Yo Mama Mastery",
     "house": "Brobnar",
     "type": "Upgrade",
@@ -4199,8 +3553,6 @@
     "artist": "Caravan Studio"
   },
   "053": {
-    "id": "053",
-    "set": "core",
     "name": "A Fair Game",
     "house": "Brobnar",
     "type": "Action",
@@ -4212,8 +3564,6 @@
     "artist": "Artist:"
   },
   "054": {
-    "id": "054",
-    "set": "core",
     "name": "Arise!",
     "house": "Dis",
     "type": "Action",
@@ -4225,8 +3575,6 @@
     "artist": "David Kegg"
   },
   "055": {
-    "id": "055",
-    "set": "core",
     "name": "Control the Weak",
     "house": "Dis",
     "type": "Action",
@@ -4238,8 +3586,6 @@
     "artist": "Gong Studios"
   },
   "056": {
-    "id": "056",
-    "set": "core",
     "name": "Creeping Oblivion",
     "house": "Dis",
     "type": "Action",
@@ -4251,8 +3597,6 @@
     "artist": "Andrew Bosley"
   },
   "057": {
-    "id": "057",
-    "set": "core",
     "name": "Dance of Doom",
     "house": "Dis",
     "type": "Action",
@@ -4264,8 +3608,6 @@
     "artist": "Mihai Radu"
   },
   "058": {
-    "id": "058",
-    "set": "core",
     "name": "Fear",
     "house": "Dis",
     "type": "Action",
@@ -4277,8 +3619,6 @@
     "artist": "Nicholas Gregory"
   },
   "059": {
-    "id": "059",
-    "set": "core",
     "name": "Gateway to Dis",
     "house": "Dis",
     "type": "Action",
@@ -4290,8 +3630,6 @@
     "artist": "Brolkin"
   },
   "060": {
-    "id": "060",
-    "set": "core",
     "name": "Gongoozle",
     "house": "Dis",
     "type": "Action",
@@ -4303,8 +3641,6 @@
     "artist": "Bogdan Tauciuc"
   },
   "061": {
-    "id": "061",
-    "set": "core",
     "name": "Guilty Hearts",
     "house": "Dis",
     "type": "Action",
@@ -4316,8 +3652,6 @@
     "artist": "Grigory Serov"
   },
   "062": {
-    "id": "062",
-    "set": "core",
     "name": "Hand of Dis",
     "house": "Dis",
     "type": "Action",
@@ -4329,8 +3663,6 @@
     "artist": "Mariusz Gandzel"
   },
   "063": {
-    "id": "063",
-    "set": "core",
     "name": "Hecatomb",
     "house": "Dis",
     "type": "Action",
@@ -4342,8 +3674,6 @@
     "artist": "Mariusz Gandzel"
   },
   "064": {
-    "id": "064",
-    "set": "core",
     "name": "Tendrils of Pain",
     "house": "Dis",
     "type": "Action",
@@ -4355,8 +3685,6 @@
     "artist": "Timur Shevtsov"
   },
   "065": {
-    "id": "065",
-    "set": "core",
     "name": "Hysteria",
     "house": "Dis",
     "type": "Action",
@@ -4368,8 +3696,6 @@
     "artist": "Gong Studios"
   },
   "066": {
-    "id": "066",
-    "set": "core",
     "name": "Key Hammer",
     "house": "Dis",
     "type": "Action",
@@ -4381,8 +3707,6 @@
     "artist": "Caravan Studio"
   },
   "067": {
-    "id": "067",
-    "set": "core",
     "name": "Mind Barb",
     "house": "Dis",
     "type": "Action",
@@ -4394,8 +3718,6 @@
     "artist": "Grigory Serov"
   },
   "068": {
-    "id": "068",
-    "set": "core",
     "name": "Pandemonium",
     "house": "Dis",
     "type": "Action",
@@ -4407,8 +3729,6 @@
     "artist": "Caravan Studio"
   },
   "069": {
-    "id": "069",
-    "set": "core",
     "name": "Poltergeist",
     "house": "Dis",
     "type": "Action",
@@ -4420,8 +3740,6 @@
     "artist": "Andrew Bosley"
   },
   "070": {
-    "id": "070",
-    "set": "core",
     "name": "Red-Hot Armor",
     "house": "Dis",
     "type": "Action",
@@ -4433,8 +3751,6 @@
     "artist": "Caravan Studio"
   },
   "071": {
-    "id": "071",
-    "set": "core",
     "name": "Three Fates",
     "house": "Dis",
     "type": "Action",
@@ -4446,8 +3762,6 @@
     "artist": "Andreas Zafiratos"
   },
   "072": {
-    "id": "072",
-    "set": "core",
     "name": "Annihilation Ritual",
     "house": "Dis",
     "type": "Artifact",
@@ -4459,8 +3773,6 @@
     "artist": "Andreas Zafiratos"
   },
   "073": {
-    "id": "073",
-    "set": "core",
     "name": "Dominator Bauble",
     "house": "Dis",
     "type": "Artifact",
@@ -4472,8 +3784,6 @@
     "artist": "Caravan Studio"
   },
   "074": {
-    "id": "074",
-    "set": "core",
     "name": "Key to Dis",
     "house": "Dis",
     "type": "Artifact",
@@ -4485,8 +3795,6 @@
     "artist": "Grigory Serov"
   },
   "075": {
-    "id": "075",
-    "set": "core",
     "name": "Lash of Broken Dreams",
     "house": "Dis",
     "type": "Artifact",
@@ -4498,8 +3806,6 @@
     "artist": "David Auden Nash"
   },
   "076": {
-    "id": "076",
-    "set": "core",
     "name": "Library of the Damned",
     "house": "Dis",
     "type": "Artifact",
@@ -4511,8 +3817,6 @@
     "artist": "Jacob Altemza"
   },
   "077": {
-    "id": "077",
-    "set": "core",
     "name": "Lifeward",
     "house": "Dis",
     "type": "Artifact",
@@ -4524,8 +3828,6 @@
     "artist": "Caravan Studio"
   },
   "078": {
-    "id": "078",
-    "set": "core",
     "name": "Sacrificial Altar",
     "house": "Dis",
     "type": "Artifact",
@@ -4537,8 +3839,6 @@
     "artist": "Gong Studios"
   },
   "079": {
-    "id": "079",
-    "set": "core",
     "name": "Screaming Cave",
     "house": "Dis",
     "type": "Artifact",
@@ -4550,8 +3850,6 @@
     "artist": "Gong Studios"
   },
   "080": {
-    "id": "080",
-    "set": "core",
     "name": "Soul Snatcher",
     "house": "Dis",
     "type": "Artifact",
@@ -4563,8 +3861,6 @@
     "artist": "Mark Bulahao"
   },
   "081": {
-    "id": "081",
-    "set": "core",
     "name": "Charette",
     "house": "Dis",
     "type": "Creature",
@@ -4576,8 +3872,6 @@
     "artist": "Josh Corpuz"
   },
   "082": {
-    "id": "082",
-    "set": "core",
     "name": "Drumble",
     "house": "Dis",
     "type": "Creature",
@@ -4589,8 +3883,6 @@
     "artist": "Mariusz Gandzel"
   },
   "083": {
-    "id": "083",
-    "set": "core",
     "name": "Dust Imp",
     "house": "Dis",
     "type": "Creature",
@@ -4602,8 +3894,6 @@
     "artist": "Grigory Serov"
   },
   "084": {
-    "id": "084",
-    "set": "core",
     "name": "Eater of the Dead",
     "house": "Dis",
     "type": "Creature",
@@ -4615,8 +3905,6 @@
     "artist": "Jacob Altemza"
   },
   "085": {
-    "id": "085",
-    "set": "core",
     "name": "Ember Imp",
     "house": "Dis",
     "type": "Creature",
@@ -4628,8 +3916,6 @@
     "artist": "Gong Studios"
   },
   "086": {
-    "id": "086",
-    "set": "core",
     "name": "Gabos Longarms",
     "house": "Dis",
     "type": "Creature",
@@ -4641,8 +3927,6 @@
     "artist": "Michele Giorgi"
   },
   "087": {
-    "id": "087",
-    "set": "core",
     "name": "Overlord Greking",
     "house": "Dis",
     "type": "Creature",
@@ -4654,8 +3938,6 @@
     "artist": "Ilya Bondarenko"
   },
   "088": {
-    "id": "088",
-    "set": "core",
     "name": "Guardian Demon",
     "house": "Dis",
     "type": "Creature",
@@ -4667,8 +3949,6 @@
     "artist": "Forrest Imel"
   },
   "089": {
-    "id": "089",
-    "set": "core",
     "name": "Master of 1",
     "house": "Dis",
     "type": "Creature",
@@ -4680,8 +3960,6 @@
     "artist": "Mihai Radu"
   },
   "090": {
-    "id": "090",
-    "set": "core",
     "name": "Master of 2",
     "house": "Dis",
     "type": "Creature",
@@ -4693,8 +3971,6 @@
     "artist": "Mihai Radu"
   },
   "091": {
-    "id": "091",
-    "set": "core",
     "name": "Master of 3",
     "house": "Dis",
     "type": "Creature",
@@ -4706,8 +3982,6 @@
     "artist": "Mihai Radu"
   },
   "092": {
-    "id": "092",
-    "set": "core",
     "name": "Pit Demon",
     "house": "Dis",
     "type": "Creature",
@@ -4719,8 +3993,6 @@
     "artist": "Nicola Saviori"
   },
   "093": {
-    "id": "093",
-    "set": "core",
     "name": "Pitlord",
     "house": "Dis",
     "type": "Creature",
@@ -4732,8 +4004,6 @@
     "artist": "Asep Ariyanto"
   },
   "094": {
-    "id": "094",
-    "set": "core",
     "name": "Restringuntus",
     "house": "Dis",
     "type": "Creature",
@@ -4745,8 +4015,6 @@
     "artist": "Timur Shevtsov"
   },
   "095": {
-    "id": "095",
-    "set": "core",
     "name": "Shaffles",
     "house": "Dis",
     "type": "Creature",
@@ -4758,8 +4026,6 @@
     "artist": "Timur Shevtsov"
   },
   "096": {
-    "id": "096",
-    "set": "core",
     "name": "Shooler",
     "house": "Dis",
     "type": "Creature",
@@ -4771,8 +4037,6 @@
     "artist": "Grigory Serov"
   },
   "097": {
-    "id": "097",
-    "set": "core",
     "name": "Snudge",
     "house": "Dis",
     "type": "Creature",
@@ -4784,8 +4048,6 @@
     "artist": "Eric Kenji Aoyagi"
   },
   "098": {
-    "id": "098",
-    "set": "core",
     "name": "Stealer of Souls",
     "house": "Dis",
     "type": "Creature",
@@ -4797,8 +4059,6 @@
     "artist": "Jorge Ramos"
   },
   "099": {
-    "id": "099",
-    "set": "core",
     "name": "Succubus",
     "house": "Dis",
     "type": "Creature",

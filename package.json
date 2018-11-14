@@ -13,7 +13,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "deploy": "npm run build && firebase deploy",
-    "scrape": "node -r dotenv/config bin/scrape-aembertree.js"
+    "scrape": "node bin/scrape-aembertree.js"
   },
   "dependencies": {
     "firebase": "^5.5.8",

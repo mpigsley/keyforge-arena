@@ -1,7 +1,7 @@
 const fs = require('fs');
 const dotenv = require('dotenv');
 const prettier = require('prettier');
-const { map, chunk, zipObject, sortBy } = require('lodash');
+const { map, chunk, sortBy } = require('lodash');
 const request = require('request-promise');
 const puppeteer = require('puppeteer');
 const Firebase = require('firebase/app');
@@ -50,7 +50,7 @@ const scrape = async () => {
 
   const linkChunks = chunk(links, CHUNK_SIZE);
 
-  const coreCards = await linkChunks.reduce(
+  const allCards = await linkChunks.reduce(
     (cardsPromise, chunkLinks) =>
       cardsPromise.then(cards =>
         Promise.all(
@@ -74,15 +74,13 @@ const scrape = async () => {
 
             const aember = content[4].replace('Aember: ', '');
             const id = url[url.length - 1];
+            const set = url[url.length - 2];
 
-            await Promise.all([
-              cardPage.close(),
-              fetchAndUploadImage('core', id),
-            ]);
+            await Promise.all([cardPage.close(), fetchAndUploadImage(set, id)]);
 
             return {
               id,
-              set: url[url.length - 2],
+              set,
               name: content[0],
               house: content[1],
               type: content[2],
@@ -99,16 +97,28 @@ const scrape = async () => {
     Promise.resolve([]),
   );
 
-  const sorted = sortBy(coreCards, ({ id }) => parseInt(id, 10));
+  const cardsInSets = sortBy(allCards, ({ id }) => parseInt(id, 10)).reduce(
+    (sets, { id, set, ...card }) => ({
+      ...sets,
+      [set]: {
+        ...(sets[set] || {}),
+        [id]: card,
+      },
+    }),
+    {},
+  );
 
   await Promise.all(
     map(
-      { core: zipObject(sorted.map(({ id }) => id), sorted) },
+      cardsInSets,
       (cards, set) =>
         new Promise((resolve, reject) => {
+          const formattedJson = prettier.format(JSON.stringify(cards), {
+            parser: 'json',
+          });
           fs.writeFile(
-            `./src/constants/${set}.json`,
-            prettier.format(JSON.stringify(cards), { parser: 'json' }),
+            `./src/constants/sets/${set}.json`,
+            formattedJson,
             'utf8',
             err => {
               if (err) {
