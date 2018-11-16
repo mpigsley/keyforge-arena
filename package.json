@@ -43,8 +43,7 @@
     "eslint-plugin-react": "^7.11.1",
     "eslint-plugin-react-hooks": "0.0.0",
     "firebase-tools": "^6.1.0",
-    "prettier": "^1.15.2",
-    "puppeteer": "^1.10.0"
+    "prettier": "^1.15.2"
   },
   "jest": {
     "collectCoverageFrom": [
