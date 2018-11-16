@@ -1,0 +1,63 @@
+@import '~styles/theme';
+
+.button {
+  background-color: transparent;
+  border: 1px solid $light;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: $light;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 11px;
+  height: 38px;
+  letter-spacing: 0.1rem;
+  outline: none;
+  line-height: 38px;
+  margin: 0.4rem 1rem;
+  padding: 0 30px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: all 0.2s;
+  font-weight: 400;
+
+  &:disabled,
+  &:disabled:hover {
+    border-color: $dark;
+    color: $dark;
+  }
+
+  &:hover {
+    color: $light;
+    border-color: $light;
+    outline: 0;
+  }
+
+  &--minimal {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid transparent;
+    border-radius: 0;
+    color: $light;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 400;
+    height: 1.5rem;
+    letter-spacing: 0.1rem;
+    line-height: 1.5rem;
+    margin: 0.2rem;
+    outline: none;
+    padding: 0 0.2rem;
+    text-decoration: none;
+    transition: all 0.2s;
+    white-space: nowrap;
+
+    &:hover {
+      border-bottom: 1px solid $dark;
+      color: $light;
+    }
+  }
+}

@@ -8,6 +8,8 @@ import Firebase from 'firebase/app';
 import store, { history } from 'store';
 import * as serviceWorker from 'serviceWorker';
 
+import Home from 'components/home';
+import MyDecks from 'components/my-decks';
 import GameBoard from 'components/game-board';
 
 import 'styles/global.scss';
@@ -25,7 +27,9 @@ ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <Switch>
-        <Route exact path="/" component={GameBoard} />
+        <Route exact path="/" component={Home} />
+        <Route exact path="/my-decks" component={MyDecks} />
+        <Route exact path="/game" component={GameBoard} />
       </Switch>
     </ConnectedRouter>
   </Provider>,
