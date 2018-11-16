@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 
 import FlexContainer from 'primitives/flex-container';
 import Button from 'primitives/button';
@@ -7,7 +6,7 @@ import Input from 'primitives/input';
 
 import styles from './styles.module.scss';
 
-export default function MyDecks({ submitNewDeck }) {
+export default function Decks() {
   const [link, setLink] = useState('');
 
   return (
@@ -18,14 +17,8 @@ export default function MyDecks({ submitNewDeck }) {
           value={link}
           onChange={e => setLink(e.target.value)}
         />
-        <Button className={styles.submit} onClick={() => submitNewDeck(link)}>
-          Submit
-        </Button>
+        <Button className={styles.submit}>Submit</Button>
       </FlexContainer>
     </FlexContainer>
   );
 }
-
-MyDecks.propTypes = {
-  submitNewDeck: PropTypes.func.isRequired,
-};

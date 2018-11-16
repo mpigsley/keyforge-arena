@@ -10,7 +10,7 @@ import store, { history } from 'store';
 import * as serviceWorker from 'serviceWorker';
 
 import Home from 'components/home';
-import MyDecks from 'components/my-decks';
+import Decks from 'components/decks';
 import GameBoard from 'components/game-board';
 
 import 'styles/global.scss';
@@ -29,7 +29,7 @@ ReactDOM.render(
     <ConnectedRouter history={history}>
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/my-decks" component={MyDecks} />
+        <Route exact path="/decks" component={Decks} />
         <Route exact path="/game" component={GameBoard} />
       </Switch>
     </ConnectedRouter>
