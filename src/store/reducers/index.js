@@ -1,3 +1,3 @@
-import user from './user.reducer';
+import deck from './deck.reducer';
 
-export default { user };
+export default { deck };

@@ -1,0 +1,140 @@
+[debug] [2018-11-16T03:12:54.033Z] ----------------------------------------------------------------------
+[debug] [2018-11-16T03:12:54.035Z] Command:       /Users/mitchelpigsley/.nvm/versions/node/v8.11.3/bin/node /Users/mitchelpigsley/Developer/keyforge-arena/node_modules/.bin/firebase deploy --only functions
+[debug] [2018-11-16T03:12:54.036Z] CLI Version:   6.1.0
+[debug] [2018-11-16T03:12:54.036Z] Platform:      darwin
+[debug] [2018-11-16T03:12:54.036Z] Node Version:  v8.11.3
+[debug] [2018-11-16T03:12:54.036Z] Time:          Thu Nov 15 2018 21:12:54 GMT-0600 (CST)
+[debug] [2018-11-16T03:12:54.036Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-11-16T03:12:54.045Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-11-16T03:12:54.046Z] > authorizing via signed-in user
+[debug] [2018-11-16T03:12:54.046Z] [iam] checking project keyforge-arena for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2018-11-16T03:12:54.047Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/keyforge-arena:testIamPermissions  
+
+[debug] [2018-11-16T03:12:54.352Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'keyforge-arena'...
+[info] 
+[info] i  deploying functions
+[info] Running command: npm --prefix "$RESOURCE_DIR" run lint
+[info] ✔  functions: Finished running predeploy script.
+[debug] [2018-11-16T03:12:57.554Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase serve --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "dependencies": {
+    "firebase-admin": "~6.0.0",
+    "firebase-functions": "^2.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.12.0",
+    "eslint-plugin-promise": "^3.6.0"
+  },
+  "engines": {
+    "node": "8"
+  }
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[debug] [2018-11-16T03:12:57.555Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/cloudfunctions.googleapis.com/projectSettings/keyforge-arena?view=CONSUMER_VIEW  
+ 
+[debug] [2018-11-16T03:12:57.556Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/runtimeconfig.googleapis.com/projectSettings/keyforge-arena?view=CONSUMER_VIEW  
+ 
+[debug] [2018-11-16T03:12:58.234Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-16T03:12:58.273Z] <<< HTTP RESPONSE 200
+[info] ✔  functions: all necessary APIs are enabled
+[debug] [2018-11-16T03:12:58.275Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/keyforge-arena  
+ 
+[debug] [2018-11-16T03:12:58.561Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-16T03:12:58.562Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/935543471256:getServerAppConfig  
+ 
+[debug] [2018-11-16T03:12:58.853Z] <<< HTTP RESPONSE 200
+[info] i  functions: preparing functions directory for uploading...
+[debug] [2018-11-16T03:12:58.861Z] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/keyforge-arena/configs  
+ 
+[debug] [2018-11-16T03:12:59.329Z] <<< HTTP RESPONSE 200
+[info] i  functions: packaged functions (53.15 KB) for uploading
+[debug] [2018-11-16T03:12:59.485Z] >>> HTTP REQUEST POST https://cloudfunctions.googleapis.com/v1/projects/keyforge-arena/locations/us-central1/functions:generateUploadUrl  
+ 
+[debug] [2018-11-16T03:12:59.913Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-16T03:12:59.914Z] >>> HTTP REQUEST PUT https://storage.googleapis.com/gcf-upload-us-central1-792b80f3-046b-476a-9438-0839c529ea0f/66904566-a833-4fb9-b6fa-42e0fd0ed2a2.zip?GoogleAccessId=service-935543471256@gcf-admin-robot.iam.gserviceaccount.com&Expires=1542339779&Signature=VIh8XKGHOJ2UMZ6PXbpQ18mg8ZiCdPLN5FIdlrY2QFxMrVf14cyAPsiXkTGKEK9QBur5kfrrNNe%2BHWOefX3rS99T38LZ%2BZUr0gK0Tznli5zfUQQD32o7pZc%2B5RvKvUH3tFTPm9YCn%2F7kYbV54nMpSdEr5aR4UcguZ%2BgOVFVBFSo2boKtzPkJVdCBdBxe6RQxPI4l176IhOUMzsKbUu%2Ba42HC07X90bsikcKCSBptsS5Xf%2BKwu%2Fti2cQHku3DF3PP1YRbn5PWJE2COTkVwCpyuLBpUYpgXDeMqrpP%2BwSSVX%2FGugDmVhqwtdhqOhbzwc7l9ieAlW8DZCgKrCEKD612wQ%3D%3D  
+
+[debug] [2018-11-16T03:13:00.461Z] <<< HTTP RESPONSE 200
+[info] ✔  functions: functions folder uploaded successfully
+[debug] [2018-11-16T03:13:00.463Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/projects/keyforge-arena/locations/-/functions  
+ 
+[debug] [2018-11-16T03:13:01.051Z] <<< HTTP RESPONSE 200
+[info] i  functions: updating Node.js 8 function submitDeck(us-central1)...
+[debug] [2018-11-16T03:13:01.055Z] Trigger is:  {"httpsTrigger":{}}
+[debug] [2018-11-16T03:13:01.056Z] >>> HTTP REQUEST PATCH https://cloudfunctions.googleapis.com/v1/projects/keyforge-arena/locations/us-central1/functions/submitDeck {"updateMask":"sourceUploadUrl,name,labels,runtime,httpsTrigger"} 
+
+[debug] [2018-11-16T03:13:01.457Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-16T03:13:01.460Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/projects/keyforge-arena/locations/-/functions  
+ 
+[debug] [2018-11-16T03:13:01.879Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-16T03:13:01.880Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/a2V5Zm9yZ2UtYXJlbmEvdXMtY2VudHJhbDEvc3VibWl0RGVjay9VbS1uNE5vNGgwaw  
+ 
+[debug] [2018-11-16T03:13:02.133Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-16T03:13:04.136Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/a2V5Zm9yZ2UtYXJlbmEvdXMtY2VudHJhbDEvc3VibWl0RGVjay9VbS1uNE5vNGgwaw  
+ 
+[debug] [2018-11-16T03:13:04.394Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-16T03:13:06.400Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/a2V5Zm9yZ2UtYXJlbmEvdXMtY2VudHJhbDEvc3VibWl0RGVjay9VbS1uNE5vNGgwaw  
+ 
+[debug] [2018-11-16T03:13:06.690Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-16T03:13:08.691Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/a2V5Zm9yZ2UtYXJlbmEvdXMtY2VudHJhbDEvc3VibWl0RGVjay9VbS1uNE5vNGgwaw  
+ 
+[debug] [2018-11-16T03:13:09.017Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-16T03:13:11.020Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/a2V5Zm9yZ2UtYXJlbmEvdXMtY2VudHJhbDEvc3VibWl0RGVjay9VbS1uNE5vNGgwaw  
+ 
+[debug] [2018-11-16T03:13:11.720Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-16T03:13:13.721Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/a2V5Zm9yZ2UtYXJlbmEvdXMtY2VudHJhbDEvc3VibWl0RGVjay9VbS1uNE5vNGgwaw  
+ 
+[debug] [2018-11-16T03:13:14.009Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-16T03:13:16.014Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/a2V5Zm9yZ2UtYXJlbmEvdXMtY2VudHJhbDEvc3VibWl0RGVjay9VbS1uNE5vNGgwaw  
+ 
+[debug] [2018-11-16T03:13:16.310Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-16T03:13:18.315Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/a2V5Zm9yZ2UtYXJlbmEvdXMtY2VudHJhbDEvc3VibWl0RGVjay9VbS1uNE5vNGgwaw  
+ 
+[debug] [2018-11-16T03:13:18.601Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-16T03:13:20.607Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/a2V5Zm9yZ2UtYXJlbmEvdXMtY2VudHJhbDEvc3VibWl0RGVjay9VbS1uNE5vNGgwaw  
+ 
+[debug] [2018-11-16T03:13:20.925Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-16T03:13:22.928Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/a2V5Zm9yZ2UtYXJlbmEvdXMtY2VudHJhbDEvc3VibWl0RGVjay9VbS1uNE5vNGgwaw  
+ 
+[debug] [2018-11-16T03:13:23.257Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-16T03:13:25.260Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/a2V5Zm9yZ2UtYXJlbmEvdXMtY2VudHJhbDEvc3VibWl0RGVjay9VbS1uNE5vNGgwaw  
+ 
+[debug] [2018-11-16T03:13:25.471Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-16T03:13:27.471Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/a2V5Zm9yZ2UtYXJlbmEvdXMtY2VudHJhbDEvc3VibWl0RGVjay9VbS1uNE5vNGgwaw  
+ 
+[debug] [2018-11-16T03:13:27.777Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-16T03:13:29.778Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/a2V5Zm9yZ2UtYXJlbmEvdXMtY2VudHJhbDEvc3VibWl0RGVjay9VbS1uNE5vNGgwaw  
+ 
+[debug] [2018-11-16T03:13:30.057Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-16T03:13:32.062Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/a2V5Zm9yZ2UtYXJlbmEvdXMtY2VudHJhbDEvc3VibWl0RGVjay9VbS1uNE5vNGgwaw  
+ 
+[debug] [2018-11-16T03:13:32.347Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-16T03:13:34.352Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/a2V5Zm9yZ2UtYXJlbmEvdXMtY2VudHJhbDEvc3VibWl0RGVjay9VbS1uNE5vNGgwaw  
+ 
+[debug] [2018-11-16T03:13:34.619Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-16T03:13:36.625Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/a2V5Zm9yZ2UtYXJlbmEvdXMtY2VudHJhbDEvc3VibWl0RGVjay9VbS1uNE5vNGgwaw  
+ 
+[debug] [2018-11-16T03:13:36.897Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-16T03:13:38.900Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/a2V5Zm9yZ2UtYXJlbmEvdXMtY2VudHJhbDEvc3VibWl0RGVjay9VbS1uNE5vNGgwaw  
+ 
+[debug] [2018-11-16T03:13:39.201Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-16T03:13:41.206Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/a2V5Zm9yZ2UtYXJlbmEvdXMtY2VudHJhbDEvc3VibWl0RGVjay9VbS1uNE5vNGgwaw  
+ 
+[debug] [2018-11-16T03:13:41.487Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-16T03:13:43.492Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/a2V5Zm9yZ2UtYXJlbmEvdXMtY2VudHJhbDEvc3VibWl0RGVjay9VbS1uNE5vNGgwaw  
+ 
+[debug] [2018-11-16T03:13:43.761Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-16T03:13:45.761Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/a2V5Zm9yZ2UtYXJlbmEvdXMtY2VudHJhbDEvc3VibWl0RGVjay9VbS1uNE5vNGgwaw  
+ 
+[debug] [2018-11-16T03:13:46.013Z] <<< HTTP RESPONSE 200

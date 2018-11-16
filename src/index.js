@@ -4,6 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
 import { Provider } from 'react-redux';
 import Firebase from 'firebase/app';
+import 'firebase/functions';
 
 import store, { history } from 'store';
 import * as serviceWorker from 'serviceWorker';

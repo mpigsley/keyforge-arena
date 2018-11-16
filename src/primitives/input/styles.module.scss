@@ -1,0 +1,54 @@
+@import '~styles/theme';
+
+.textarea {
+  display: inline-block;
+  border: solid 1px transparent;
+  padding: 10px;
+  color: $dark;
+  background-color: white;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1rem;
+  letter-spacing: 0.1rem;
+  text-decoration: none;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-weight: 400;
+  resize: vertical;
+  transition: border-color 0.2s;
+  outline: none;
+  width: 100%;
+
+  &--error {
+    border-color: red;
+  }
+}
+
+.input {
+  display: inline-block;
+  border: solid 1px transparent;
+  height: 38px;
+  padding: 0 10px;
+  color: $dark;
+  background-color: white;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 38px;
+  letter-spacing: 0.1rem;
+  text-decoration: none;
+  white-space: nowrap;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-weight: 400;
+  transition: all 0.2s;
+  outline: none;
+  width: 100%;
+
+  &[type='checkbox'] {
+    width: 20px;
+  }
+
+  &--error {
+    border-color: red;
+  }
+}

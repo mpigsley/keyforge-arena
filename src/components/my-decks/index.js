@@ -1,5 +1,10 @@
-import React from 'react';
+import { connect } from 'react-redux';
 
-export default function MyDecks() {
-  return <div />;
-}
+import { submitNewDeck } from 'store/actions/deck.actions';
+
+import MyDecks from './my-decks';
+
+export default connect(
+  undefined,
+  { submitNewDeck },
+)(MyDecks);
