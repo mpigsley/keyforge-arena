@@ -16,5 +16,4 @@
 .firebase
 .vscode
 
-npm-debug.log*
-firebase-debug.log*
+*-debug.log
