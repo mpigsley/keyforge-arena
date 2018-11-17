@@ -17,7 +17,8 @@ module.exports = functions.https.onCall(async ({ link }, context) => {
     const existingDeck = await admin
       .firestore()
       .collection('decks')
-      .doc(id)
+      .where('deckId', '==', id)
+      .where('creator', '==', context.auth.uid)
       .get();
 
     if (existingDeck.exists) {
@@ -47,6 +48,7 @@ module.exports = functions.https.onCall(async ({ link }, context) => {
 
     const deck = {
       creator: context.auth.uid,
+      deckId: id,
       houses,
       name,
     };
@@ -54,13 +56,12 @@ module.exports = functions.https.onCall(async ({ link }, context) => {
     await admin
       .firestore()
       .collection('decks')
-      .doc(id)
-      .set({
+      .add({
         ...deck,
         created: admin.firestore.FieldValue.serverTimestamp(),
       });
 
-    return { id: deck };
+    return { [id]: deck };
   } catch (e) {
     if (e.code === 'already-exists') {
       throw e;
