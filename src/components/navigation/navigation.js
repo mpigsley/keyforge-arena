@@ -44,15 +44,6 @@ export default function Navigation({
                   My Decks
                 </NavLink>,
               )}
-              {renderProtectedLink(
-                <NavLink
-                  to="/game"
-                  className={styles.navLink}
-                  activeClassName={styles['navLink--active']}
-                >
-                  Play
-                </NavLink>,
-              )}
               <button
                 type="button"
                 className={styles.navLink}

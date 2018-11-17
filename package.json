@@ -12,7 +12,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "npm run build && firebase deploy",
+    "deploy": "npm run build && firebase deploy --except functions",
+    "deploy:functions": "firebase deploy --only functions",
     "scrape": "node bin/scrape-aembertree.js"
   },
   "dependencies": {

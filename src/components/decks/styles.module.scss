@@ -1,12 +1,38 @@
-.form {
+@import '~styles/theme';
+
+.decks {
+  display: grid;
+  height: 100%;
+  grid-template-rows: [header] 65px [list] auto [end];
+  grid-template-columns: [list] 20rem [details] auto [end];
+}
+
+.searchBar {
+  background-color: $veryLight;
+  border-bottom: 1px solid $border;
+  grid-row: header / list;
+  grid-column: list / details;
+  padding: 0 1rem;
+}
+
+.searchContainer {
   height: 100%;
 }
 
-.row {
-  max-width: 500px;
-  width: 90%;
+.addBtn {
+  margin-left: 1rem;
 }
 
-.submit {
-  width: fit-content;
+.list {
+  overflow-y: auto;
+  grid-row: list / end;
+  grid-column: list / details;
+}
+
+.details {
+  border-left: 1px solid $border;
+  box-shadow: $box-shadow;
+  overflow-y: auto;
+  grid-row: header / end;
+  grid-column: details / end;
 }

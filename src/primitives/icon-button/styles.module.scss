@@ -1,0 +1,11 @@
+@import '~styles/theme';
+
+.iconButton {
+  color: $dark;
+  margin: 0;
+  padding: 0 0.5rem;
+
+  svg {
+    padding-top: 0.3rem;
+  }
+}
