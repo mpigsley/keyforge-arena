@@ -1,0 +1,13 @@
+@import '~styles/theme';
+
+.label {
+  color: $dark;
+  display: block;
+  font-weight: 600;
+  margin-top: 1.2rem;
+  margin-bottom: 0.3rem;
+
+  &--noPadding {
+    margin-top: 0rem;
+  }
+}

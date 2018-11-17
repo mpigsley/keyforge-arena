@@ -5,7 +5,7 @@
   border: 1px solid $light;
   border-radius: 4px;
   box-sizing: border-box;
-  color: $light;
+  color: $dark;
   cursor: pointer;
   display: inline-block;
   font-size: 11px;
@@ -30,8 +30,8 @@
   }
 
   &:hover {
-    color: $light;
     border-color: $light;
+    box-shadow: 2px 2px 10px 0px $light;
     outline: 0;
   }
 
@@ -40,7 +40,7 @@
     border: none;
     border-bottom: 1px solid transparent;
     border-radius: 0;
-    color: $light;
+    color: $dark;
     cursor: pointer;
     display: inline-block;
     font-size: 0.75rem;
@@ -56,7 +56,6 @@
 
     &:hover {
       border-bottom: 1px solid $dark;
-      color: $light;
     }
   }
 }

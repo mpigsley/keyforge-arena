@@ -5,10 +5,12 @@ import { ConnectedRouter } from 'connected-react-router';
 import { Provider } from 'react-redux';
 import Firebase from 'firebase/app';
 import 'firebase/functions';
+import 'firebase/auth';
 
 import store, { history } from 'store';
 import * as serviceWorker from 'serviceWorker';
 
+import Navigtion from 'components/navigation';
 import Home from 'components/home';
 import Decks from 'components/decks';
 import GameBoard from 'components/game-board';
@@ -28,8 +30,10 @@ ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/decks" component={Decks} />
+        <Navigtion>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/decks" component={Decks} />
+        </Navigtion>
         <Route exact path="/game" component={GameBoard} />
       </Switch>
     </ConnectedRouter>

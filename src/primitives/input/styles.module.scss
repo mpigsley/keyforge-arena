@@ -3,6 +3,7 @@
 .textarea {
   display: inline-block;
   border: solid 1px transparent;
+  box-shadow: 0px 0px 10px 0px $light;
   padding: 10px;
   color: $dark;
   background-color: white;
@@ -27,6 +28,7 @@
 .input {
   display: inline-block;
   border: solid 1px transparent;
+  box-shadow: 0px 0px 5px 0px $light;
   height: 38px;
   padding: 0 10px;
   color: $dark;

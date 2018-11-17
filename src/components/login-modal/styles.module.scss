@@ -1,0 +1,117 @@
+@import '~styles/theme';
+
+.modal {
+  background: white;
+  border-radius: 0.2rem;
+  color: $light;
+  outline: none;
+  overflow: auto;
+  padding: 1.5rem 0 0;
+  width: 400px;
+  -webkit-overflow-scrolling: touch;
+  position: relative;
+}
+
+.close {
+  cursor: pointer;
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+  transition: all 0.2s;
+
+  &:hover {
+    color: $light;
+  }
+}
+
+.overlay {
+  align-items: center;
+  background-color: rgba(200, 200, 200, 0.6);
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1000;
+}
+
+.google {
+  background-color: #d34836;
+  border: none;
+  color: white;
+  margin-bottom: 1rem;
+
+  &:hover {
+    color: $light;
+  }
+}
+
+.lineContainer {
+  margin-bottom: 1rem;
+}
+
+.line {
+  border-top: 1px solid $dark;
+  margin-top: 0.1rem;
+  width: 25px;
+}
+
+.or {
+  color: $dark;
+  text-align: center;
+  padding: 0.8rem;
+}
+
+.switcher {
+  margin-bottom: -1px;
+}
+
+.switchButton {
+  background-color: white;
+  border: 1px solid $light;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  box-sizing: border-box;
+  color: $dark;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 11px;
+  height: 38px;
+  letter-spacing: 0.1rem;
+  outline: none;
+  line-height: 38px;
+  margin: 0 0.5rem;
+  padding: 0 30px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+  font-weight: 400;
+
+  &--active {
+    border-bottom: none;
+  }
+
+  &:hover {
+    border-color: $light;
+    outline: 0;
+  }
+}
+
+.formContainer {
+  border-top: 1px solid $light;
+  box-shadow: 0 0px 25px 0px $light;
+  padding: 1.5rem;
+}
+
+.submit {
+  margin-top: 1.5rem;
+}
+
+.error {
+  color: red;
+  margin-top: 1rem;
+  text-align: center;
+}
