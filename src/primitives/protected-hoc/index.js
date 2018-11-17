@@ -4,15 +4,22 @@ import { connect } from 'react-redux';
 import { push } from 'connected-react-router';
 import { createStructuredSelector } from 'reselect';
 
-import { getIsLoggedIn } from 'store/selectors/base.selectors';
+import {
+  getIsLoggedIn,
+  getIsInitialized,
+} from 'store/selectors/base.selectors';
 import { usePrevious } from 'utils/custom-effects';
 
 export default Wrapped => {
-  function ProtectedHOC({ isLoggedIn, toHome, ...props }) {
+  function ProtectedHOC({ isLoggedIn, isInitialized, toHome, ...props }) {
     const prevIsLoggedIn = usePrevious(isLoggedIn);
+    const prevIsInitialized = usePrevious(isInitialized);
 
     useEffect(() => {
-      if ((prevIsLoggedIn || prevIsLoggedIn === undefined) && !isLoggedIn) {
+      const didSignOut = prevIsLoggedIn && !isLoggedIn;
+      const initializedWithoutAuth =
+        !prevIsInitialized && isInitialized && !isLoggedIn;
+      if (didSignOut || initializedWithoutAuth) {
         toHome();
       }
     });
@@ -22,11 +29,13 @@ export default Wrapped => {
 
   ProtectedHOC.propTypes = {
     isLoggedIn: PropTypes.bool.isRequired,
+    isInitialized: PropTypes.bool.isRequired,
     toHome: PropTypes.func.isRequired,
   };
 
   const mapStateToProps = createStructuredSelector({
     isLoggedIn: getIsLoggedIn,
+    isInitialized: getIsInitialized,
   });
 
   const mapDispatchToProps = dispatch => ({

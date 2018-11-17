@@ -31,10 +31,10 @@ ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <Switch>
-        <Route exact path="/game" component={Protected(GameBoard)} />
         <Navigtion>
           <Route exact path="/" component={Home} />
           <Route exact path="/decks" component={Protected(Decks)} />
+          <Route exact path="/game" component={Protected(GameBoard)} />
         </Navigtion>
       </Switch>
     </ConnectedRouter>

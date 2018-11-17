@@ -15,7 +15,7 @@ export default function Button({
   isLoading,
   ...rest
 }) {
-  const linkClass = classNames(styles.button, className, {
+  const linkClass = classNames(className, {
     [styles.button]: !minimal,
     [styles.minimal]: minimal,
   });

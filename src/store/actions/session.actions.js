@@ -10,6 +10,7 @@ import {
 } from 'store/api/session.api';
 
 const ACTION_PREFIX = '@@session';
+export const INITIALIZED = `${ACTION_PREFIX}/INITIALIZED`;
 export const LOGGED_IN = `${ACTION_PREFIX}/LOGGED_IN`;
 export const SIGNED_OUT = `${ACTION_PREFIX}/SIGNED_OUT`;
 export const AUTH_FAILURE = `${ACTION_PREFIX}/AUTH_FAILURE`;
@@ -26,6 +27,8 @@ export const initialize = () => dispatch =>
   getCurrentUser().then(user => {
     if (user) {
       dispatch({ type: LOGGED_IN, user });
+    } else {
+      dispatch({ type: INITIALIZED });
     }
   });
 
