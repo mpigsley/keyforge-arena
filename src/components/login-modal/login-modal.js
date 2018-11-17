@@ -19,7 +19,7 @@ const LOGIN_PAGE_TYPES = {
 
 const useTextInput = (defaultValue = '') => {
   const [input, setInput] = useState(defaultValue);
-  const onInput = e => setInput(e.target.value);
+  const onInput = e => setInput(e ? e.target.value : '');
   return [input, onInput];
 };
 
@@ -35,11 +35,13 @@ export default function LoginModal({
   error,
 }) {
   const [page, setPage] = useState(LOGIN_PAGE_TYPES.login);
+  const [isLoggginIn, setIsLoggingIn] = useState(false);
   const [email, setEmail] = useTextInput();
   const [password, setPassword] = useTextInput();
   const [confirm, setConfirm] = useTextInput();
 
   const onConfirm = async () => {
+    setIsLoggingIn(true);
     if (page === LOGIN_PAGE_TYPES.login) {
       await login({ email, password });
     } else if (page === LOGIN_PAGE_TYPES.signup) {
@@ -48,6 +50,17 @@ export default function LoginModal({
       await passwordReset({ email });
     }
     onClose();
+    setIsLoggingIn(false);
+    setPage(LOGIN_PAGE_TYPES.login);
+    setEmail();
+    setPassword();
+    setConfirm();
+  };
+
+  const submitOnEnter = e => {
+    if (e.key === 'Enter') {
+      onConfirm();
+    }
   };
 
   const renderPassword = () => {
@@ -64,6 +77,7 @@ export default function LoginModal({
           placeholder="Password"
           value={password}
           onChange={setPassword}
+          onKeyPress={submitOnEnter}
         />
       </div>
     );
@@ -75,7 +89,11 @@ export default function LoginModal({
     }
     return (
       <div className={styles.forgot}>
-        <Button minimal onClick={() => setPage(LOGIN_PAGE_TYPES.forget)}>
+        <Button
+          minimal
+          onKeyPress={submitOnEnter}
+          onClick={() => setPage(LOGIN_PAGE_TYPES.forget)}
+        >
           Forgot Password?
         </Button>
       </div>
@@ -96,6 +114,7 @@ export default function LoginModal({
           placeholder="Confirm"
           value={confirm}
           onChange={setConfirm}
+          onKeyPress={submitOnEnter}
         />
       </div>
     );
@@ -177,13 +196,14 @@ export default function LoginModal({
           placeholder="Email"
           value={email}
           onChange={setEmail}
+          onKeyPress={submitOnEnter}
         />
         {renderPassword()}
         {renderForgotPassword()}
         {renderPasswordConfirm()}
         {renderError()}
         <FlexContainer className={styles.submit} justify="center">
-          <Button key="submit" onClick={onConfirm}>
+          <Button key="submit" onClick={onConfirm} isLoading={isLoggginIn}>
             {actionText}
           </Button>
         </FlexContainer>
