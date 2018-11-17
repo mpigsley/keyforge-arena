@@ -12,16 +12,16 @@ module.exports = functions.https.onCall(async ({ link }, context) => {
 
   try {
     const splitLink = link.split('/');
-    const id = splitLink[splitLink.length - 1];
+    const deckId = splitLink[splitLink.length - 1];
 
-    const existingDeck = await admin
+    const deckSnapshot = await admin
       .firestore()
       .collection('decks')
-      .where('deckId', '==', id)
+      .where('deckId', '==', deckId)
       .where('creator', '==', context.auth.uid)
       .get();
 
-    if (existingDeck.exists) {
+    if (!deckSnapshot.empty) {
       throw new functions.https.HttpsError(
         'already-exists',
         'Deck already exists in your library.',
@@ -29,7 +29,7 @@ module.exports = functions.https.onCall(async ({ link }, context) => {
     }
 
     const response = await request(
-      `https://www.keyforgegame.com/api/decks/${id}?links=cards`,
+      `https://www.keyforgegame.com/api/decks/${deckId}?links=cards`,
     );
     const { data, _linked } = JSON.parse(response);
     const { name } = data;
@@ -48,12 +48,12 @@ module.exports = functions.https.onCall(async ({ link }, context) => {
 
     const deck = {
       creator: context.auth.uid,
-      deckId: id,
+      deckId,
       houses,
       name,
     };
 
-    await admin
+    const ref = await admin
       .firestore()
       .collection('decks')
       .add({
@@ -61,7 +61,7 @@ module.exports = functions.https.onCall(async ({ link }, context) => {
         created: admin.firestore.FieldValue.serverTimestamp(),
       });
 
-    return { [id]: deck };
+    return { [ref.id]: deck };
   } catch (e) {
     if (e.code === 'already-exists') {
       throw e;
