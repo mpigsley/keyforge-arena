@@ -5,6 +5,7 @@ import { ConnectedRouter } from 'connected-react-router';
 import { Provider } from 'react-redux';
 import Firebase from 'firebase/app';
 import 'firebase/functions';
+import 'firebase/firestore';
 import 'firebase/auth';
 
 import store, { history } from 'store';
@@ -26,6 +27,9 @@ Firebase.initializeApp({
   storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
   messagingSenderId: process.env.REACT_APP_SENDER_ID,
 });
+
+// Temporary until deprecation notice goes away
+Firebase.firestore().settings({ timestampsInSnapshots: true });
 
 ReactDOM.render(
   <Provider store={store}>

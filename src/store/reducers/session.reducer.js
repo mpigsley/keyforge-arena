@@ -1,9 +1,9 @@
 import {
-  INITIALIZED,
   LOGGED_IN,
   SIGNED_OUT,
   AUTH_FAILURE,
 } from 'store/actions/session.actions';
+import { INITIALIZED } from 'store/actions/combined.actions';
 
 const initialState = {
   isInitialized: false,

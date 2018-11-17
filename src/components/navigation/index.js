@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { initialize, signout } from 'store/actions/session.actions';
+import { signout } from 'store/actions/session.actions';
+import { initialize } from 'store/actions/combined.actions';
 import { getIsLoggedIn } from 'store/selectors/base.selectors';
 
 import Navigation from './navigation';
