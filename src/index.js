@@ -10,6 +10,7 @@ import 'firebase/auth';
 import store, { history } from 'store';
 import * as serviceWorker from 'serviceWorker';
 
+import Protected from 'primitives/protected-hoc';
 import Navigtion from 'components/navigation';
 import Home from 'components/home';
 import Decks from 'components/decks';
@@ -30,11 +31,11 @@ ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <Switch>
+        <Route exact path="/game" component={Protected(GameBoard)} />
         <Navigtion>
           <Route exact path="/" component={Home} />
-          <Route exact path="/decks" component={Decks} />
+          <Route exact path="/decks" component={Protected(Decks)} />
         </Navigtion>
-        <Route exact path="/game" component={GameBoard} />
       </Switch>
     </ConnectedRouter>
   </Provider>,

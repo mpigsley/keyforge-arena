@@ -8,6 +8,7 @@ import FlexContainer from 'primitives/flex-container';
 import Label from 'primitives/label';
 import Input from 'primitives/input';
 import { X } from 'constants/icons';
+import { useTextInput } from 'utils/custom-effects';
 
 import styles from './styles.module.scss';
 
@@ -15,12 +16,6 @@ const LOGIN_PAGE_TYPES = {
   login: 'login',
   signup: 'signup',
   forget: 'forget',
-};
-
-const useTextInput = (defaultValue = '') => {
-  const [input, setInput] = useState(defaultValue);
-  const onInput = e => setInput(e ? e.target.value : '');
-  return [input, onInput];
 };
 
 ReactModal.setAppElement('#root');
@@ -42,19 +37,23 @@ export default function LoginModal({
 
   const onConfirm = async () => {
     setIsLoggingIn(true);
-    if (page === LOGIN_PAGE_TYPES.login) {
-      await login({ email, password });
-    } else if (page === LOGIN_PAGE_TYPES.signup) {
-      await signup({ email, password, confirm });
-    } else {
-      await passwordReset({ email });
+    try {
+      if (page === LOGIN_PAGE_TYPES.login) {
+        await login({ email, password });
+      } else if (page === LOGIN_PAGE_TYPES.signup) {
+        await signup({ email, password, confirm });
+      } else {
+        await passwordReset({ email });
+      }
+      onClose();
+      setIsLoggingIn(false);
+      setPage(LOGIN_PAGE_TYPES.login);
+      setEmail();
+      setPassword();
+      setConfirm();
+    } catch (e) {
+      setIsLoggingIn(false);
     }
-    onClose();
-    setIsLoggingIn(false);
-    setPage(LOGIN_PAGE_TYPES.login);
-    setEmail();
-    setPassword();
-    setConfirm();
   };
 
   const submitOnEnter = e => {
