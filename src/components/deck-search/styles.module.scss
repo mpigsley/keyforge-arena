@@ -1,0 +1,15 @@
+@import '~styles/theme';
+
+.container {
+  background-color: $veryLight;
+  border-bottom: 1px solid $border;
+  padding: 0 1rem;
+}
+
+.searchContainer {
+  height: 100%;
+}
+
+.addBtn {
+  margin-left: 1rem;
+}

@@ -8,19 +8,8 @@
 }
 
 .searchBar {
-  background-color: $veryLight;
-  border-bottom: 1px solid $border;
   grid-row: header / list;
   grid-column: list / details;
-  padding: 0 1rem;
-}
-
-.searchContainer {
-  height: 100%;
-}
-
-.addBtn {
-  margin-left: 1rem;
 }
 
 .list {
