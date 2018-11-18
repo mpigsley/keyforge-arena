@@ -1,0 +1,51 @@
+@import '~styles/theme';
+
+.modal {
+  background: white;
+  border-radius: 0.2rem;
+  color: $dark;
+  outline: none;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.overlay {
+  align-items: center;
+  background-color: rgba(200, 200, 200, 0.6);
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1000;
+}
+
+.title {
+  margin: 0;
+}
+
+.close {
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    color: $light;
+  }
+}
+
+.section {
+  box-shadow: $box-shadow;
+  padding: 1rem;
+  z-index: 10;
+}
+
+.content {
+  background-color: white;
+  padding: 1.5rem 1rem;
+}
+
+.footerBtn {
+  margin-right: 0;
+}
