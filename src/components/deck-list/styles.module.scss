@@ -1,0 +1,14 @@
+@import '~styles/theme';
+
+.item {
+  border-bottom: 1px solid $veryLight;
+  display: flex;
+  padding: 1rem;
+  text-decoration: none;
+}
+
+.name {
+  color: $dark;
+  font-size: 0.9rem;
+  font-weight: bold;
+}

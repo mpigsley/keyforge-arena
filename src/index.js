@@ -37,8 +37,8 @@ ReactDOM.render(
       <Switch>
         <Navigtion>
           <Route exact path="/" component={Home} />
-          <Route exact path="/decks" component={Protected(Decks)} />
-          <Route exact path="/game" component={Protected(GameBoard)} />
+          <Route path="/decks" component={Protected(Decks)} />
+          <Route path="/game" component={Protected(GameBoard)} />
         </Navigtion>
       </Switch>
     </ConnectedRouter>
