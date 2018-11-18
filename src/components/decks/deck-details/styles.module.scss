@@ -7,4 +7,12 @@
 
 .header {
   border-bottom: 1px solid $border;
+  padding: 0 1rem;
+}
+
+.name {
+  color: $dark;
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin: 0.3rem 0rem 0rem;
 }
