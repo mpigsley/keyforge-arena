@@ -20,3 +20,9 @@ export const submitDeck = link =>
   Firebase.functions()
     .httpsCallable('submitDeck')({ link })
     .then(response => response.data);
+
+export const deleteDeck = id =>
+  Firebase.firestore()
+    .collection('decks')
+    .doc(id)
+    .delete();

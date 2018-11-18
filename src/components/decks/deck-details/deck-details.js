@@ -9,9 +9,19 @@ import { Trash } from 'constants/icons';
 
 import styles from './styles.module.scss';
 
-export default function DeckDetails({ decks, selected, className }) {
+export default function DeckDetails({
+  decks,
+  selected,
+  className,
+  removeDeck,
+}) {
   const [isConfirmDelete, setConfirmDelete] = useState(false);
   const { name } = decks[selected] || {};
+
+  const onRemove = async () => {
+    setConfirmDelete(false);
+    await removeDeck(selected);
+  };
 
   return (
     <>
@@ -31,7 +41,7 @@ export default function DeckDetails({ decks, selected, className }) {
       <ConfirmModal
         isOpen={isConfirmDelete}
         onCancel={() => setConfirmDelete(false)}
-        onConfirm={() => {}}
+        onConfirm={() => onRemove()}
       />
     </>
   );
@@ -41,6 +51,7 @@ DeckDetails.propTypes = {
   decks: PropTypes.shape().isRequired,
   selected: PropTypes.string,
   className: PropTypes.string,
+  removeDeck: PropTypes.func.isRequired,
 };
 
 DeckDetails.defaultProps = {
