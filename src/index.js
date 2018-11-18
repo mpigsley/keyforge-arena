@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import Firebase from 'firebase/app';
 import 'firebase/functions';
 import 'firebase/firestore';
+import 'firebase/storage';
 import 'firebase/auth';
 
 import store, { history } from 'store';
@@ -37,7 +38,7 @@ ReactDOM.render(
       <Switch>
         <Navigtion>
           <Route exact path="/" component={Home} />
-          <Route path="/decks" component={Protected(Decks)} />
+          <Route path="/decks/:id?" component={Protected(Decks)} />
           <Route path="/game" component={Protected(GameBoard)} />
         </Navigtion>
       </Switch>

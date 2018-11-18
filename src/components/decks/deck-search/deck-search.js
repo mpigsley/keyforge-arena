@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import AddDeckModal from 'components/add-deck-modal';
+import AddDeckModal from 'components/decks/add-deck-modal';
 import FlexContainer from 'primitives/flex-container';
 import IconButton from 'primitives/icon-button';
 import Input from 'primitives/input';

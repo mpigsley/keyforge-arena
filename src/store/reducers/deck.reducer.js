@@ -3,7 +3,7 @@ import { INITIALIZED } from 'store/actions/combined.actions';
 
 const initialState = {
   searchTerm: '',
-  models: null,
+  models: {},
 };
 
 export default function deck(state = initialState, action) {

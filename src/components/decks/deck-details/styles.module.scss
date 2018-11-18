@@ -1,0 +1,10 @@
+@import '~styles/theme';
+
+.container {
+  display: grid;
+  grid-template-rows: 65px auto;
+}
+
+.header {
+  border-bottom: 1px solid $border;
+}
