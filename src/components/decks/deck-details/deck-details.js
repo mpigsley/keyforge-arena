@@ -11,7 +11,14 @@ import { Trash } from 'constants/icons';
 import { map, size, sortBy, capitalize } from 'constants/lodash';
 import coreCards from 'constants/expansions/cota';
 
+import { ReactComponent as Common } from 'images/common.svg';
+import { ReactComponent as Uncommon } from 'images/uncommon.svg';
+import { ReactComponent as Rare } from 'images/rare.svg';
+import { ReactComponent as Special } from 'images/special.svg';
+
 import styles from './styles.module.scss';
+
+const RARITY = { Common, Uncommon, Rare, Special };
 
 export default function DeckDetails({
   decks,
@@ -64,12 +71,20 @@ export default function DeckDetails({
                   <h3>{capitalize(house)}</h3>
                 </FlexContainer>
                 <FlexContainer direction="column" className={styles.cards}>
-                  {sortBy(cards, parseInt).map((card, i) => (
-                    <span className={styles.card} key={`${card}-${i}`}>
-                      <span className={styles.cardNum}>{card}</span>
-                      <span>{coreCards[card].name}</span>
-                    </span>
-                  ))}
+                  {sortBy(cards, parseInt).map((card, i) => {
+                    const Rarity = RARITY[coreCards[card].rarity];
+                    return (
+                      <FlexContainer
+                        key={`${card}-${i}`}
+                        align="center"
+                        className={styles.card}
+                      >
+                        <Rarity className={styles.rarity} />
+                        <span className={styles.cardNum}>{card}</span>
+                        <span>{coreCards[card].name}</span>
+                      </FlexContainer>
+                    );
+                  })}
                 </FlexContainer>
               </FlexContainer>
             ))}
