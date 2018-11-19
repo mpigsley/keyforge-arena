@@ -1,6 +1,7 @@
 /* eslint-disable react/no-array-index-key */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
+import ReactHintFactory from 'react-hint';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
@@ -8,7 +9,7 @@ import FlexContainer from 'primitives/flex-container';
 import ConfirmModal from 'primitives/confirm-modal';
 import IconButton from 'primitives/icon-button';
 import { Trash } from 'constants/icons';
-import { map, size, sortBy, capitalize } from 'constants/lodash';
+import { map, size, sortBy, capitalize, uniq } from 'constants/lodash';
 import coreCards from 'constants/expansions/cota';
 
 import { ReactComponent as Common } from 'images/common.svg';
@@ -20,20 +21,7 @@ import { ReactComponent as Maverick } from 'images/maverick.svg';
 import styles from './styles.module.scss';
 
 const RARITY = { Common, Uncommon, Rare, Special };
-
-const renderCard = (columnHouse, card, i) => {
-  const { name, rarity, house } = coreCards[card];
-  const Rarity = RARITY[rarity];
-  const isMaverick = house.toLowerCase() !== columnHouse;
-  return (
-    <FlexContainer key={`${card}-${i}`} align="center" className={styles.card}>
-      <Rarity className={styles.rarity} />
-      <span className={styles.cardNum}>{card}</span>
-      <span>{name}</span>
-      {isMaverick && <Maverick className={styles.maverick} />}
-    </FlexContainer>
-  );
-};
+const ReactHint = ReactHintFactory(React);
 
 export default function DeckDetails({
   decks,
@@ -41,12 +29,47 @@ export default function DeckDetails({
   className,
   removeDeck,
   houseImages,
+  fetchCardImages,
 }) {
   const [isConfirmDelete, setConfirmDelete] = useState(false);
+  const fetchImages = useCallback(
+    () => {
+      const deck = decks[selected];
+      if (deck) {
+        const { expansion, houses } = deck;
+        const cards = Object.values(houses).reduce(
+          (arr, houseCards) => [...arr, ...houseCards],
+          [],
+        );
+        fetchCardImages(expansion, uniq(cards));
+      }
+    },
+    [decks, selected],
+  );
+  useEffect(fetchImages);
+
   const deck = decks[selected];
   if (!deck) {
     return <div className={className} />;
   }
+
+  const renderCard = (columnHouse, card, i) => {
+    const { name, rarity, house } = coreCards[card];
+    const Rarity = RARITY[rarity];
+    const isMaverick = house.toLowerCase() !== columnHouse;
+    return (
+      <FlexContainer
+        key={`${card}-${i}`}
+        align="center"
+        className={styles.card}
+      >
+        <Rarity className={styles.rarity} />
+        <span className={styles.cardNum}>{card}</span>
+        <span>{name}</span>
+        {isMaverick && <Maverick className={styles.maverick} />}
+      </FlexContainer>
+    );
+  };
 
   const { name, houses } = deck;
   const onRemove = async () => {
@@ -94,11 +117,12 @@ export default function DeckDetails({
             ))}
           </FlexContainer>
         </div>
+        <ReactHint autoPosition events />
       </div>
       <ConfirmModal
         isOpen={isConfirmDelete}
         onCancel={() => setConfirmDelete(false)}
-        onConfirm={() => onRemove()}
+        onConfirm={onRemove}
       />
     </>
   );
@@ -108,9 +132,10 @@ DeckDetails.propTypes = {
   decks: PropTypes.shape().isRequired,
   selected: PropTypes.string,
   className: PropTypes.string,
-  removeDeck: PropTypes.func.isRequired,
   houseImages: PropTypes.shape(),
   cardImages: PropTypes.shape(),
+  removeDeck: PropTypes.func.isRequired,
+  fetchCardImages: PropTypes.func.isRequired,
 };
 
 DeckDetails.defaultProps = {

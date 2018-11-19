@@ -26,6 +26,7 @@
     "react": "^16.7.0-alpha.2",
     "react-dom": "^16.7.0-alpha.2",
     "react-feather": "^1.1.4",
+    "react-hint": "^3.1.1",
     "react-modal": "^3.6.1",
     "react-redux": "^5.1.1",
     "react-router-dom": "^4.3.1",
