@@ -6,6 +6,9 @@ export const getDecks = state => state.deck.models;
 export const getHouseImages = state => state.image.houses;
 export const getCardImages = state => state.image.cards;
 
+/* Router */
+export const getPathname = state => state.router.location.pathname;
+
 /* Session */
 export const getAuthError = state => state.session.error;
 export const getUser = state => state.session.model;

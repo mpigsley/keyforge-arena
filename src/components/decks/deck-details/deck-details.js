@@ -15,10 +15,25 @@ import { ReactComponent as Common } from 'images/common.svg';
 import { ReactComponent as Uncommon } from 'images/uncommon.svg';
 import { ReactComponent as Rare } from 'images/rare.svg';
 import { ReactComponent as Special } from 'images/special.svg';
+import { ReactComponent as Maverick } from 'images/maverick.svg';
 
 import styles from './styles.module.scss';
 
 const RARITY = { Common, Uncommon, Rare, Special };
+
+const renderCard = (columnHouse, card, i) => {
+  const { name, rarity, house } = coreCards[card];
+  const Rarity = RARITY[rarity];
+  const isMaverick = house.toLowerCase() !== columnHouse;
+  return (
+    <FlexContainer key={`${card}-${i}`} align="center" className={styles.card}>
+      <Rarity className={styles.rarity} />
+      <span className={styles.cardNum}>{card}</span>
+      <span>{name}</span>
+      {isMaverick && <Maverick className={styles.maverick} />}
+    </FlexContainer>
+  );
+};
 
 export default function DeckDetails({
   decks,
@@ -71,20 +86,9 @@ export default function DeckDetails({
                   <h3>{capitalize(house)}</h3>
                 </FlexContainer>
                 <FlexContainer direction="column" className={styles.cards}>
-                  {sortBy(cards, parseInt).map((card, i) => {
-                    const Rarity = RARITY[coreCards[card].rarity];
-                    return (
-                      <FlexContainer
-                        key={`${card}-${i}`}
-                        align="center"
-                        className={styles.card}
-                      >
-                        <Rarity className={styles.rarity} />
-                        <span className={styles.cardNum}>{card}</span>
-                        <span>{coreCards[card].name}</span>
-                      </FlexContainer>
-                    );
-                  })}
+                  {sortBy(cards, parseInt).map((card, i) =>
+                    renderCard(house, card, i),
+                  )}
                 </FlexContainer>
               </FlexContainer>
             ))}
