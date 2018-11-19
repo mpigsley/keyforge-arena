@@ -12,6 +12,7 @@ import 'firebase/auth';
 import store, { history } from 'store';
 import * as serviceWorker from 'serviceWorker';
 
+import Init from 'components/init';
 import Protected from 'primitives/protected-hoc';
 import Navigtion from 'components/navigation';
 import Home from 'components/home';
@@ -36,13 +37,15 @@ Firebase.firestore().settings({ timestampsInSnapshots: true });
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <Switch>
-        <Navigtion>
-          <Route exact path="/" component={Home} />
-          <Route path="/decks/:id?" component={Protected(Decks)} />
-          <Route path="/game" component={Protected(GameBoard)} />
-        </Navigtion>
-      </Switch>
+      <Init>
+        <Switch>
+          <Route exact path="/game" component={Protected(GameBoard)} />
+          <Navigtion>
+            <Route exact path="/" component={Home} />
+            <Route path="/decks/:id?" component={Protected(Decks)} />
+          </Navigtion>
+        </Switch>
+      </Init>
     </ConnectedRouter>
   </Provider>,
   document.getElementById('root'),

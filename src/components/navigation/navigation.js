@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -7,16 +7,8 @@ import LoginModal from 'components/login-modal';
 
 import styles from './styles.module.scss';
 
-export default function Navigation({
-  children,
-  initialize,
-  signout,
-  isLoggedIn,
-}) {
+export default function Navigation({ children, signout, isLoggedIn }) {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
-  useEffect(() => {
-    initialize();
-  }, []);
 
   const renderProtectedLink = link => (isLoggedIn ? link : null);
 
@@ -69,7 +61,6 @@ export default function Navigation({
 
 Navigation.propTypes = {
   children: PropTypes.node.isRequired,
-  initialize: PropTypes.func.isRequired,
   signout: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
 };
