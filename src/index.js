@@ -37,15 +37,13 @@ Firebase.firestore().settings({ timestampsInSnapshots: true });
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <Init>
-        <Switch>
+      <Switch>
+        <Init>
           <Route exact path="/game" component={Protected(GameBoard)} />
-          <Navigtion>
-            <Route exact path="/" component={Home} />
-            <Route path="/decks/:id?" component={Protected(Decks)} />
-          </Navigtion>
-        </Switch>
-      </Init>
+          <Route exact path="/" component={Home} />
+          <Route path="/decks/:id?" component={Protected(Decks)} />
+        </Init>
+      </Switch>
     </ConnectedRouter>
   </Provider>,
   document.getElementById('root'),
