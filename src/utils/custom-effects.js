@@ -6,10 +6,21 @@ export const useTextInput = (defaultValue = '') => {
   return [input, onInput];
 };
 
-export const usePrevious = function usePrevious(value) {
+export const usePrevious = value => {
   const ref = useRef();
   useEffect(() => {
     ref.current = value;
   });
   return ref.current;
 };
+
+export const useAnimation = renderFunc =>
+  useEffect(() => {
+    let frameId;
+    const animate = () => {
+      renderFunc();
+      frameId = window.requestAnimationFrame(animate);
+    };
+    frameId = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(frameId);
+  }, []);
