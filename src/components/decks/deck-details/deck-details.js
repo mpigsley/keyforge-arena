@@ -1,7 +1,6 @@
 /* eslint-disable react/no-array-index-key */
 
 import React, { useState, useEffect, useCallback } from 'react';
-import ReactHintFactory from 'react-hint';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
@@ -21,7 +20,6 @@ import { ReactComponent as Maverick } from 'images/maverick.svg';
 import styles from './styles.module.scss';
 
 const RARITY = { Common, Uncommon, Rare, Special };
-const ReactHint = ReactHintFactory(React);
 
 export default function DeckDetails({
   decks,
@@ -59,6 +57,7 @@ export default function DeckDetails({
     const isMaverick = house.toLowerCase() !== columnHouse;
     return (
       <FlexContainer
+        data-card={`${deck.expansion}-${card}`}
         key={`${card}-${i}`}
         align="center"
         className={styles.card}
@@ -117,7 +116,6 @@ export default function DeckDetails({
             ))}
           </FlexContainer>
         </div>
-        <ReactHint autoPosition events />
       </div>
       <ConfirmModal
         isOpen={isConfirmDelete}
@@ -133,7 +131,6 @@ DeckDetails.propTypes = {
   selected: PropTypes.string,
   className: PropTypes.string,
   houseImages: PropTypes.shape(),
-  cardImages: PropTypes.shape(),
   removeDeck: PropTypes.func.isRequired,
   fetchCardImages: PropTypes.func.isRequired,
 };

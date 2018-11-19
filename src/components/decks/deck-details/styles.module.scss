@@ -3,11 +3,16 @@
 .container {
   display: grid;
   grid-template-rows: 65px auto;
+  z-index: 100;
 }
 
 .header {
   border-bottom: 1px solid $border;
   padding: 0 1rem;
+}
+
+.content {
+  overflow-y: auto;
 }
 
 .name {
@@ -41,7 +46,7 @@ $img-size: 100px;
 .card {
   color: $dark;
   font-size: 0.95rem;
-  margin-bottom: 0.3rem;
+  padding-bottom: 0.3rem;
   width: fit-content;
 }
 

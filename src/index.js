@@ -18,6 +18,7 @@ import Home from 'components/home';
 import Decks from 'components/decks';
 import GameBoard from 'components/game-board';
 
+import 'react-hint/css/index.css';
 import 'styles/global.scss';
 
 Firebase.initializeApp({
