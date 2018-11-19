@@ -16,3 +16,35 @@
   font-weight: bold;
   margin: 0.3rem 0rem 0rem;
 }
+
+.houses {
+  margin: 1rem;
+}
+
+.house {
+  color: $dark;
+  max-width: 15rem;
+  padding: 0 1rem;
+  width: 33%;
+}
+
+$img-size: 100px;
+.houseImg {
+  height: $img-size;
+  width: $img-size;
+}
+
+.cards {
+  margin: 0 auto;
+}
+
+.card {
+  color: $dark;
+  font-size: 0.9rem;
+  width: fit-content;
+}
+
+.cardNum {
+  font-weight: bold;
+  margin-right: 0.5rem;
+}

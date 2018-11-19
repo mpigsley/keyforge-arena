@@ -1,9 +1,30 @@
 {
-  "brobnar": "brobnar",
-  "logos": "logos",
-  "shadows": "shadows",
-  "sanctum": "sanctum",
-  "mars": "mars",
-  "dis": "dis",
-  "untamed": "untamed"
+  "brobnar": {
+    "key": "brobnar",
+    "name": "Brobnar"
+  },
+  "logos": {
+    "key": "logos",
+    "name": "Logos"
+  },
+  "shadows": {
+    "key": "shadows",
+    "name": "Shadows"
+  },
+  "sanctum": {
+    "key": "sanctum",
+    "name": "Sanctum"
+  },
+  "mars": {
+    "key": "mars",
+    "name": "Mars"
+  },
+  "dis": {
+    "key": "dis",
+    "name": "Dis"
+  },
+  "untamed": {
+    "key": "untamed",
+    "name": "Untamed"
+  }
 }

@@ -17,7 +17,7 @@ export const initialize = () => async dispatch => {
   }
   dispatch({ type: INITIALIZED, user, decks });
 
-  const houseList = Object.values(Houses);
+  const houseList = Object.keys(Houses);
   const links = await Promise.all(houseList.map(getHouseLink));
   dispatch({ type: FETCHED_IMAGE_LINKS, houses: zipObject(houseList, links) });
 };

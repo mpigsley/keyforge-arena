@@ -1,6 +1,11 @@
 const admin = require('firebase-admin');
 const functions = require('firebase-functions');
 const request = require('request-promise');
+const { find } = require('lodash');
+
+const EXPANSIONS = {
+  341: 'cota',
+};
 
 module.exports = functions.https.onCall(async ({ link }, context) => {
   if (!context.auth) {
@@ -32,22 +37,32 @@ module.exports = functions.https.onCall(async ({ link }, context) => {
       `https://www.keyforgegame.com/api/decks/${deckId}?links=cards`,
     );
     const { data, _linked } = JSON.parse(response);
-    const { name } = data;
+    const { name, expansion, _links } = data;
+    const cardIds = _links.cards;
     const { cards } = _linked;
 
-    const houses = cards.reduce(
-      (housesObj, { card_number, house }) => ({
-        ...housesObj,
-        [house.toLowerCase()]: [
-          ...(housesObj[house.toLowerCase()] || []),
-          card_number,
-        ],
-      }),
-      {},
-    );
+    if (!EXPANSIONS[expansion]) {
+      throw new functions.https.HttpsError(
+        'not-found',
+        'Deck is from an unknown expansion',
+      );
+    }
+
+    const houses = cardIds
+      .map(id => find(cards, { id }))
+      .reduce((housesObj, { card_number, house }) => {
+        return {
+          ...housesObj,
+          [house.toLowerCase()]: [
+            ...(housesObj[house.toLowerCase()] || []),
+            `000${card_number}`.substr(-3, 3),
+          ],
+        };
+      }, {});
 
     const deck = {
       creator: context.auth.uid,
+      expansion: EXPANSIONS[expansion],
       deckId,
       houses,
       name,
@@ -63,7 +78,7 @@ module.exports = functions.https.onCall(async ({ link }, context) => {
 
     return { [ref.id]: deck };
   } catch (e) {
-    if (e.code === 'already-exists') {
+    if (e.code === 'already-exists' || e.code === 'not-found') {
       throw e;
     }
     console.error(e);

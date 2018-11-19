@@ -1,9 +1,9 @@
 import { FETCHED_IMAGE_LINKS } from 'store/actions/combined.actions';
-import Sets from 'constants/sets';
+import Sets from 'constants/expansions';
 
 const initialState = {
   houses: {},
-  cards: Object.values(Sets).reduce((obj, set) => ({ ...obj, [set]: {} }), {}),
+  cards: Object.keys(Sets).reduce((obj, set) => ({ ...obj, [set]: {} }), {}),
 };
 
 export default function image(state = initialState, action) {
