@@ -1,6 +1,10 @@
 import { createSelector } from 'reselect';
 
-import { getDecks, getDeckSearchTerm } from 'store/selectors/base.selectors';
+import {
+  getDecks,
+  getDeckSearchTerm,
+  getUserId,
+} from 'store/selectors/base.selectors';
 import { includes, sortBy, map } from 'constants/lodash';
 
 const deckArray = createSelector(
@@ -9,10 +13,12 @@ const deckArray = createSelector(
 );
 
 const filteredDecks = createSelector(
-  [deckArray, getDeckSearchTerm],
-  (decks, searchTerm) =>
-    decks.filter(({ name }) =>
-      includes(name.toLowerCase(), searchTerm.toLowerCase()),
+  [deckArray, getDeckSearchTerm, getUserId],
+  (decks, searchTerm, userId) =>
+    decks.filter(
+      ({ name, creator }) =>
+        includes(name.toLowerCase(), searchTerm.toLowerCase()) &&
+        creator === userId,
     ),
 );
 

@@ -1,6 +1,6 @@
 import Firebase from 'firebase/app';
 
-export const getDecks = uid =>
+export const getDecksByUser = uid =>
   Firebase.firestore()
     .collection('decks')
     .where('creator', '==', uid)
@@ -15,6 +15,18 @@ export const getDecks = uid =>
       });
       return decks;
     });
+
+export const getDecks = deckIds =>
+  Promise.all(
+    deckIds.map(id =>
+      Firebase.firestore()
+        .collection('decks')
+        .doc(id)
+        .get(),
+    ),
+  ).then(decks =>
+    decks.reduce((obj, deck) => ({ ...obj, [deck.id]: deck.data() }), {}),
+  );
 
 export const submitDeck = link =>
   Firebase.functions()

@@ -3,7 +3,10 @@ import {
   SUBMITTED,
   DELETED,
 } from 'store/actions/deck.actions';
-import { INITIALIZED } from 'store/actions/combined.actions';
+import {
+  INITIALIZED_APP,
+  INITIALIZED_GAME,
+} from 'store/actions/combined.actions';
 import { omit } from 'constants/lodash';
 
 const initialState = {
@@ -13,8 +16,9 @@ const initialState = {
 
 export default function deck(state = initialState, action) {
   switch (action.type) {
-    case INITIALIZED:
-      return { ...state, models: action.decks };
+    case INITIALIZED_APP:
+    case INITIALIZED_GAME:
+      return { ...state, models: { ...state.models, ...action.decks } };
     case SET_SEARCH_TERM:
       return { ...state, searchTerm: action.searchTerm };
     case SUBMITTED:

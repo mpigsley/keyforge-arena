@@ -1,9 +1,5 @@
-import {
-  LOGGED_IN,
-  SIGNED_OUT,
-  AUTH_FAILURE,
-} from 'store/actions/session.actions';
-import { INITIALIZED } from 'store/actions/combined.actions';
+import { SIGNED_OUT, AUTH_FAILURE } from 'store/actions/session.actions';
+import { INITIALIZED_APP } from 'store/actions/combined.actions';
 
 const initialState = {
   isInitialized: false,
@@ -13,8 +9,7 @@ const initialState = {
 
 export default function deck(state = initialState, action) {
   switch (action.type) {
-    case INITIALIZED:
-    case LOGGED_IN:
+    case INITIALIZED_APP:
       return { ...state, model: action.user, error: null, isInitialized: true };
     case SIGNED_OUT:
       return { ...state, model: null, error: null };

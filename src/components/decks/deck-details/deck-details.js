@@ -7,9 +7,11 @@ import classNames from 'classnames';
 import FlexContainer from 'primitives/flex-container';
 import ConfirmModal from 'primitives/confirm-modal';
 import IconButton from 'primitives/icon-button';
+
+import { map, size, sortBy, capitalize } from 'constants/lodash';
 import { Trash } from 'constants/icons';
-import { map, size, sortBy, capitalize, uniq } from 'constants/lodash';
 import coreCards from 'constants/expansions/cota';
+import { getUniqueCards } from 'utils/deck';
 
 import { ReactComponent as Common } from 'images/common.svg';
 import { ReactComponent as Uncommon } from 'images/uncommon.svg';
@@ -34,12 +36,7 @@ export default function DeckDetails({
     () => {
       const deck = decks[selected];
       if (deck) {
-        const { expansion, houses } = deck;
-        const cards = Object.values(houses).reduce(
-          (arr, houseCards) => [...arr, ...houseCards],
-          [],
-        );
-        fetchCardImages(expansion, uniq(cards));
+        fetchCardImages(deck.expansion, getUniqueCards(deck));
       }
     },
     [decks, selected],

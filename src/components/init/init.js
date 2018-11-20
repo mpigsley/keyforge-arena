@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-export default function Init({ children, initialize }) {
+export default function Init({ children, initializeApp }) {
   useEffect(() => {
-    initialize();
+    initializeApp();
   }, []);
 
   return children;
@@ -11,5 +11,5 @@ export default function Init({ children, initialize }) {
 
 Init.propTypes = {
   children: PropTypes.node.isRequired,
-  initialize: PropTypes.func.isRequired,
+  initializeApp: PropTypes.func.isRequired,
 };

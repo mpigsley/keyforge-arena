@@ -38,9 +38,9 @@ ReactDOM.render(
     <ConnectedRouter history={history}>
       <Switch>
         <Init>
-          <Route exact path="/game" component={Protected(GameBoard)} />
           <Route exact path="/" component={Home} />
           <Route path="/decks/:id?" component={Protected(Decks)} />
+          <Route path="/game/:id" component={Protected(GameBoard)} />
         </Init>
       </Switch>
     </ConnectedRouter>
