@@ -9,13 +9,13 @@ const ACTION_PREFIX = '@@combined';
 export const INITIALIZED = `${ACTION_PREFIX}/INITIALIZED`;
 export const FETCHED_IMAGE_LINKS = `${ACTION_PREFIX}/FETCHED_IMAGE_LINKS`;
 
-export const initialize = () => async dispatch => {
-  const user = await getCurrentUser();
+export const initialize = user => async dispatch => {
+  const currentUser = user || (await getCurrentUser());
   let decks;
-  if (user) {
-    decks = await getDecks(user.uid);
+  if (currentUser) {
+    decks = await getDecks(currentUser.uid);
   }
-  dispatch({ type: INITIALIZED, user, decks });
+  dispatch({ type: INITIALIZED, user: currentUser, decks });
 
   const houseList = Object.keys(Houses);
   const links = await Promise.all(houseList.map(getHouseLink));

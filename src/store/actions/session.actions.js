@@ -7,6 +7,7 @@ import {
   doPasswordReset,
   doSignout,
 } from 'store/api/session.api';
+import { initialize } from 'store/actions/combined.actions';
 
 const ACTION_PREFIX = '@@session';
 export const LOGGED_IN = `${ACTION_PREFIX}/LOGGED_IN`;
@@ -14,11 +15,7 @@ export const SIGNED_OUT = `${ACTION_PREFIX}/SIGNED_OUT`;
 export const AUTH_FAILURE = `${ACTION_PREFIX}/AUTH_FAILURE`;
 
 const onLogin = dispatch => result => {
-  dispatch({
-    type: LOGGED_IN,
-    user: result.user ? result.user.toJSON() : result.toJSON(),
-  });
-  return result;
+  dispatch(initialize(result.user ? result.user.toJSON() : result.toJSON()));
 };
 
 export const googleLogin = () => dispatch =>
