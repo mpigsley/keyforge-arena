@@ -14,7 +14,6 @@ import * as serviceWorker from 'serviceWorker';
 
 import Init from 'components/init';
 import Protected from 'primitives/protected-hoc';
-import Navigtion from 'components/navigation';
 import Home from 'components/home';
 import Decks from 'components/decks';
 import GameBoard from 'components/game-board';

@@ -13,14 +13,3 @@ export const usePrevious = value => {
   });
   return ref.current;
 };
-
-export const useAnimation = renderFunc =>
-  useEffect(() => {
-    let frameId;
-    const animate = () => {
-      renderFunc();
-      frameId = window.requestAnimationFrame(animate);
-    };
-    frameId = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(frameId);
-  }, []);
