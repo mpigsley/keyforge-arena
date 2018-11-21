@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import ReactModal from 'react-modal';
 
@@ -17,6 +17,11 @@ export default function AddDeckModal({ isOpen, onClose, submitNewDeck }) {
   const [error, setError] = useState();
   const [isImporting, setIsImporting] = useState(false);
   const [link, setLink] = useTextInput();
+
+  useEffect(() => {
+    setError();
+    onClose();
+  });
 
   const onConfirm = async () => {
     setIsImporting(true);

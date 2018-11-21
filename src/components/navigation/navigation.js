@@ -7,10 +7,45 @@ import LoginModal from 'components/login-modal';
 
 import styles from './styles.module.scss';
 
-export default function Navigation({ children, signout, isLoggedIn }) {
+export default function Navigation({
+  children,
+  signout,
+  isLoggedIn,
+  isInitialized,
+}) {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
 
   const renderProtectedLink = link => (isLoggedIn ? link : null);
+
+  let links;
+  if (isInitialized) {
+    links = (
+      <FlexContainer>
+        {renderProtectedLink(
+          <NavLink
+            to="/decks"
+            className={styles.navLink}
+            activeClassName={styles['navLink--active']}
+          >
+            My Decks
+          </NavLink>,
+        )}
+        <button
+          type="button"
+          className={styles.navLink}
+          onClick={() => {
+            if (isLoggedIn) {
+              signout();
+            } else {
+              setIsLoginOpen(true);
+            }
+          }}
+        >
+          {isLoggedIn ? 'Sign Out' : 'Log In'}
+        </button>
+      </FlexContainer>
+    );
+  }
 
   return (
     <>
@@ -26,30 +61,7 @@ export default function Navigation({ children, signout, isLoggedIn }) {
                 <span className={styles.keyforgeText}>Keyforge</span> Arena
               </FlexContainer>
             </Link>
-            <FlexContainer>
-              {renderProtectedLink(
-                <NavLink
-                  to="/decks"
-                  className={styles.navLink}
-                  activeClassName={styles['navLink--active']}
-                >
-                  My Decks
-                </NavLink>,
-              )}
-              <button
-                type="button"
-                className={styles.navLink}
-                onClick={() => {
-                  if (isLoggedIn) {
-                    signout();
-                  } else {
-                    setIsLoginOpen(true);
-                  }
-                }}
-              >
-                {isLoggedIn ? 'Sign Out' : 'Log In'}
-              </button>
-            </FlexContainer>
+            {links}
           </FlexContainer>
         </nav>
         <div className={styles.content}>{children}</div>
@@ -63,4 +75,5 @@ Navigation.propTypes = {
   children: PropTypes.node.isRequired,
   signout: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
+  isInitialized: PropTypes.bool.isRequired,
 };

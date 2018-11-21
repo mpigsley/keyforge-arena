@@ -7,6 +7,7 @@ import classNames from 'classnames';
 import FlexContainer from 'primitives/flex-container';
 import ConfirmModal from 'primitives/confirm-modal';
 import IconButton from 'primitives/icon-button';
+import Spinner from 'primitives/spinner';
 import Button from 'primitives/button';
 
 import { map, size, sortBy, capitalize } from 'constants/lodash';
@@ -32,6 +33,7 @@ export default function DeckDetails({
   houseImages,
   fetchCardImages,
   openDeckModal,
+  isInitialized,
 }) {
   const [isConfirmDelete, setConfirmDelete] = useState(false);
   const fetchImages = useCallback(
@@ -46,6 +48,13 @@ export default function DeckDetails({
   useEffect(fetchImages);
 
   const deck = decks[selected];
+  if (!isInitialized) {
+    return (
+      <FlexContainer className={className} align="center" justify="center">
+        <Spinner size={100} />
+      </FlexContainer>
+    );
+  }
   if (!deck) {
     return (
       <FlexContainer
@@ -148,6 +157,7 @@ DeckDetails.propTypes = {
   removeDeck: PropTypes.func.isRequired,
   fetchCardImages: PropTypes.func.isRequired,
   openDeckModal: PropTypes.func.isRequired,
+  isInitialized: PropTypes.bool.isRequired,
 };
 
 DeckDetails.defaultProps = {

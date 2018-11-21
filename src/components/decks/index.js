@@ -1,45 +1,20 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { push } from 'connected-react-router';
+import { createStructuredSelector } from 'reselect';
 
-import Navigation from 'components/navigation';
-import DeckDetails from 'components/decks/deck-details';
-import DeckSearch from 'components/decks/deck-search';
-import DeckList from 'components/decks/deck-list';
-import CardTooltip from 'components/decks/card-tooltip';
-import AddDeckModal from 'components/decks/add-deck-modal';
+import { getDecks } from 'store/selectors/base.selectors';
 
-import styles from './styles.module.scss';
+import Decks from './decks';
 
-export default function Decks({ match }) {
-  const [isAddDeckOpen, setIsAddDeckOpen] = useState(false);
-  const openDeckModal = () => setIsAddDeckOpen(true);
-  return (
-    <Navigation>
-      <div className={styles.decks}>
-        <DeckSearch
-          className={styles.searchBar}
-          openDeckModal={openDeckModal}
-        />
-        <DeckList selected={match.params.id} className={styles.list} />
-        <DeckDetails
-          selected={match.params.id}
-          className={styles.details}
-          openDeckModal={openDeckModal}
-        />
-      </div>
-      <CardTooltip />
-      <AddDeckModal
-        isOpen={isAddDeckOpen}
-        onClose={() => setIsAddDeckOpen(false)}
-      />
-    </Navigation>
-  );
-}
+const mapStateToProps = createStructuredSelector({
+  decks: getDecks,
+});
 
-Decks.propTypes = {
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      id: PropTypes.string,
-    }).isRequired,
-  }).isRequired,
-};
+const mapDispatchToProps = dispatch => ({
+  toDeck: deckId => dispatch(push(`/decks/${deckId}`)),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Decks);

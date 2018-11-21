@@ -1,8 +1,7 @@
 import { push } from 'connected-react-router';
-import { map, sortBy } from 'constants/lodash';
 
 import { submitDeck, deleteDeck } from 'store/api/deck.api';
-import { getDecks, getPathname } from 'store/selectors/base.selectors';
+import { getPathname } from 'store/selectors/base.selectors';
 
 const ACTION_PREFIX = '@@deck';
 export const SUBMITTED = `${ACTION_PREFIX}/SUBMITTED`;
@@ -26,15 +25,6 @@ export const removeDeck = id => (dispatch, getState) =>
     const state = getState();
     const pathname = getPathname(state);
     if (pathname.includes(id)) {
-      const decks = getDecks(state);
-      const sortedDecks = sortBy(
-        map(decks, (deck, key) => ({ ...deck, key })),
-        'name',
-      );
-      if (sortedDecks.length) {
-        dispatch(push(`/decks/${sortedDecks[0].key}`));
-      } else {
-        dispatch(push('/decks'));
-      }
+      dispatch(push('/decks'));
     }
   });
