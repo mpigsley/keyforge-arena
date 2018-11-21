@@ -1,4 +1,0 @@
-cron:
-  # - description: Check active user connections and prune old ones
-  #   url: /publish/connection-status
-  #   schedule: every 1 minutes
