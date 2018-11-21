@@ -35,6 +35,21 @@ export default function LoginModal({
   const [password, setPassword] = useTextInput();
   const [confirm, setConfirm] = useTextInput();
 
+  const onGoogle = async () => {
+    setIsLoggingIn(true);
+    try {
+      await googleLogin();
+      onClose();
+      setIsLoggingIn(false);
+      setPage(LOGIN_PAGE_TYPES.login);
+      setEmail();
+      setPassword();
+      setConfirm();
+    } catch (e) {
+      setIsLoggingIn(false);
+    }
+  };
+
   const onConfirm = async () => {
     setIsLoggingIn(true);
     try {
@@ -148,7 +163,7 @@ export default function LoginModal({
     >
       <X className={styles.close} onClick={onClose} size={30} />
       <FlexContainer justify="center" align="center" direction="column">
-        <Button className={styles.google} onClick={googleLogin}>
+        <Button className={styles.google} onClick={onGoogle}>
           Log in with Google
         </Button>
       </FlexContainer>
