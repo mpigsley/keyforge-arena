@@ -6,9 +6,28 @@ export const getCurrentUser = () =>
       if (!(user || {}).uid) {
         return resolve(null);
       }
-      return resolve(user.toJSON());
+      return Firebase.firestore()
+        .collection('users')
+        .doc(user.uid)
+        .get()
+        .then(doc => {
+          if (doc.exists) {
+            resolve({ ...doc.data(), ...user.toJSON() });
+          }
+          resolve(user.toJSON());
+        });
     });
   });
+
+export const updateProfile = (uid, profile) => {
+  if (!uid) {
+    return new Error('Uid required to update a user.');
+  }
+  return Firebase.firestore()
+    .collection('users')
+    .doc(uid)
+    .set(profile, { merge: true });
+};
 
 export const doGoogleLogin = () =>
   Firebase.auth().signInWithPopup(new Firebase.auth.GoogleAuthProvider());

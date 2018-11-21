@@ -1,5 +1,10 @@
 import { LOCATION_CHANGE } from 'connected-react-router';
-import { SIGNED_OUT, AUTH_FAILURE } from 'store/actions/session.actions';
+import {
+  SIGNED_OUT,
+  AUTH_FAILURE,
+  UPDATED_FORM,
+  UPDATED_USER,
+} from 'store/actions/session.actions';
 import { INITIALIZED_APP } from 'store/actions/combined.actions';
 
 const initialState = {
@@ -17,7 +22,10 @@ export default function deck(state = initialState, action) {
         model: action.user,
         error: null,
         isInitialized: true,
-        form: { email: action.user.email, username: action.user.username },
+        form: {
+          email: action.user.email,
+          username: action.user.username || '',
+        },
       };
     case LOCATION_CHANGE: {
       const { email, username } = state.model || {};
@@ -26,6 +34,10 @@ export default function deck(state = initialState, action) {
         form: { email: email || '', username: username || '' },
       };
     }
+    case UPDATED_FORM:
+      return { ...state, form: { ...state.form, ...action.form } };
+    case UPDATED_USER:
+      return { ...state, model: { ...state.model, ...state.user } };
     case AUTH_FAILURE:
       return { ...state, error: action.error };
     case SIGNED_OUT:

@@ -6,15 +6,34 @@ import {
   doLogin,
   doPasswordReset,
   doSignout,
+  updateProfile,
 } from 'store/api/session.api';
 import { initializeApp } from 'store/actions/combined.actions';
+import { getUserId, getUserForm } from 'store/selectors/base.selectors';
+import { pick } from 'constants/lodash';
 
 const ACTION_PREFIX = '@@session';
 export const SIGNED_OUT = `${ACTION_PREFIX}/SIGNED_OUT`;
 export const AUTH_FAILURE = `${ACTION_PREFIX}/AUTH_FAILURE`;
+export const UPDATED_FORM = `${ACTION_PREFIX}/UPDATED_FORM`;
+export const UPDATED_USER = `${ACTION_PREFIX}/UPDATED_USER`;
 
 const onLogin = dispatch => result => {
   dispatch(initializeApp(result.user ? result.user.toJSON() : result.toJSON()));
+};
+
+export const updateForm = form => ({ type: UPDATED_FORM, form });
+
+export const updateUser = () => (dispatch, getState) => {
+  const state = getState();
+  const uid = getUserId(state);
+  const form = pick(getUserForm(state), 'username');
+  return updateProfile(uid, form).then(() =>
+    dispatch({
+      type: UPDATED_USER,
+      user: form,
+    }),
+  );
 };
 
 export const googleLogin = () => dispatch =>
