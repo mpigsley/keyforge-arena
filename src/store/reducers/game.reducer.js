@@ -1,5 +1,6 @@
 import { LOCATION_CHANGE } from 'connected-react-router';
 import { INITIALIZED_GAME } from 'store/actions/combined.actions';
+import { SIGNED_OUT } from 'store/actions/session.actions';
 
 const initialState = {
   isInitialized: false,
@@ -17,6 +18,7 @@ export default function game(state = initialState, action) {
         playerDecks: action.playerDecks,
       };
     case LOCATION_CHANGE:
+    case SIGNED_OUT:
       return initialState;
     default:
       return state;

@@ -1,6 +1,17 @@
 @import '~styles/theme';
 
-.container {
+.emptyH1 {
+  font-weight: normal;
+  margin: 0;
+}
+
+.emptyH3 {
+  color: $medium;
+  font-weight: normal;
+  margin: 0.5rem 0 1.5rem;
+}
+
+.emptyH .container {
   display: grid;
   grid-template-rows: 65px auto;
   z-index: 100;

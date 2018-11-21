@@ -7,6 +7,7 @@ import classNames from 'classnames';
 import FlexContainer from 'primitives/flex-container';
 import ConfirmModal from 'primitives/confirm-modal';
 import IconButton from 'primitives/icon-button';
+import Button from 'primitives/button';
 
 import { map, size, sortBy, capitalize } from 'constants/lodash';
 import { Trash } from 'constants/icons';
@@ -30,6 +31,7 @@ export default function DeckDetails({
   removeDeck,
   houseImages,
   fetchCardImages,
+  openDeckModal,
 }) {
   const [isConfirmDelete, setConfirmDelete] = useState(false);
   const fetchImages = useCallback(
@@ -45,7 +47,22 @@ export default function DeckDetails({
 
   const deck = decks[selected];
   if (!deck) {
-    return <div className={className} />;
+    return (
+      <FlexContainer
+        className={className}
+        direction="column"
+        align="center"
+        justify="center"
+      >
+        <h1 className={styles.emptyH1}>
+          Looks like you don&#39;t have any decks loaded.
+        </h1>
+        <h3 className={styles.emptyH3}>
+          Import directly from the official app.
+        </h3>
+        <Button onClick={openDeckModal}>Add Deck</Button>
+      </FlexContainer>
+    );
   }
 
   const renderCard = (columnHouse, card, i) => {
@@ -130,6 +147,7 @@ DeckDetails.propTypes = {
   houseImages: PropTypes.shape(),
   removeDeck: PropTypes.func.isRequired,
   fetchCardImages: PropTypes.func.isRequired,
+  openDeckModal: PropTypes.func.isRequired,
 };
 
 DeckDetails.defaultProps = {
