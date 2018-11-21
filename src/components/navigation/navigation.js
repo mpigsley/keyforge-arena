@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import FlexContainer from 'primitives/flex-container';
 import LoginModal from 'components/login-modal';
+import { LogOut } from 'constants/icons';
 
 import styles from './styles.module.scss';
 
@@ -30,6 +31,15 @@ export default function Navigation({
             My Decks
           </NavLink>,
         )}
+        {renderProtectedLink(
+          <NavLink
+            to="/profile"
+            className={styles.navLink}
+            activeClassName={styles['navLink--active']}
+          >
+            Profile
+          </NavLink>,
+        )}
         <button
           type="button"
           className={styles.navLink}
@@ -41,7 +51,7 @@ export default function Navigation({
             }
           }}
         >
-          {isLoggedIn ? 'Sign Out' : 'Log In'}
+          {isLoggedIn ? <LogOut /> : 'Log In'}
         </button>
       </FlexContainer>
     );

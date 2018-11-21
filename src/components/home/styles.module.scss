@@ -10,7 +10,6 @@
 
 .construction {
   align-items: center;
-  color: $dark;
   display: flex;
   font-weight: bold;
   justify-content: center;
@@ -22,7 +21,6 @@
 }
 
 .text {
-  color: $dark;
   line-height: 1.5rem;
   margin: 1rem auto 0;
   max-width: 35rem;
@@ -30,7 +28,6 @@
 }
 
 .question {
-  color: $dark;
   font-weight: bold;
   margin: 2rem auto 0;
   max-width: 35rem;
@@ -38,13 +35,11 @@
 }
 
 .link {
-  color: $dark;
   font-weight: bold;
 }
 
 .footer {
   border-top: 1px solid $border;
-  color: $dark;
   margin-top: 2rem;
   padding: 1rem 15%;
 }

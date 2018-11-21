@@ -16,6 +16,7 @@ import Init from 'components/init';
 import Protected from 'primitives/protected-hoc';
 import Home from 'components/home';
 import Decks from 'components/decks';
+import Profile from 'components/profile';
 import GameBoard from 'components/game-board';
 
 import 'react-hint/css/index.css';
@@ -40,6 +41,7 @@ ReactDOM.render(
         <Init>
           <Route exact path="/" component={Home} />
           <Route path="/decks/:id?" component={Protected(Decks)} />
+          <Route path="/profile" component={Protected(Profile)} />
           <Route path="/game/:id" component={Protected(GameBoard)} />
         </Init>
       </Switch>

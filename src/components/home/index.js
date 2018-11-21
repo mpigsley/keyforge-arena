@@ -40,10 +40,8 @@ export default function Home() {
               className={styles.link}
               href="https://github.com/mpigsley/keyforge-arena"
             >
-              open source on Github
+              open source on Github.
             </a>
-            . If you'd like to contact me directly, you can find me on discord
-            at <b>@warpig#9483</b>.
           </p>
         </div>
         <footer className={styles.footer}>

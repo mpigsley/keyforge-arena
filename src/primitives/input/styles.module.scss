@@ -5,7 +5,6 @@
   border: solid 1px transparent;
   box-shadow: 0px 0px 10px 0px $light;
   padding: 10px;
-  color: $dark;
   background-color: white;
   font-size: 11px;
   font-weight: 600;
@@ -20,6 +19,10 @@
   outline: none;
   width: 100%;
 
+  &:disabled {
+    background-color: $veryLight;
+  }
+
   &--error {
     border-color: red;
   }
@@ -30,7 +33,6 @@
   border: solid 1px $light;
   height: 38px;
   padding: 0 10px;
-  color: $dark;
   background-color: white;
   font-size: 11px;
   font-weight: 600;
@@ -47,6 +49,10 @@
 
   &[type='checkbox'] {
     width: 20px;
+  }
+
+  &:disabled {
+    background-color: $veryLight;
   }
 
   &--error {
