@@ -14,6 +14,8 @@
     "eject": "react-scripts eject",
     "deploy": "npm run build && firebase deploy --except functions",
     "deploy:functions": "firebase deploy --only functions",
+    "deploy:appengine": "cd appengine && npm run deploy",
+    "deploy:all": "firebase deploy && npm run deploy:appengine",
     "scrape": "node bin/scrape-aembertree.js"
   },
   "dependencies": {
