@@ -40,8 +40,11 @@
 .google {
   background-color: #d34836;
   border: none;
-  color: white;
   margin-bottom: 1rem;
+
+  span {
+    color: white;
+  }
 
   &:hover {
     color: $light;

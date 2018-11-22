@@ -23,7 +23,6 @@ export default function CardTooltip({ cardImages }) {
       events={{ hover: true }}
       position="left"
       autoPosition
-      delay={10}
     />
   );
 }

@@ -23,8 +23,8 @@ export default function deck(state = initialState, action) {
         error: null,
         isInitialized: true,
         form: {
-          email: action.user.email,
-          username: action.user.username || '',
+          email: (action.user || {}).email,
+          username: (action.user || {}).username || '',
         },
       };
     case LOCATION_CHANGE: {
