@@ -29,6 +29,12 @@ export const updateProfile = (uid, profile) => {
     .set(profile, { merge: true });
 };
 
+export const profileListener = (uid, cb) =>
+  Firebase.firestore()
+    .collection('users')
+    .doc(uid)
+    .onSnapshot(doc => cb(doc.data()));
+
 export const doGoogleLogin = () =>
   Firebase.auth().signInWithPopup(new Firebase.auth.GoogleAuthProvider());
 

@@ -11,6 +11,7 @@ import {
 import { initializeApp } from 'store/actions/combined.actions';
 import { getUserId, getUserForm } from 'store/selectors/base.selectors';
 import { pick } from 'constants/lodash';
+import { profileListener } from '../api/session.api';
 
 const ACTION_PREFIX = '@@session';
 export const SIGNED_OUT = `${ACTION_PREFIX}/SIGNED_OUT`;
@@ -18,8 +19,13 @@ export const AUTH_FAILURE = `${ACTION_PREFIX}/AUTH_FAILURE`;
 export const UPDATED_FORM = `${ACTION_PREFIX}/UPDATED_FORM`;
 export const UPDATED_USER = `${ACTION_PREFIX}/UPDATED_USER`;
 
+let profileListenerRef;
 const onLogin = dispatch => result => {
-  dispatch(initializeApp(result.user ? result.user.toJSON() : result.toJSON()));
+  const user = result.user ? result.user.toJSON() : result.toJSON();
+  profileListenerRef = profileListener(user.uid, update =>
+    dispatch({ type: UPDATED_USER, user: update }),
+  );
+  dispatch(initializeApp(user));
 };
 
 export const updateForm = form => ({ type: UPDATED_FORM, form });
@@ -28,12 +34,7 @@ export const updateUser = () => (dispatch, getState) => {
   const state = getState();
   const uid = getUserId(state);
   const form = pick(getUserForm(state), 'username');
-  return updateProfile(uid, form).then(() =>
-    dispatch({
-      type: UPDATED_USER,
-      user: form,
-    }),
-  );
+  return updateProfile(uid, form);
 };
 
 export const googleLogin = () => dispatch =>
@@ -95,5 +96,8 @@ export const signout = () => dispatch =>
     .then(() => {
       dispatch(push('/'));
       dispatch({ type: SIGNED_OUT });
+      if (profileListenerRef) {
+        profileListenerRef();
+      }
     })
     .catch(console.error);
