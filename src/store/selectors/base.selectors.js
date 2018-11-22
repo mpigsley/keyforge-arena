@@ -13,6 +13,7 @@ export const getPathname = state => state.router.location.pathname;
 export const getAuthError = state => state.session.error;
 export const getUser = state => state.session.model;
 export const getUserId = state => (state.session.model || {}).uid;
+export const getUserTag = state => (state.session.model || {}).tag;
 export const getUserForm = state => state.session.form;
 export const getIsLoggedIn = state => !!state.session.model;
 export const getIsInitialized = state => state.session.isInitialized;

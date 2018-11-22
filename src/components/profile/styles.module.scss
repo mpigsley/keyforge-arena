@@ -1,3 +1,5 @@
+@import '~styles/theme';
+
 .container {
   margin: 1rem auto 0;
   width: 30rem;
@@ -13,4 +15,9 @@
 
 .error {
   color: red;
+}
+
+.tag {
+  color: $medium;
+  font-size: 0.9rem;
 }

@@ -14,6 +14,7 @@ export default function Profile({
   userForm,
   updateForm,
   updateUser,
+  userTag,
 }) {
   const [isUpdating, setIsUpdating] = useState(false);
   const [didUpdate, setDidUpdate] = useState(false);
@@ -48,6 +49,11 @@ export default function Profile({
     message = <div>Profile updated successfully.</div>;
   }
 
+  let tagHash;
+  if (userTag) {
+    tagHash = <span className={styles.tag}>(#{userTag})</span>;
+  }
+
   let profile;
   if (isInitialized) {
     profile = (
@@ -58,7 +64,7 @@ export default function Profile({
           <Input id="email" name="email" disabled value={userForm.email} />
         </div>
         <div className={styles.inputRow}>
-          <Label htmlFor="username">Username</Label>
+          <Label htmlFor="username">Username {tagHash}</Label>
           <Input
             id="username"
             name="username"
@@ -98,8 +104,10 @@ Profile.propTypes = {
     email: PropTypes.string.isRequired,
     username: PropTypes.string,
   }),
+  userTag: PropTypes.string,
 };
 
 Profile.defaultProps = {
   userForm: undefined,
+  userTag: undefined,
 };
