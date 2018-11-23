@@ -8,7 +8,6 @@ import FlexContainer from 'primitives/flex-container';
 import Label from 'primitives/label';
 import Input from 'primitives/input';
 import { X } from 'constants/icons';
-import { useTextInput } from 'utils/custom-effects';
 
 import styles from './styles.module.scss';
 
@@ -22,58 +21,42 @@ ReactModal.setAppElement('#root');
 
 export default function LoginModal({
   isOpen,
-  onClose,
-  googleLogin,
+  error,
+  form,
   signup,
   login,
+  googleLogin,
   passwordReset,
-  error,
+  updateLoginForm,
+  toggleLoginModal,
 }) {
   const [page, setPage] = useState(LOGIN_PAGE_TYPES.login);
   const [isLoggginIn, setIsLoggingIn] = useState(false);
-  const [email, setEmail] = useTextInput();
-  const [password, setPassword] = useTextInput();
-  const [confirm, setConfirm] = useTextInput();
+  const { email, password, confirm } = form;
 
-  const onGoogle = async () => {
+  const onUpdate = key => e => updateLoginForm({ [key]: e.target.value });
+
+  const onConfirm = isGoogle => async () => {
     setIsLoggingIn(true);
     try {
-      await googleLogin();
-      onClose();
-      setIsLoggingIn(false);
-      setPage(LOGIN_PAGE_TYPES.login);
-      setEmail();
-      setPassword();
-      setConfirm();
-    } catch (e) {
-      setIsLoggingIn(false);
-    }
-  };
-
-  const onConfirm = async () => {
-    setIsLoggingIn(true);
-    try {
-      if (page === LOGIN_PAGE_TYPES.login) {
-        await login({ email, password });
+      if (isGoogle) {
+        await googleLogin();
+      } else if (page === LOGIN_PAGE_TYPES.login) {
+        await login();
       } else if (page === LOGIN_PAGE_TYPES.signup) {
-        await signup({ email, password, confirm });
+        await signup();
       } else {
-        await passwordReset({ email });
+        await passwordReset();
       }
-      onClose();
-      setIsLoggingIn(false);
       setPage(LOGIN_PAGE_TYPES.login);
-      setEmail();
-      setPassword();
-      setConfirm();
-    } catch (e) {
+    } finally {
       setIsLoggingIn(false);
     }
   };
 
   const submitOnEnter = e => {
     if (e.key === 'Enter') {
-      onConfirm();
+      onConfirm()();
     }
   };
 
@@ -90,7 +73,7 @@ export default function LoginModal({
           type="password"
           placeholder="Password"
           value={password}
-          onChange={setPassword}
+          onChange={onUpdate('password')}
           onKeyPress={submitOnEnter}
         />
       </div>
@@ -127,7 +110,7 @@ export default function LoginModal({
           type="password"
           placeholder="Confirm"
           value={confirm}
-          onChange={setConfirm}
+          onChange={onUpdate('confirm')}
           onKeyPress={submitOnEnter}
         />
       </div>
@@ -156,14 +139,14 @@ export default function LoginModal({
     <ReactModal
       contentLabel="Signup & Login"
       isOpen={isOpen}
-      onCancel={onClose}
+      onCancel={toggleLoginModal}
       className={styles.modal}
       overlayClassName={styles.overlay}
       ariaHideApp={false}
     >
-      <X className={styles.close} onClick={onClose} size={30} />
+      <X className={styles.close} onClick={toggleLoginModal} size={30} />
       <FlexContainer justify="center" align="center" direction="column">
-        <Button className={styles.google} onClick={onGoogle}>
+        <Button className={styles.google} onClick={onConfirm(true)}>
           Log in with Google
         </Button>
       </FlexContainer>
@@ -209,7 +192,7 @@ export default function LoginModal({
           name="email"
           placeholder="Email"
           value={email}
-          onChange={setEmail}
+          onChange={onUpdate('email')}
           onKeyPress={submitOnEnter}
         />
         {renderPassword()}
@@ -217,7 +200,7 @@ export default function LoginModal({
         {renderPasswordConfirm()}
         {renderError()}
         <FlexContainer className={styles.submit} justify="center">
-          <Button key="submit" onClick={onConfirm} isLoading={isLoggginIn}>
+          <Button key="submit" onClick={onConfirm()} isLoading={isLoggginIn}>
             {actionText}
           </Button>
         </FlexContainer>
@@ -228,12 +211,18 @@ export default function LoginModal({
 
 LoginModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired,
-  googleLogin: PropTypes.func.isRequired,
+  error: PropTypes.string,
+  form: PropTypes.shape({
+    email: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired,
+    confirm: PropTypes.string.isRequired,
+  }).isRequired,
   signup: PropTypes.func.isRequired,
   login: PropTypes.func.isRequired,
+  googleLogin: PropTypes.func.isRequired,
   passwordReset: PropTypes.func.isRequired,
-  error: PropTypes.string,
+  updateLoginForm: PropTypes.func.isRequired,
+  toggleLoginModal: PropTypes.func.isRequired,
 };
 
 LoginModal.defaultProps = {

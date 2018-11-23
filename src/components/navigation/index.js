@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { signout } from 'store/actions/session.actions';
+import { signout, toggleLoginModal } from 'store/actions/session.actions';
 import {
   getIsLoggedIn,
   getIsInitialized,
@@ -16,5 +16,5 @@ const mapStateToProps = createStructuredSelector({
 
 export default connect(
   mapStateToProps,
-  { signout },
+  { signout, toggleLoginModal },
 )(Navigation);

@@ -1,14 +1,24 @@
 import {
   SIGNED_OUT,
   AUTH_FAILURE,
-  UPDATED_FORM,
+  TOGGLED_LOGIN_MODAL,
+  UPDATED_LOGIN_FORM,
+  UPDATED_USER_FORM,
   UPDATED_USER,
 } from 'store/actions/session.actions';
 import { INITIALIZED_APP } from 'store/actions/combined.actions';
 
+const initialLoginForm = {
+  email: '',
+  password: '',
+  confirm: '',
+};
+
 const initialState = {
   isInitialized: false,
-  form: {},
+  isLoginModalOpen: false,
+  loginForm: initialLoginForm,
+  userForm: {},
   model: null,
   error: null,
 };
@@ -20,20 +30,29 @@ export default function deck(state = initialState, action) {
         ...state,
         error: null,
         isInitialized: true,
+        isLoginModalOpen: false,
         model: { ...(state.model || {}), ...action.user },
-        form: {
+        userForm: {
           email: (action.user || {}).email,
           username: (action.user || {}).username || '',
-          ...state.form,
+          ...state.userForm,
         },
       };
-    case UPDATED_FORM:
-      return { ...state, form: { ...state.form, ...action.form } };
+    case TOGGLED_LOGIN_MODAL:
+      return {
+        ...state,
+        isLoginModalOpen: !state.isLoginModalOpen,
+        loginForm: initialLoginForm,
+      };
+    case UPDATED_USER_FORM:
+      return { ...state, userForm: { ...state.userForm, ...action.form } };
+    case UPDATED_LOGIN_FORM:
+      return { ...state, loginForm: { ...state.loginForm, ...action.form } };
     case UPDATED_USER:
       return {
         ...state,
         model: { ...state.model, ...action.user },
-        form: { ...state.form, ...action.user },
+        userForm: { ...state.userForm, ...action.user },
       };
     case AUTH_FAILURE:
       return { ...state, error: action.error };

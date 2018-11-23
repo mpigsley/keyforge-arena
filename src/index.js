@@ -10,7 +10,6 @@ import 'firebase/storage';
 import 'firebase/auth';
 
 import store, { history } from 'store';
-import * as serviceWorker from 'serviceWorker';
 
 import Init from 'components/init';
 import Protected from 'primitives/protected-hoc';
@@ -51,5 +50,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root'),
 );
-
-serviceWorker.unregister();

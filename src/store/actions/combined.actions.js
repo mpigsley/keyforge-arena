@@ -30,6 +30,7 @@ export const initializeApp = user => async dispatch => {
     user: currentUser,
     decks,
   });
+  dispatch(push('/dashboard'));
 };
 
 export const initializeGame = gameId => async (dispatch, getState) => {

@@ -6,7 +6,7 @@ import {
   getUserForm,
   getUserTag,
 } from 'store/selectors/base.selectors';
-import { updateForm, updateUser } from 'store/actions/session.actions';
+import { updateUserForm, updateUser } from 'store/actions/session.actions';
 
 import Profile from './profile';
 
@@ -18,5 +18,5 @@ const mapStateToProps = createStructuredSelector({
 
 export default connect(
   mapStateToProps,
-  { updateForm, updateUser },
+  { updateUserForm, updateUser },
 )(Profile);

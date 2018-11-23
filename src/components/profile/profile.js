@@ -12,7 +12,7 @@ import styles from './styles.module.scss';
 export default function Profile({
   isInitialized,
   userForm,
-  updateForm,
+  updateUserForm,
   updateUser,
   userTag,
 }) {
@@ -27,7 +27,7 @@ export default function Profile({
     if (didUpdate) {
       setDidUpdate(false);
     }
-    updateForm({ [key]: e.target.value });
+    updateUserForm({ [key]: e.target.value });
   };
 
   const onUpdate = async () => {
@@ -98,7 +98,7 @@ export default function Profile({
 
 Profile.propTypes = {
   isInitialized: PropTypes.bool.isRequired,
-  updateForm: PropTypes.func.isRequired,
+  updateUserForm: PropTypes.func.isRequired,
   updateUser: PropTypes.func.isRequired,
   userForm: PropTypes.shape({
     email: PropTypes.string,

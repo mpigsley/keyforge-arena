@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -11,11 +11,10 @@ import styles from './styles.module.scss';
 export default function Navigation({
   children,
   signout,
+  toggleLoginModal,
   isLoggedIn,
   isInitialized,
 }) {
-  const [isLoginOpen, setIsLoginOpen] = useState(false);
-
   const renderProtectedLink = link => (isLoggedIn ? link : null);
 
   let links;
@@ -47,7 +46,7 @@ export default function Navigation({
             if (isLoggedIn) {
               signout();
             } else {
-              setIsLoginOpen(true);
+              toggleLoginModal();
             }
           }}
         >
@@ -80,7 +79,7 @@ export default function Navigation({
         </nav>
         <div className={styles.content}>{children}</div>
       </div>
-      <LoginModal isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} />
+      <LoginModal />
     </>
   );
 }
@@ -88,6 +87,7 @@ export default function Navigation({
 Navigation.propTypes = {
   children: PropTypes.node.isRequired,
   signout: PropTypes.func.isRequired,
+  toggleLoginModal: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
   isInitialized: PropTypes.bool.isRequired,
 };
