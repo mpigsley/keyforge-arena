@@ -15,6 +15,7 @@ import * as serviceWorker from 'serviceWorker';
 import Init from 'components/init';
 import Protected from 'primitives/protected-hoc';
 import Home from 'components/home';
+import Dashboard from 'components/dashboard';
 import Decks from 'components/decks';
 import Profile from 'components/profile';
 import GameBoard from 'components/game-board';
@@ -40,8 +41,9 @@ ReactDOM.render(
       <Switch>
         <Init>
           <Route exact path="/" component={Home} />
+          <Route exact path="/dashboard" component={Protected(Dashboard)} />
+          <Route exact path="/profile" component={Protected(Profile)} />
           <Route path="/decks/:id?" component={Protected(Decks)} />
-          <Route path="/profile" component={Protected(Profile)} />
           <Route path="/game/:id" component={Protected(GameBoard)} />
         </Init>
       </Switch>

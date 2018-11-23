@@ -66,7 +66,10 @@ export default function Navigation({
             align="center"
             justify="spaceBetween"
           >
-            <Link className={styles.homeText} to="/">
+            <Link
+              className={styles.homeText}
+              to={isLoggedIn ? '/dashboard' : '/'}
+            >
               <FlexContainer align="center">
                 <span className={styles.keyforgeText}>Keyforge</span>
                 <span className={styles.arenaText}>Arena</span>
