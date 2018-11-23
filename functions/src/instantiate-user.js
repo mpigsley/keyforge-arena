@@ -5,7 +5,7 @@ const { generateTag } = require('./utils');
 
 module.exports = functions.auth.user().onCreate(async user => {
   const { email } = user;
-  const username = email.split('@')[0];
+  const username = email.split('@')[0].replace(/\W/g, '');
   let tag;
 
   let isUnique = false;

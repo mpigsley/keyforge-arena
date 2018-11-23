@@ -5,6 +5,7 @@ import { getDecksByUser, getDecks } from 'store/api/deck.api';
 import { getCurrentUser } from 'store/api/session.api';
 import { getGame } from 'store/api/game.api';
 
+import { getPathname } from 'store/selectors/base.selectors';
 import { makeGetUnfetchedImageLinks } from 'store/selectors/image.selectors';
 
 import Houses from 'constants/houses';
@@ -16,7 +17,7 @@ export const INITIALIZED_APP = `${ACTION_PREFIX}/INITIALIZED_APP`;
 export const INITIALIZED_GAME = `${ACTION_PREFIX}/INITIALIZED_GAME`;
 export const FETCHED_IMAGE_LINKS = `${ACTION_PREFIX}/FETCHED_IMAGE_LINKS`;
 
-export const initializeApp = user => async dispatch => {
+export const initializeApp = user => async (dispatch, getState) => {
   const currentUser = user || (await getCurrentUser());
   let decks;
   if (currentUser) {
@@ -30,7 +31,11 @@ export const initializeApp = user => async dispatch => {
     user: currentUser,
     decks,
   });
-  dispatch(push('/dashboard'));
+
+  const state = getState();
+  if (getPathname(state) === '/') {
+    dispatch(push('/dashboard'));
+  }
 };
 
 export const initializeGame = gameId => async (dispatch, getState) => {

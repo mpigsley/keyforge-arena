@@ -13,7 +13,7 @@ module.exports = functions.firestore
     }
 
     let failSafe = 0;
-    let tagHash = tag;
+    let tagHash = tag || generateTag();
     let isUnique = false;
     const { userId } = context.params;
 
@@ -22,7 +22,7 @@ module.exports = functions.firestore
       const snapshot = await admin
         .firestore()
         .collection('users')
-        .where('username', '==', username)
+        .where('username', '==', username || '')
         .where('tag', '==', tagHash)
         .get();
 
