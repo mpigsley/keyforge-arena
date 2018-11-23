@@ -101,7 +101,7 @@ Profile.propTypes = {
   updateForm: PropTypes.func.isRequired,
   updateUser: PropTypes.func.isRequired,
   userForm: PropTypes.shape({
-    email: PropTypes.string.isRequired,
+    email: PropTypes.string,
     username: PropTypes.string,
   }),
   userTag: PropTypes.string,

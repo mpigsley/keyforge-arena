@@ -1,10 +1,12 @@
 const admin = require('firebase-admin');
 
 const submitDeck = require('./src/submit-deck');
-const generateUsername = require('./src/generate-username');
+const instantiateUser = require('./src/instantiate-user');
+const updateUser = require('./src/update-user');
 
 admin.initializeApp();
 admin.firestore().settings({ timestampsInSnapshots: true });
 
 exports.submitDeck = submitDeck;
-exports.generateUsername = generateUsername;
+exports.instantiateUser = instantiateUser;
+exports.updateUser = updateUser;

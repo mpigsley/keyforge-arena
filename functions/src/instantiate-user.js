@@ -9,7 +9,8 @@ module.exports = functions.auth.user().onCreate(async user => {
   let tag;
 
   let isUnique = false;
-  while (!isUnique) {
+  let failSafe = 0;
+  while (!isUnique && failSafe < 5) {
     tag = generateTag();
     // eslint-disable-next-line no-await-in-loop
     const doc = await admin
@@ -20,6 +21,7 @@ module.exports = functions.auth.user().onCreate(async user => {
       .get();
 
     isUnique = doc.empty;
+    failSafe += 1;
   }
 
   await admin

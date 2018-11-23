@@ -21,11 +21,13 @@ export const UPDATED_USER = `${ACTION_PREFIX}/UPDATED_USER`;
 
 let profileListenerRef;
 const onLogin = dispatch => result => {
-  const user = result.user ? result.user.toJSON() : result.toJSON();
-  profileListenerRef = profileListener(user.uid, update =>
+  const user = result.user ? result.user : result;
+  const json = user.toJSON();
+  profileListenerRef = profileListener(json.uid, update =>
     dispatch({ type: UPDATED_USER, user: update }),
   );
-  dispatch(initializeApp(user));
+  dispatch(initializeApp(json));
+  return user;
 };
 
 export const updateForm = form => ({ type: UPDATED_FORM, form });
@@ -61,7 +63,7 @@ export const signup = ({ email, password, confirm }) => dispatch => {
   }
   return doSignup(email, password)
     .then(onLogin(dispatch))
-    .then(result => (result.user || result).sendEmailVerification())
+    .then(user => user.sendEmailVerification())
     .catch(error => {
       dispatch({ type: AUTH_FAILURE, error: error.message });
       console.error(error);
@@ -94,10 +96,10 @@ export const passwordReset = ({ email }) => dispatch =>
 export const signout = () => dispatch =>
   doSignout()
     .then(() => {
-      dispatch(push('/'));
-      dispatch({ type: SIGNED_OUT });
       if (profileListenerRef) {
         profileListenerRef();
       }
+      dispatch(push('/'));
+      dispatch({ type: SIGNED_OUT });
     })
     .catch(console.error);

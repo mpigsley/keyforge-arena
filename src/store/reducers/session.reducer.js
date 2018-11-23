@@ -18,9 +18,9 @@ export default function deck(state = initialState, action) {
     case INITIALIZED_APP:
       return {
         ...state,
-        model: action.user,
         error: null,
         isInitialized: true,
+        model: { ...(state.model || {}), ...action.user },
         form: {
           email: (action.user || {}).email,
           username: (action.user || {}).username || '',
