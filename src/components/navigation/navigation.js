@@ -68,7 +68,8 @@ export default function Navigation({
           >
             <Link className={styles.homeText} to="/">
               <FlexContainer align="center">
-                <span className={styles.keyforgeText}>Keyforge</span> Arena
+                <span className={styles.keyforgeText}>Keyforge</span>
+                <span className={styles.arenaText}>Arena</span>
               </FlexContainer>
             </Link>
             {links}

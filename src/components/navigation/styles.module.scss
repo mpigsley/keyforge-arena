@@ -21,16 +21,19 @@ $nav-height: 75px;
 }
 
 .homeText {
-  color: $light;
   font-size: 2rem;
   font-weight: 100;
   text-decoration: none;
 }
 
 .keyforgeText {
-  color: #691317;
+  color: $primary;
   font-weight: bold;
   margin-right: 0.5rem;
+}
+
+.arenaText {
+  color: $medium;
 }
 
 .navLink {
