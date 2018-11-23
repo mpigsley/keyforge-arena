@@ -31,6 +31,14 @@ export default function Profile({
   };
 
   const onUpdate = async () => {
+    if (
+      !userForm.username.match('^[a-zA-Z0-9][a-zA-Z0-9_]*([.][a-z0-9_]+)*$')
+    ) {
+      setError(
+        'Username can only include alphanumeric characters and an underscore.',
+      );
+      return;
+    }
     setIsUpdating(true);
     try {
       await updateUser();
