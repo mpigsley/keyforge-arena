@@ -4,11 +4,13 @@ import classNames from 'classnames';
 
 import styles from './styles.module.scss';
 
-export default function Spinner({ className, size }) {
+export default function Spinner({ className, size, light }) {
   return (
     <div
       style={{ width: size, height: size }}
-      className={classNames(styles.spinner, className)}
+      className={classNames(styles.spinner, className, {
+        [styles.light]: light,
+      })}
     >
       <div className={classNames(styles.circle1, styles.child)} />
       <div className={classNames(styles.circle2, styles.child)} />
@@ -29,9 +31,11 @@ export default function Spinner({ className, size }) {
 Spinner.propTypes = {
   className: PropTypes.string,
   size: PropTypes.number,
+  light: PropTypes.bool,
 };
 
 Spinner.defaultProps = {
   className: null,
   size: 30,
+  light: false,
 };

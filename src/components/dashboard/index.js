@@ -1,11 +1,12 @@
-import React from 'react';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
-import Navigation from 'components/navigation';
+import { getIsInitialized } from 'store/selectors/base.selectors';
 
-export default function Dashboard() {
-  return (
-    <Navigation>
-      <h1>Dashboard</h1>
-    </Navigation>
-  );
-}
+import Dashboard from './dashboard';
+
+const mapStateToProps = createStructuredSelector({
+  isInitialized: getIsInitialized,
+});
+
+export default connect(mapStateToProps)(Dashboard);

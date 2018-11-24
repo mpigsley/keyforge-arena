@@ -5,7 +5,7 @@ import {
   getDeckSearchTerm,
   getUserId,
 } from 'store/selectors/base.selectors';
-import { includes, sortBy, map } from 'constants/lodash';
+import { find, includes, sortBy, map } from 'constants/lodash';
 
 const deckArray = createSelector(
   [getDecks],
@@ -22,8 +22,12 @@ const filteredDecks = createSelector(
     ),
 );
 
-// eslint-disable-next-line
 export const getSortedDecks = createSelector(
   [filteredDecks],
   decks => sortBy(decks, 'name'),
+);
+
+export const getSelectedDeck = createSelector(
+  [getSortedDecks],
+  decks => find(decks, { selected: true }) || decks[0],
 );

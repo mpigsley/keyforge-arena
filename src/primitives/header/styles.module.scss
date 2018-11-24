@@ -1,0 +1,27 @@
+@import '~styles/theme';
+
+.header {
+  color: $dark;
+  font-weight: 600;
+  margin: 1rem 0;
+
+  &--noMargin {
+    margin: 0;
+  }
+
+  &--1 {
+    font-size: 2rem;
+  }
+
+  &--2 {
+    font-size: 1.7rem;
+  }
+
+  &--3 {
+    font-size: 1.4rem;
+  }
+
+  &--4 {
+    font-size: 1.1rem;
+  }
+}

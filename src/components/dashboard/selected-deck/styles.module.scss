@@ -1,0 +1,26 @@
+@import '~styles/theme';
+
+.container {
+  margin-bottom: 1.5rem;
+}
+
+.deckName {
+  color: $medium;
+  font-weight: 100;
+  margin: 0.2rem 0;
+}
+
+$size: 30px;
+.houseImg {
+  height: $size;
+  margin-right: 1rem;
+  width: $size;
+}
+
+.actions {
+  margin-top: 1rem;
+}
+
+.action {
+  margin: 0 1rem 0 0;
+}

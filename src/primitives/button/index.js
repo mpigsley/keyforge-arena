@@ -11,17 +11,21 @@ export default function Button({
   children,
   className,
   minimal,
-  to,
+  primary,
   isLoading,
+  to,
   ...rest
 }) {
   const linkClass = classNames(className, {
     [styles.button]: !minimal,
     [styles.minimal]: minimal,
+    [styles.primary]: primary,
   });
   let loadingSpinner = null;
   if (isLoading) {
-    loadingSpinner = <Spinner size={20} className={styles.spinner} />;
+    loadingSpinner = (
+      <Spinner light={primary} size={20} className={styles.spinner} />
+    );
   }
 
   const innerContent = (
@@ -54,6 +58,7 @@ Button.propTypes = {
   to: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   className: PropTypes.string,
   minimal: PropTypes.bool,
+  primary: PropTypes.bool,
   isLoading: PropTypes.bool,
 };
 
@@ -61,5 +66,6 @@ Button.defaultProps = {
   to: null,
   className: null,
   minimal: false,
+  primary: false,
   isLoading: false,
 };

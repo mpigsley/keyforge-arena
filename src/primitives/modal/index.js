@@ -79,7 +79,7 @@ Modal.propTypes = {
   footerText: PropTypes.string,
   onCancel: PropTypes.func.isRequired,
   actionButtons: PropTypes.arrayOf(PropTypes.node),
-  width: PropTypes.number,
+  width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   hideHeader: PropTypes.bool,
 };
 

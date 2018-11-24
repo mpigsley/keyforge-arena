@@ -19,11 +19,15 @@ export default function AddDeckModal({ isOpen, onClose, submitNewDeck }) {
   const [link, setLink] = useTextInput();
 
   useEffect(() => {
-    setError();
-    onClose();
+    if (error) {
+      setError();
+    }
   });
 
   const onConfirm = async () => {
+    if (!link) {
+      return;
+    }
     setIsImporting(true);
     try {
       await submitNewDeck(link);
@@ -58,7 +62,12 @@ export default function AddDeckModal({ isOpen, onClose, submitNewDeck }) {
       isOpen={isOpen}
       onCancel={onClose}
       actionButtons={[
-        <Button key="submit" onClick={onConfirm} isLoading={isImporting}>
+        <Button
+          primary
+          key="submit"
+          onClick={onConfirm}
+          isLoading={isImporting}
+        >
           Import
         </Button>,
       ]}
