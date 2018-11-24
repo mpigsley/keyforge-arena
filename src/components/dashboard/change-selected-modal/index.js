@@ -6,6 +6,7 @@ import {
   getSortedDecks,
 } from 'store/selectors/deck.selectors';
 import { getHouseImages } from 'store/selectors/base.selectors';
+import { changeSelectedDeck } from 'store/actions/deck.actions';
 
 import ChangeSelectedModal from './change-selected-modal';
 
@@ -15,4 +16,7 @@ const mapStateToProps = createStructuredSelector({
   decks: getSortedDecks,
 });
 
-export default connect(mapStateToProps)(ChangeSelectedModal);
+export default connect(
+  mapStateToProps,
+  { changeSelectedDeck },
+)(ChangeSelectedModal);

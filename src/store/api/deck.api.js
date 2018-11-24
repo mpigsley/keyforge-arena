@@ -38,3 +38,9 @@ export const deleteDeck = id =>
     .collection('decks')
     .doc(id)
     .delete();
+
+export const updateDeck = (id, update) =>
+  Firebase.firestore()
+    .collection('decks')
+    .doc(id)
+    .set(update, { merge: true });

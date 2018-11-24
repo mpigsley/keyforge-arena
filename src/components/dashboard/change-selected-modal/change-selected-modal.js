@@ -23,8 +23,6 @@ export default function ChangeSelectedModal({
   selectedDeck,
   changeSelectedDeck,
 }) {
-  const [error, setError] = useState();
-  const [isChanging, setIsChanging] = useState(false);
   const previousIsOpen = usePrevious(isOpen);
   const [selected, setSelected] = useState();
 
@@ -34,15 +32,10 @@ export default function ChangeSelectedModal({
     }
   });
 
-  const onConfirm = async () => {
-    setIsChanging(true);
-    try {
-      await changeSelectedDeck(selected);
+  const onConfirm = () => {
+    if (selected !== selectedDeck.key) {
       onClose();
-    } catch (e) {
-      setError(e.message);
-    } finally {
-      setIsChanging(false);
+      changeSelectedDeck(selected);
     }
   };
 
@@ -53,9 +46,8 @@ export default function ChangeSelectedModal({
       noMargin
       isOpen={isOpen}
       onCancel={onClose}
-      footerText={error}
       actionButtons={[
-        <Button primary key="change" onClick={onConfirm} isLoading={isChanging}>
+        <Button primary key="change" onClick={onConfirm}>
           Change
         </Button>,
       ]}
@@ -68,6 +60,7 @@ export default function ChangeSelectedModal({
             <FlexContainer
               key={key}
               align="center"
+              onClick={() => setSelected(key)}
               className={classNames(styles.row, {
                 [styles['row--selected']]: isSelected,
               })}

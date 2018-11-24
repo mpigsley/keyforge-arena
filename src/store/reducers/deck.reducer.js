@@ -1,5 +1,6 @@
 import {
   SET_SEARCH_TERM,
+  UPDATED_DECKS,
   SUBMITTED,
   DELETED,
 } from 'store/actions/deck.actions';
@@ -20,6 +21,7 @@ export default function deck(state = initialState, action) {
   switch (action.type) {
     case INITIALIZED_APP:
     case INITIALIZED_GAME:
+    case UPDATED_DECKS:
       return { ...state, models: { ...state.models, ...action.decks } };
     case SET_SEARCH_TERM:
       return { ...state, searchTerm: action.searchTerm };
