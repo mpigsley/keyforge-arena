@@ -1,10 +1,49 @@
+@import '~styles/theme';
+
 .container {
   margin: 0 auto;
-  max-width: 50rem;
+  max-width: 60rem;
   padding: 1.5rem 1rem;
-  width: 100%;
+  width: calc(100% - 2rem);
 }
 
 .loadingContainer {
   margin-top: 10rem;
+}
+
+.friendsPlaceholder {
+  border-radius: 4px;
+  box-shadow: $box-shadow;
+  flex: 1;
+  height: 25rem;
+  margin-right: 0.75rem;
+}
+
+.games {
+  margin-top: 2rem;
+}
+
+.matchmakingBtn {
+  background-color: $veryLight;
+  border: 0;
+  border-radius: 4px;
+  box-shadow: $box-shadow;
+  flex: 1;
+  font-weight: 400;
+  margin-left: 0.75rem;
+  margin-bottom: 1.5rem;
+  outline: none;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.2s;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+.matchmakingText {
+  color: $medium;
+  font-weight: normal;
+  margin: 1rem 1rem 0;
 }

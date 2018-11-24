@@ -14,7 +14,7 @@ export default function SelectedDeck({ selectedDeck }) {
 
   if (!selectedDeck) {
     return (
-      <div className={styles.container}>
+      <>
         <Header num="3" noMargin>
           Add Deck to Begin
         </Header>
@@ -23,14 +23,14 @@ export default function SelectedDeck({ selectedDeck }) {
             Deck List
           </Button>
         </FlexContainer>
-      </div>
+      </>
     );
   }
 
   const { name, houses } = selectedDeck;
 
   return (
-    <div className={styles.container}>
+    <>
       <FlexContainer>
         <Header num="2" noMargin>
           Selected Deck
@@ -56,7 +56,7 @@ export default function SelectedDeck({ selectedDeck }) {
         isOpen={isChanging}
         onClose={() => setIsChanging(false)}
       />
-    </div>
+    </>
   );
 }
 
