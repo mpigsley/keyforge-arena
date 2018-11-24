@@ -10,7 +10,7 @@ import IconButton from 'primitives/icon-button';
 import Spinner from 'primitives/spinner';
 import Button from 'primitives/button';
 
-import { map, size, sortBy, capitalize } from 'constants/lodash';
+import { map, sortBy, capitalize } from 'constants/lodash';
 import { Trash } from 'constants/icons';
 import coreCards from 'constants/expansions/cota';
 import { getUniqueCards } from 'utils/deck';
@@ -121,13 +121,11 @@ export default function DeckDetails({
                 className={styles.house}
               >
                 <FlexContainer align="center" direction="column">
-                  {!!size(houseImages) && (
-                    <img
-                      className={styles.houseImg}
-                      src={houseImages[house]}
-                      alt={house}
-                    />
-                  )}
+                  <img
+                    className={styles.houseImg}
+                    src={houseImages[house]}
+                    alt={house}
+                  />
                   <h3>{capitalize(house)}</h3>
                 </FlexContainer>
                 <FlexContainer direction="column" className={styles.cards}>

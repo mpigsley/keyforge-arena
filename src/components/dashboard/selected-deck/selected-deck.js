@@ -9,7 +9,7 @@ import Button from 'primitives/button';
 
 import styles from './styles.module.scss';
 
-export default function SelectedDeck({ selectedDeck, houseImages }) {
+export default function SelectedDeck({ selectedDeck }) {
   const [isChanging, setIsChanging] = useState(false);
 
   if (!selectedDeck) {
@@ -65,7 +65,6 @@ SelectedDeck.propTypes = {
     name: PropTypes.string.isRequired,
     houses: PropTypes.shape().isRequired,
   }),
-  houseImages: PropTypes.shape({}).isRequired,
 };
 
 SelectedDeck.defaultProps = {
