@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import ChangeSelectedModal from 'components/dashboard/change-selected-modal';
 import FlexContainer from 'primitives/flex-container';
+import HouseIcons from 'components/house-icons';
 import Header from 'primitives/header';
 import Button from 'primitives/button';
 
@@ -27,7 +28,6 @@ export default function SelectedDeck({ selectedDeck, houseImages }) {
   }
 
   const { name, houses } = selectedDeck;
-  const houseKeys = Object.keys(houses);
 
   return (
     <div className={styles.container}>
@@ -39,16 +39,7 @@ export default function SelectedDeck({ selectedDeck, houseImages }) {
       <Header num="3" noMargin className={styles.deckName}>
         {name}
       </Header>
-      <FlexContainer>
-        {houseKeys.map(key => (
-          <img
-            key={key}
-            className={styles.houseImg}
-            src={houseImages[key]}
-            alt={key}
-          />
-        ))}
-      </FlexContainer>
+      <HouseIcons houses={houses} />
       <FlexContainer className={styles.actions}>
         <Button
           primary

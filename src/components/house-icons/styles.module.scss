@@ -1,0 +1,14 @@
+.container {
+  margin-top: 0.2rem;
+}
+
+$img-size: 28px;
+.img {
+  height: $img-size;
+  margin-right: 0.5rem;
+  width: $img-size;
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+}

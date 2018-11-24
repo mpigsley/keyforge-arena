@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import ReactModal from 'react-modal';
+import classNames from 'classnames';
 
-import Modal from 'primitives/modal';
-import Button from 'primitives/button';
 import FlexContainer from 'primitives/flex-container';
+import HouseIcons from 'components/house-icons';
+import Header from 'primitives/header';
+import Button from 'primitives/button';
+import Modal from 'primitives/modal';
+
+import { CheckCircle, Circle } from 'constants/icons';
 import { usePrevious } from 'utils/custom-effects';
 
 import styles from './styles.module.scss';
@@ -12,6 +17,7 @@ import styles from './styles.module.scss';
 ReactModal.setAppElement('#root');
 
 export default function ChangeSelectedModal({
+  decks,
   isOpen,
   onClose,
   selectedDeck,
@@ -40,30 +46,48 @@ export default function ChangeSelectedModal({
     }
   };
 
-  const renderError = () => {
-    if (!error) {
-      return null;
-    }
-    return (
-      <FlexContainer className={styles.error} justify="center">
-        {error}
-      </FlexContainer>
-    );
-  };
-
   return (
     <Modal
-      width="30rem"
       title="Change Selected Deck"
+      width="30rem"
+      noMargin
       isOpen={isOpen}
       onCancel={onClose}
+      footerText={error}
       actionButtons={[
         <Button primary key="change" onClick={onConfirm} isLoading={isChanging}>
           Change
         </Button>,
       ]}
     >
-      <FlexContainer direction="column">{renderError()}</FlexContainer>
+      <div className={styles.container}>
+        {decks.map(({ key, name, houses }) => {
+          const isSelected = key === selected;
+          const Icon = isSelected ? CheckCircle : Circle;
+          return (
+            <FlexContainer
+              key={key}
+              align="center"
+              className={classNames(styles.row, {
+                [styles['row--selected']]: isSelected,
+              })}
+            >
+              <Icon
+                size="30px"
+                className={classNames(styles.icon, {
+                  [styles['icon--selected']]: isSelected,
+                })}
+              />
+              <FlexContainer direction="column">
+                <Header num="4" noMargin>
+                  {name}
+                </Header>
+                <HouseIcons houses={houses} />
+              </FlexContainer>
+            </FlexContainer>
+          );
+        })}
+      </div>
     </Modal>
   );
 }
@@ -75,4 +99,11 @@ ChangeSelectedModal.propTypes = {
     key: PropTypes.string.isRequired,
   }).isRequired,
   changeSelectedDeck: PropTypes.func.isRequired,
+  decks: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      houses: PropTypes.shape().isRequired,
+      key: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
 };

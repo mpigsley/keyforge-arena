@@ -1,0 +1,29 @@
+@import '~styles/theme';
+
+.container {
+  height: 20rem;
+  overflow-y: auto;
+}
+
+.row {
+  border-bottom: 1px solid $border;
+  cursor: pointer;
+  padding: 1rem;
+
+  &--selected {
+    cursor: default;
+  }
+
+  &--selected,
+  &:hover {
+    background-color: $veryLight;
+  }
+}
+
+.icon {
+  margin: 0 1.5rem 0 0.5rem;
+
+  &--selected {
+    stroke: $active;
+  }
+}

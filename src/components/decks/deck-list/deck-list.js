@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { size } from 'constants/lodash';
 
 import FlexContainer from 'primitives/flex-container';
+import HouseIcons from 'components/house-icons';
 
 import styles from './styles.module.scss';
 
@@ -13,20 +14,7 @@ export default function DeckList({ className, decks, houseImages }) {
       {decks.map(({ key, name, houses }) => {
         let imgRow;
         if (size(houseImages)) {
-          imgRow = (
-            <FlexContainer>
-              {Object.keys(houses)
-                .sort()
-                .map(house => (
-                  <img
-                    key={house}
-                    className={styles.houseImg}
-                    alt={house}
-                    src={houseImages[house]}
-                  />
-                ))}
-            </FlexContainer>
-          );
+          imgRow = <HouseIcons houses={houses} />;
         }
         return (
           <NavLink

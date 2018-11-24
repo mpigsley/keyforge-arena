@@ -19,6 +19,7 @@ export default function Modal({
   onCancel,
   actionButtons,
   width,
+  noMargin,
   hideHeader,
   ...rest
 }) {
@@ -47,7 +48,13 @@ export default function Modal({
     >
       <FlexContainer direction="column">
         {header}
-        <div className={styles.content}>{children}</div>
+        <div
+          className={classNames(styles.content, {
+            [styles['content--noMargin']]: noMargin,
+          })}
+        >
+          {children}
+        </div>
         <FlexContainer
           align="center"
           justify={footerText ? 'spaceBetween' : 'flexEnd'}
@@ -80,6 +87,7 @@ Modal.propTypes = {
   onCancel: PropTypes.func.isRequired,
   actionButtons: PropTypes.arrayOf(PropTypes.node),
   width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  noMargin: PropTypes.bool,
   hideHeader: PropTypes.bool,
 };
 
@@ -90,5 +98,6 @@ Modal.defaultProps = {
   footerText: undefined,
   actionButtons: undefined,
   width: 400,
+  noMargin: false,
   hideHeader: false,
 };
