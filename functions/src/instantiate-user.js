@@ -30,7 +30,7 @@ module.exports = functions.auth.user().onCreate(async user => {
       .firestore()
       .collection('users')
       .doc(user.uid),
-    { username, tag, friends: [] },
+    { username, tag },
   );
   batch.set(
     admin

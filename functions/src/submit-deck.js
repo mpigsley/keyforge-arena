@@ -10,7 +10,7 @@ const EXPANSIONS = {
 module.exports = functions.https.onCall(async ({ link }, context) => {
   if (!context.auth) {
     throw new functions.https.HttpsError(
-      'failed-precondition',
+      'unauthenticated',
       'The function must be called while authenticated.',
     );
   }
@@ -82,6 +82,6 @@ module.exports = functions.https.onCall(async ({ link }, context) => {
       throw e;
     }
     console.error(e);
-    throw new functions.https.HttpsError('not-found', 'Deck link is not valid');
+    throw new functions.https.HttpsError('unknown', 'Deck link is not valid');
   }
 });
