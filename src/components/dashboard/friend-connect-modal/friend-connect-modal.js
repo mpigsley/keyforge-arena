@@ -24,8 +24,9 @@ export default function FriendConnectModal({ isOpen, onClose, userId }) {
   const [friend, setFriend] = useState();
 
   useEffect(() => {
-    if (!previousIsOpen && isOpen) {
-      // unset the found friend if it exists
+    if (previousIsOpen && !isOpen) {
+      setResult('');
+      setFriend();
     }
   });
 
@@ -33,12 +34,10 @@ export default function FriendConnectModal({ isOpen, onClose, userId }) {
     setIsSearching(true);
     const uid = await searchForUser(search, userId);
     setIsSearching(false);
+    setFriend(uid);
     setResult(
       uid ? 'User found! Send request to continue.' : 'User was not found',
     );
-    if (uid) {
-      setFriend(uid);
-    }
   };
 
   return (
@@ -94,5 +93,9 @@ export default function FriendConnectModal({ isOpen, onClose, userId }) {
 FriendConnectModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
-  userId: PropTypes.string.isRequired,
+  userId: PropTypes.string,
+};
+
+FriendConnectModal.defaultProps = {
+  userId: undefined,
 };

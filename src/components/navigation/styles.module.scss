@@ -62,3 +62,8 @@ $nav-height: 75px;
 .content {
   height: calc(100vh - #{$nav-height});
 }
+
+.tag {
+  color: $medium;
+  font-size: 1rem;
+}

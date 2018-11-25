@@ -1,12 +1,12 @@
 import {
   SIGNED_OUT,
   AUTH_FAILURE,
+  INITIALIZED_APP,
   TOGGLED_LOGIN_MODAL,
   UPDATED_LOGIN_FORM,
   UPDATED_USER_FORM,
   UPDATED_USER,
 } from 'store/actions/session.actions';
-import { INITIALIZED_APP } from 'store/actions/combined.actions';
 
 const initialLoginForm = {
   email: '',

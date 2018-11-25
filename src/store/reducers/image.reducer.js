@@ -1,8 +1,6 @@
-import {
-  INITIALIZED_APP,
-  INITIALIZED_GAME,
-} from 'store/actions/combined.actions';
+import { INITIALIZED_GAME } from 'store/actions/combined.actions';
 import { FETCHED_CARD_LINKS } from 'store/actions/image.actions';
+import { INITIALIZED_APP } from 'store/actions/session.actions';
 
 const initialState = {
   houses: {},

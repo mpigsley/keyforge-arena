@@ -9,11 +9,12 @@ import { LogOut } from 'constants/icons';
 import styles from './styles.module.scss';
 
 export default function Navigation({
-  children,
+  user,
   signout,
-  toggleLoginModal,
+  children,
   isLoggedIn,
   isInitialized,
+  toggleLoginModal,
 }) {
   const renderProtectedLink = link => (isLoggedIn ? link : null);
 
@@ -36,7 +37,8 @@ export default function Navigation({
             className={styles.navLink}
             activeClassName={styles['navLink--active']}
           >
-            Profile
+            {(user || {}).username}
+            <span className={styles.tag}>#{(user || {}).tag}</span>
           </NavLink>,
         )}
         <button
@@ -90,4 +92,12 @@ Navigation.propTypes = {
   toggleLoginModal: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
   isInitialized: PropTypes.bool.isRequired,
+  user: PropTypes.shape({
+    tag: PropTypes.string,
+    username: PropTypes.string,
+  }),
+};
+
+Navigation.defaultProps = {
+  user: {},
 };
