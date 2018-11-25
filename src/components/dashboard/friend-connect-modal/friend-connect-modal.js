@@ -21,12 +21,12 @@ export default function FriendConnectModal({ isOpen, onClose, userId }) {
   const [search, setSearch] = useTextInput();
   const [isSearching, setIsSearching] = useState(false);
   const [result, setResult] = useState('');
-  const [friend, setFriend] = useState();
+  const [connection, setConnection] = useState();
 
   useEffect(() => {
     if (previousIsOpen && !isOpen) {
       setResult('');
-      setFriend();
+      setConnection();
     }
   });
 
@@ -34,7 +34,7 @@ export default function FriendConnectModal({ isOpen, onClose, userId }) {
     setIsSearching(true);
     const uid = await searchForUser(search, userId);
     setIsSearching(false);
-    setFriend(uid);
+    setConnection(uid);
     setResult(
       uid ? 'User found! Send request to continue.' : 'User was not found',
     );
@@ -47,15 +47,15 @@ export default function FriendConnectModal({ isOpen, onClose, userId }) {
       isOpen={isOpen}
       onCancel={onClose}
       actionButtons={[
-        <Button primary key="change" disabled={!friend} onClick={() => {}}>
+        <Button primary key="change" disabled={!connection} onClick={() => {}}>
           Send Request
         </Button>,
       ]}
     >
       <div className={styles.container}>
         <p className={styles.instructions}>
-          Search for friends using either their email or their username and tag
-          (e.g. username#tag).
+          Search using either an email or a username and tag (e.g.
+          username#tag).
         </p>
         <FlexContainer align="flexEnd" className={styles.searchContainer}>
           <FlexContainer direction="column" flex="1">
@@ -80,8 +80,8 @@ export default function FriendConnectModal({ isOpen, onClose, userId }) {
       </div>
       <p
         className={classNames(styles.instructions, {
-          [styles.success]: friend,
-          [styles.failure]: !friend,
+          [styles.success]: connection,
+          [styles.failure]: !connection,
         })}
       >
         {result}

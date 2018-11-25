@@ -66,7 +66,7 @@ export default function Profile({
   if (isInitialized) {
     profile = (
       <>
-        <p>Friends can find you by your email or username and tag.</p>
+        <p>Other users can find you by your email or username and tag.</p>
         <div className={styles.inputRow}>
           <Label htmlFor="email">Email</Label>
           <Input id="email" name="email" disabled value={userForm.email} />

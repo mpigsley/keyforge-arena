@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import ReactHintFactory from 'react-hint';
 
 import SelectedDeck from 'components/dashboard/selected-deck';
-import FriendList from 'components/dashboard/friend-list';
+import ConnectionList from 'components/dashboard/connection-list';
 import FlexContainer from 'primitives/flex-container';
 import Navigation from 'components/navigation';
 import Spinner from 'primitives/spinner';
@@ -28,7 +28,7 @@ export default function Dashboard({ isInitialized }) {
       <FlexContainer direction="column">
         <SelectedDeck />
         <FlexContainer className={styles.games}>
-          <FriendList />
+          <ConnectionList />
           <FlexContainer direction="column" flex="1">
             <button
               type="button"
