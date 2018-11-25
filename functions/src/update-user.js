@@ -33,13 +33,26 @@ module.exports = functions.firestore
       }
     }
 
+    const batch = admin.firestore().batch();
     if (tagHash === tag) {
-      return;
+      batch.set(
+        admin
+          .firestore()
+          .collection('users')
+          .doc(userId),
+        { tag: tagHash },
+        { merge: true },
+      );
     }
 
-    await admin
-      .firestore()
-      .collection('users')
-      .doc(userId)
-      .set({ tag: tagHash }, { merge: true });
+    batch.set(
+      admin
+        .firestore()
+        .collection('user-search')
+        .doc(userId),
+      { username: `${username}#${tag}` },
+      { merge: true },
+    );
+
+    await batch.commit();
   });

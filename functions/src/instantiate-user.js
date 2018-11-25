@@ -24,9 +24,20 @@ module.exports = functions.auth.user().onCreate(async user => {
     failSafe += 1;
   }
 
-  await admin
-    .firestore()
-    .collection('users')
-    .doc(user.uid)
-    .set({ email, username, tag });
+  const batch = admin.firestore().batch();
+  batch.set(
+    admin
+      .firestore()
+      .collection('users')
+      .doc(user.uid),
+    { username, tag, friends: [] },
+  );
+  batch.set(
+    admin
+      .firestore()
+      .collection('user-search')
+      .doc(user.uid),
+    { email, username: `${username}#${tag}` },
+  );
+  await batch.commit();
 });
