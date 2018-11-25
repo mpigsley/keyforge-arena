@@ -9,35 +9,66 @@ import Input from 'primitives/input';
 import Label from 'primitives/label';
 import Modal from 'primitives/modal';
 
-import { usePrevious, useTextInput } from 'utils/custom-effects';
+import { usePrevious } from 'utils/custom-effects';
 import { searchForUser } from 'store/api/search.api';
 
 import styles from './styles.module.scss';
 
 ReactModal.setAppElement('#root');
 
-export default function FriendConnectModal({ isOpen, onClose, userId }) {
+export default function FriendConnectModal({
+  isOpen,
+  onClose,
+  userId,
+  requestConnection,
+}) {
   const previousIsOpen = usePrevious(isOpen);
-  const [search, setSearch] = useTextInput();
-  const [isSearching, setIsSearching] = useState(false);
-  const [result, setResult] = useState('');
-  const [connection, setConnection] = useState();
+  const [state, setState] = useState({
+    search: '',
+    isSearching: false,
+    isRequesting: false,
+    result: '',
+    connection: undefined,
+  });
+
+  const { search, isSearching, isRequesting, result, connection } = state;
 
   useEffect(() => {
     if (previousIsOpen && !isOpen) {
-      setResult('');
-      setConnection();
+      setState({
+        ...state,
+        isRequesting: false,
+        connection: undefined,
+        search: '',
+        result: '',
+      });
     }
   });
 
   const onSearch = async () => {
-    setIsSearching(true);
+    setState({
+      ...state,
+      isSearching: true,
+    });
     const uid = await searchForUser(search, userId);
-    setIsSearching(false);
-    setConnection(uid);
-    setResult(
-      uid ? 'User found! Send request to continue.' : 'User was not found',
-    );
+    setState({
+      ...state,
+      isSearching: false,
+      connection: uid,
+      search: '',
+      result: uid
+        ? 'User found! Send request to continue.'
+        : 'User was not found',
+    });
+  };
+
+  const onRequest = async () => {
+    setState({
+      ...state,
+      isRequesting: true,
+    });
+    await requestConnection(connection);
+    onClose();
   };
 
   return (
@@ -47,7 +78,13 @@ export default function FriendConnectModal({ isOpen, onClose, userId }) {
       isOpen={isOpen}
       onCancel={onClose}
       actionButtons={[
-        <Button primary key="change" disabled={!connection} onClick={() => {}}>
+        <Button
+          primary
+          key="change"
+          disabled={!connection}
+          isLoading={isRequesting}
+          onClick={onRequest}
+        >
           Send Request
         </Button>,
       ]}
@@ -64,7 +101,7 @@ export default function FriendConnectModal({ isOpen, onClose, userId }) {
               id="search"
               name="search"
               value={search}
-              onChange={setSearch}
+              onChange={e => setState({ ...state, search: e.target.value })}
             />
           </FlexContainer>
           <Button
@@ -72,7 +109,7 @@ export default function FriendConnectModal({ isOpen, onClose, userId }) {
             disabled={!search}
             className={styles.search}
             isLoading={isSearching}
-            onClick={onSearch}
+            onClick={() => onSearch()}
           >
             Search
           </Button>
@@ -94,6 +131,7 @@ FriendConnectModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
   userId: PropTypes.string,
+  requestConnection: PropTypes.func.isRequired,
 };
 
 FriendConnectModal.defaultProps = {

@@ -13,7 +13,7 @@ module.exports = functions.https.onCall(
     try {
       const batch = admin.firestore().batch();
       if (accepted) {
-        batch.update(
+        batch.set(
           admin
             .firestore()
             .collection('connections')
@@ -22,26 +22,24 @@ module.exports = functions.https.onCall(
             pending: admin.firestore.FieldValue.arrayRemove(connnection),
             active: admin.firestore.FieldValue.arrayUnion(connnection),
           },
+          { merge: true },
         );
-        batch.update(
+        batch.set(
           admin
             .firestore()
             .collection('connections')
             .doc(connection),
-          {
-            active: admin.firestore.FieldValue.arrayUnion(context.auth.uid),
-          },
+          { active: admin.firestore.FieldValue.arrayUnion(context.auth.uid) },
+          { merge: true },
         );
       } else {
-        // Delete current user's friend connection
-        batch.update(
+        batch.set(
           admin
             .firestore()
             .collection('connections')
             .doc(context.auth.uid),
-          {
-            pending: admin.firestore.FieldValue.arrayRemove(connnection),
-          },
+          { pending: admin.firestore.FieldValue.arrayRemove(connnection) },
+          { merge: true },
         );
       }
       await batch.commit();

@@ -19,6 +19,7 @@ import Decks from 'components/decks';
 import Profile from 'components/profile';
 import GameBoard from 'components/game-board';
 
+import 'react-redux-toastr/src/styles/index.scss';
 import 'react-hint/css/index.css';
 import 'styles/global.scss';
 

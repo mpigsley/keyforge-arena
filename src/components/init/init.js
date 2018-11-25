@@ -1,4 +1,5 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
+import ReduxToastr from 'react-redux-toastr';
 import PropTypes from 'prop-types';
 
 export default function Init({ children, initializeApp }) {
@@ -6,7 +7,12 @@ export default function Init({ children, initializeApp }) {
     initializeApp();
   }, []);
 
-  return children;
+  return (
+    <>
+      {children}
+      <ReduxToastr position="bottom-left" newestOnTop={false} progressBar />
+    </>
+  );
 }
 
 Init.propTypes = {
