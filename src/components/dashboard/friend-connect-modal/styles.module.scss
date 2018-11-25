@@ -1,0 +1,25 @@
+@import '~styles/theme';
+
+.instructions {
+  color: $medium;
+  margin: 0;
+}
+
+.success {
+  color: $active;
+  text-align: center;
+}
+
+.failure {
+  color: red;
+  text-align: center;
+}
+
+.search {
+  margin-bottom: 0;
+  margin-right: 0;
+}
+
+.searchContainer {
+  margin-bottom: 1rem;
+}

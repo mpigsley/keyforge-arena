@@ -17,7 +17,7 @@ export default function ConfirmModal({
       cancelText="No"
       title="Confirm"
       actionButtons={[
-        <Button key="save" onClick={onConfirm}>
+        <Button primary key="save" onClick={onConfirm}>
           Yes
         </Button>,
       ]}

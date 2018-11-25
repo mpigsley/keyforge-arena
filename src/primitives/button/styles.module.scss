@@ -25,6 +25,12 @@
   &:disabled,
   &:disabled:hover {
     border-color: $dark;
+    box-shadow: none;
+    cursor: default;
+
+    .inner {
+      color: $medium !important;
+    }
   }
 
   &:hover {
@@ -60,7 +66,7 @@
 
   .inner {
     color: $dark;
-    transition: color 0.2s;
+    transition: all 0.2s;
   }
 
   &:hover {

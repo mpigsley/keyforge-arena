@@ -24,4 +24,9 @@
   &--4 {
     font-size: 1.1rem;
   }
+
+  &--minor {
+    color: $medium;
+    font-weight: normal;
+  }
 }

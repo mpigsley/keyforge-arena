@@ -9,6 +9,7 @@ export default function Header({
   className,
   dark,
   noMargin,
+  minor,
   children,
   ...rest
 }) {
@@ -20,7 +21,10 @@ export default function Header({
         styles.header,
         styles[`header--${num}`],
         className,
-        { [styles['header--noMargin']]: noMargin },
+        {
+          [styles['header--noMargin']]: noMargin,
+          [styles['header--minor']]: minor,
+        },
       )}
     >
       {children}
@@ -33,10 +37,12 @@ Header.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
   noMargin: PropTypes.bool,
+  minor: PropTypes.bool,
 };
 
 Header.defaultProps = {
   num: '1',
   className: null,
   noMargin: false,
+  minor: false,
 };

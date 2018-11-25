@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import ReactHintFactory from 'react-hint';
 
 import SelectedDeck from 'components/dashboard/selected-deck';
+import FriendList from 'components/dashboard/friend-list';
 import FlexContainer from 'primitives/flex-container';
 import Navigation from 'components/navigation';
 import Spinner from 'primitives/spinner';
@@ -27,17 +28,15 @@ export default function Dashboard({ isInitialized }) {
       <FlexContainer direction="column">
         <SelectedDeck />
         <FlexContainer className={styles.games}>
-          <div className={styles.friendsPlaceholder} />
+          <FriendList />
           <FlexContainer direction="column" flex="1">
             <button
               type="button"
               className={styles.matchmakingBtn}
               data-rh="Matchmaking coming soon!"
             >
-              <Header num="2" noMargin>
-                Matchmaking
-              </Header>
-              <Header num="4" className={styles.matchmakingText}>
+              <Header num="2">Matchmaking</Header>
+              <Header num="4" minor>
                 Use your selected deck to play against a random opponent
               </Header>
             </button>
@@ -46,10 +45,8 @@ export default function Dashboard({ isInitialized }) {
               className={styles.matchmakingBtn}
               data-rh="Random deck coming soon!"
             >
-              <Header num="2" noMargin>
-                Random Deck
-              </Header>
-              <Header num="4" className={styles.matchmakingText}>
+              <Header num="2">Random Deck</Header>
+              <Header num="4" minor>
                 You’ll be given a random deck and a random opponent
               </Header>
             </button>
