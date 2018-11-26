@@ -3,6 +3,8 @@ export const getDecks = state => state.deck.models;
 export const getDeckSearchTerm = state => state.deck.searchTerm;
 export const getIsSubmitModalOpen = state => state.deck.isSubmitModalOpen;
 export const getIsSubmittingDeck = state => state.deck.isSubmittingDeck;
+export const getIsChangeModalOpen = state => state.deck.isChangeModalOpen;
+export const getIsChangingSelected = state => state.deck.isChangingSelected;
 export const getDeckError = state => state.deck.error;
 
 /* Image */

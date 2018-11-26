@@ -1,9 +1,15 @@
 import { put, all, takeEvery, call } from 'redux-saga/effects';
 import { push } from 'connected-react-router';
 
-import { UPDATED, SUBMITTED, DELETED } from 'store/actions/deck.actions';
+import {
+  UPDATED,
+  SUBMITTED,
+  DELETED,
+  CHANGED_SELECTED,
+} from 'store/actions/deck.actions';
 import { LOGGED_IN } from 'store/actions/user.actions';
 import {
+  updateDeck,
   getDecksByUser,
   submitDeck as callSubmitDeck,
   deleteDeck as callDeleteDeck,
@@ -40,10 +46,23 @@ function* deleteDeck({ id }) {
   }
 }
 
+function* changeSelected({ previous, current }) {
+  try {
+    yield all([
+      updateDeck(previous, { selected: false }),
+      updateDeck(current, { selected: true }),
+    ]);
+    yield put(createAction(CHANGED_SELECTED.SUCCESS, { previous, current }));
+  } catch (error) {
+    yield put(createAction(CHANGED_SELECTED.ERROR, { error: error.message }));
+  }
+}
+
 export default function*() {
   yield all([
     takeEvery(LOGGED_IN.SUCCESS, fetchDecks),
     takeEvery(SUBMITTED.PENDING, submitDeck),
     takeEvery(DELETED.PENDING, deleteDeck),
+    takeEvery(CHANGED_SELECTED.PENDING, changeSelected),
   ]);
 }

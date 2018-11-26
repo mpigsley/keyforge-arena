@@ -19,9 +19,10 @@ ReactModal.setAppElement('#root');
 export default function ChangeSelectedModal({
   decks,
   isOpen,
-  onClose,
+  isChanging,
+  toggleChangeModal,
   selectedDeck,
-  changeSelectedDeck,
+  changeSelected,
 }) {
   const previousIsOpen = usePrevious(isOpen);
   const [selected, setSelected] = useState();
@@ -34,8 +35,7 @@ export default function ChangeSelectedModal({
 
   const onConfirm = () => {
     if (selected !== selectedDeck.key) {
-      onClose();
-      changeSelectedDeck(selected);
+      changeSelected(selectedDeck.key, selected);
     }
   };
 
@@ -45,9 +45,9 @@ export default function ChangeSelectedModal({
       width="30rem"
       noMargin
       isOpen={isOpen}
-      onCancel={onClose}
+      onCancel={toggleChangeModal}
       actionButtons={[
-        <Button primary key="change" onClick={onConfirm}>
+        <Button primary key="change" onClick={onConfirm} isLoading={isChanging}>
           Change
         </Button>,
       ]}
@@ -87,11 +87,12 @@ export default function ChangeSelectedModal({
 
 ChangeSelectedModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired,
+  isChanging: PropTypes.bool.isRequired,
+  toggleChangeModal: PropTypes.func.isRequired,
   selectedDeck: PropTypes.shape({
     key: PropTypes.string.isRequired,
   }).isRequired,
-  changeSelectedDeck: PropTypes.func.isRequired,
+  changeSelected: PropTypes.func.isRequired,
   decks: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,

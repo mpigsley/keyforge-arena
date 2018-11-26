@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import ChangeSelectedModal from 'components/dashboard/change-selected-modal';
@@ -9,9 +9,7 @@ import Button from 'primitives/button';
 
 import styles from './styles.module.scss';
 
-export default function SelectedDeck({ selectedDeck }) {
-  const [isChanging, setIsChanging] = useState(false);
-
+export default function SelectedDeck({ selectedDeck, toggleChangeModal }) {
   if (!selectedDeck) {
     return (
       <>
@@ -41,26 +39,20 @@ export default function SelectedDeck({ selectedDeck }) {
       </Header>
       <HouseIcons houses={houses} />
       <FlexContainer className={styles.actions}>
-        <Button
-          primary
-          className={styles.action}
-          onClick={() => setIsChanging(true)}
-        >
+        <Button primary className={styles.action} onClick={toggleChangeModal}>
           Change
         </Button>
         <Button className={styles.action} to="/decks">
           Manage Decks
         </Button>
       </FlexContainer>
-      <ChangeSelectedModal
-        isOpen={isChanging}
-        onClose={() => setIsChanging(false)}
-      />
+      <ChangeSelectedModal />
     </>
   );
 }
 
 SelectedDeck.propTypes = {
+  toggleChangeModal: PropTypes.func.isRequired,
   selectedDeck: PropTypes.shape({
     name: PropTypes.string.isRequired,
     houses: PropTypes.shape().isRequired,
