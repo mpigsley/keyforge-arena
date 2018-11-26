@@ -5,6 +5,7 @@ import {
   getAuthError,
   getIsLoginModalOpen,
   getLoginForm,
+  getIsLoggingIn,
 } from 'store/selectors/base.selectors';
 import {
   authenticate,
@@ -17,6 +18,7 @@ import LoginModal from './login-modal';
 
 const mapStateToProps = createStructuredSelector({
   isOpen: getIsLoginModalOpen,
+  isLoggingIn: getIsLoggingIn,
   error: getAuthError,
   form: getLoginForm,
 });

@@ -38,8 +38,15 @@ export const profileListener = (uid, cb) =>
 export const googleLogin = () =>
   Firebase.auth().signInWithPopup(new Firebase.auth.GoogleAuthProvider());
 
-export const signup = ({ email, password }) =>
-  Firebase.auth().createUserWithEmailAndPassword(email, password);
+export const signup = ({ email, password, confirm }) => {
+  if (!email || !password || !confirm) {
+    throw new Error('Email and password are required.');
+  }
+  if (password !== confirm) {
+    throw new Error('Passwords do not match.');
+  }
+  return Firebase.auth().createUserWithEmailAndPassword(email, password);
+};
 
 export const login = ({ email, password }) =>
   Firebase.auth().signInWithEmailAndPassword(email, password);

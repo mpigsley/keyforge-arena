@@ -9,13 +9,14 @@ export const getCardImages = state => state.image.cards;
 /* Router */
 export const getPathname = state => state.router.location.pathname;
 
-/* Session */
-export const getAuthError = state => state.session.error;
-export const getUser = state => state.session.model;
-export const getUserId = state => (state.session.model || {}).uid;
-export const getUserTag = state => (state.session.model || {}).tag;
-export const getUserForm = state => state.session.userForm;
-export const getLoginForm = state => state.session.loginForm;
-export const getIsLoggedIn = state => !!(state.session.model || {}).uid;
-export const getIsLoginModalOpen = state => state.session.isLoginModalOpen;
-export const getIsInitialized = state => state.session.isInitialized;
+/* User */
+export const getAuthError = state => state.user.error;
+export const getUser = state => state.user.model;
+export const getUserId = state => (state.user.model || {}).uid;
+export const getUserTag = state => (state.user.model || {}).tag;
+export const getUserForm = state => state.user.userForm;
+export const getLoginForm = state => state.user.loginForm;
+export const getIsLoggedIn = state => !!(state.user.model || {}).uid;
+export const getIsLoggingIn = state => state.user.isLoggingIn;
+export const getIsLoginModalOpen = state => state.user.isLoginModalOpen;
+export const getIsInitialized = state => state.user.isInitialized;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import ReactModal from 'react-modal';
 import classNames from 'classnames';
@@ -8,6 +8,7 @@ import FlexContainer from 'primitives/flex-container';
 import Label from 'primitives/label';
 import Input from 'primitives/input';
 import { X } from 'constants/icons';
+import { usePrevious } from 'utils/custom-effects';
 
 import styles from './styles.module.scss';
 
@@ -21,6 +22,7 @@ ReactModal.setAppElement('#root');
 
 export default function LoginModal({
   isOpen,
+  isLoggingIn,
   error,
   form,
   authenticate,
@@ -29,23 +31,23 @@ export default function LoginModal({
   toggleLoginModal,
 }) {
   const [page, setPage] = useState(LOGIN_PAGE_TYPES.login);
-  const [isLoggginIn, setIsLoggingIn] = useState(false);
+  const previousIsOpen = usePrevious(isOpen);
   const { email, password, confirm } = form;
+
+  useEffect(() => {
+    if (previousIsOpen && !isOpen) {
+      setPage(LOGIN_PAGE_TYPES.login);
+    }
+  });
 
   const onUpdate = key => e => updateLoginForm({ [key]: e.target.value });
 
   const onConfirm = isGoogle => async () => {
-    setIsLoggingIn(true);
-    try {
-      if (page === LOGIN_PAGE_TYPES.forget) {
-        await passwordReset();
-      } else {
-        const key = isGoogle ? 'google' : page;
-        authenticate(key, form);
-      }
-      setPage(LOGIN_PAGE_TYPES.login);
-    } finally {
-      setIsLoggingIn(false);
+    if (page === LOGIN_PAGE_TYPES.forget) {
+      await passwordReset();
+    } else {
+      const key = isGoogle ? 'google' : page;
+      authenticate(key, form);
     }
   };
 
@@ -195,7 +197,7 @@ export default function LoginModal({
         {renderPasswordConfirm()}
         {renderError()}
         <FlexContainer className={styles.submit} justify="center">
-          <Button key="submit" onClick={onConfirm()} isLoading={isLoggginIn}>
+          <Button key="submit" onClick={onConfirm()} isLoading={isLoggingIn}>
             {actionText}
           </Button>
         </FlexContainer>
@@ -206,6 +208,7 @@ export default function LoginModal({
 
 LoginModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
+  isLoggingIn: PropTypes.bool.isRequired,
   error: PropTypes.string,
   form: PropTypes.shape({
     email: PropTypes.string.isRequired,

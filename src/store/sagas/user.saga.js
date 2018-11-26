@@ -1,4 +1,4 @@
-import { all, call, put, take, spawn } from 'redux-saga/effects';
+import { all, call, put, take, spawn, fork } from 'redux-saga/effects';
 import { push } from 'connected-react-router';
 import { eventChannel } from 'redux-saga';
 
@@ -33,12 +33,12 @@ function* updateProfile(profileChannel) {
   }
 }
 
+let profileChannel;
 function* onLogin(user) {
-  const profileChannel = yield call(createProfileListener, user.uid);
+  profileChannel = yield call(createProfileListener, user.uid);
   yield spawn(updateProfile, profileChannel);
   yield put(createAction(LOGGED_IN.SUCCESS, { user }));
   yield put(push('/dashboard'));
-  return profileChannel;
 }
 
 function* loginFlow() {
@@ -53,22 +53,23 @@ function* loginFlow() {
       loginUser = yield call(login, form);
     }
     loginUser = loginUser.user ? loginUser.user.toJSON() : loginUser.toJSON();
-    const channel = yield call(onLogin, loginUser);
-    return channel;
+    yield call(onLogin, loginUser);
   } catch (error) {
     yield put(createAction(LOGGED_IN.ERROR, { error: error.message }));
-    return null;
   }
 }
 
-function* signoutFlow(channel) {
+function* signoutFlow() {
   try {
     const action = yield take([LOGGED_IN.ERROR, SIGNED_OUT.PENDING]);
-    if (action.type === SIGNED_OUT.PENDING) {
-      yield call(signout);
-      yield put(createAction(SIGNED_OUT.SUCCESS));
+    if (action.type === LOGGED_IN.ERROR) {
+      return;
     }
-    channel.close();
+    yield call(signout);
+    yield put(createAction(SIGNED_OUT.SUCCESS));
+    if (profileChannel) {
+      profileChannel.close();
+    }
   } catch (error) {
     yield put(createAction(SIGNED_OUT.ERROR, { error: error.message }));
   }
@@ -77,14 +78,14 @@ function* signoutFlow(channel) {
 function* sessionFlow() {
   const currentUser = yield call(getCurrentUser);
   if (currentUser) {
-    const channel = yield call(onLogin, currentUser);
-    yield call(signoutFlow, channel);
+    yield fork(onLogin, currentUser);
+    yield call(signoutFlow);
   } else {
     yield put(createAction(INITIALIZED));
   }
   while (true) {
-    const channel = yield call(loginFlow);
-    yield call(signoutFlow, channel);
+    yield fork(loginFlow);
+    yield call(signoutFlow);
   }
 }
 

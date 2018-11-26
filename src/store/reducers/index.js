@@ -1,6 +1,6 @@
 import deck from './deck.reducer';
 import game from './game.reducer';
 import image from './image.reducer';
-import session from './session.reducer';
+import user from './user.reducer';
 
-export default { deck, game, image, session };
+export default { deck, game, image, user };
