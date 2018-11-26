@@ -1,14 +1,22 @@
-import { all, call, put, take, spawn, fork } from 'redux-saga/effects';
-import { push } from 'connected-react-router';
+import {
+  all,
+  call,
+  put,
+  take,
+  spawn,
+  fork,
+  takeEvery,
+} from 'redux-saga/effects';
 import { eventChannel } from 'redux-saga';
 
 import {
+  INITIALIZED,
   LOGGED_IN,
   SIGNED_OUT,
-  INITIALIZED,
   UPDATED_USER,
 } from 'store/actions/session.actions';
 import {
+  updateProfile as doUpdateProfile,
   profileListener,
   getCurrentUser,
   signout,
@@ -18,6 +26,14 @@ import {
 } from 'store/api/session.api';
 import { createAction } from 'utils/store';
 
+function* updateProfile({ user, form }) {
+  try {
+    yield call(doUpdateProfile, user, form);
+  } catch (error) {
+    yield put(createAction(UPDATED_USER.ERROR, { error: error.message }));
+  }
+}
+
 const createProfileListener = uid =>
   eventChannel(emit => {
     const unsubscribe = profileListener(uid, emit);
@@ -26,19 +42,18 @@ const createProfileListener = uid =>
     };
   });
 
-function* updateProfile(profileChannel) {
+function* updateProfileListener(profileChannel) {
   while (true) {
     const update = yield take(profileChannel);
-    yield put(createAction(UPDATED_USER, { update }));
+    yield put(createAction(UPDATED_USER.SUCCESS, { update }));
   }
 }
 
 let profileChannel;
 function* onLogin(user) {
   profileChannel = yield call(createProfileListener, user.uid);
-  yield spawn(updateProfile, profileChannel);
+  yield spawn(updateProfileListener, profileChannel);
   yield put(createAction(LOGGED_IN.SUCCESS, { user }));
-  yield put(push('/dashboard'));
 }
 
 function* loginFlow() {
@@ -90,5 +105,8 @@ function* sessionFlow() {
 }
 
 export default function*() {
-  yield all([call(sessionFlow)]);
+  yield all([
+    call(sessionFlow),
+    takeEvery(UPDATED_USER.PENDING, updateProfile),
+  ]);
 }

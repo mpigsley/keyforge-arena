@@ -10,7 +10,7 @@ export const getCardImages = state => state.image.cards;
 export const getPathname = state => state.router.location.pathname;
 
 /* User */
-export const getAuthError = state => state.user.error;
+export const getUserError = state => state.user.error;
 export const getUser = state => state.user.model;
 export const getUserId = state => (state.user.model || {}).uid;
 export const getUserTag = state => (state.user.model || {}).tag;

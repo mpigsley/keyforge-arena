@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import {
-  getAuthError,
+  getUserError,
   getIsLoginModalOpen,
   getLoginForm,
   getIsLoggingIn,
@@ -19,7 +19,7 @@ import LoginModal from './login-modal';
 const mapStateToProps = createStructuredSelector({
   isOpen: getIsLoginModalOpen,
   isLoggingIn: getIsLoggingIn,
-  error: getAuthError,
+  error: getUserError,
   form: getLoginForm,
 });
 

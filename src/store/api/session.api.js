@@ -21,7 +21,14 @@ export const getCurrentUser = () =>
 
 export const updateProfile = (uid, profile) => {
   if (!uid) {
-    return new Error('Uid required to update a user.');
+    throw new Error('Uid required to update a user.');
+  } else if (
+    !profile.username ||
+    !profile.username.match('^[a-zA-Z0-9][a-zA-Z0-9_]*([.][a-z0-9_]+)*$')
+  ) {
+    throw new Error(
+      'Username can only include alphanumeric characters and an underscore.',
+    );
   }
   return Firebase.firestore()
     .collection('users')
@@ -39,7 +46,7 @@ export const googleLogin = () =>
   Firebase.auth().signInWithPopup(new Firebase.auth.GoogleAuthProvider());
 
 export const signup = ({ email, password, confirm }) => {
-  if (!email || !password || !confirm) {
+  if (!email || !password) {
     throw new Error('Email and password are required.');
   }
   if (password !== confirm) {
@@ -48,8 +55,12 @@ export const signup = ({ email, password, confirm }) => {
   return Firebase.auth().createUserWithEmailAndPassword(email, password);
 };
 
-export const login = ({ email, password }) =>
-  Firebase.auth().signInWithEmailAndPassword(email, password);
+export const login = ({ email, password }) => {
+  if (!email || !password) {
+    throw new Error('Email and password are required.');
+  }
+  return Firebase.auth().signInWithEmailAndPassword(email, password);
+};
 
 export const signout = () => Firebase.auth().signOut();
 

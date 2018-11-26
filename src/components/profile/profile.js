@@ -13,42 +13,21 @@ export default function Profile({
   isInitialized,
   userForm,
   updateUserForm,
-  updateUser,
+  updateProfile,
   userTag,
+  userId,
+  error,
 }) {
-  const [isUpdating, setIsUpdating] = useState(false);
   const [didUpdate, setDidUpdate] = useState(false);
-  const [error, setError] = useState();
 
   const onUpdateForm = key => e => {
-    if (error) {
-      setError(undefined);
-    }
     if (didUpdate) {
       setDidUpdate(false);
     }
     updateUserForm({ [key]: e.target.value });
   };
 
-  const onUpdate = async () => {
-    if (
-      !userForm.username.match('^[a-zA-Z0-9][a-zA-Z0-9_]*([.][a-z0-9_]+)*$')
-    ) {
-      setError(
-        'Username can only include alphanumeric characters and an underscore.',
-      );
-      return;
-    }
-    setIsUpdating(true);
-    try {
-      await updateUser();
-      setIsUpdating(false);
-      setDidUpdate(true);
-    } catch (e) {
-      setIsUpdating(false);
-      setError('An error has occured.');
-    }
-  };
+  const onUpdate = () => updateProfile(userId, userForm);
 
   let message;
   if (error) {
@@ -81,11 +60,7 @@ export default function Profile({
           />
         </div>
         <FlexContainer align="center">
-          <Button
-            isLoading={isUpdating}
-            className={styles.btn}
-            onClick={onUpdate}
-          >
+          <Button className={styles.btn} onClick={onUpdate}>
             Update Profile
           </Button>
           {message}
@@ -107,15 +82,19 @@ export default function Profile({
 Profile.propTypes = {
   isInitialized: PropTypes.bool.isRequired,
   updateUserForm: PropTypes.func.isRequired,
-  updateUser: PropTypes.func.isRequired,
+  updateProfile: PropTypes.func.isRequired,
   userForm: PropTypes.shape({
     email: PropTypes.string,
     username: PropTypes.string,
   }),
+  userId: PropTypes.string,
   userTag: PropTypes.string,
+  error: PropTypes.string,
 };
 
 Profile.defaultProps = {
   userForm: undefined,
   userTag: undefined,
+  userId: undefined,
+  error: null,
 };

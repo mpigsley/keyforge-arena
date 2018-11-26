@@ -28,6 +28,12 @@ export default function deck(state = initialState, action) {
   switch (action.type) {
     case INITIALIZED:
       return { ...state, isInitialized: true };
+    case TOGGLED_LOGIN_MODAL:
+      return {
+        ...state,
+        isLoginModalOpen: !state.isLoginModalOpen,
+        loginForm: initialLoginForm,
+      };
     case LOGGED_IN.PENDING:
       return { ...state, isLoggingIn: true, error: null };
     case LOGGED_IN.ERROR:
@@ -46,22 +52,22 @@ export default function deck(state = initialState, action) {
           ...state.userForm,
         },
       };
-    case TOGGLED_LOGIN_MODAL:
-      return {
-        ...state,
-        isLoginModalOpen: !state.isLoginModalOpen,
-        loginForm: initialLoginForm,
-      };
-    case UPDATED_USER_FORM:
-      return { ...state, userForm: { ...state.userForm, ...action.form } };
-    case UPDATED_LOGIN_FORM:
-      return { ...state, loginForm: { ...state.loginForm, ...action.form } };
-    case UPDATED_USER:
+    case UPDATED_USER.ERROR:
+      return { ...state, error: action.error };
+    case UPDATED_USER.SUCCESS:
       return {
         ...state,
         model: { ...state.model, ...action.update },
         userForm: { ...state.userForm, ...action.update },
       };
+    case UPDATED_USER_FORM:
+      return {
+        ...state,
+        error: null,
+        userForm: { ...state.userForm, ...action.form },
+      };
+    case UPDATED_LOGIN_FORM:
+      return { ...state, loginForm: { ...state.loginForm, ...action.form } };
     case SIGNED_OUT.SUCCESS:
       return {
         ...initialState,
