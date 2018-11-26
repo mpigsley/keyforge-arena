@@ -29,7 +29,7 @@ export default function DeckDetails({
   decks,
   selected,
   className,
-  removeDeck,
+  deleteDeck,
   houseImages,
   fetchCardImages,
   toggleSubmitModal,
@@ -94,9 +94,9 @@ export default function DeckDetails({
   };
 
   const { name, houses } = deck;
-  const onRemove = async () => {
+  const onRemove = () => {
     setConfirmDelete(false);
-    await removeDeck(selected);
+    deleteDeck(selected);
   };
 
   return (
@@ -152,7 +152,7 @@ DeckDetails.propTypes = {
   selected: PropTypes.string,
   className: PropTypes.string,
   houseImages: PropTypes.shape(),
-  removeDeck: PropTypes.func.isRequired,
+  deleteDeck: PropTypes.func.isRequired,
   fetchCardImages: PropTypes.func.isRequired,
   toggleSubmitModal: PropTypes.func.isRequired,
   isInitialized: PropTypes.bool.isRequired,

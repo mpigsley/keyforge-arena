@@ -1,8 +1,8 @@
 import { LOCATION_CHANGE } from 'connected-react-router';
 import {
   SET_SEARCH_TERM,
-  UPDATED_DECKS,
-  SUBMITTED_DECK,
+  UPDATED,
+  SUBMITTED,
   TOGGLED_SUBMIT_MODAL,
   DELETED,
 } from 'store/actions/deck.actions';
@@ -20,17 +20,17 @@ const initialState = {
 
 export default function deck(state = initialState, action) {
   switch (action.type) {
-    case UPDATED_DECKS.SUCCESS:
+    case UPDATED.SUCCESS:
       return { ...state, models: { ...state.models, ...action.decks } };
     case SET_SEARCH_TERM:
       return { ...state, searchTerm: action.searchTerm };
     case TOGGLED_SUBMIT_MODAL:
       return { ...state, isSubmitModalOpen: !state.isSubmitModalOpen };
-    case SUBMITTED_DECK.PENDING:
+    case SUBMITTED.PENDING:
       return { ...state, isSubmittingDeck: true };
-    case SUBMITTED_DECK.ERROR:
+    case SUBMITTED.ERROR:
       return { ...state, isSubmittingDeck: false, error: action.error };
-    case SUBMITTED_DECK.SUCCESS:
+    case SUBMITTED.SUCCESS:
       return {
         ...state,
         error: null,
@@ -38,7 +38,7 @@ export default function deck(state = initialState, action) {
         isSubmitModalOpen: false,
         models: { ...state.models, ...action.deck },
       };
-    case DELETED:
+    case DELETED.SUCCESS:
       return { ...state, models: omit(state.models, action.id) };
     case LOCATION_CHANGE:
       return {

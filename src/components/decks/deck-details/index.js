@@ -6,7 +6,7 @@ import {
   getHouseImages,
   getIsInitialized,
 } from 'store/selectors/base.selectors';
-import { removeDeck, toggleSubmitModal } from 'store/actions/deck.actions';
+import { deleteDeck, toggleSubmitModal } from 'store/actions/deck.actions';
 import { fetchCardImages } from 'store/actions/image.actions';
 
 import DeckDetails from './deck-details';
@@ -19,5 +19,5 @@ const mapStateToProps = createStructuredSelector({
 
 export default connect(
   mapStateToProps,
-  { removeDeck, fetchCardImages, toggleSubmitModal },
+  { deleteDeck, fetchCardImages, toggleSubmitModal },
 )(DeckDetails);
