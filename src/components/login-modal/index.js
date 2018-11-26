@@ -12,7 +12,7 @@ import {
   passwordReset,
   updateLoginForm,
   toggleLoginModal,
-} from 'store/actions/session.actions';
+} from 'store/actions/user.actions';
 
 import LoginModal from './login-modal';
 

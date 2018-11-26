@@ -42,9 +42,9 @@ export default function LoginModal({
 
   const onUpdate = key => e => updateLoginForm({ [key]: e.target.value });
 
-  const onConfirm = isGoogle => async () => {
+  const onConfirm = isGoogle => () => {
     if (page === LOGIN_PAGE_TYPES.forget) {
-      await passwordReset();
+      passwordReset(form);
     } else {
       const key = isGoogle ? 'google' : page;
       authenticate(key, form);

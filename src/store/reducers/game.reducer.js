@@ -1,6 +1,6 @@
 import { LOCATION_CHANGE } from 'connected-react-router';
 import { INITIALIZED_GAME } from 'store/actions/combined.actions';
-import { SIGNED_OUT } from 'store/actions/session.actions';
+import { SIGNED_OUT } from 'store/actions/user.actions';
 
 const initialState = {
   isInitialized: false,

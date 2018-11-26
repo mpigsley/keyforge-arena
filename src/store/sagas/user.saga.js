@@ -8,22 +8,25 @@ import {
   takeEvery,
 } from 'redux-saga/effects';
 import { eventChannel } from 'redux-saga';
+import { toastr } from 'react-redux-toastr';
 
 import {
   INITIALIZED,
   LOGGED_IN,
   SIGNED_OUT,
   UPDATED_USER,
-} from 'store/actions/session.actions';
+  PASSWORD_RESET,
+} from 'store/actions/user.actions';
 import {
   updateProfile as doUpdateProfile,
+  passwordReset,
   profileListener,
   getCurrentUser,
   signout,
   googleLogin,
   login,
   signup,
-} from 'store/api/session.api';
+} from 'store/api/user.api';
 import { createAction } from 'utils/store';
 
 function* updateProfile({ user, form }) {
@@ -31,6 +34,19 @@ function* updateProfile({ user, form }) {
     yield call(doUpdateProfile, user, form);
   } catch (error) {
     yield put(createAction(UPDATED_USER.ERROR, { error: error.message }));
+  }
+}
+
+function* resetPassword({ form }) {
+  try {
+    yield call(passwordReset, form);
+    yield put(createAction(PASSWORD_RESET.SUCCESS));
+    toastr.success(
+      'Password Reset Sent',
+      'You should be receiving an email shortly.',
+    );
+  } catch (error) {
+    yield put(createAction(PASSWORD_RESET.ERROR, { error: error.message }));
   }
 }
 
@@ -108,5 +124,6 @@ export default function*() {
   yield all([
     call(sessionFlow),
     takeEvery(UPDATED_USER.PENDING, updateProfile),
+    takeEvery(PASSWORD_RESET.PENDING, resetPassword),
   ]);
 }

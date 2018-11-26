@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { signout, toggleLoginModal } from 'store/actions/session.actions';
+import { signout, toggleLoginModal } from 'store/actions/user.actions';
 import {
   getUser,
   getIsLoggedIn,

@@ -6,7 +6,8 @@ import {
   UPDATED_LOGIN_FORM,
   UPDATED_USER_FORM,
   UPDATED_USER,
-} from 'store/actions/session.actions';
+  PASSWORD_RESET,
+} from 'store/actions/user.actions';
 
 const initialLoginForm = {
   email: '',
@@ -35,9 +36,14 @@ export default function deck(state = initialState, action) {
         loginForm: initialLoginForm,
       };
     case LOGGED_IN.PENDING:
+    case PASSWORD_RESET.PENDING:
       return { ...state, isLoggingIn: true, error: null };
     case LOGGED_IN.ERROR:
+    case UPDATED_USER.ERROR:
+    case PASSWORD_RESET.ERROR:
       return { ...state, isLoggingIn: false, error: action.error };
+    case PASSWORD_RESET.SUCCESS:
+      return { ...state, isLoginModalOpen: false };
     case LOGGED_IN.SUCCESS:
       return {
         ...state,
@@ -52,8 +58,6 @@ export default function deck(state = initialState, action) {
           ...state.userForm,
         },
       };
-    case UPDATED_USER.ERROR:
-      return { ...state, error: action.error };
     case UPDATED_USER.SUCCESS:
       return {
         ...state,

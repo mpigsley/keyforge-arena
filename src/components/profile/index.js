@@ -8,7 +8,7 @@ import {
   getUserTag,
   getUserId,
 } from 'store/selectors/base.selectors';
-import { updateUserForm, updateProfile } from 'store/actions/session.actions';
+import { updateUserForm, updateProfile } from 'store/actions/user.actions';
 
 import Profile from './profile';
 

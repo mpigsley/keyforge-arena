@@ -5,7 +5,7 @@ import {
   DELETED,
 } from 'store/actions/deck.actions';
 import { INITIALIZED_GAME } from 'store/actions/combined.actions';
-import { SIGNED_OUT } from 'store/actions/session.actions';
+import { SIGNED_OUT } from 'store/actions/user.actions';
 
 import { omit } from 'constants/lodash';
 

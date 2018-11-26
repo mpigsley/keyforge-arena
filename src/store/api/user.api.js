@@ -64,5 +64,9 @@ export const login = ({ email, password }) => {
 
 export const signout = () => Firebase.auth().signOut();
 
-export const passwordReset = email =>
-  Firebase.auth().sendPasswordResetEmail(email);
+export const passwordReset = ({ email }) => {
+  if (!email) {
+    throw new Error('Email is required.');
+  }
+  return Firebase.auth().sendPasswordResetEmail(email);
+};
