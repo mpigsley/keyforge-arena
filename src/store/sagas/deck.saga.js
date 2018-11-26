@@ -1,8 +1,12 @@
-import { put, all, takeEvery } from 'redux-saga/effects';
+import { put, all, takeEvery, call } from 'redux-saga/effects';
+import { push } from 'connected-react-router';
 
+import { UPDATED_DECKS, SUBMITTED_DECK } from 'store/actions/deck.actions';
 import { LOGGED_IN } from 'store/actions/user.actions';
-import { UPDATED_DECKS } from 'store/actions/deck.actions';
-import { getDecksByUser } from 'store/api/deck.api';
+import {
+  getDecksByUser,
+  submitDeck as callSubmitDeck,
+} from 'store/api/deck.api';
 import { createAction } from 'utils/store';
 
 function* fetchDecks({ user }) {
@@ -15,6 +19,19 @@ function* fetchDecks({ user }) {
   }
 }
 
+function* submitDeck({ link }) {
+  try {
+    const deckObj = yield call(callSubmitDeck, link);
+    yield put(createAction(SUBMITTED_DECK.SUCCESS, { deck: deckObj }));
+    yield put(push(`/decks/${Object.keys(deckObj)[0]}`));
+  } catch (error) {
+    yield put(createAction(SUBMITTED_DECK.ERROR, { error: error.message }));
+  }
+}
+
 export default function*() {
-  yield all([takeEvery(LOGGED_IN.SUCCESS, fetchDecks)]);
+  yield all([
+    takeEvery(LOGGED_IN.SUCCESS, fetchDecks),
+    takeEvery(SUBMITTED_DECK.PENDING, submitDeck),
+  ]);
 }

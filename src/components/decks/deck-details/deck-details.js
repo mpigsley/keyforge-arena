@@ -32,7 +32,7 @@ export default function DeckDetails({
   removeDeck,
   houseImages,
   fetchCardImages,
-  openDeckModal,
+  toggleSubmitModal,
   isInitialized,
 }) {
   const [isConfirmDelete, setConfirmDelete] = useState(false);
@@ -69,7 +69,7 @@ export default function DeckDetails({
         <h3 className={styles.emptyH3}>
           Import directly from the official app.
         </h3>
-        <Button onClick={openDeckModal}>Add Deck</Button>
+        <Button onClick={toggleSubmitModal}>Add Deck</Button>
       </FlexContainer>
     );
   }
@@ -154,7 +154,7 @@ DeckDetails.propTypes = {
   houseImages: PropTypes.shape(),
   removeDeck: PropTypes.func.isRequired,
   fetchCardImages: PropTypes.func.isRequired,
-  openDeckModal: PropTypes.func.isRequired,
+  toggleSubmitModal: PropTypes.func.isRequired,
   isInitialized: PropTypes.bool.isRequired,
 };
 

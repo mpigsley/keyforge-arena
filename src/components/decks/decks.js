@@ -13,9 +13,6 @@ import { size, sortBy, map } from 'constants/lodash';
 import styles from './styles.module.scss';
 
 export default function Decks({ decks, toDeck, match }) {
-  const [isAddDeckOpen, setIsAddDeckOpen] = useState(false);
-  const openDeckModal = () => setIsAddDeckOpen(true);
-
   const selected = match.params.id;
   useEffect(() => {
     if (size(decks) && !selected) {
@@ -32,22 +29,12 @@ export default function Decks({ decks, toDeck, match }) {
   return (
     <Navigation>
       <div className={styles.decks}>
-        <DeckSearch
-          className={styles.searchBar}
-          openDeckModal={openDeckModal}
-        />
+        <DeckSearch className={styles.searchBar} />
         <DeckList selected={selected} className={styles.list} />
-        <DeckDetails
-          selected={selected}
-          className={styles.details}
-          openDeckModal={openDeckModal}
-        />
+        <DeckDetails selected={selected} className={styles.details} />
       </div>
       <CardTooltip />
-      <AddDeckModal
-        isOpen={isAddDeckOpen}
-        onClose={() => setIsAddDeckOpen(false)}
-      />
+      <AddDeckModal />
     </Navigation>
   );
 }

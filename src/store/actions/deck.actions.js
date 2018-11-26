@@ -1,27 +1,26 @@
 import { push } from 'connected-react-router';
 
-import { submitDeck, deleteDeck, updateDeck } from 'store/api/deck.api';
+import { deleteDeck, updateDeck } from 'store/api/deck.api';
 import { getPathname, getDecks } from 'store/selectors/base.selectors';
 import { getSelectedDeck } from 'store/selectors/deck.selectors';
 
 import { createAsyncTypes } from 'utils/store';
 
 const ACTION_PREFIX = '@@deck';
-export const SUBMITTED = `${ACTION_PREFIX}/SUBMITTED`;
-export const SET_SEARCH_TERM = `${ACTION_PREFIX}/SET_SEARCH_TERM`;
+export const SUBMITTED_DECK = createAsyncTypes(
+  `${ACTION_PREFIX}/SUBMITTED_DECK`,
+);
 export const UPDATED_DECKS = createAsyncTypes(`${ACTION_PREFIX}/UPDATED_DECKS`);
+export const TOGGLED_SUBMIT_MODAL = `${ACTION_PREFIX}/TOGGLED_SUBMIT_MODAL`;
+export const SET_SEARCH_TERM = `${ACTION_PREFIX}/SET_SEARCH_TERM`;
 export const DELETED = `${ACTION_PREFIX}/DELETED`;
 
+export const toggleSubmitModal = () => ({ type: TOGGLED_SUBMIT_MODAL });
+export const submitNewDeck = link => ({ type: SUBMITTED_DECK.PENDING, link });
 export const setSearchTerm = searchTerm => ({
   type: SET_SEARCH_TERM,
   searchTerm,
 });
-
-export const submitNewDeck = link => dispatch =>
-  submitDeck(link).then(deck => {
-    dispatch({ type: SUBMITTED, deck });
-    dispatch(push(`/decks/${Object.keys(deck)[0]}`));
-  });
 
 export const removeDeck = id => (dispatch, getState) =>
   deleteDeck(id).then(() => {

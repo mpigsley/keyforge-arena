@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import { getDeckSearchTerm } from 'store/selectors/base.selectors';
-import { setSearchTerm } from 'store/actions/deck.actions';
+import { setSearchTerm, toggleSubmitModal } from 'store/actions/deck.actions';
 
 import DeckSearch from './deck-search';
 
@@ -12,5 +12,5 @@ const mapStateToProps = createStructuredSelector({
 
 export default connect(
   mapStateToProps,
-  { setSearchTerm },
+  { setSearchTerm, toggleSubmitModal },
 )(DeckSearch);

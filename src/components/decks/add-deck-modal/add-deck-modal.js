@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import ReactModal from 'react-modal';
 
@@ -7,41 +7,31 @@ import Button from 'primitives/button';
 import FlexContainer from 'primitives/flex-container';
 import Label from 'primitives/label';
 import Input from 'primitives/input';
-import { useTextInput } from 'utils/custom-effects';
+import { useTextInput, usePrevious } from 'utils/custom-effects';
 
 import styles from './styles.module.scss';
 
 ReactModal.setAppElement('#root');
 
-export default function AddDeckModal({ isOpen, onClose, submitNewDeck }) {
-  const [error, setError] = useState();
-  const [isImporting, setIsImporting] = useState(false);
+export default function AddDeckModal({
+  isOpen,
+  error,
+  isSubmitting,
+  toggleSubmitModal,
+  submitNewDeck,
+}) {
   const [link, setLink] = useTextInput();
+  const previousIsOpen = usePrevious(isOpen);
 
   useEffect(() => {
-    if (error) {
-      setError();
+    if (previousIsOpen && !isOpen) {
+      setLink();
     }
   });
 
-  const onConfirm = async () => {
-    if (!link) {
-      return;
-    }
-    setIsImporting(true);
-    try {
-      await submitNewDeck(link);
-      onClose();
-    } catch (e) {
-      setError(e.message);
-    } finally {
-      setIsImporting(false);
-    }
-  };
-
   const submitOnEnter = e => {
     if (e.key === 'Enter') {
-      onConfirm();
+      submitNewDeck(link);
     }
   };
 
@@ -60,13 +50,13 @@ export default function AddDeckModal({ isOpen, onClose, submitNewDeck }) {
     <Modal
       title="Import Deck"
       isOpen={isOpen}
-      onCancel={onClose}
+      onCancel={toggleSubmitModal}
       actionButtons={[
         <Button
           primary
           key="submit"
-          onClick={onConfirm}
-          isLoading={isImporting}
+          onClick={() => submitNewDeck(link)}
+          isLoading={isSubmitting}
         >
           Import
         </Button>,
@@ -94,6 +84,12 @@ export default function AddDeckModal({ isOpen, onClose, submitNewDeck }) {
 
 AddDeckModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired,
+  isSubmitting: PropTypes.bool.isRequired,
+  error: PropTypes.string,
+  toggleSubmitModal: PropTypes.func.isRequired,
   submitNewDeck: PropTypes.func.isRequired,
+};
+
+AddDeckModal.defaultProps = {
+  error: undefined,
 };

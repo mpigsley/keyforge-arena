@@ -13,7 +13,7 @@ export default function DeckSearch({
   className,
   searchTerm,
   setSearchTerm,
-  openDeckModal,
+  toggleSubmitModal,
 }) {
   return (
     <>
@@ -24,7 +24,7 @@ export default function DeckSearch({
             value={searchTerm}
             onChange={e => setSearchTerm(e.target.value)}
           />
-          <IconButton className={styles.addBtn} onClick={openDeckModal}>
+          <IconButton className={styles.addBtn} onClick={toggleSubmitModal}>
             <Plus />
           </IconButton>
         </FlexContainer>
@@ -37,5 +37,5 @@ DeckSearch.propTypes = {
   className: PropTypes.string.isRequired,
   searchTerm: PropTypes.string.isRequired,
   setSearchTerm: PropTypes.func.isRequired,
-  openDeckModal: PropTypes.func.isRequired,
+  toggleSubmitModal: PropTypes.func.isRequired,
 };
