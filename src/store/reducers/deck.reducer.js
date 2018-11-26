@@ -4,7 +4,6 @@ import {
   SUBMITTED,
   DELETED,
 } from 'store/actions/deck.actions';
-import { INITIALIZED_GAME } from 'store/actions/combined.actions';
 import { SIGNED_OUT } from 'store/actions/user.actions';
 
 import { omit } from 'constants/lodash';
@@ -16,7 +15,6 @@ const initialState = {
 
 export default function deck(state = initialState, action) {
   switch (action.type) {
-    case INITIALIZED_GAME:
     case UPDATED_DECKS.SUCCESS:
       return { ...state, models: { ...state.models, ...action.decks } };
     case SET_SEARCH_TERM:

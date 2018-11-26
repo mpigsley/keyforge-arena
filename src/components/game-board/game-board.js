@@ -1,21 +1,11 @@
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
-
-import { usePrevious } from 'utils/custom-effects';
+import React from 'react';
 
 import styles from './styles.module.scss';
 
 const IMG_HEIGHT = 150;
 const IMG_RATIO = 300 / 420;
 
-export default function GameBoard({ match, isInitialized, initializeGame }) {
-  const previousIsInitialized = usePrevious(isInitialized);
-  useEffect(() => {
-    if (!previousIsInitialized && isInitialized) {
-      initializeGame(match.params.id);
-    }
-  });
-
+export default function GameBoard() {
   return (
     <svg
       className={styles.canvas}
@@ -30,13 +20,3 @@ export default function GameBoard({ match, isInitialized, initializeGame }) {
     </svg>
   );
 }
-
-GameBoard.propTypes = {
-  isInitialized: PropTypes.bool.isRequired,
-  initializeGame: PropTypes.func.isRequired,
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      id: PropTypes.string.isRequired,
-    }).isRequired,
-  }).isRequired,
-};

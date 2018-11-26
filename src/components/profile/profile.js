@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import Navigation from 'components/navigation';
@@ -18,12 +18,7 @@ export default function Profile({
   userId,
   error,
 }) {
-  const [didUpdate, setDidUpdate] = useState(false);
-
   const onUpdateForm = key => e => {
-    if (didUpdate) {
-      setDidUpdate(false);
-    }
     updateUserForm({ [key]: e.target.value });
   };
 
@@ -32,8 +27,6 @@ export default function Profile({
   let message;
   if (error) {
     message = <div className={styles.error}>{error}</div>;
-  } else if (didUpdate) {
-    message = <div>Profile updated successfully.</div>;
   }
 
   let tagHash;
