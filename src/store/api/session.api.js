@@ -35,16 +35,16 @@ export const profileListener = (uid, cb) =>
     .doc(uid)
     .onSnapshot(doc => cb(doc.data()));
 
-export const doGoogleLogin = () =>
+export const googleLogin = () =>
   Firebase.auth().signInWithPopup(new Firebase.auth.GoogleAuthProvider());
 
-export const doSignup = (email, password) =>
+export const signup = ({ email, password }) =>
   Firebase.auth().createUserWithEmailAndPassword(email, password);
 
-export const doLogin = (email, password) =>
+export const login = ({ email, password }) =>
   Firebase.auth().signInWithEmailAndPassword(email, password);
 
-export const doSignout = () => Firebase.auth().signOut();
+export const signout = () => Firebase.auth().signOut();
 
-export const doPasswordReset = email =>
+export const passwordReset = email =>
   Firebase.auth().sendPasswordResetEmail(email);

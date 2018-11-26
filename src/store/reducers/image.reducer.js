@@ -1,6 +1,8 @@
 import { INITIALIZED_GAME } from 'store/actions/combined.actions';
-import { FETCHED_CARD_LINKS } from 'store/actions/image.actions';
-import { INITIALIZED_APP } from 'store/actions/session.actions';
+import {
+  FETCHED_CARD_LINKS,
+  FETCHED_HOUSE_LINKS,
+} from 'store/actions/image.actions';
 
 const initialState = {
   houses: {},
@@ -9,7 +11,7 @@ const initialState = {
 
 export default function image(state = initialState, action) {
   switch (action.type) {
-    case INITIALIZED_APP:
+    case FETCHED_HOUSE_LINKS.SUCCESS:
       return { ...state, houses: { ...state.houses, ...action.houses } };
     case FETCHED_CARD_LINKS:
     case INITIALIZED_GAME:

@@ -18,7 +18,7 @@ export default function game(state = initialState, action) {
         playerDecks: action.playerDecks,
       };
     case LOCATION_CHANGE:
-    case SIGNED_OUT:
+    case SIGNED_OUT.SUCCESS:
       return initialState;
     default:
       return state;

@@ -1,7 +1,8 @@
 import {
+  LOGGED_IN,
   SIGNED_OUT,
+  INITIALIZED,
   AUTH_FAILURE,
-  INITIALIZED_APP,
   TOGGLED_LOGIN_MODAL,
   UPDATED_LOGIN_FORM,
   UPDATED_USER_FORM,
@@ -25,7 +26,9 @@ const initialState = {
 
 export default function deck(state = initialState, action) {
   switch (action.type) {
-    case INITIALIZED_APP:
+    case INITIALIZED:
+      return { ...state, isInitialized: true };
+    case LOGGED_IN.SUCCESS:
       return {
         ...state,
         error: null,
@@ -51,12 +54,12 @@ export default function deck(state = initialState, action) {
     case UPDATED_USER:
       return {
         ...state,
-        model: { ...state.model, ...action.user },
-        userForm: { ...state.userForm, ...action.user },
+        model: { ...state.model, ...action.update },
+        userForm: { ...state.userForm, ...action.update },
       };
     case AUTH_FAILURE:
       return { ...state, error: action.error };
-    case SIGNED_OUT:
+    case SIGNED_OUT.SUCCESS:
       return {
         ...initialState,
         isInitialized: true,

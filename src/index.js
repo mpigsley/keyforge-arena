@@ -9,9 +9,8 @@ import 'firebase/firestore';
 import 'firebase/storage';
 import 'firebase/auth';
 
-import store, { history } from 'store';
+import createStore, { history } from 'store';
 
-import Init from 'components/init';
 import Protected from 'primitives/protected-hoc';
 import Home from 'components/home';
 import Dashboard from 'components/dashboard';
@@ -35,17 +34,17 @@ Firebase.initializeApp({
 // Temporary until deprecation notice goes away
 Firebase.firestore().settings({ timestampsInSnapshots: true });
 
+const store = createStore();
+
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <Switch>
-        <Init>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/dashboard" component={Protected(Dashboard)} />
-          <Route exact path="/profile" component={Protected(Profile)} />
-          <Route path="/decks/:id?" component={Protected(Decks)} />
-          <Route path="/game/:id" component={Protected(GameBoard)} />
-        </Init>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/dashboard" component={Protected(Dashboard)} />
+        <Route exact path="/profile" component={Protected(Profile)} />
+        <Route path="/decks/:id?" component={Protected(Decks)} />
+        <Route path="/game/:id" component={Protected(GameBoard)} />
       </Switch>
     </ConnectedRouter>
   </Provider>,

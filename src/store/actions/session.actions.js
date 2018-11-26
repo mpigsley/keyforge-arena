@@ -1,31 +1,24 @@
-import { push } from 'connected-react-router';
-
 import {
-  getCurrentUser,
-  profileListener,
-  doGoogleLogin,
-  doSignup,
-  doLogin,
-  doPasswordReset,
-  doSignout,
+  passwordReset as doPasswordReset,
+  googleLogin as doGoogleLogin,
+  signup as doSignup,
+  login as doLogin,
   updateProfile,
 } from 'store/api/session.api';
-import { getDecksByUser } from 'store/api/deck.api';
-import { getHouseLink } from 'store/api/image.api';
 
 import {
   getUserId,
-  getPathname,
   getUserForm,
   getLoginForm,
 } from 'store/selectors/base.selectors';
 
-import Houses from 'constants/houses';
-import { pick, zipObject } from 'constants/lodash';
+import { pick } from 'constants/lodash';
+import { createAsyncTypes } from 'utils/store';
 
 const ACTION_PREFIX = '@@session';
-export const INITIALIZED_APP = `${ACTION_PREFIX}/INITIALIZED_APP`;
-export const SIGNED_OUT = `${ACTION_PREFIX}/SIGNED_OUT`;
+export const LOGGED_IN = createAsyncTypes(`${ACTION_PREFIX}/LOGGED_IN`);
+export const SIGNED_OUT = createAsyncTypes(`${ACTION_PREFIX}/SIGNED_OUT`);
+export const INITIALIZED = `${ACTION_PREFIX}/INITIALIZED`;
 export const AUTH_FAILURE = `${ACTION_PREFIX}/AUTH_FAILURE`;
 export const TOGGLED_LOGIN_MODAL = `${ACTION_PREFIX}/TOGGLED_LOGIN_MODAL`;
 export const UPDATED_LOGIN_FORM = `${ACTION_PREFIX}/UPDATED_LOGIN_FORM`;
@@ -35,38 +28,14 @@ export const UPDATED_USER = `${ACTION_PREFIX}/UPDATED_USER`;
 export const updateUserForm = form => ({ type: UPDATED_USER_FORM, form });
 export const updateLoginForm = form => ({ type: UPDATED_LOGIN_FORM, form });
 export const toggleLoginModal = () => ({ type: TOGGLED_LOGIN_MODAL });
+export const signout = () => ({ type: SIGNED_OUT.PENDING });
+export const authenticate = (key, form) => ({
+  type: LOGGED_IN.PENDING,
+  key,
+  form,
+});
 
-let profileListenerRef;
-export const initializeApp = user => async (dispatch, getState) => {
-  const currentUser = user || (await getCurrentUser());
-  let decks;
-  if (currentUser) {
-    decks = await getDecksByUser(currentUser.uid);
-    profileListenerRef = profileListener(currentUser.uid, update =>
-      dispatch({ type: UPDATED_USER, user: update }),
-    );
-  }
-  const houseList = Object.keys(Houses);
-  const houses = await Promise.all(houseList.map(getHouseLink));
-  dispatch({
-    type: INITIALIZED_APP,
-    houses: zipObject(houseList, houses),
-    user: currentUser,
-    decks,
-  });
-
-  const state = getState();
-  if (getPathname(state) === '/') {
-    dispatch(push('/dashboard'));
-  }
-};
-
-const onLogin = dispatch => result => {
-  const user = result.user ? result.user : result;
-  const json = user.toJSON();
-  dispatch(initializeApp(json));
-  return user;
-};
+const onLogin = () => result => (result.user ? result.user : result);
 
 export const updateUser = () => (dispatch, getState) => {
   const state = getState();
@@ -133,16 +102,4 @@ export const passwordReset = () => (dispatch, getState) => {
     dispatch({ type: AUTH_FAILURE, error: error.message });
     console.error(error);
   });
-};
-
-export const signout = () => dispatch => {
-  if (profileListenerRef) {
-    profileListenerRef();
-  }
-  return doSignout()
-    .then(() => {
-      dispatch(push('/'));
-      dispatch({ type: SIGNED_OUT });
-    })
-    .catch(console.error);
 };

@@ -2,9 +2,13 @@ import { getCardLink } from 'store/api/image.api';
 import { makeGetUnfetchedImageLinks } from 'store/selectors/image.selectors';
 
 import { zipObject } from 'constants/lodash';
+import { createAsyncTypes } from 'utils/store';
 
 const ACTION_PREFIX = '@@image';
 export const FETCHED_CARD_LINKS = `${ACTION_PREFIX}/FETCHED_CARD_LINKS`;
+export const FETCHED_HOUSE_LINKS = createAsyncTypes(
+  `${ACTION_PREFIX}/FETCHED_HOUSE_LINKS`,
+);
 
 export const fetchCardImages = (expansion, cards) => async (
   dispatch,

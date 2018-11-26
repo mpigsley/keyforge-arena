@@ -23,9 +23,7 @@ export default function LoginModal({
   isOpen,
   error,
   form,
-  signup,
-  login,
-  googleLogin,
+  authenticate,
   passwordReset,
   updateLoginForm,
   toggleLoginModal,
@@ -39,14 +37,11 @@ export default function LoginModal({
   const onConfirm = isGoogle => async () => {
     setIsLoggingIn(true);
     try {
-      if (isGoogle) {
-        await googleLogin();
-      } else if (page === LOGIN_PAGE_TYPES.login) {
-        await login();
-      } else if (page === LOGIN_PAGE_TYPES.signup) {
-        await signup();
-      } else {
+      if (page === LOGIN_PAGE_TYPES.forget) {
         await passwordReset();
+      } else {
+        const key = isGoogle ? 'google' : page;
+        authenticate(key, form);
       }
       setPage(LOGIN_PAGE_TYPES.login);
     } finally {
@@ -217,9 +212,7 @@ LoginModal.propTypes = {
     password: PropTypes.string.isRequired,
     confirm: PropTypes.string.isRequired,
   }).isRequired,
-  signup: PropTypes.func.isRequired,
-  login: PropTypes.func.isRequired,
-  googleLogin: PropTypes.func.isRequired,
+  authenticate: PropTypes.func.isRequired,
   passwordReset: PropTypes.func.isRequired,
   updateLoginForm: PropTypes.func.isRequired,
   toggleLoginModal: PropTypes.func.isRequired,

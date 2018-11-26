@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import ReduxToastr from 'react-redux-toastr';
 import PropTypes from 'prop-types';
 
 import FlexContainer from 'primitives/flex-container';
@@ -82,6 +83,7 @@ export default function Navigation({
         <div className={styles.content}>{children}</div>
       </div>
       <LoginModal />
+      <ReduxToastr position="bottom-left" newestOnTop={false} progressBar />
     </>
   );
 }

@@ -7,9 +7,7 @@ import {
   getLoginForm,
 } from 'store/selectors/base.selectors';
 import {
-  signup,
-  login,
-  googleLogin,
+  authenticate,
   passwordReset,
   updateLoginForm,
   toggleLoginModal,
@@ -26,9 +24,7 @@ const mapStateToProps = createStructuredSelector({
 export default connect(
   mapStateToProps,
   {
-    signup,
-    login,
-    googleLogin,
+    authenticate,
     passwordReset,
     updateLoginForm,
     toggleLoginModal,
