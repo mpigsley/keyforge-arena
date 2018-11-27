@@ -1,4 +1,5 @@
-import { put, all, call, takeEvery } from 'redux-saga/effects';
+import { put, all, call, take, takeEvery, spawn } from 'redux-saga/effects';
+import { eventChannel } from 'redux-saga';
 import toastr from 'react-redux-toastr';
 
 import {
@@ -7,18 +8,43 @@ import {
   connectionReply as callConnectionReply,
 } from 'store/api/connection.api';
 import { REQUEST, REPLY, UPDATE } from 'store/actions/connection.actions';
-import { LOGGED_IN } from 'store/actions/user.actions';
+import { LOGGED_IN, SIGNED_OUT } from 'store/actions/user.actions';
 
 import { createAction } from 'utils/store';
 
+const createConnectionPingInterval = () =>
+  eventChannel(emit => {
+    const id = setInterval(() => emit(true), 30000);
+    return () => clearInterval(id);
+  });
+
 function* connectionPing() {
+  const connections = yield call(callConnectionPing);
+  yield put(createAction(UPDATE.SUCCESS, { connections }));
+}
+
+function* pingListener(channel) {
+  while (yield take(channel)) {
+    yield call(connectionPing);
+  }
+}
+
+let pingChannel;
+function* connectionPingFlow() {
   try {
-    const connections = yield call(callConnectionPing);
-    yield put(createAction(UPDATE.SUCCESS, { connections }));
+    pingChannel = yield call(createConnectionPingInterval);
+    yield spawn(pingListener, pingChannel);
+    yield call(connectionPing);
   } catch (error) {
     yield put(createAction(UPDATE.ERROR, { error: error.message }));
   }
 }
+
+const closePingChannel = () => {
+  if (pingChannel) {
+    pingChannel.close();
+  }
+};
 
 function* requestConnection({ connection }) {
   try {
@@ -44,7 +70,8 @@ function* connectionReply({ connection, accepted }) {
 
 export default function*() {
   yield all([
-    takeEvery(LOGGED_IN.SUCCESS, connectionPing),
+    takeEvery(LOGGED_IN.SUCCESS, connectionPingFlow),
+    takeEvery(SIGNED_OUT.SUCCESS, closePingChannel),
     takeEvery(REQUEST.PENDING, requestConnection),
     takeEvery(REPLY.PENDING, connectionReply),
   ]);
