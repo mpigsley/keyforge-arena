@@ -13,6 +13,7 @@ export const getSortedConnections = createSelector(
         const lastOnline = dayjs(online);
         return {
           ...connection,
+          sortDate: new Date(online),
           lastOnline: lastOnline.isAfter(dayjs().subtract(1, 'day'))
             ? lastOnline.format('h:mm a')
             : lastOnline.format('MMMM D YYYY'),
@@ -20,6 +21,6 @@ export const getSortedConnections = createSelector(
           key,
         };
       }),
-      ['username', 'isOnline', 'pending'],
+      ['sortDate', 'pending'],
     ),
 );

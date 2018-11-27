@@ -3,16 +3,23 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import FlexContainer from 'primitives/flex-container';
+import Spinner from 'primitives/spinner';
 import Button from 'primitives/button';
 import Header from 'primitives/header';
 
 import styles from './styles.module.scss';
 
-export default function ConnectionListItem({ connection, connectionReply }) {
+export default function ConnectionListItem({
+  connection,
+  isReplyingTo,
+  connectionReply,
+}) {
   const { username, tag, pending, isOnline, lastOnline, key } = connection;
 
   let action = <Button className={styles.actionBtn}>Challenge</Button>;
-  if (pending) {
+  if (isReplyingTo === key) {
+    action = <Spinner />;
+  } else if (pending) {
     action = (
       <>
         <Button
@@ -54,6 +61,7 @@ export default function ConnectionListItem({ connection, connectionReply }) {
 
 ConnectionListItem.propTypes = {
   connectionReply: PropTypes.func.isRequired,
+  isReplyingTo: PropTypes.string,
   connection: PropTypes.shape({
     username: PropTypes.string.isRequired,
     tag: PropTypes.string.isRequired,
@@ -61,4 +69,8 @@ ConnectionListItem.propTypes = {
     pending: PropTypes.bool.isRequired,
     lastOnline: PropTypes.string.isRequired,
   }).isRequired,
+};
+
+ConnectionListItem.defaultProps = {
+  isReplyingTo: undefined,
 };

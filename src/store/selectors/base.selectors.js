@@ -1,5 +1,6 @@
 /* Connection */
 export const getConnections = state => state.connection.models;
+export const getIsReplyingTo = state => state.connection.isReplyingTo;
 export const getAreConnectionsInitialized = state =>
   state.connection.isInitialized;
 

@@ -62,7 +62,7 @@ function* requestConnection({ connection }) {
 function* connectionReply({ connection, accepted }) {
   try {
     yield call(callConnectionReply, connection, accepted);
-    yield put(createAction(REPLY.SUCCESS));
+    yield put(createAction(REPLY.SUCCESS, { connection, accepted }));
   } catch (error) {
     yield put(createAction(REPLY.ERROR, { error: error.message }));
   }
