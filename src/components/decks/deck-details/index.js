@@ -4,7 +4,7 @@ import { createStructuredSelector } from 'reselect';
 import {
   getDecks,
   getHouseImages,
-  getIsInitialized,
+  getIsDecksInitialized,
 } from 'store/selectors/base.selectors';
 import { deleteDeck, toggleSubmitModal } from 'store/actions/deck.actions';
 import { fetchCardImages } from 'store/actions/image.actions';
@@ -12,7 +12,7 @@ import { fetchCardImages } from 'store/actions/image.actions';
 import DeckDetails from './deck-details';
 
 const mapStateToProps = createStructuredSelector({
-  isInitialized: getIsInitialized,
+  isInitialized: getIsDecksInitialized,
   houseImages: getHouseImages,
   decks: getDecks,
 });

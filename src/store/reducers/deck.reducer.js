@@ -14,6 +14,7 @@ import { omit } from 'constants/lodash';
 
 const initialState = {
   searchTerm: '',
+  isInitialized: false,
   isSubmitModalOpen: false,
   isSubmittingDeck: false,
   isChangeModalOpen: false,
@@ -25,7 +26,11 @@ const initialState = {
 export default function deck(state = initialState, action) {
   switch (action.type) {
     case UPDATED.SUCCESS:
-      return { ...state, models: { ...state.models, ...action.decks } };
+      return {
+        ...state,
+        isInitialized: true,
+        models: { ...state.models, ...action.decks },
+      };
     case SET_SEARCH_TERM:
       return { ...state, searchTerm: action.searchTerm };
     case TOGGLED_SUBMIT_MODAL:
