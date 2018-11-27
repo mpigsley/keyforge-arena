@@ -1,7 +1,11 @@
-import { put, all, call } from 'redux-saga/effects';
+import { put, all, call, takeEvery, select } from 'redux-saga/effects';
 
-import { FETCHED_HOUSE_LINKS } from 'store/actions/image.actions';
-import { getHouseLink } from 'store/api/image.api';
+import {
+  FETCHED_HOUSE_LINKS,
+  FETCHED_CARD_LINKS,
+} from 'store/actions/image.actions';
+import { makeGetUnfetchedImageLinks } from 'store/selectors/image.selectors';
+import { getHouseLink, getCardLink } from 'store/api/image.api';
 
 import { zipObject } from 'constants/lodash';
 import { createAction } from 'utils/store';
@@ -24,6 +28,29 @@ function* fetchHouses() {
   }
 }
 
+function* fetchCards({ expansion, cards }) {
+  try {
+    const getUnfetchedLinks = makeGetUnfetchedImageLinks(expansion, cards);
+    const unfetchedLinks = yield select(getUnfetchedLinks);
+    if (!unfetchedLinks.length) {
+      return;
+    }
+    const images = yield all(
+      unfetchedLinks.map(key => getCardLink(...key.split('-'))),
+    );
+    yield put(
+      createAction(FETCHED_CARD_LINKS.SUCCESS, {
+        cards: zipObject(unfetchedLinks, images),
+      }),
+    );
+  } catch (error) {
+    yield put(createAction(FETCHED_CARD_LINKS.ERROR, { error: error.message }));
+  }
+}
+
 export default function*() {
-  yield all([call(fetchHouses)]);
+  yield all([
+    call(fetchHouses),
+    takeEvery(FETCHED_CARD_LINKS.PENDING, fetchCards),
+  ]);
 }

@@ -12,7 +12,7 @@ export default function image(state = initialState, action) {
   switch (action.type) {
     case FETCHED_HOUSE_LINKS.SUCCESS:
       return { ...state, houses: { ...state.houses, ...action.houses } };
-    case FETCHED_CARD_LINKS:
+    case FETCHED_CARD_LINKS.SUCCESS:
       return { ...state, cards: { ...state.cards, ...action.cards } };
     default:
       return state;
