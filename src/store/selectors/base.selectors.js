@@ -1,3 +1,8 @@
+/* Connection */
+export const getConnections = state => state.connection.models;
+export const getAreConnectionsInitialized = state =>
+  state.connection.isInitialized;
+
 /* Deck */
 export const getDecks = state => state.deck.models;
 export const getDeckSearchTerm = state => state.deck.searchTerm;

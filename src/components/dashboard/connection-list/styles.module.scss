@@ -6,3 +6,26 @@
   height: 25rem;
   margin-right: 0.75rem;
 }
+
+.header {
+  border-bottom: 1px solid $light;
+  padding: 1rem;
+  width: calc(100% - 2rem);
+}
+
+.scrollContainer {
+  flex: 1;
+  overflow-y: scroll;
+  width: 100%;
+}
+
+.row {
+  border-bottom: 1px solid $border;
+  padding: 0.7rem 1rem;
+}
+
+.tag {
+  color: $medium;
+  font-size: 0.9rem;
+  margin-left: 0.1rem;
+}

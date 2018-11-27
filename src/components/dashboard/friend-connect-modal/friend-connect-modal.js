@@ -31,13 +31,12 @@ export default function FriendConnectModal({
     connection: undefined,
   });
 
-  const { search, isSearching, isRequesting, result, connection } = state;
+  const { search, isSearching, result, connection } = state;
 
   useEffect(() => {
     if (previousIsOpen && !isOpen) {
       setState({
         ...state,
-        isRequesting: false,
         connection: undefined,
         search: '',
         result: '',
@@ -63,11 +62,7 @@ export default function FriendConnectModal({
   };
 
   const onRequest = async () => {
-    setState({
-      ...state,
-      isRequesting: true,
-    });
-    await requestConnection(connection);
+    requestConnection(connection);
     onClose();
   };
 
@@ -78,13 +73,7 @@ export default function FriendConnectModal({
       isOpen={isOpen}
       onCancel={onClose}
       actionButtons={[
-        <Button
-          primary
-          key="change"
-          disabled={!connection}
-          isLoading={isRequesting}
-          onClick={onRequest}
-        >
+        <Button primary key="change" disabled={!connection} onClick={onRequest}>
           Send Request
         </Button>,
       ]}

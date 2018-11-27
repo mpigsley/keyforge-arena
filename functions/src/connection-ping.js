@@ -54,6 +54,10 @@ module.exports = functions.https.onCall(async (data, context) => {
         ...mapping,
         [connection.id]: {
           ...connection.data(),
+          online: connection
+            .get('online')
+            .toDate()
+            .valueOf(),
           pending: includes(pending, connection.id),
         },
       }),

@@ -1,0 +1,33 @@
+@import '~styles/theme';
+
+.row {
+  border-bottom: 1px solid $border;
+  padding: 0.7rem 1rem;
+}
+
+$status-size: 15px;
+.status {
+  background-color: $light;
+  border-radius: $status-size / 2;
+  height: $status-size;
+  margin-right: 1rem;
+  width: $status-size;
+
+  &--online {
+    background-color: $active;
+  }
+}
+
+.tag {
+  color: $medium;
+  font-size: 0.9rem;
+  margin-left: 0.1rem;
+}
+
+.actionBtn {
+  margin: 0;
+
+  &:last-of-type {
+    margin-left: 0.5rem;
+  }
+}
