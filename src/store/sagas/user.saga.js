@@ -44,7 +44,8 @@ function* resetPassword({ form }) {
   try {
     yield call(passwordReset, form);
     yield put(createAction(PASSWORD_RESET.SUCCESS));
-    toastr.success(
+    yield call(
+      toastr.success,
       'Password Reset Sent',
       'You should be receiving an email shortly.',
     );

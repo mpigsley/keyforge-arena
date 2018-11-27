@@ -38,7 +38,7 @@ export default function ConnectionListItem({
       </>
     );
   } else if (!isOnline) {
-    action = <span>{lastOnline}</span>;
+    action = <span className={styles.lastOnline}>{lastOnline}</span>;
   }
 
   return (

@@ -1,6 +1,6 @@
 import { put, all, call, take, takeEvery, spawn } from 'redux-saga/effects';
 import { eventChannel } from 'redux-saga';
-import toastr from 'react-redux-toastr';
+import { toastr } from 'react-redux-toastr';
 
 import {
   connectionPing as callConnectionPing,
@@ -50,7 +50,8 @@ function* requestConnection({ connection }) {
   try {
     yield call(callRequestConnection, connection);
     yield put(createAction(REQUEST.SUCCESS));
-    toastr.success(
+    yield call(
+      toastr.success,
       'Connection Request Sent',
       'If the user accepts they will show up on the dashboard.',
     );
