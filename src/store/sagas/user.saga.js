@@ -5,10 +5,12 @@ import {
   take,
   spawn,
   fork,
+  select,
   takeEvery,
 } from 'redux-saga/effects';
 import { eventChannel } from 'redux-saga';
 import { toastr } from 'react-redux-toastr';
+import { push } from 'connected-react-router';
 
 import {
   INITIALIZED,
@@ -27,6 +29,7 @@ import {
   login,
   signup,
 } from 'store/api/user.api';
+import { getPathname } from 'store/selectors/base.selectors';
 import { createAction } from 'utils/store';
 
 function* updateProfile({ user, form }) {
@@ -53,14 +56,12 @@ function* resetPassword({ form }) {
 const createProfileListener = uid =>
   eventChannel(emit => {
     const unsubscribe = profileListener(uid, emit);
-    return () => {
-      unsubscribe();
-    };
+    return () => unsubscribe();
   });
 
-function* updateProfileListener(profileChannel) {
+function* updateProfileListener(channel) {
   while (true) {
-    const update = yield take(profileChannel);
+    const update = yield take(channel);
     yield put(createAction(UPDATED_USER.SUCCESS, { update }));
   }
 }
@@ -70,6 +71,10 @@ function* onLogin(user) {
   profileChannel = yield call(createProfileListener, user.uid);
   yield spawn(updateProfileListener, profileChannel);
   yield put(createAction(LOGGED_IN.SUCCESS, { user }));
+  const pathname = yield select(getPathname);
+  if (pathname === '/') {
+    yield put(push('/dashboard'));
+  }
 }
 
 function* loginFlow() {
