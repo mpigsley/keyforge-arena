@@ -4,7 +4,6 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { reducer as toastrReducer } from 'react-redux-toastr';
 import { createBrowserHistory } from 'history';
 import createSagaMiddleware from 'redux-saga';
-import thunk from 'redux-thunk';
 
 import reducers from './reducers';
 import initSagas from './sagas';
@@ -20,7 +19,7 @@ export default () => {
       router: connectRouter(history),
     }),
     composeWithDevTools(
-      applyMiddleware(thunk, sagaMiddleware, routerMiddleware(history)),
+      applyMiddleware(sagaMiddleware, routerMiddleware(history)),
     ),
   );
   initSagas(sagaMiddleware);
