@@ -16,10 +16,6 @@ service cloud.firestore {
       allow write: if false;
       allow read: if request.auth != null;
     }
-    match /connections/{uid} {
-      allow write: if false;
-      allow read: if ensureUser(uid);
-    }
     match /users/{uid} {
       function validUsername(username) {
       	return username.matches('^[a-zA-Z0-9][a-zA-Z0-9_]*([.][a-z0-9_]+)*$') == true;
