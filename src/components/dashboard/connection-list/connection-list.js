@@ -8,7 +8,7 @@ import Spinner from 'primitives/spinner';
 import Header from 'primitives/header';
 import Button from 'primitives/button';
 
-import { size, map } from 'constants/lodash';
+import { size } from 'constants/lodash';
 import { Plus } from 'constants/icons';
 
 import styles from './styles.module.scss';
@@ -49,8 +49,8 @@ export default function ConnectionList({ isInitialized, connections }) {
           </IconButton>
         </FlexContainer>
         <div className={styles.scrollContainer}>
-          {map(connections, (connection, id) => (
-            <ConnectionListItem key={id} connection={connection} id={id} />
+          {connections.map(connection => (
+            <ConnectionListItem key={connection.key} connection={connection} />
           ))}
         </div>
       </>

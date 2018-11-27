@@ -8,14 +8,24 @@ import Header from 'primitives/header';
 
 import styles from './styles.module.scss';
 
-export default function ConnectionListItem({ connection }) {
-  const { username, tag, pending, isOnline, lastOnline } = connection;
+export default function ConnectionListItem({ connection, connectionReply }) {
+  const { username, tag, pending, isOnline, lastOnline, key } = connection;
+
   let action = <Button className={styles.actionBtn}>Challenge</Button>;
   if (pending) {
     action = (
       <>
-        <Button className={styles.actionBtn}>Remove</Button>
-        <Button primary className={styles.actionBtn}>
+        <Button
+          className={styles.actionBtn}
+          onClick={() => connectionReply(key, false)}
+        >
+          Remove
+        </Button>
+        <Button
+          primary
+          className={styles.actionBtn}
+          onClick={() => connectionReply(key, true)}
+        >
           Add
         </Button>
       </>
@@ -23,6 +33,7 @@ export default function ConnectionListItem({ connection }) {
   } else if (!isOnline) {
     action = <span>{lastOnline}</span>;
   }
+
   return (
     <FlexContainer className={styles.row} align="center">
       <div
@@ -42,6 +53,7 @@ export default function ConnectionListItem({ connection }) {
 }
 
 ConnectionListItem.propTypes = {
+  connectionReply: PropTypes.func.isRequired,
   connection: PropTypes.shape({
     username: PropTypes.string.isRequired,
     tag: PropTypes.string.isRequired,

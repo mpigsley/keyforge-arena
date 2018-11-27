@@ -8,8 +8,8 @@ export const connectionPing = () =>
 export const requestConnection = connection =>
   Firebase.functions().httpsCallable('requestConnection')({ connection });
 
-export const connectionReply = (connnection, accepted) =>
+export const connectionReply = (connection, accepted) =>
   Firebase.functions().httpsCallable('connectionReply')({
-    connnection,
+    connection,
     accepted,
   });

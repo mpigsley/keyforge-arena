@@ -2,11 +2,16 @@ const admin = require('firebase-admin');
 const functions = require('firebase-functions');
 
 module.exports = functions.https.onCall(
-  async ({ connnection, accepted }, context) => {
+  async ({ connection, accepted }, context) => {
     if (!context.auth) {
       throw new functions.https.HttpsError(
         'unauthenticated',
         'The function must be called while authenticated.',
+      );
+    } else if (!connection || accepted === undefined) {
+      throw new functions.https.HttpsError(
+        'failed-precondition',
+        "The connection's id and whether or not they are accepted is required",
       );
     }
 
@@ -19,8 +24,8 @@ module.exports = functions.https.onCall(
             .collection('connections')
             .doc(context.auth.uid),
           {
-            pending: admin.firestore.FieldValue.arrayRemove(connnection),
-            active: admin.firestore.FieldValue.arrayUnion(connnection),
+            pending: admin.firestore.FieldValue.arrayRemove(connection),
+            active: admin.firestore.FieldValue.arrayUnion(connection),
           },
           { merge: true },
         );
@@ -38,7 +43,7 @@ module.exports = functions.https.onCall(
             .firestore()
             .collection('connections')
             .doc(context.auth.uid),
-          { pending: admin.firestore.FieldValue.arrayRemove(connnection) },
+          { pending: admin.firestore.FieldValue.arrayRemove(connection) },
           { merge: true },
         );
       }
