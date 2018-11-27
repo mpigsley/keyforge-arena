@@ -5,6 +5,7 @@ const instantiateUser = require('./src/instantiate-user');
 const updateUser = require('./src/update-user');
 const requestConnection = require('./src/request-connection');
 const connectionReply = require('./src/connection-reply');
+const connectionPing = require('./src/connection-ping');
 
 admin.initializeApp();
 admin.firestore().settings({ timestampsInSnapshots: true });
@@ -14,3 +15,4 @@ exports.instantiateUser = instantiateUser;
 exports.updateUser = updateUser;
 exports.requestConnection = requestConnection;
 exports.connectionReply = connectionReply;
+exports.connectionPing = connectionPing;

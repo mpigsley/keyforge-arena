@@ -18,8 +18,9 @@ import { createAction } from 'utils/store';
 
 function* fetchDecks({ user }) {
   try {
+    const { uid } = user;
     yield put(createAction(UPDATED.PENDING));
-    const decks = yield getDecksByUser(user.uid);
+    const decks = yield getDecksByUser(uid);
     yield put(createAction(UPDATED.SUCCESS, { decks }));
   } catch (error) {
     yield put(createAction(UPDATED.ERROR, { error: error.message }));
