@@ -13,10 +13,18 @@ export default function ConnectionListItem({
   connection,
   isReplyingTo,
   connectionReply,
+  challengeConnection,
 }) {
   const { username, tag, pending, isOnline, lastOnline, key } = connection;
 
-  let action = <Button className={styles.actionBtn}>Challenge</Button>;
+  let action = (
+    <Button
+      className={styles.actionBtn}
+      onClick={() => challengeConnection(key)}
+    >
+      Challenge
+    </Button>
+  );
   if (isReplyingTo === key) {
     action = <Spinner />;
   } else if (pending) {
@@ -61,6 +69,7 @@ export default function ConnectionListItem({
 
 ConnectionListItem.propTypes = {
   connectionReply: PropTypes.func.isRequired,
+  challengeConnection: PropTypes.func.isRequired,
   isReplyingTo: PropTypes.string,
   connection: PropTypes.shape({
     username: PropTypes.string.isRequired,

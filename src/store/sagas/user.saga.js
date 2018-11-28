@@ -60,7 +60,7 @@ const createProfileListener = uid =>
     return () => unsubscribe();
   });
 
-function* updateProfileListener(channel) {
+function* updateProfileHandler(channel) {
   while (true) {
     const update = yield take(channel);
     yield put(createAction(UPDATED_USER.SUCCESS, { update }));
@@ -70,7 +70,7 @@ function* updateProfileListener(channel) {
 let profileChannel;
 function* onLogin(user) {
   profileChannel = yield call(createProfileListener, user.uid);
-  yield spawn(updateProfileListener, profileChannel);
+  yield spawn(updateProfileHandler, profileChannel);
   yield put(createAction(LOGGED_IN.SUCCESS, { user }));
   const pathname = yield select(getPathname);
   if (pathname === '/') {
