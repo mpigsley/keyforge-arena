@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { getIsInitialized } from 'store/selectors/base.selectors';
+import { getIsDecksInitialized } from 'store/selectors/base.selectors';
 
 import Dashboard from './dashboard';
 
 const mapStateToProps = createStructuredSelector({
-  isInitialized: getIsInitialized,
+  isInitialized: getIsDecksInitialized,
 });
 
 export default connect(mapStateToProps)(Dashboard);

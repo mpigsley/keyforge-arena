@@ -13,4 +13,13 @@ export const lobbyListener = (uid, cb) =>
   Firebase.firestore()
     .collection('lobby')
     .where('opponent', '==', uid)
-    .onSnapshot(doc => cb(doc.data()));
+    .onSnapshot(snapShot => {
+      let lobbies = {};
+      snapShot.forEach(doc => {
+        lobbies = {
+          ...lobbies,
+          [doc.id]: doc.data(),
+        };
+      });
+      cb(lobbies);
+    });
