@@ -9,7 +9,7 @@ export const createChallengeLobby = (player, opponent) => {
   return Firebase.firestore()
     .collection('lobby')
     .add(doc)
-    .then(ref => ({ [ref.id]: doc }));
+    .then(ref => [ref.id, doc]);
 };
 
 export const lobbyListener = (uid, cb) =>

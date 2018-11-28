@@ -11,7 +11,7 @@ import { push } from 'connected-react-router';
 import { eventChannel } from 'redux-saga';
 
 import { lobbyListener, createChallengeLobby } from 'store/api/lobby.api';
-import { LOBBIES_UPDATED, CHALLENGE } from 'store/actions/game.actions';
+import { LOBBIES_UPDATED, CHALLENGE } from 'store/actions/lobby.actions';
 import { LOGGED_IN, SIGNED_OUT } from 'store/actions/user.actions';
 import { getUserId } from 'store/selectors/base.selectors';
 import { createAction } from 'utils/store';
@@ -51,9 +51,9 @@ function* challengeFlow({ opponent }) {
     return;
   }
   try {
-    const lobby = yield call(createChallengeLobby, player, opponent);
-    yield put(createAction(CHALLENGE.SUCCESS, { update: lobby }));
-    yield put(push('/lobby'));
+    const [id, lobby] = yield call(createChallengeLobby, player, opponent);
+    yield put(createAction(CHALLENGE.SUCCESS, { update: { [id]: lobby } }));
+    yield put(push(`/lobby/${id}`));
   } catch (error) {
     yield put(createAction(CHALLENGE.ERROR, { error: error.message }));
   }
