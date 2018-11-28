@@ -23,7 +23,7 @@ function* connectionPing() {
   yield put(createAction(UPDATE.SUCCESS, { connections }));
 }
 
-function* pingListener(channel) {
+function* pingHandler(channel) {
   while (yield take(channel)) {
     yield call(connectionPing);
   }
@@ -33,7 +33,7 @@ let pingChannel;
 function* connectionPingFlow() {
   try {
     pingChannel = yield call(createConnectionPingInterval);
-    yield spawn(pingListener, pingChannel);
+    yield spawn(pingHandler, pingChannel);
     yield call(connectionPing);
   } catch (error) {
     yield put(createAction(UPDATE.ERROR, { error: error.message }));
