@@ -1,13 +1,16 @@
 import Firebase from 'firebase/app';
 
-export const createChallengeLobby = (player, opponent) =>
-  Firebase.firestore()
+export const createChallengeLobby = (player, opponent) => {
+  const doc = {
+    created: Firebase.firestore.FieldValue.serverTimestamp(),
+    opponent,
+    player,
+  };
+  return Firebase.firestore()
     .collection('lobby')
-    .add({
-      created: Firebase.firestore.FieldValue.serverTimestamp(),
-      opponent,
-      player,
-    });
+    .add(doc)
+    .then(ref => ({ [ref.id]: doc }));
+};
 
 export const lobbyListener = (uid, cb) =>
   Firebase.firestore()

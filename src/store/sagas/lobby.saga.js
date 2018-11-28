@@ -52,8 +52,7 @@ function* challengeFlow({ opponent }) {
   }
   try {
     const lobby = yield call(createChallengeLobby, player, opponent);
-    console.log(lobby); // eslint-disable-line
-    yield put(createAction(CHALLENGE.SUCCESS));
+    yield put(createAction(CHALLENGE.SUCCESS, { update: lobby }));
     yield put(push('/lobby'));
   } catch (error) {
     yield put(createAction(CHALLENGE.ERROR, { error: error.message }));

@@ -14,7 +14,7 @@ export const getSortedConnections = createSelector(
         return {
           ...connection,
           sortDate: new Date(online),
-          lastOnline: lastOnline.isAfter(dayjs().subtract(1, 'day'))
+          lastOnline: lastOnline.isAfter(dayjs().subtract(12, 'hour'))
             ? lastOnline.format('h:mm a')
             : lastOnline.format('MMMM D YYYY'),
           isOnline: lastOnline.isAfter(dayjs().subtract(45, 'second')),
