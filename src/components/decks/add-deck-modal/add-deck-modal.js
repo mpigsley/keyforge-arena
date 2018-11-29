@@ -7,6 +7,7 @@ import Button from 'primitives/button';
 import FlexContainer from 'primitives/flex-container';
 import Label from 'primitives/label';
 import Input from 'primitives/input';
+import Link from 'primitives/link';
 import { useTextInput, usePrevious } from 'utils/custom-effects';
 
 import styles from './styles.module.scss';
@@ -64,9 +65,11 @@ export default function AddDeckModal({
     >
       <FlexContainer direction="column">
         <p className={styles.paragraph}>
-          To add a new deck, copy and paste the link of a specific deck from
-          www.keyforgegame.com. The deck does not need to belong to you to
-          import it.
+          To add a new deck, copy and paste the URL of a specific deck from{' '}
+          <Link to="https://www.keyforgegame.com/" inNewTab>
+            www.keyforgegame.com
+          </Link>
+          . The deck does not need to belong to you to import it.
         </p>
         <Label htmlFor="link">Link</Label>
         <Input

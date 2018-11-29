@@ -29,9 +29,9 @@ export default function Home() {
             for Keyforge this was the perfect time to start. Additionally, I
             don&#39;t just want to <i>play</i> keyforge. I want to learn and get
             better at keyforge. My goal for this website is to build in a{' '}
-            <b>replay system</b> to help locate the moment the game when things
-            went wrong and an <b>in-depth deck statistics</b> section as you
-            play your decks online against your friends.
+            <b>replay system</b> to help locate the moment in the game when
+            things went wrong and an <b>in-depth deck statistics</b> section as
+            you play your decks online against your friends.
           </p>
           <p className={styles.text}>
             If this sounds at all interesting to you and would like to help out
