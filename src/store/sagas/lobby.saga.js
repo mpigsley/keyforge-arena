@@ -8,13 +8,16 @@ import {
   select,
 } from 'redux-saga/effects';
 import { push } from 'connected-react-router';
+import { toastr } from 'react-redux-toastr';
 import { eventChannel } from 'redux-saga';
+import dayjs from 'dayjs';
 
 import { lobbyListener, createChallengeLobby } from 'store/api/lobby.api';
 import { LOBBIES_UPDATED, CHALLENGE } from 'store/actions/lobby.actions';
 import { LOGGED_IN, SIGNED_OUT } from 'store/actions/user.actions';
 import { getUserId } from 'store/selectors/base.selectors';
 import { createAction } from 'utils/store';
+import { find } from 'constants/lodash';
 
 const createLobbyListener = uid =>
   eventChannel(emit => {
@@ -26,6 +29,16 @@ function* lobbyHandler(channel) {
   while (true) {
     const update = yield take(channel);
     yield put(createAction(LOBBIES_UPDATED.SUCCESS, { update }));
+    const recent = find(update, ({ created }) =>
+      dayjs(created.toDate()).isAfter(dayjs().subtract(30, 'second')),
+    );
+    if (recent) {
+      yield call(
+        toastr.info,
+        'You have been challenged',
+        'Would you like to accept?',
+      );
+    }
   }
 }
 
