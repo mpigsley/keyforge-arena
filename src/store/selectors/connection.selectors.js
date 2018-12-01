@@ -30,6 +30,6 @@ export const getSortedConnections = createSelector(
           isOnline: lastOnline.isAfter(dayjs().subtract(45, 'second')),
         };
       }),
-      ['sortDate', 'pending'],
+      ['-sortDate', '-pending'],
     ),
 );

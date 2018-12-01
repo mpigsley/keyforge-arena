@@ -13,11 +13,11 @@ module.exports = functions.https.onCall(async ({ connection }, context) => {
   try {
     const existing = await admin
       .firestore()
-      .collection('connection')
+      .collection('connections')
       .doc(connection)
       .get();
 
-    if ((includes((existing || {}).active || []), context.auth.uid)) {
+    if (existing && includes(existing.active, context.auth.uid)) {
       throw new functions.https.HttpsError(
         'already-exists',
         'Connection already exists.',
