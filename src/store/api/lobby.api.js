@@ -12,6 +12,24 @@ export const createChallengeLobby = (player, opponent) => {
     .then(ref => [ref.id, doc]);
 };
 
+export const cancelLobby = lobby =>
+  Firebase.firestore()
+    .collection('lobby')
+    .doc(lobby)
+    .delete();
+
+export const deleteLobbies = lobbies => {
+  const batch = Firebase.firestore().batch();
+  lobbies.forEach(lobby =>
+    batch.delete(
+      Firebase.firestore()
+        .collection('lobby')
+        .doc(lobby),
+    ),
+  );
+  return batch.commit();
+};
+
 export const lobbyListener = (uid, cb) =>
   Firebase.firestore()
     .collection('lobby')

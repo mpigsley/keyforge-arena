@@ -9,6 +9,7 @@ import pick from 'lodash/pick';
 import size from 'lodash/size';
 import sortBy from 'lodash/sortBy';
 import uniq from 'lodash/uniq';
+import without from 'lodash/without';
 import zipObject from 'lodash/zipObject';
 
 export {
@@ -23,5 +24,6 @@ export {
   size,
   sortBy,
   uniq,
+  without,
   zipObject,
 };
