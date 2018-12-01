@@ -3,8 +3,8 @@ import Firebase from 'firebase/app';
 export const createChallengeLobby = (player, opponent) => {
   const doc = {
     created: Firebase.firestore.FieldValue.serverTimestamp(),
-    opponent,
-    player,
+    players: [opponent, player],
+    creator: player,
   };
   return Firebase.firestore()
     .collection('lobby')
@@ -15,7 +15,7 @@ export const createChallengeLobby = (player, opponent) => {
 export const lobbyListener = (uid, cb) =>
   Firebase.firestore()
     .collection('lobby')
-    .where('opponent', '==', uid)
+    .where('players', 'array-contains', uid)
     .onSnapshot(snapShot => {
       let lobbies = {};
       snapShot.forEach(doc => {

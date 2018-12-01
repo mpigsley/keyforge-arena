@@ -10,7 +10,7 @@ const connectionsWithChallenges = createSelector(
     map(connections, (connection, key) => ({
       ...connection,
       key,
-      challenge: findKey(lobbies, ({ player }) => key === player),
+      challenge: findKey(lobbies, ({ creator }) => key === creator),
     })),
 );
 

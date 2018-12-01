@@ -25,18 +25,18 @@ const createLobbyListener = uid =>
     return () => unsubscribe();
   });
 
-function* lobbyHandler(channel) {
+function* lobbyHandler(channel, uid) {
   while (true) {
     const update = yield take(channel);
     yield put(createAction(LOBBIES_UPDATED.SUCCESS, { update }));
     const recent = find(update, ({ created }) =>
       dayjs(created.toDate()).isAfter(dayjs().subtract(2, 'minute')),
     );
-    if (recent) {
+    if (recent && recent.creator !== uid) {
       yield call(
         toastr.info,
-        'You have been challenged!',
-        'Accept it on your dashboard now.',
+        "You've been challenged!",
+        'Accept it now on your dashboard.',
       );
     }
   }
@@ -46,7 +46,7 @@ let lobbyChannel;
 function* connectionLobbyFlow({ user }) {
   try {
     lobbyChannel = yield call(createLobbyListener, user.uid);
-    yield spawn(lobbyHandler, lobbyChannel);
+    yield spawn(lobbyHandler, lobbyChannel, user.uid);
   } catch (error) {
     yield put(createAction(LOBBIES_UPDATED.ERROR, { error: error.message }));
   }

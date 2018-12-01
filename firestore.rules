@@ -21,7 +21,7 @@ service cloud.firestore {
     }
     match /lobby/{lobbyId} {
       function isInvolved(data) {
-        return data.player == request.auth.uid || data.opponent == request.auth.uid;
+        return data.players.includes(request.auth.uid);
       }
 
       allow create: if ensureAuth();
