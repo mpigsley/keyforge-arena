@@ -77,9 +77,8 @@ function* challengeFlow({ opponent }) {
     return;
   }
   try {
-    const id = yield call(createChallengeLobby, player, opponent);
+    yield call(createChallengeLobby, player, opponent);
     yield put(createAction(CHALLENGE.SUCCESS));
-    yield put(push(`/lobby/${id}`));
   } catch (error) {
     yield put(createAction(CHALLENGE.ERROR, { error: error.message }));
   }
