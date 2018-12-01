@@ -20,8 +20,12 @@ This project is a front-end application written in React + Redux with a [Firebas
 4.  Ensure you enable authentication and the Firestore database in the web interface.
 5.  `$(npm bin)/firebase login` or use your global firebase instance if you installed it globally.
 6.  `$(npm bin)/firebase use --add` and select the project you configured in the firebase console.
-7.  `npm run deploy` to setup the cloud functions
-8.  `npm start`
+7.  Generate new private key from the [account services page](https://firebase.google.com/docs/admin/setup) and place json file at `./bootstrap/serviceAccountKey.json`.
+8.  `npm run bootstrap` to upload card and house images to firebase storage
+9.  `npm run deploy:all` to setup the cloud functions, firestore indexes, and hosting
+10. `npm start`
+
+If you are seeing a CORS error in the console. [Try this fix out.](https://stackoverflow.com/a/47779318/2521218)
 
 ### Available Scripts
 

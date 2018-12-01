@@ -7,5 +7,5 @@ export const getHouseLink = house =>
 
 export const getCardLink = (expansion, card) =>
   Firebase.storage()
-    .ref(`${expansion}/${card}.png`)
+    .ref(`sets/${expansion}/${card}.png`)
     .getDownloadURL();

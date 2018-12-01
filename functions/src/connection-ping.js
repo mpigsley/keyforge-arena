@@ -26,7 +26,7 @@ module.exports = functions.https.onCall(async (data, context) => {
 
     const userObj = user.data();
     if (!userObj) {
-      return; // Hasn't been created yet
+      return {}; // Hasn't been created yet
     }
 
     const { tag, username } = userObj;

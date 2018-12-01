@@ -12,6 +12,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "bootstrap": "node -r dotenv/config bootstrap/index.js dotenv_config_path=./.env.local",
     "deploy": "npm run build && firebase deploy --except functions",
     "deploy:functions": "firebase deploy --only functions",
     "deploy:all": "firebase deploy",
@@ -42,6 +43,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^9.0.0",
+    "dotenv": "^6.1.0",
     "eslint": "5.6.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-airbnb-base": "^13.1.0",
@@ -51,6 +53,7 @@
     "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-react": "^7.11.1",
     "eslint-plugin-react-hooks": "0.0.0",
+    "firebase-admin": "^6.3.0",
     "firebase-tools": "^6.1.0",
     "prettier": "^1.15.2"
   },

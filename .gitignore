@@ -15,5 +15,6 @@
 .env.production.local
 .firebase
 .vscode
+serviceAccountKey.json
 
 *-debug.log
