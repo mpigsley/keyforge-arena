@@ -9,7 +9,7 @@ export const createChallengeLobby = (player, opponent) => {
   return Firebase.firestore()
     .collection('lobby')
     .add(doc)
-    .then(ref => [ref.id, doc]);
+    .then(ref => ref.id);
 };
 
 export const cancelLobby = lobby =>
@@ -18,7 +18,7 @@ export const cancelLobby = lobby =>
     .doc(lobby)
     .delete();
 
-export const deleteLobbies = lobbies => {
+export const cancelLobbies = lobbies => {
   const batch = Firebase.firestore().batch();
   lobbies.forEach(lobby =>
     batch.delete(

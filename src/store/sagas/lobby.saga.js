@@ -10,18 +10,13 @@ import {
 import { push } from 'connected-react-router';
 import { toastr } from 'react-redux-toastr';
 import { eventChannel } from 'redux-saga';
-import dayjs from 'dayjs';
 
-import {
-  lobbyListener,
-  deleteLobbies,
-  createChallengeLobby,
-} from 'store/api/lobby.api';
+import { lobbyListener, createChallengeLobby } from 'store/api/lobby.api';
 import { LOBBIES_UPDATED, CHALLENGE } from 'store/actions/lobby.actions';
 import { LOGGED_IN, SIGNED_OUT } from 'store/actions/user.actions';
 import { getUserId } from 'store/selectors/base.selectors';
 import { createAction } from 'utils/store';
-import { pick, without } from 'constants/lodash';
+import { find } from 'constants/lodash';
 
 const createLobbyListener = uid =>
   eventChannel(emit => {
@@ -32,24 +27,13 @@ const createLobbyListener = uid =>
 function* lobbyHandler(channel, uid) {
   while (true) {
     const update = yield take(channel);
-    const recent = pick(
-      update,
-      ({ created, creator }) =>
-        dayjs(created.toDate()).isAfter(dayjs().subtract(2, 'minute')) &&
-        creator !== uid,
-    );
-    const recentKeys = Object.keys(recent);
-    const deletableKeys = without(Object.keys(update), recentKeys);
-    yield put(createAction(LOBBIES_UPDATED.SUCCESS, { update: recent }));
-    if (recentKeys.length) {
+    yield put(createAction(LOBBIES_UPDATED.SUCCESS, { update }));
+    if (find(update, ({ creator }) => creator !== uid)) {
       yield call(
         toastr.info,
         "You've been challenged!",
         'Accept it now on your dashboard.',
       );
-    }
-    if (deletableKeys.length) {
-      deleteLobbies(deletableKeys);
     }
   }
 }
@@ -76,8 +60,8 @@ function* challengeFlow({ opponent }) {
     return;
   }
   try {
-    const [id, lobby] = yield call(createChallengeLobby, player, opponent);
-    yield put(createAction(CHALLENGE.SUCCESS, { update: { [id]: lobby } }));
+    const id = yield call(createChallengeLobby, player, opponent);
+    yield put(createAction(CHALLENGE.SUCCESS));
     yield put(push(`/lobby/${id}`));
   } catch (error) {
     yield put(createAction(CHALLENGE.ERROR, { error: error.message }));
