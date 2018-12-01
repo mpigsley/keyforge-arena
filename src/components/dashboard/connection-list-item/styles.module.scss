@@ -33,6 +33,10 @@ $status-size: 15px;
 .actionBtn {
   margin: 0;
 
+  &:disabled {
+    pointer-events: none;
+  }
+
   &:last-of-type {
     margin-left: 0.5rem;
   }

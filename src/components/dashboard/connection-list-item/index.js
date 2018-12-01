@@ -7,6 +7,7 @@ import {
   cancelChallenge,
 } from 'store/actions/lobby.actions';
 import {
+  getDecks,
   getIsReplyingTo,
   getIsCancellingChallenge,
 } from 'store/selectors/base.selectors';
@@ -16,6 +17,7 @@ import ConnectionListItem from './connection-list-item';
 const mapStateToProps = createStructuredSelector({
   isCancelling: getIsCancellingChallenge,
   isReplyingTo: getIsReplyingTo,
+  decks: getDecks,
 });
 
 export default connect(

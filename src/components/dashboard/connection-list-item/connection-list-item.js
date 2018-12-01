@@ -6,10 +6,12 @@ import FlexContainer from 'primitives/flex-container';
 import Spinner from 'primitives/spinner';
 import Button from 'primitives/button';
 import Header from 'primitives/header';
+import { size } from 'constants/lodash';
 
 import styles from './styles.module.scss';
 
 export default function ConnectionListItem({
+  decks,
   connection,
   isCancelling,
   isReplyingTo,
@@ -68,9 +70,20 @@ export default function ConnectionListItem({
   } else if (challenge) {
     action = (
       <>
-        <Button primary className={styles.actionBtn} onClick={() => {}}>
-          Accept Challenge
-        </Button>
+        <div
+          data-rh={
+            size(decks) ? undefined : 'To accept, add at least one deck.'
+          }
+        >
+          <Button
+            disabled={!size(decks)}
+            primary
+            className={styles.actionBtn}
+            onClick={() => {}}
+          >
+            Accept Challenge
+          </Button>
+        </div>
         <Button
           className={styles.actionBtn}
           onClick={() => cancelChallenge(challenge)}
@@ -107,6 +120,7 @@ ConnectionListItem.propTypes = {
   cancelChallenge: PropTypes.func.isRequired,
   isReplyingTo: PropTypes.string,
   isCancelling: PropTypes.string,
+  decks: PropTypes.shape().isRequired,
   connection: PropTypes.shape({
     username: PropTypes.string.isRequired,
     tag: PropTypes.string.isRequired,
