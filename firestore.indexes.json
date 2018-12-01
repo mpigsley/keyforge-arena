@@ -1,3 +1,11 @@
 {
-  "indexes": []
+  "indexes": [
+    {
+      "collectionId": "lobby",
+      "fields": [
+        { "fieldPath": "players", "mode": "ARRAY_CONTAINS" },
+        { "fieldPath": "created", "mode": "ASCENDING" }
+      ]
+    }
+  ]
 }
