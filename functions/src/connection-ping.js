@@ -24,7 +24,12 @@ module.exports = functions.https.onCall(async (data, context) => {
         .get(),
     ]);
 
-    const { tag, username } = user.data();
+    const userObj = user.data();
+    if (!userObj) {
+      return; // Hasn't been created yet
+    }
+
+    const { tag, username } = userObj;
     const { pending, active } = connections.exists ? connections.data() : {};
     const allConnections = [...(pending || []), ...(active || [])];
 

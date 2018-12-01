@@ -48,7 +48,6 @@ const closePingChannel = () => {
 
 function* requestConnection({ connection }) {
   try {
-    console.log(connection);
     yield call(connectionRequest, connection);
     yield put(createAction(REQUEST.SUCCESS));
     yield call(
