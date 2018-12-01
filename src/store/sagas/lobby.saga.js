@@ -39,7 +39,7 @@ function* lobbyHandler(channel, uid) {
     if (find(update, ({ creator }) => creator !== uid)) {
       yield call(
         toastr.info,
-        "You've been challenged!",
+        "You've Been Challenged!",
         'Accept it now on your dashboard.',
       );
     }
@@ -48,7 +48,7 @@ function* lobbyHandler(channel, uid) {
       yield put(push('/dashboard'));
       yield call(
         toastr.info,
-        'Challenge cancelled',
+        'Challenge Cancelled',
         'Your opponent has decided not to accept.',
       );
     }
