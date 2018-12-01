@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 import FriendConnectModal from 'components/dashboard/friend-connect-modal';
 import ConnectionListItem from 'components/dashboard/connection-list-item';
@@ -8,16 +9,17 @@ import Spinner from 'primitives/spinner';
 import Header from 'primitives/header';
 import Button from 'primitives/button';
 
-import { size } from 'constants/lodash';
 import { Plus } from 'constants/icons';
 
 import styles from './styles.module.scss';
 
-export default function ConnectionList({ isInitialized, connections }) {
-  const [isFriendConnectOpen, setIsFriendConnectOpen] = useState(false);
-
+export default function ConnectionList({
+  isInitialized,
+  connections,
+  toggleConnectModal,
+}) {
   let content;
-  const isCentered = !isInitialized || !size(connections);
+  const isCentered = !isInitialized || !connections.length;
   if (isCentered) {
     content = <Spinner />;
     if (isInitialized) {
@@ -29,7 +31,7 @@ export default function ConnectionList({ isInitialized, connections }) {
           <Header num="4" minor>
             Connect with other users to direct challenge them.
           </Header>
-          <Button onClick={() => setIsFriendConnectOpen(true)}>Connect</Button>
+          <Button onClick={toggleConnectModal}>Connect</Button>
         </>
       );
     }
@@ -44,7 +46,7 @@ export default function ConnectionList({ isInitialized, connections }) {
           <Header num="2" noMargin>
             Connection List
           </Header>
-          <IconButton onClick={() => setIsFriendConnectOpen(true)}>
+          <IconButton onClick={toggleConnectModal}>
             <Plus />
           </IconButton>
         </FlexContainer>
@@ -68,10 +70,17 @@ export default function ConnectionList({ isInitialized, connections }) {
       >
         {content}
       </FlexContainer>
-      <FriendConnectModal
-        isOpen={isFriendConnectOpen}
-        onClose={() => setIsFriendConnectOpen(false)}
-      />
+      <FriendConnectModal />
     </>
   );
 }
+
+ConnectionList.propTypes = {
+  isInitialized: PropTypes.bool.isRequired,
+  connections: PropTypes.arrayOf(
+    PropTypes.shape({
+      key: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+  toggleConnectModal: PropTypes.func.isRequired,
+};

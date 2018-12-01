@@ -3,9 +3,9 @@ import { eventChannel } from 'redux-saga';
 import { toastr } from 'react-redux-toastr';
 
 import {
-  connectionPing as callConnectionPing,
-  requestConnection as callRequestConnection,
-  connectionReply as callConnectionReply,
+  pingConnection,
+  connectionRequest,
+  connectionReply,
 } from 'store/api/connection.api';
 import { REQUEST, REPLY, UPDATE } from 'store/actions/connection.actions';
 import { LOGGED_IN, SIGNED_OUT } from 'store/actions/user.actions';
@@ -19,7 +19,7 @@ const createConnectionPingInterval = () =>
   });
 
 function* connectionPing() {
-  const connections = yield call(callConnectionPing);
+  const connections = yield call(pingConnection);
   yield put(createAction(UPDATE.SUCCESS, { connections }));
 }
 
@@ -48,7 +48,8 @@ const closePingChannel = () => {
 
 function* requestConnection({ connection }) {
   try {
-    yield call(callRequestConnection, connection);
+    console.log(connection);
+    yield call(connectionRequest, connection);
     yield put(createAction(REQUEST.SUCCESS));
     yield call(
       toastr.success,
@@ -60,9 +61,9 @@ function* requestConnection({ connection }) {
   }
 }
 
-function* connectionReply({ connection, accepted }) {
+function* replyToConnection({ connection, accepted }) {
   try {
-    yield call(callConnectionReply, connection, accepted);
+    yield call(connectionReply, connection, accepted);
     yield put(createAction(REPLY.SUCCESS, { connection, accepted }));
   } catch (error) {
     yield put(createAction(REPLY.ERROR, { error: error.message }));
@@ -74,6 +75,6 @@ export default function*() {
     takeEvery(LOGGED_IN.SUCCESS, connectionPingFlow),
     takeEvery(SIGNED_OUT.SUCCESS, closePingChannel),
     takeEvery(REQUEST.PENDING, requestConnection),
-    takeEvery(REPLY.PENDING, connectionReply),
+    takeEvery(REPLY.PENDING, replyToConnection),
   ]);
 }

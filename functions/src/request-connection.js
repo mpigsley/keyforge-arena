@@ -1,5 +1,6 @@
 const admin = require('firebase-admin');
 const functions = require('firebase-functions');
+const { includes } = require('lodash');
 
 module.exports = functions.https.onCall(async ({ connection }, context) => {
   if (!context.auth) {
@@ -10,6 +11,19 @@ module.exports = functions.https.onCall(async ({ connection }, context) => {
   }
 
   try {
+    const existing = await admin
+      .firestore()
+      .collection('connection')
+      .doc(connection)
+      .get();
+
+    if ((includes((existing || {}).active || []), context.auth.uid)) {
+      throw new functions.https.HttpsError(
+        'already-exists',
+        'Connection already exists.',
+      );
+    }
+
     await admin
       .firestore()
       .collection('connections')
@@ -20,6 +34,9 @@ module.exports = functions.https.onCall(async ({ connection }, context) => {
       );
   } catch (e) {
     console.error(e);
+    if (e.code === 'already-exists') {
+      throw e;
+    }
     throw new functions.https.HttpsError(
       'unknown',
       'Could not request connection.',

@@ -1,6 +1,10 @@
 /* Connection */
 export const getConnections = state => state.connection.models;
+export const getConnectionError = state => state.connection.error;
 export const getIsReplyingTo = state => state.connection.isReplyingTo;
+export const getIsRequesting = state => state.connection.isRequesting;
+export const getIsConnectModalOpen = state =>
+  state.connection.isConnectModalOpen;
 export const getAreConnectionsInitialized = state =>
   state.connection.isInitialized;
 

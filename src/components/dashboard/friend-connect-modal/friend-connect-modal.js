@@ -18,8 +18,11 @@ ReactModal.setAppElement('#root');
 
 export default function FriendConnectModal({
   isOpen,
+  isRequesting,
   onClose,
   userId,
+  error,
+  unsetError,
   requestConnection,
 }) {
   const previousIsOpen = usePrevious(isOpen);
@@ -44,6 +47,13 @@ export default function FriendConnectModal({
     }
   });
 
+  const onUpdateSearch = e => {
+    if (error) {
+      unsetError();
+    }
+    setState({ ...state, result: '', search: e.target.value });
+  };
+
   const onSearch = async () => {
     setState({
       ...state,
@@ -54,16 +64,10 @@ export default function FriendConnectModal({
       ...state,
       isSearching: false,
       connection: uid,
-      search: '',
       result: uid
         ? 'User found! Send request to continue.'
         : 'User was not found',
     });
-  };
-
-  const onRequest = async () => {
-    requestConnection(connection);
-    onClose();
   };
 
   return (
@@ -73,7 +77,13 @@ export default function FriendConnectModal({
       isOpen={isOpen}
       onCancel={onClose}
       actionButtons={[
-        <Button primary key="change" disabled={!connection} onClick={onRequest}>
+        <Button
+          primary
+          key="change"
+          disabled={!connection}
+          onClick={() => requestConnection(connection)}
+          isLoading={isRequesting}
+        >
           Send Request
         </Button>,
       ]}
@@ -90,7 +100,7 @@ export default function FriendConnectModal({
               id="search"
               name="search"
               value={search}
-              onChange={e => setState({ ...state, search: e.target.value })}
+              onChange={onUpdateSearch}
             />
           </FlexContainer>
           <Button
@@ -107,10 +117,10 @@ export default function FriendConnectModal({
       <p
         className={classNames(styles.instructions, {
           [styles.success]: connection,
-          [styles.failure]: !connection,
+          [styles.failure]: !connection || error,
         })}
       >
-        {result}
+        {error || result}
       </p>
     </Modal>
   );
@@ -118,11 +128,15 @@ export default function FriendConnectModal({
 
 FriendConnectModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
+  isRequesting: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
   userId: PropTypes.string,
+  error: PropTypes.string,
+  unsetError: PropTypes.func.isRequired,
   requestConnection: PropTypes.func.isRequired,
 };
 
 FriendConnectModal.defaultProps = {
   userId: undefined,
+  error: undefined,
 };

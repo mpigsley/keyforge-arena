@@ -1,12 +1,14 @@
 import Firebase from 'firebase/app';
 
-export const connectionPing = () =>
+export const pingConnection = () =>
   Firebase.functions()
     .httpsCallable('connectionPing')()
     .then(response => response.data);
 
-export const requestConnection = connection =>
-  Firebase.functions().httpsCallable('requestConnection')({ connection });
+export const connectionRequest = connection =>
+  Firebase.functions().httpsCallable('requestConnection')({
+    connection,
+  });
 
 export const connectionReply = (connection, accepted) =>
   Firebase.functions().httpsCallable('connectionReply')({
