@@ -30,13 +30,19 @@ export default function ConnectionListItem({
     isChallengeCreator,
   } = connection;
 
+  const hasDecks = !!size(decks);
   let action = (
-    <Button
-      className={styles.actionBtn}
-      onClick={() => challengeConnection(key)}
+    <div
+      data-rh={hasDecks ? undefined : 'To challenge, add at least one deck.'}
     >
-      Challenge
-    </Button>
+      <Button
+        className={styles.actionBtn}
+        onClick={() => challengeConnection(key)}
+        disabled={!hasDecks}
+      >
+        Challenge
+      </Button>
+    </div>
   );
   if ([isReplyingTo, isCancelling].includes(key)) {
     action = <Spinner />;
@@ -71,12 +77,10 @@ export default function ConnectionListItem({
     action = (
       <>
         <div
-          data-rh={
-            size(decks) ? undefined : 'To accept, add at least one deck.'
-          }
+          data-rh={hasDecks ? undefined : 'To accept, add at least one deck.'}
         >
           <Button
-            disabled={!size(decks)}
+            disabled={!hasDecks}
             primary
             className={styles.actionBtn}
             onClick={() => {}}
