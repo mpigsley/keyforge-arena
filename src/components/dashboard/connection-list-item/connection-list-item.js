@@ -11,9 +11,11 @@ import styles from './styles.module.scss';
 
 export default function ConnectionListItem({
   connection,
+  isCancelling,
   isReplyingTo,
   connectionReply,
   challengeConnection,
+  cancelChallenge,
 }) {
   const {
     username,
@@ -23,6 +25,7 @@ export default function ConnectionListItem({
     lastOnline,
     key,
     challenge,
+    isChallengeCreator,
   } = connection;
 
   let action = (
@@ -33,7 +36,7 @@ export default function ConnectionListItem({
       Challenge
     </Button>
   );
-  if (isReplyingTo === key) {
+  if ([isReplyingTo, isCancelling].includes(key)) {
     action = <Spinner />;
   } else if (pending) {
     action = (
@@ -53,13 +56,25 @@ export default function ConnectionListItem({
         </Button>
       </>
     );
+  } else if (challenge && isChallengeCreator) {
+    action = (
+      <Button
+        className={styles.actionBtn}
+        onClick={() => cancelChallenge(challenge)}
+      >
+        Cancel Challenge
+      </Button>
+    );
   } else if (challenge) {
     action = (
       <>
         <Button primary className={styles.actionBtn} onClick={() => {}}>
           Accept Challenge
         </Button>
-        <Button className={styles.actionBtn} onClick={() => {}}>
+        <Button
+          className={styles.actionBtn}
+          onClick={() => cancelChallenge(challenge)}
+        >
           Deny
         </Button>
       </>
@@ -89,7 +104,9 @@ export default function ConnectionListItem({
 ConnectionListItem.propTypes = {
   connectionReply: PropTypes.func.isRequired,
   challengeConnection: PropTypes.func.isRequired,
+  cancelChallenge: PropTypes.func.isRequired,
   isReplyingTo: PropTypes.string,
+  isCancelling: PropTypes.string,
   connection: PropTypes.shape({
     username: PropTypes.string.isRequired,
     tag: PropTypes.string.isRequired,
@@ -101,4 +118,5 @@ ConnectionListItem.propTypes = {
 
 ConnectionListItem.defaultProps = {
   isReplyingTo: undefined,
+  isCancelling: undefined,
 };

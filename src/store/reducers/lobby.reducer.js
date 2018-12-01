@@ -1,7 +1,13 @@
-import { CHALLENGE, LOBBIES_UPDATED } from 'store/actions/lobby.actions';
+import {
+  CHALLENGE,
+  CANCEL_CHALLENGE,
+  LOBBIES_UPDATED,
+} from 'store/actions/lobby.actions';
 import { SIGNED_OUT } from 'store/actions/user.actions';
+import { omit } from 'constants/lodash';
 
 const initialState = {
+  isCancelling: undefined,
   models: {},
 };
 
@@ -9,7 +15,15 @@ export default function lobby(state = initialState, action) {
   switch (action.type) {
     case CHALLENGE.SUCCESS:
     case LOBBIES_UPDATED.SUCCESS:
-      return { ...state, models: { ...state.models, ...action.update } };
+      return {
+        ...state,
+        models: omit({ ...state.models, ...action.update }, ...action.deleted),
+      };
+    case CANCEL_CHALLENGE.PENDING:
+      return { ...state, isCancelling: action.challenge };
+    case CANCEL_CHALLENGE.SUCCESS:
+    case CANCEL_CHALLENGE.ERROR:
+      return { ...state, isCancelling: undefined };
     case SIGNED_OUT.SUCCESS:
       return initialState;
     default:

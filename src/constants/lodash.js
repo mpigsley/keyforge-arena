@@ -7,6 +7,7 @@ import map from 'lodash/map';
 import omit from 'lodash/omit';
 import pick from 'lodash/pick';
 import size from 'lodash/size';
+import some from 'lodash/some';
 import sortBy from 'lodash/sortBy';
 import uniq from 'lodash/uniq';
 import without from 'lodash/without';
@@ -22,6 +23,7 @@ export {
   omit,
   pick,
   size,
+  some,
   sortBy,
   uniq,
   without,

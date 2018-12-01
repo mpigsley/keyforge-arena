@@ -34,13 +34,18 @@ export const lobbyListener = (uid, cb) =>
   Firebase.firestore()
     .collection('lobby')
     .where('players', 'array-contains', uid)
-    .onSnapshot(snapShot => {
-      let lobbies = {};
-      snapShot.forEach(doc => {
-        lobbies = {
-          ...lobbies,
-          [doc.id]: doc.data(),
-        };
+    .onSnapshot(snapshot => {
+      let update = {};
+      let deleted = [];
+      snapshot.docChanges().forEach(change => {
+        if (change.type === 'removed') {
+          deleted = [...deleted, change.doc.id];
+        } else {
+          update = {
+            ...update,
+            [change.doc.id]: change.doc.data(),
+          };
+        }
       });
-      cb(lobbies);
+      cb({ update, deleted });
     });

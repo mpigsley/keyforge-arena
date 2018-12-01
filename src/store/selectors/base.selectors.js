@@ -24,6 +24,7 @@ export const getCardImages = state => state.image.cards;
 
 /* Lobby */
 export const getLobbies = state => state.lobby.models;
+export const getIsCancellingChallenge = state => state.lobby.isCancelling;
 
 /* Router */
 export const getPathname = state => state.router.location.pathname;

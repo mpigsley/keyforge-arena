@@ -11,12 +11,20 @@ import { push } from 'connected-react-router';
 import { toastr } from 'react-redux-toastr';
 import { eventChannel } from 'redux-saga';
 
-import { lobbyListener, createChallengeLobby } from 'store/api/lobby.api';
-import { LOBBIES_UPDATED, CHALLENGE } from 'store/actions/lobby.actions';
+import {
+  lobbyListener,
+  createChallengeLobby,
+  cancelLobby,
+} from 'store/api/lobby.api';
+import {
+  LOBBIES_UPDATED,
+  CHALLENGE,
+  CANCEL_CHALLENGE,
+} from 'store/actions/lobby.actions';
 import { LOGGED_IN, SIGNED_OUT } from 'store/actions/user.actions';
-import { getUserId } from 'store/selectors/base.selectors';
+import { getUserId, getPathname } from 'store/selectors/base.selectors';
 import { createAction } from 'utils/store';
-import { find } from 'constants/lodash';
+import { some, includes, find } from 'constants/lodash';
 
 const createLobbyListener = uid =>
   eventChannel(emit => {
@@ -26,13 +34,22 @@ const createLobbyListener = uid =>
 
 function* lobbyHandler(channel, uid) {
   while (true) {
-    const update = yield take(channel);
-    yield put(createAction(LOBBIES_UPDATED.SUCCESS, { update }));
+    const { update, deleted } = yield take(channel);
+    yield put(createAction(LOBBIES_UPDATED.SUCCESS, { update, deleted }));
     if (find(update, ({ creator }) => creator !== uid)) {
       yield call(
         toastr.info,
         "You've been challenged!",
         'Accept it now on your dashboard.',
+      );
+    }
+    const path = yield select(getPathname);
+    if (some(deleted, id => includes(path, id))) {
+      yield put(push('/dashboard'));
+      yield call(
+        toastr.info,
+        'Challenge cancelled',
+        'Your opponent has decided not to accept.',
       );
     }
   }
@@ -68,10 +85,20 @@ function* challengeFlow({ opponent }) {
   }
 }
 
+function* cancelChallengeFlow({ challenge }) {
+  try {
+    yield call(cancelLobby, challenge);
+    yield put(createAction(CANCEL_CHALLENGE.SUCCESS));
+  } catch (error) {
+    yield put(createAction(CANCEL_CHALLENGE.ERROR, { error: error.message }));
+  }
+}
+
 export default function*() {
   yield all([
     takeEvery(LOGGED_IN.SUCCESS, connectionLobbyFlow),
     takeEvery(SIGNED_OUT.SUCCESS, closeLobbyChannel),
     takeEvery(CHALLENGE.PENDING, challengeFlow),
+    takeEvery(CANCEL_CHALLENGE.PENDING, cancelChallengeFlow),
   ]);
 }
