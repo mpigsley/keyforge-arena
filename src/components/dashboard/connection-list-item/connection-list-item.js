@@ -15,7 +15,15 @@ export default function ConnectionListItem({
   connectionReply,
   challengeConnection,
 }) {
-  const { username, tag, pending, isOnline, lastOnline, key } = connection;
+  const {
+    username,
+    tag,
+    pending,
+    isOnline,
+    lastOnline,
+    key,
+    challenge,
+  } = connection;
 
   let action = (
     <Button
@@ -31,17 +39,28 @@ export default function ConnectionListItem({
     action = (
       <>
         <Button
-          className={styles.actionBtn}
-          onClick={() => connectionReply(key, false)}
-        >
-          Remove
-        </Button>
-        <Button
           primary
           className={styles.actionBtn}
           onClick={() => connectionReply(key, true)}
         >
           Add
+        </Button>
+        <Button
+          className={styles.actionBtn}
+          onClick={() => connectionReply(key, false)}
+        >
+          Remove
+        </Button>
+      </>
+    );
+  } else if (challenge) {
+    action = (
+      <>
+        <Button primary className={styles.actionBtn} onClick={() => {}}>
+          Accept Challenge
+        </Button>
+        <Button className={styles.actionBtn} onClick={() => {}}>
+          Deny
         </Button>
       </>
     );

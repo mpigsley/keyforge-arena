@@ -22,6 +22,9 @@ export const getDeckError = state => state.deck.error;
 export const getHouseImages = state => state.image.houses;
 export const getCardImages = state => state.image.cards;
 
+/* Lobby */
+export const getLobbies = state => state.lobby.models;
+
 /* Router */
 export const getPathname = state => state.router.location.pathname;
 

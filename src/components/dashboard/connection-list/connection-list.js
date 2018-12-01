@@ -62,7 +62,7 @@ export default function ConnectionList({
   return (
     <>
       <FlexContainer
-        flex="1"
+        flex="3"
         align="center"
         justify={isCentered ? 'center' : 'flexStart'}
         direction="column"

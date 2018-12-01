@@ -30,13 +30,13 @@ function* lobbyHandler(channel) {
     const update = yield take(channel);
     yield put(createAction(LOBBIES_UPDATED.SUCCESS, { update }));
     const recent = find(update, ({ created }) =>
-      dayjs(created.toDate()).isAfter(dayjs().subtract(30, 'second')),
+      dayjs(created.toDate()).isAfter(dayjs().subtract(2, 'minute')),
     );
     if (recent) {
       yield call(
         toastr.info,
-        'You have been challenged',
-        'Would you like to accept?',
+        'You have been challenged!',
+        'Accept it on your dashboard now.',
       );
     }
   }

@@ -28,8 +28,8 @@ export default function Dashboard({ isInitialized }) {
       <FlexContainer direction="column">
         <SelectedDeck />
         <FlexContainer className={styles.games}>
-          <ConnectionList />
-          <FlexContainer direction="column" flex="1">
+          <ConnectionList className={styles.connectionList} />
+          <FlexContainer direction="column" flex="2">
             <button
               type="button"
               className={styles.matchmakingBtn}

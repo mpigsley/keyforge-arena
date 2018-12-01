@@ -1,15 +1,25 @@
 import { createSelector } from 'reselect';
 import dayjs from 'dayjs';
 
-import { getConnections } from 'store/selectors/base.selectors';
-import { map, sortBy } from 'constants/lodash';
+import { getConnections, getLobbies } from 'store/selectors/base.selectors';
+import { findKey, map, sortBy } from 'constants/lodash';
+
+const connectionsWithChallenges = createSelector(
+  [getConnections, getLobbies],
+  (connections, lobbies) =>
+    map(connections, (connection, key) => ({
+      ...connection,
+      key,
+      challenge: findKey(lobbies, ({ player }) => key === player),
+    })),
+);
 
 // eslint-disable-next-line
 export const getSortedConnections = createSelector(
-  [getConnections],
+  [connectionsWithChallenges],
   connections =>
     sortBy(
-      map(connections, ({ online, ...connection }, key) => {
+      connections.map(({ online, ...connection }) => {
         const lastOnline = dayjs(online);
         return {
           ...connection,
@@ -18,7 +28,6 @@ export const getSortedConnections = createSelector(
             ? lastOnline.format('h:mm a')
             : lastOnline.format('MMMM D YYYY'),
           isOnline: lastOnline.isAfter(dayjs().subtract(45, 'second')),
-          key,
         };
       }),
       ['sortDate', 'pending'],
