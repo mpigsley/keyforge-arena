@@ -40,7 +40,12 @@ export const profileListener = (uid, cb) =>
   Firebase.firestore()
     .collection('users')
     .doc(uid)
-    .onSnapshot(doc => cb(doc.data()));
+    .onSnapshot(doc => {
+      const data = doc.data();
+      if (data) {
+        cb(data);
+      }
+    });
 
 export const googleLogin = () =>
   Firebase.auth().signInWithPopup(new Firebase.auth.GoogleAuthProvider());
