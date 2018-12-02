@@ -6,6 +6,13 @@
         { "fieldPath": "players", "mode": "ARRAY_CONTAINS" },
         { "fieldPath": "created", "mode": "ASCENDING" }
       ]
+    },
+    {
+      "collectionId": "games",
+      "fields": [
+        { "fieldPath": "players", "mode": "ARRAY_CONTAINS" },
+        { "fieldPath": "created", "mode": "ASCENDING" }
+      ]
     }
   ]
 }

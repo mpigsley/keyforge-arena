@@ -6,6 +6,7 @@ const updateUser = require('./src/update-user');
 const requestConnection = require('./src/request-connection');
 const connectionReply = require('./src/connection-reply');
 const connectionPing = require('./src/connection-ping');
+const createGame = require('./src/create-game');
 
 admin.initializeApp();
 admin.firestore().settings({ timestampsInSnapshots: true });
@@ -16,3 +17,4 @@ exports.updateUser = updateUser;
 exports.requestConnection = requestConnection;
 exports.connectionReply = connectionReply;
 exports.connectionPing = connectionPing;
+exports.createGame = createGame;

@@ -1,10 +1,8 @@
 import Firebase from 'firebase/app';
 import dayjs from 'dayjs';
 
-export const createGame = challenge =>
-  Firebase.functions().httpsCallable('createGame')({
-    challenge,
-  });
+export const createGame = lobby =>
+  Firebase.functions().httpsCallable('createGame')({ lobby });
 
 export const getGame = id =>
   Firebase.firestore()
@@ -15,7 +13,7 @@ export const getGame = id =>
 
 export const gameListener = (uid, cb) =>
   Firebase.firestore()
-    .collection('game')
+    .collection('games')
     .where('players', 'array-contains', uid)
     .where(
       'created',

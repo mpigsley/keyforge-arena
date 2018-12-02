@@ -1,4 +1,5 @@
 import { put, all, takeEvery, spawn, call, take } from 'redux-saga/effects';
+import { push } from 'connected-react-router';
 import { eventChannel } from 'redux-saga';
 
 import { LOGGED_IN, SIGNED_OUT } from 'store/actions/user.actions';
@@ -6,6 +7,7 @@ import { GAMES_UPDATED } from 'store/actions/game.actions';
 import { gameListener } from 'store/api/game.api';
 
 import { createAction } from 'utils/store';
+import { size } from 'constants/lodash';
 
 const createGameListener = uid =>
   eventChannel(emit => {
@@ -17,6 +19,9 @@ function* gameHandler(channel) {
   while (true) {
     const { update, deleted } = yield take(channel);
     yield put(createAction(GAMES_UPDATED.SUCCESS, { update, deleted }));
+    if (size(update)) {
+      yield put(push(`/game/${Object.keys(update)[0]}`));
+    }
   }
 }
 
