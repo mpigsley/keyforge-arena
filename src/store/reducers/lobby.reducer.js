@@ -1,6 +1,7 @@
 import {
   CHALLENGE,
   CANCEL_CHALLENGE,
+  ACCEPT_CHALLENGE,
   LOBBIES_UPDATED,
 } from 'store/actions/lobby.actions';
 import { SIGNED_OUT } from 'store/actions/user.actions';
@@ -8,6 +9,7 @@ import { omit } from 'constants/lodash';
 
 const initialState = {
   isCancelling: undefined,
+  isAccepting: undefined,
   models: {},
 };
 
@@ -24,6 +26,11 @@ export default function lobby(state = initialState, action) {
     case CANCEL_CHALLENGE.SUCCESS:
     case CANCEL_CHALLENGE.ERROR:
       return { ...state, isCancelling: undefined };
+    case ACCEPT_CHALLENGE.PENDING:
+      return { ...state, isAccepting: action.challenge };
+    case ACCEPT_CHALLENGE.SUCCESS:
+    case ACCEPT_CHALLENGE.ERROR:
+      return { ...state, isAccepting: undefined };
     case SIGNED_OUT.SUCCESS:
       return initialState;
     default:

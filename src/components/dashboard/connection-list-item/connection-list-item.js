@@ -14,10 +14,12 @@ export default function ConnectionListItem({
   decks,
   connection,
   isCancelling,
+  isAccepting,
   isReplyingTo,
   connectionReply,
   challengeConnection,
   cancelChallenge,
+  acceptChallenge,
 }) {
   const {
     username,
@@ -44,7 +46,7 @@ export default function ConnectionListItem({
       </Button>
     </div>
   );
-  if ([isReplyingTo, isCancelling].includes(key)) {
+  if ([isReplyingTo, isCancelling, isAccepting].includes(key)) {
     action = <Spinner />;
   } else if (pending) {
     action = (
@@ -83,7 +85,7 @@ export default function ConnectionListItem({
             disabled={!hasDecks}
             primary
             className={styles.actionBtn}
-            onClick={() => {}}
+            onClick={() => acceptChallenge(challenge)}
           >
             Accept Challenge
           </Button>
@@ -122,8 +124,10 @@ ConnectionListItem.propTypes = {
   connectionReply: PropTypes.func.isRequired,
   challengeConnection: PropTypes.func.isRequired,
   cancelChallenge: PropTypes.func.isRequired,
+  acceptChallenge: PropTypes.func.isRequired,
   isReplyingTo: PropTypes.string,
   isCancelling: PropTypes.string,
+  isAccepting: PropTypes.string,
   decks: PropTypes.shape().isRequired,
   connection: PropTypes.shape({
     username: PropTypes.string.isRequired,
@@ -137,4 +141,5 @@ ConnectionListItem.propTypes = {
 ConnectionListItem.defaultProps = {
   isReplyingTo: undefined,
   isCancelling: undefined,
+  isAccepting: undefined,
 };

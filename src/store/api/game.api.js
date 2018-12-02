@@ -1,6 +1,11 @@
 import Firebase from 'firebase/app';
 import dayjs from 'dayjs';
 
+export const createGame = challenge =>
+  Firebase.functions().httpsCallable('createGame')({
+    challenge,
+  });
+
 export const getGame = id =>
   Firebase.firestore()
     .collection('games')

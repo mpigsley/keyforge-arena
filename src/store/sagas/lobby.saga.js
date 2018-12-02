@@ -16,10 +16,12 @@ import {
   createChallengeLobby,
   cancelLobby,
 } from 'store/api/lobby.api';
+import { createGame } from 'store/api/game.api';
 import {
   LOBBIES_UPDATED,
   CHALLENGE,
   CANCEL_CHALLENGE,
+  ACCEPT_CHALLENGE,
 } from 'store/actions/lobby.actions';
 import { LOGGED_IN, SIGNED_OUT } from 'store/actions/user.actions';
 import { getUserId, getPathname } from 'store/selectors/base.selectors';
@@ -93,11 +95,21 @@ function* cancelChallengeFlow({ challenge }) {
   }
 }
 
+function* createGameFlow({ challenge }) {
+  try {
+    yield call(createGame, challenge);
+    yield put(createAction(ACCEPT_CHALLENGE.SUCCESS));
+  } catch (error) {
+    yield put(createAction(ACCEPT_CHALLENGE.ERROR, { error: error.message }));
+  }
+}
+
 export default function*() {
   yield all([
     takeEvery(LOGGED_IN.SUCCESS, connectionLobbyFlow),
     takeEvery(SIGNED_OUT.SUCCESS, closeLobbyChannel),
     takeEvery(CHALLENGE.PENDING, challengeFlow),
     takeEvery(CANCEL_CHALLENGE.PENDING, cancelChallengeFlow),
+    takeEvery(ACCEPT_CHALLENGE.PENDING, createGameFlow),
   ]);
 }
