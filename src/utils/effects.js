@@ -13,3 +13,11 @@ export const usePrevious = value => {
   });
   return ref.current;
 };
+
+export const useResize = cb =>
+  useEffect(() => {
+    window.addEventListener('resize', cb);
+    return () => {
+      window.removeEventListener('resize', cb);
+    };
+  });

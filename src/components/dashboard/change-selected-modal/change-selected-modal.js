@@ -10,7 +10,7 @@ import Button from 'primitives/button';
 import Modal from 'primitives/modal';
 
 import { CheckCircle, Circle } from 'constants/icons';
-import { usePrevious } from 'utils/custom-effects';
+import { usePrevious } from 'utils/effects';
 
 import styles from './styles.module.scss';
 

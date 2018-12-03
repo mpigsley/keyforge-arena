@@ -8,7 +8,7 @@ import {
   getIsLoggedIn,
   getIsInitialized,
 } from 'store/selectors/base.selectors';
-import { usePrevious } from 'utils/custom-effects';
+import { usePrevious } from 'utils/effects';
 
 export default Wrapped => {
   function ProtectedHOC({ isLoggedIn, isInitialized, toHome, ...props }) {
