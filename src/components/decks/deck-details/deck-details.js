@@ -121,11 +121,13 @@ export default function DeckDetails({
                 className={styles.house}
               >
                 <FlexContainer align="center" direction="column">
-                  <img
-                    className={styles.houseImg}
-                    src={houseImages[house]}
-                    alt={house}
-                  />
+                  {!!houseImages[house] && (
+                    <img
+                      className={styles.houseImg}
+                      src={houseImages[house].link}
+                      alt={house}
+                    />
+                  )}
                   <h3>{capitalize(house)}</h3>
                 </FlexContainer>
                 <FlexContainer direction="column" className={styles.cards}>
