@@ -1,16 +1,9 @@
-import React, {
-  useState,
-  useEffect,
-  useMemo,
-  useCallback,
-  useRef,
-} from 'react';
+import React, { useCallback, useEffect, useMemo, useRef } from 'react';
 import PropTypes from 'prop-types';
 
 import { getUniqueCards } from 'utils/deck';
-import { usePrevious, useResize } from 'utils/effects';
+import { usePrevious, useDimensions, useAnimation } from 'utils/effects';
 import { getPixelRatio } from 'utils/canvas';
-import { debounce } from 'constants/lodash';
 
 import styles from './styles.module.scss';
 
@@ -18,29 +11,7 @@ import styles from './styles.module.scss';
 // const IMG_RATIO = 300 / 420;
 
 export default function GameBoard({ isInitialized, decks, fetchCardImages }) {
-  const canvasEl = useRef(null);
   const previousIsInitialized = usePrevious(isInitialized);
-  const [{ width, height }, setDimensions] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
-  });
-
-  const ratio = useMemo(getPixelRatio, []);
-  let ctx;
-  const paint = useCallback(
-    () => {
-      if (!canvasEl.current) {
-        return;
-      }
-      ctx = ctx || canvasEl.current.getContext('2d');
-      ctx.fillStyle = 'red';
-      ctx.fillRect(0, 0, width * ratio, height * ratio);
-    },
-    [width, height, canvasEl.current],
-  );
-
-  useEffect(paint);
-
   useEffect(
     () => {
       if (isInitialized && !previousIsInitialized) {
@@ -56,14 +27,18 @@ export default function GameBoard({ isInitialized, decks, fetchCardImages }) {
     [isInitialized],
   );
 
-  useResize(
-    debounce(
-      () =>
-        setDimensions({
-          width: window.innerWidth,
-          height: window.innerHeight,
-        }),
-      100,
+  let ctx;
+  const canvasEl = useRef(null);
+  const ratio = useMemo(getPixelRatio, []);
+  const { width, height } = useDimensions();
+  useAnimation(
+    useCallback(
+      () => {
+        ctx = ctx || canvasEl.current.getContext('2d');
+        ctx.fillStyle = 'red';
+        ctx.fillRect(0, 0, width * ratio, height * ratio);
+      },
+      [height, width],
     ),
   );
 
