@@ -13,7 +13,6 @@ import Button from 'primitives/button';
 import { map, sortBy, capitalize } from 'constants/lodash';
 import { Trash } from 'constants/icons';
 import coreCards from 'constants/expansions/cota';
-import { getUniqueCards } from 'utils/deck';
 
 import { ReactComponent as Common } from 'images/common.svg';
 import { ReactComponent as Uncommon } from 'images/uncommon.svg';
@@ -40,7 +39,7 @@ export default function DeckDetails({
     () => {
       const deck = decks[selected];
       if (deck) {
-        fetchCardImages(deck.expansion, getUniqueCards(deck));
+        fetchCardImages(deck.expansion, deck);
       }
     },
     [decks, selected],

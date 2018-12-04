@@ -1,10 +1,13 @@
 import capitalize from 'lodash/capitalize';
 import debounce from 'lodash/debounce';
 import difference from 'lodash/difference';
+import every from 'lodash/every';
 import find from 'lodash/find';
 import findKey from 'lodash/findKey';
+import flatten from 'lodash/flatten';
 import includes from 'lodash/includes';
 import map from 'lodash/map';
+import mapValues from 'lodash/mapValues';
 import omit from 'lodash/omit';
 import pick from 'lodash/pick';
 import size from 'lodash/size';
@@ -18,10 +21,13 @@ export {
   capitalize,
   debounce,
   difference,
+  every,
   find,
   findKey,
+  flatten,
   includes,
   map,
+  mapValues,
   omit,
   pick,
   size,

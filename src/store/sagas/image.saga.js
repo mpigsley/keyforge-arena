@@ -8,6 +8,7 @@ import { makeGetUnfetchedImageLinks } from 'store/selectors/image.selectors';
 import { getHouseLink, getCardLink } from 'store/api/image.api';
 
 import { zipObject } from 'constants/lodash';
+import { getUniqueCards } from 'utils/deck';
 import { createAction } from 'utils/store';
 import Houses from 'constants/houses';
 
@@ -41,10 +42,12 @@ function* fetchHouses() {
   }
 }
 
-function* fetchCards({ expansion, cards }) {
+function* fetchCards({ expansion, deck }) {
   try {
+    const cards = getUniqueCards(deck);
     const getUnfetchedLinks = makeGetUnfetchedImageLinks(expansion, cards);
     const unfetchedLinks = yield select(getUnfetchedLinks);
+    console.log(cards, unfetchedLinks);
     if (!unfetchedLinks.length) {
       return;
     }

@@ -15,16 +15,18 @@ import {
   getPathname,
   getDecks,
 } from 'store/selectors/base.selectors';
+import { hasLoadedGameDecks, gameDecks } from 'store/selectors/game.selectors';
 import {
   UPDATED as UPDATED_DECKS,
   fetchDeck,
 } from 'store/actions/deck.actions';
 import { LOGGED_IN, SIGNED_OUT } from 'store/actions/user.actions';
+import { fetchCardImages } from 'store/actions/image.actions';
 import { GAMES_UPDATED } from 'store/actions/game.actions';
 import { gameListener } from 'store/api/game.api';
 
 import { createAction } from 'utils/store';
-import { size } from 'constants/lodash';
+import { size, map } from 'constants/lodash';
 
 const createGameListener = uid =>
   eventChannel(emit => {
@@ -57,6 +59,19 @@ function* gameHandler(channel) {
     if (unknownDecks.length) {
       yield all(unknownDecks.map(id => put(fetchDeck(id))));
     }
+
+    let hasAllDecks = false;
+    while (!hasAllDecks) {
+      yield take(UPDATED_DECKS.SUCCESS);
+      hasAllDecks = yield select(hasLoadedGameDecks);
+    }
+
+    const selectedDecks = yield select(gameDecks);
+    yield all(
+      map(selectedDecks, ({ expansion, ...selected }) =>
+        put(fetchCardImages(expansion, selected)),
+      ),
+    );
   }
 }
 
