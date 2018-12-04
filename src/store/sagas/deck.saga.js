@@ -3,13 +3,14 @@ import { push } from 'connected-react-router';
 
 import {
   UPDATED,
-  SUBMITTED,
   DELETED,
+  SUBMITTED,
   CHANGED_SELECTED,
 } from 'store/actions/deck.actions';
 import { LOGGED_IN } from 'store/actions/user.actions';
 import {
   updateDeck,
+  getDeck,
   getDecksByUser,
   submitDeck as callSubmitDeck,
   deleteDeck as callDeleteDeck,
@@ -19,7 +20,6 @@ import { createAction } from 'utils/store';
 function* fetchDecks({ user }) {
   try {
     const { uid } = user;
-    yield put(createAction(UPDATED.PENDING));
     const decks = yield getDecksByUser(uid);
     yield put(createAction(UPDATED.SUCCESS, { decks }));
   } catch (error) {
@@ -47,6 +47,17 @@ function* deleteDeck({ id }) {
   }
 }
 
+function* fetchDeck({ id }) {
+  try {
+    const [deckId, deck] = yield call(getDeck, id);
+    if (deckId) {
+      yield put(createAction(UPDATED.SUCCESS, { decks: { [deckId]: deck } }));
+    }
+  } catch (error) {
+    yield put(createAction(UPDATED.ERROR, { error: error.message }));
+  }
+}
+
 function* changeSelected({ previous, current }) {
   try {
     yield all([
@@ -64,6 +75,7 @@ export default function*() {
     takeEvery(LOGGED_IN.SUCCESS, fetchDecks),
     takeEvery(SUBMITTED.PENDING, submitDeck),
     takeEvery(DELETED.PENDING, deleteDeck),
+    takeEvery(UPDATED.PENDING, fetchDeck),
     takeEvery(CHANGED_SELECTED.PENDING, changeSelected),
   ]);
 }
