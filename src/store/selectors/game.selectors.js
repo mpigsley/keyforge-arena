@@ -24,13 +24,12 @@ export const hasLoadedGameDecks = createSelector(
 );
 
 export const hasGameLoaded = createSelector(
-  [hasLoadedGameDecks, selectedGame, getDecks, getCardImages],
-  (loadedDecks, game, decks, images) => {
+  [hasLoadedGameDecks, gameDecks, getCardImages],
+  (loadedDecks, decks, images) => {
     if (!loadedDecks) {
       return false;
     }
-    const gameDecks = Object.values(game.decks).map(id => decks[id]);
-    const imageRefs = gameDecks.reduce(
+    const imageRefs = Object.values(decks).reduce(
       (arr, { expansion, houses }) => [
         ...arr,
         ...flatten(Object.values(houses)).map(id => `${expansion}-${id}`),

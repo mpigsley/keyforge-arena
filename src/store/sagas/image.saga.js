@@ -47,7 +47,6 @@ function* fetchCards({ expansion, deck }) {
     const cards = getUniqueCards(deck);
     const getUnfetchedLinks = makeGetUnfetchedImageLinks(expansion, cards);
     const unfetchedLinks = yield select(getUnfetchedLinks);
-    console.log(cards, unfetchedLinks);
     if (!unfetchedLinks.length) {
       return;
     }
