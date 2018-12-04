@@ -63,7 +63,5 @@ export const useAnimation = cb =>
 
     raf = requestAnimationFrame(loop);
 
-    return () => {
-      cancelAnimationFrame(raf);
-    };
+    return () => cancelAnimationFrame(raf);
   });

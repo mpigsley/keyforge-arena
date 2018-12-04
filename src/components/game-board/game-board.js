@@ -1,9 +1,10 @@
-import React, { useCallback, useEffect, useMemo, useRef } from 'react';
+import React, { useEffect, useMemo, useRef } from 'react';
 import PropTypes from 'prop-types';
 
-import { getUniqueCards } from 'utils/deck';
 import { usePrevious, useDimensions, useAnimation } from 'utils/effects';
 import { getPixelRatio } from 'utils/canvas';
+import { getUniqueCards } from 'utils/deck';
+import gameLoop from 'utils/game';
 
 import styles from './styles.module.scss';
 
@@ -31,16 +32,10 @@ export default function GameBoard({ isInitialized, decks, fetchCardImages }) {
   const canvasEl = useRef(null);
   const ratio = useMemo(getPixelRatio, []);
   const { width, height } = useDimensions();
-  useAnimation(
-    useCallback(
-      () => {
-        ctx = ctx || canvasEl.current.getContext('2d');
-        ctx.fillStyle = 'red';
-        ctx.fillRect(0, 0, width * ratio, height * ratio);
-      },
-      [height, width],
-    ),
-  );
+  useAnimation(() => {
+    ctx = ctx || canvasEl.current.getContext('2d');
+    gameLoop({ ctx, width, height, ratio });
+  });
 
   return (
     <canvas
