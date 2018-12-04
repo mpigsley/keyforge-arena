@@ -31,7 +31,7 @@ function* submitDeck({ link }) {
   try {
     const deckObj = yield call(callSubmitDeck, link);
     yield put(createAction(SUBMITTED.SUCCESS, { deck: deckObj }));
-    yield put(push(`/decks/${Object.keys(deckObj)[0]}`));
+    yield put(push(`/deck/${Object.keys(deckObj)[0]}`));
   } catch (error) {
     yield put(createAction(SUBMITTED.ERROR, { error: error.message }));
   }
@@ -41,7 +41,7 @@ function* deleteDeck({ id }) {
   try {
     yield call(callDeleteDeck, id);
     yield put(createAction(DELETED.SUCCESS, { id }));
-    yield put(push('/decks'));
+    yield put(push('/deck'));
   } catch (error) {
     yield put(createAction(DELETED.ERROR, { error: error.message }));
   }

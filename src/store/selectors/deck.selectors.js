@@ -4,6 +4,7 @@ import {
   getDecks,
   getDeckSearchTerm,
   getUserId,
+  getSelectedDeck as getBaseSelectedDeck,
 } from 'store/selectors/base.selectors';
 import { find, includes, sortBy, map } from 'constants/lodash';
 
@@ -28,6 +29,11 @@ export const getSortedDecks = createSelector(
 );
 
 export const getSelectedDeck = createSelector(
+  [getDecks, getBaseSelectedDeck],
+  (decks, selected) => ({ ...(decks[selected] || {}), key: selected }),
+);
+
+export const getActiveDeck = createSelector(
   [getSortedDecks],
   decks => find(decks, { selected: true }) || decks[0],
 );

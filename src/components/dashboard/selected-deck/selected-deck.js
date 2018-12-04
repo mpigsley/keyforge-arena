@@ -9,15 +9,15 @@ import Button from 'primitives/button';
 
 import styles from './styles.module.scss';
 
-export default function SelectedDeck({ selectedDeck, toggleChangeModal }) {
-  if (!selectedDeck) {
+export default function SelectedDeck({ activeDeck, toggleChangeModal }) {
+  if (!activeDeck) {
     return (
       <>
         <Header num="3" noMargin>
           Add Deck to Begin
         </Header>
         <FlexContainer className={styles.actions}>
-          <Button className={styles.action} to="/decks">
+          <Button className={styles.action} to="/deck">
             Deck List
           </Button>
         </FlexContainer>
@@ -25,7 +25,7 @@ export default function SelectedDeck({ selectedDeck, toggleChangeModal }) {
     );
   }
 
-  const { name, houses } = selectedDeck;
+  const { name, houses } = activeDeck;
 
   return (
     <>
@@ -42,7 +42,7 @@ export default function SelectedDeck({ selectedDeck, toggleChangeModal }) {
         <Button primary className={styles.action} onClick={toggleChangeModal}>
           Change
         </Button>
-        <Button className={styles.action} to="/decks">
+        <Button className={styles.action} to="/deck">
           Manage Decks
         </Button>
       </FlexContainer>
@@ -53,12 +53,12 @@ export default function SelectedDeck({ selectedDeck, toggleChangeModal }) {
 
 SelectedDeck.propTypes = {
   toggleChangeModal: PropTypes.func.isRequired,
-  selectedDeck: PropTypes.shape({
+  activeDeck: PropTypes.shape({
     name: PropTypes.string.isRequired,
     houses: PropTypes.shape().isRequired,
   }),
 };
 
 SelectedDeck.defaultProps = {
-  selectedDeck: undefined,
+  activeDeck: undefined,
 };
