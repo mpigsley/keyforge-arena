@@ -10,14 +10,14 @@ import styles from './styles.module.scss';
 // const IMG_HEIGHT = 150;
 // const IMG_RATIO = 300 / 420;
 
-export default function GameBoard({ hasLoaded }) {
+export default function GameBoard({ hasLoaded, deckDetails }) {
   let ctx;
   const canvasEl = useRef(null);
   const ratio = useMemo(getPixelRatio, []);
   const { width, height } = useDimensions();
   useAnimation(() => {
     ctx = ctx || canvasEl.current.getContext('2d');
-    gameLoop({ ctx, width, height, ratio }, { hasLoaded });
+    gameLoop({ ctx, width, height, ratio }, { hasLoaded, deckDetails });
   });
 
   return (
@@ -34,4 +34,5 @@ export default function GameBoard({ hasLoaded }) {
 
 GameBoard.propTypes = {
   hasLoaded: PropTypes.bool.isRequired,
+  deckDetails: PropTypes.shape().isRequired,
 };

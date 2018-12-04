@@ -15,7 +15,9 @@ import Houses from 'constants/houses';
 const imageObject = link =>
   new Promise(resolve => {
     const obj = new Image();
-    obj.onload = resolve;
+    obj.onload = function onLoad() {
+      resolve(this);
+    };
     obj.src = link;
   });
 

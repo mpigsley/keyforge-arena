@@ -10,6 +10,7 @@ import map from 'lodash/map';
 import mapValues from 'lodash/mapValues';
 import omit from 'lodash/omit';
 import pick from 'lodash/pick';
+import reduce from 'lodash/reduce';
 import size from 'lodash/size';
 import some from 'lodash/some';
 import sortBy from 'lodash/sortBy';
@@ -30,6 +31,7 @@ export {
   mapValues,
   omit,
   pick,
+  reduce,
   size,
   some,
   sortBy,

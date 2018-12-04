@@ -1,12 +1,13 @@
 import { createSelector } from 'reselect';
 
 import {
+  getUserId,
   getDecks,
   getGames,
   getSelectedGame,
   getCardImages,
 } from 'store/selectors/base.selectors';
-import { every, flatten, mapValues, size } from 'constants/lodash';
+import { every, flatten, mapValues, reduce, size } from 'constants/lodash';
 
 export const selectedGame = createSelector(
   [getGames, getSelectedGame],
@@ -38,4 +39,30 @@ export const hasGameLoaded = createSelector(
     );
     return every(imageRefs, ref => images[ref]);
   },
+);
+
+export const getGameDeckDetails = createSelector(
+  [getUserId, gameDecks, getCardImages],
+  (userId, decks, cardImages) =>
+    mapValues(decks, (deck, key) =>
+      !deck
+        ? {}
+        : {
+            key,
+            isCurrentUser: key === userId,
+            expansion: deck.expansion,
+            cards: reduce(
+              deck.houses,
+              (arr, cards, house) => [
+                ...arr,
+                ...cards.map(card => ({
+                  card,
+                  house,
+                  image: cardImages[`${deck.expansion}-${card}`],
+                })),
+              ],
+              [],
+            ),
+          },
+    ),
 );
