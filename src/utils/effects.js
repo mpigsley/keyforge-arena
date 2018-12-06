@@ -56,8 +56,11 @@ export const useAnimation = cb =>
   useEffect(() => {
     let raf;
 
+    let prev;
     const loop = () => {
-      cb();
+      const current = new Date().getTime();
+      cb({ current, delta: prev ? current - prev : 0 });
+      prev = current;
       raf = requestAnimationFrame(loop);
     };
 

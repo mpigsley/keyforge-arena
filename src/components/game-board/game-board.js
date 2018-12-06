@@ -12,9 +12,12 @@ export default function GameBoard({ hasLoaded, deckDetails }) {
   const canvasEl = useRef(null);
   const ratio = useMemo(getPixelRatio, []);
   const { width, height } = useDimensions();
-  useAnimation(() => {
+  useAnimation(({ current, delta }) => {
     ctx = ctx || canvasEl.current.getContext('2d');
-    gameLoop({ ctx, width, height, ratio }, { hasLoaded, deckDetails });
+    gameLoop(
+      { ctx, width, height, ratio, current, delta },
+      { hasLoaded, deckDetails },
+    );
   });
 
   return (
