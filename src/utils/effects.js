@@ -55,13 +55,11 @@ const cancelAnimationFrame =
 export const useAnimation = cb =>
   useEffect(() => {
     let raf;
-
-    let prev;
-    const loop = () => {
-      const current = new Date().getTime();
-      cb({ current, delta: prev ? current - prev : 0 });
-      prev = current;
+    let lastTime = 0;
+    const loop = time => {
+      cb({ time, delta: time - lastTime });
       raf = requestAnimationFrame(loop);
+      lastTime = time;
     };
 
     raf = requestAnimationFrame(loop);

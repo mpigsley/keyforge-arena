@@ -14,6 +14,7 @@ import reduce from 'lodash/reduce';
 import size from 'lodash/size';
 import some from 'lodash/some';
 import sortBy from 'lodash/sortBy';
+import take from 'lodash/take';
 import uniq from 'lodash/uniq';
 import without from 'lodash/without';
 import zipObject from 'lodash/zipObject';
@@ -35,6 +36,7 @@ export {
   size,
   some,
   sortBy,
+  take,
   uniq,
   without,
   zipObject,

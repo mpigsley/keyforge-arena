@@ -1,7 +1,34 @@
-import { find } from 'constants/lodash';
-
+import { find, take } from 'constants/lodash';
 import { renderLoader } from 'utils/canvas';
-import { MAX_CARD_WIDTH, IMG_RATIO } from 'constants/canvas';
+import { PADDING, COLORS, MAX_CARD_WIDTH, IMG_RATIO } from 'constants/canvas';
+
+const drawBattlelines = (
+  { ctx, ratioPadding, ratioWidth, ratioHeight, ratioMaxCardWidth, isOpponent },
+  cards,
+) => {
+  let resizedWidth = ratioMaxCardWidth;
+  const totalCardPadding = ratioPadding * (cards.length + 1);
+  let maxTotalWidth = cards.length * ratioMaxCardWidth + totalCardPadding;
+  if (maxTotalWidth > ratioWidth) {
+    resizedWidth = (ratioWidth - totalCardPadding) / cards.length;
+  }
+  maxTotalWidth = cards.length * resizedWidth + totalCardPadding;
+
+  const resizedHeight = resizedWidth / IMG_RATIO;
+  const centeredOffset = (ratioWidth - maxTotalWidth) / 2;
+  const verticalOffset = isOpponent
+    ? -resizedHeight - ratioPadding
+    : ratioPadding;
+  cards.forEach(({ image }, index) => {
+    ctx.drawImage(
+      image.object,
+      centeredOffset + ratioPadding * (index + 1) + index * resizedWidth,
+      ratioHeight / 2 + verticalOffset,
+      resizedWidth,
+      resizedHeight,
+    );
+  });
+};
 
 export default (canvas, config) => {
   const { ctx, width, height, ratio } = canvas;
@@ -11,6 +38,7 @@ export default (canvas, config) => {
 
   // Clear
   ctx.fillStyle = 'white';
+  ctx.strokeStyle = COLORS.medium;
   ctx.fillRect(0, 0, ratioWidth, ratioHeight);
 
   if (!hasLoaded) {
@@ -18,13 +46,25 @@ export default (canvas, config) => {
     return;
   }
 
+  const ratioPadding = PADDING * ratio;
+  const ratioMaxCardWidth = MAX_CARD_WIDTH * ratio;
+
+  const vars = {
+    ctx,
+    ratioPadding,
+    ratioWidth,
+    ratioHeight,
+    ratioMaxCardWidth,
+  };
+
+  // ctx.beginPath();
+  // ctx.moveTo(0, ratioHeight / 2);
+  // ctx.lineTo(ratioWidth, ratioHeight / 2);
+  // ctx.stroke();
+
   const userDeck = find(deckDetails, { isCurrentUser: true });
-  // const opponentDeck = find(deckDetails, { isCurrentUser: false });
-  ctx.drawImage(
-    userDeck.cards[0].image.object,
-    10,
-    10,
-    MAX_CARD_WIDTH * IMG_RATIO * ratio,
-    MAX_CARD_WIDTH * ratio,
-  );
+  drawBattlelines({ ...vars, isOpponent: false }, take(userDeck.cards, 6));
+
+  const opponentDeck = find(deckDetails, { isCurrentUser: false });
+  drawBattlelines({ ...vars, isOpponent: true }, take(opponentDeck.cards, 12));
 };

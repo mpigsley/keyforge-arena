@@ -34,14 +34,13 @@ export const shadowRect = (ctx, x, y, w, h, radius) => {
   ctx.shadowBlur = 0;
 };
 
-const START_TIME = new Date().getTime();
 const SPINNER_SIZE = 13.5;
 const LOADING_TEXT = 'Loading Game';
-export const renderLoader = ({ ctx, width, height, ratio, current }) => {
+export const renderLoader = ({ ctx, width, height, ratio, time }) => {
   const ratioWidth = width * ratio;
   const ratioHeight = height * ratio;
   const textWidth = ctx.measureText(LOADING_TEXT).width;
-  ctx.font = `${35 * ratio}px Roboto, sans-serif`;
+  ctx.font = `${30 * ratio}px Roboto, sans-serif`;
   if (textWidth < 100) {
     ctx.fillStyle = COLORS.white;
   } else {
@@ -49,15 +48,15 @@ export const renderLoader = ({ ctx, width, height, ratio, current }) => {
     shadowRect(
       ctx,
       ratioWidth / 2 - boxSize / 2,
-      ratioHeight / 2 - 75 * ratio,
+      ratioHeight / 2 - 70 * ratio,
       boxSize,
-      300,
+      150 * ratio,
       5 * ratio,
     );
     ctx.fillStyle = COLORS.dark;
     ctx.save();
     ctx.translate(ratioWidth / 2, ratioHeight / 2 + 30 * ratio);
-    ctx.rotate(((current - START_TIME) * Math.PI) / 1000);
+    ctx.rotate((time * Math.PI) / 1000);
     ctx.scale(1.2 * ratio, 1.2 * ratio);
     ctx.drawImage(IMAGES.SPINNER, -SPINNER_SIZE, -SPINNER_SIZE);
     ctx.restore();
