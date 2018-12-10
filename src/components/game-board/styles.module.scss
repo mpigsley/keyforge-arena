@@ -1,3 +1,23 @@
-.canvas {
-  display: block;
+.container {
+  height: 100vh;
+  width: 100vw;
+}
+
+.gameBoard {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  overflow: hidden;
+}
+
+.side {
+  margin: 0 1.5rem;
+  width: calc(100vw - 3rem);
+
+  &:first-of-type {
+    margin-bottom: 1rem;
+  }
+
+  &:last-of-type {
+    margin-top: 1rem;
+  }
 }

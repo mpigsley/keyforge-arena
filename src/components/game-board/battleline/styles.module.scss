@@ -1,0 +1,20 @@
+.imgContainer {
+  margin-right: 1rem;
+  max-width: 150px;
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+}
+
+.card {
+  height: auto;
+  width: 100%;
+  transition: all 0.2s ease-in-out;
+  transition-delay: 0s;
+
+  &:hover {
+    transform: scale(2);
+    transition-delay: 0.3s;
+  }
+}
