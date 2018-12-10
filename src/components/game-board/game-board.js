@@ -33,6 +33,7 @@ export default function GameBoard({ hasLoaded, deckDetails }) {
 
   return (
     <div className={classNames(styles.container, styles.gameBoard)}>
+      <div />
       <FlexContainer
         direction="column"
         justify="flexEnd"
@@ -47,6 +48,7 @@ export default function GameBoard({ hasLoaded, deckDetails }) {
       >
         <Battleline cards={myCards} />
       </FlexContainer>
+      <div />
     </div>
   );
 }
