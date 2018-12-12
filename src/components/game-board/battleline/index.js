@@ -7,7 +7,7 @@ import { useDimensions } from 'utils/effects';
 import styles from './styles.module.scss';
 
 const CARD_RATIO = 300 / 420;
-const ZOOMED_WIDTH = 300;
+const ZOOMED_WIDTH = 250;
 
 export default function Battleline({ cards, isOpponent }) {
   const { height, width } = useDimensions();
@@ -39,7 +39,7 @@ export default function Battleline({ cards, isOpponent }) {
               alt={`${house}-${card}`}
               className={styles.card}
               onMouseEnter={e => {
-                const offset = (ZOOMED_WIDTH - scaledWidth) / 4;
+                const offset = (ZOOMED_WIDTH - scaledWidth) / (zoomScale * 2);
                 if (i === 0) {
                   e.target.style.transform = `scale(${zoomScale}) translate(${offset}px)`;
                 } else if (i === cards.length - 1) {

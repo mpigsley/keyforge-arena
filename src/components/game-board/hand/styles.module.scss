@@ -3,8 +3,8 @@
 }
 
 .card {
-  left: 0;
   position: absolute;
   top: 0;
   width: 150px;
+  z-index: 0;
 }
