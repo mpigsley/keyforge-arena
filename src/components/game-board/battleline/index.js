@@ -9,7 +9,7 @@ import styles from './styles.module.scss';
 const CARD_RATIO = 300 / 420;
 const ZOOMED_WIDTH = 300;
 
-export default function Battleline({ cards }) {
+export default function Battleline({ cards, isOpponent }) {
   const { height, width } = useDimensions();
   const battlelineHeight = height / 5;
 
@@ -22,38 +22,45 @@ export default function Battleline({ cards }) {
   const zoomScale = ZOOMED_WIDTH / scaledWidth;
 
   return (
-    <FlexContainer justify="center" className={styles.container}>
-      {cards.map(({ image, house, card }, i) => (
-        <div
-          key={`${card}-${i}` /* eslint-disable-line */}
-          className={styles.imgContainer}
-          style={{ width: `${scaledWidth}px` }}
-        >
-          <img
-            src={image.link}
-            alt={`${house}-${card}`}
-            className={styles.card}
-            onMouseEnter={e => {
-              const offset = (ZOOMED_WIDTH - scaledWidth) / 4;
-              if (i === 0) {
-                e.target.style.transform = `scale(${zoomScale}) translate(${offset}px)`;
-              } else if (i === cards.length - 1) {
-                e.target.style.transform = `scale(${zoomScale}) translate(-${offset}px)`;
-              } else {
-                e.target.style.transform = `scale(${zoomScale})`;
-              }
-            }}
-            onMouseLeave={e => {
-              e.target.style.transform = '';
-            }}
-          />
-        </div>
-      ))}
+    <FlexContainer
+      direction="column"
+      justify={isOpponent ? 'flexEnd' : 'flexStart'}
+      className={styles.container}
+    >
+      <FlexContainer justify="center">
+        {cards.map(({ image, house, card }, i) => (
+          <div
+            key={`${card}-${i}` /* eslint-disable-line */}
+            className={styles.imgContainer}
+            style={{ width: `${scaledWidth}px` }}
+          >
+            <img
+              src={image.link}
+              alt={`${house}-${card}`}
+              className={styles.card}
+              onMouseEnter={e => {
+                const offset = (ZOOMED_WIDTH - scaledWidth) / 4;
+                if (i === 0) {
+                  e.target.style.transform = `scale(${zoomScale}) translate(${offset}px)`;
+                } else if (i === cards.length - 1) {
+                  e.target.style.transform = `scale(${zoomScale}) translate(-${offset}px)`;
+                } else {
+                  e.target.style.transform = `scale(${zoomScale})`;
+                }
+              }}
+              onMouseLeave={e => {
+                e.target.style.transform = '';
+              }}
+            />
+          </div>
+        ))}
+      </FlexContainer>
     </FlexContainer>
   );
 }
 
 Battleline.propTypes = {
+  isOpponent: PropTypes.bool,
   cards: PropTypes.arrayOf(
     PropTypes.shape({
       image: PropTypes.shape({
@@ -63,4 +70,8 @@ Battleline.propTypes = {
       card: PropTypes.string.isRequired,
     }),
   ).isRequired,
+};
+
+Battleline.defaultProps = {
+  isOpponent: false,
 };

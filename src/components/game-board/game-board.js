@@ -4,6 +4,7 @@ import classNames from 'classnames';
 
 import Battleline from 'components/game-board/battleline';
 import FlexContainer from 'primitives/flex-container';
+import Hand from 'components/game-board/hand';
 import Spinner from 'primitives/spinner';
 import Header from 'primitives/header';
 
@@ -26,29 +27,22 @@ export default function GameBoard({ hasLoaded, deckDetails }) {
   }
 
   const opponentDeck = find(deckDetails, { isCurrentUser: false });
-  const theirCards = take(opponentDeck.cards, 10);
+  const theirCards = take(opponentDeck.cards, 3);
 
   const userDeck = find(deckDetails, { isCurrentUser: true });
   const myCards = take(userDeck.cards, 6);
 
   return (
     <div className={classNames(styles.container, styles.gameBoard)}>
-      <div />
-      <FlexContainer
-        direction="column"
-        justify="flexEnd"
-        className={styles.side}
-      >
-        <Battleline cards={theirCards} />
-      </FlexContainer>
-      <FlexContainer
-        direction="column"
-        justify="flexStart"
-        className={styles.side}
-      >
-        <Battleline cards={myCards} />
-      </FlexContainer>
-      <div />
+      <div className={styles.opponentSide} />
+      <Battleline cards={theirCards} isOpponent />
+      <Battleline cards={myCards} />
+      <div className={styles.side}>
+        <div className={styles.leftSide} />
+        <div />
+        <Hand cards={myCards} />
+        <div className={styles.rightSide} />
+      </div>
     </div>
   );
 }

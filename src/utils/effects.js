@@ -36,7 +36,7 @@ export const useDimensions = () => {
           width: window.innerWidth,
           height: window.innerHeight,
         }),
-      100,
+      50,
     ),
   );
   return dimensions;

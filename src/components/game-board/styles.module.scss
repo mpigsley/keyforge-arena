@@ -7,11 +7,31 @@
   display: grid;
   grid-template-rows: 30% 20% 20% 30%;
   overflow: hidden;
-  grid-row-gap: 1rem;
+  grid-gap: 1rem;
+}
+
+.opponentSide {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 1rem;
+  grid-template-areas: 'left keys right' 'left hand right';
+  grid-template-columns: 25% 50% 25%;
+  grid-template-rows: 70% 30%;
 }
 
 .side {
-  margin: 0 1.5rem;
-  width: calc(100vw - 3rem);
-  height: 100%;
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 1rem;
+  grid-template-areas: 'left keys right' 'left hand right';
+  grid-template-columns: 25% 50% 25%;
+  grid-template-rows: 30% 70%;
+}
+
+.leftSide {
+  grid-area: left;
+}
+
+.rightSide {
+  grid-area: right;
 }
