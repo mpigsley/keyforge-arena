@@ -1,11 +1,10 @@
-.container {
-  margin: 0.5rem 1.5rem;
-}
-
 .imgContainer {
-  padding-right: 0.5rem;
   max-height: 100%;
   text-align: center;
+
+  &:first-of-type {
+    padding-left: 0;
+  }
 
   &:last-of-type {
     padding-right: 0;
