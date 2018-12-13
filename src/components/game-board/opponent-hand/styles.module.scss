@@ -1,0 +1,17 @@
+@import '~styles/theme';
+
+.relativeContainer {
+  position: relative;
+}
+
+.card {
+  background-image: linear-gradient(to bottom right, white, $light);
+  border-radius: 8px;
+  bottom: 0;
+  position: absolute;
+}
+
+.logo {
+  transform: rotate(180deg);
+  width: 60%;
+}
