@@ -3,8 +3,14 @@
 }
 
 .card {
+  padding-bottom: 10px;
   position: absolute;
   top: 0;
-  width: 150px;
+  width: 130px;
+  transition: transform 0.2s ease-in-out;
   z-index: 0;
+
+  &:hover {
+    z-index: 1;
+  }
 }

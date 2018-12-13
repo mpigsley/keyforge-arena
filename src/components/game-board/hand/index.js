@@ -6,20 +6,29 @@ import FlexContainer from 'primitives/flex-container';
 import { useDimensions } from 'utils/effects';
 import styles from './styles.module.scss';
 
-const CARD_WIDTH = 150;
+const CARD_RATIO = 300 / 420;
+const CARD_WIDTH = 130;
+const ZOOMED_WIDTH = 250;
+const EXTRA_PADDING = 10;
 const DEFAULT_OVERLAP = CARD_WIDTH * 0.6;
 
 export default function Hand({ cards }) {
-  const { width } = useDimensions();
+  const { width, height } = useDimensions();
   const handWidth = width / 2;
+  const handHeight = height * 0.18;
   const containerWidth = Math.min(
     handWidth,
     Math.max(0, (cards.length - 1) * DEFAULT_OVERLAP + CARD_WIDTH),
   );
-  const isLimitedByWidth = containerWidth === handWidth;
-  const overlap = isLimitedByWidth
-    ? (handWidth - CARD_WIDTH) / (cards.length - 1)
-    : DEFAULT_OVERLAP;
+  const zoomScale = ZOOMED_WIDTH / CARD_WIDTH;
+  const overlap =
+    containerWidth === handWidth
+      ? (handWidth - CARD_WIDTH) / (cards.length - 1)
+      : DEFAULT_OVERLAP;
+
+  const scaleDiff = (ZOOMED_WIDTH - CARD_WIDTH) / (CARD_RATIO * 2);
+  const offset =
+    CARD_WIDTH / CARD_RATIO + scaleDiff + EXTRA_PADDING - handHeight;
 
   return (
     <FlexContainer justify="center">
@@ -33,6 +42,12 @@ export default function Hand({ cards }) {
             src={image.link}
             alt={`${house}-${card}`}
             className={styles.card}
+            onMouseEnter={e => {
+              e.target.style.transform = `translateY(${-offset}px) scale(${zoomScale})`;
+            }}
+            onMouseLeave={e => {
+              e.target.style.transform = '';
+            }}
             style={{ left: i * overlap }}
           />
         ))}
