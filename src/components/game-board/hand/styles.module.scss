@@ -4,13 +4,14 @@
 
 .card {
   padding-bottom: 10px;
+  pointer-events: none;
   position: absolute;
   top: 0;
   width: 130px;
   transition: transform 0.2s ease-in-out;
   z-index: 0;
 
-  &:hover {
+  &--hovered {
     z-index: 1;
   }
 }

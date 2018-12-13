@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 import FlexContainer from 'primitives/flex-container';
 
@@ -13,6 +14,7 @@ const EXTRA_PADDING = 10;
 const DEFAULT_OVERLAP = CARD_WIDTH * 0.6;
 
 export default function Hand({ cards }) {
+  const [hovered, setHovered] = useState();
   const { width, height } = useDimensions();
   const handWidth = width / 2;
   const handHeight = height * 0.18;
@@ -35,20 +37,32 @@ export default function Hand({ cards }) {
       <div
         className={styles.relativeContainer}
         style={{ width: containerWidth }}
+        onMouseLeave={() => setHovered()}
+        onMouseMove={e => {
+          const hoverIndex = Math.min(
+            Math.floor(e.nativeEvent.offsetX / overlap),
+            cards.length - 1,
+          );
+          if (hoverIndex !== hovered) {
+            setHovered(hoverIndex);
+          }
+        }}
       >
         {cards.map(({ image, house, card }, i) => (
           <img
             key={`${card}-${i}` /* eslint-disable-line */}
             src={image.link}
             alt={`${house}-${card}`}
-            className={styles.card}
-            onMouseEnter={e => {
-              e.target.style.transform = `translateY(${-offset}px) scale(${zoomScale})`;
+            className={classNames(styles.card, {
+              [styles['card--hovered']]: i === hovered,
+            })}
+            style={{
+              left: i * overlap,
+              transform:
+                i === hovered
+                  ? `translateY(${-offset}px) scale(${zoomScale})`
+                  : '',
             }}
-            onMouseLeave={e => {
-              e.target.style.transform = '';
-            }}
-            style={{ left: i * overlap }}
           />
         ))}
       </div>
