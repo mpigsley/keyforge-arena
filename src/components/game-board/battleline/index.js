@@ -14,7 +14,7 @@ const ZOOMED_WIDTH = 250;
 
 export default function Battleline({ cards, isOpponent }) {
   const { height, width } = useDimensions();
-  const battlelineHeight = height / 5 - VERTICAL_PADDING * 2;
+  const battlelineHeight = height / 4 - VERTICAL_PADDING * 2;
   const paddingWidth = (cards.length - 1) * CARD_PADDING;
   const innerWidth = width - HORIZONTAL_PADDING * 2 - paddingWidth;
 

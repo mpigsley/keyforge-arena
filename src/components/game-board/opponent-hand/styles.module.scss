@@ -4,11 +4,21 @@
   position: relative;
 }
 
+$margin: 10px;
 .card {
-  background-image: linear-gradient(to bottom right, white, $light);
-  border-radius: 8px;
+  border: 2px solid white;
+  background-image: linear-gradient(to bottom right, $dark, $medium);
+  border-radius: $margin;
   bottom: 0;
   position: absolute;
+}
+
+.inner {
+  background-color: $veryLight;
+  border: 2px solid $dark;
+  height: calc(100% - 22px);
+  margin: $margin;
+  width: 100%;
 }
 
 .logo {

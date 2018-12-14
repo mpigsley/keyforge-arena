@@ -5,7 +5,7 @@
 
 .gameBoard {
   display: grid;
-  grid-template-rows: 30% 20% 20% 30%;
+  grid-template-rows: 20% 25% 25% 30%;
   overflow: hidden;
 }
 
@@ -14,7 +14,7 @@
   grid-auto-flow: column;
   grid-template-areas: 'left keys right' 'left hand right';
   grid-template-columns: 2fr 3fr 2fr;
-  grid-template-rows: 3fr 2fr;
+  grid-template-rows: 4fr 6fr;
 }
 
 .side {

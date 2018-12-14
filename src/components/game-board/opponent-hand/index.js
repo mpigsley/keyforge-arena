@@ -9,7 +9,6 @@ import styles from './styles.module.scss';
 
 const CARD_RATIO = 300 / 420;
 const CARD_WIDTH = 130;
-const EXTRA_PADDING = 10;
 const DEFAULT_OVERLAP = CARD_WIDTH * 0.6;
 
 export default function OpponentHand({ handSize }) {
@@ -34,15 +33,19 @@ export default function OpponentHand({ handSize }) {
           <FlexContainer
             key={i /* eslint-disable-line */}
             className={styles.card}
-            align="center"
-            justify="center"
             style={{
               left: i * overlap,
               width: CARD_WIDTH,
               height: CARD_WIDTH / CARD_RATIO,
             }}
           >
-            <img className={styles.logo} alt="logo" src={Logo} />
+            <FlexContainer
+              className={styles.inner}
+              align="center"
+              justify="center"
+            >
+              <img className={styles.logo} alt="logo" src={Logo} />
+            </FlexContainer>
           </FlexContainer>
         ))}
       </div>
