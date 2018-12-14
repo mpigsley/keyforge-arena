@@ -42,6 +42,11 @@ export const useDimensions = () => {
   return dimensions;
 };
 
+export const useDimensionConstraints = (minWidth, minHeight) => {
+  const { width, height } = useDimensions();
+  return width <= minWidth || height <= minHeight;
+};
+
 const requestAnimationFrame =
   window.requestAnimationFrame ||
   window.mozRequestAnimationFrame ||

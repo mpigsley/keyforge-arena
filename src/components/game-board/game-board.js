@@ -9,11 +9,22 @@ import Hand from 'components/game-board/hand';
 import Spinner from 'primitives/spinner';
 import Header from 'primitives/header';
 
+import { useDimensionConstraints } from 'utils/effects';
 import { find, take } from 'constants/lodash';
 import styles from './styles.module.scss';
 
 export default function GameBoard({ hasLoaded, deckDetails }) {
-  if (!hasLoaded) {
+  const isConstrained = useDimensionConstraints(650, 550);
+  if (!hasLoaded || isConstrained) {
+    let content = <Header>Increase Window Size</Header>;
+    if (!hasLoaded) {
+      content = (
+        <>
+          <Header>Loading Game</Header>
+          <Spinner />
+        </>
+      );
+    }
     return (
       <FlexContainer
         align="center"
@@ -21,8 +32,7 @@ export default function GameBoard({ hasLoaded, deckDetails }) {
         direction="column"
         className={styles.container}
       >
-        <Header>Loading Game</Header>
-        <Spinner />
+        {content}
       </FlexContainer>
     );
   }
