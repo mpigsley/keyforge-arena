@@ -6,14 +6,14 @@ import {
   getLobbies,
   getUserId,
 } from 'store/selectors/base.selectors';
-import { findKey, map, sortBy } from 'constants/lodash';
+import { findKey, map, sortBy, includes } from 'constants/lodash';
 
 const connectionsWithChallenges = createSelector(
   [getConnections, getLobbies, getUserId],
   (connections, lobbies, uid) =>
     map(connections, (connection, key) => {
       const challenge = findKey(lobbies, ({ players }) =>
-        players.includes(key),
+        includes(players, key),
       );
       return {
         ...connection,
