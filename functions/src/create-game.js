@@ -1,8 +1,8 @@
 const admin = require('firebase-admin');
 const functions = require('firebase-functions');
-const { flatten, uniq } = require('lodash');
+const { flatten, uniq, sortBy, size, findKey, map } = require('lodash');
 
-module.exports = functions.https.onCall(async ({ lobby }, context) => {
+module.exports = functions.https.onCall(async ({ lobby, deck }, context) => {
   if (!context.auth) {
     throw new functions.https.HttpsError(
       'unauthenticated',
@@ -11,7 +11,12 @@ module.exports = functions.https.onCall(async ({ lobby }, context) => {
   } else if (!lobby) {
     throw new functions.https.HttpsError(
       'failed-precondition',
-      'A reference to the lobby must be given ',
+      'A reference to the lobby must be given.',
+    );
+  } else if (!deck) {
+    throw new functions.https.HttpsError(
+      'failed-precondition',
+      'A reference to active deck must be given.',
     );
   }
 
@@ -50,6 +55,34 @@ module.exports = functions.https.onCall(async ({ lobby }, context) => {
       ),
     );
 
+    const opponent = players.filter(uid => uid !== context.auth.uid)[0];
+    const deckSnapshot = await admin
+      .firestore()
+      .collection('decks')
+      .where('creator', '==', opponent)
+      .get();
+
+    let opponentDecks = {};
+    deckSnapshot.forEach(doc => {
+      opponentDecks = {
+        ...opponentDecks,
+        [doc.id]: doc.data(),
+      };
+    });
+
+    let opponentDeckId = findKey(opponentDecks, { selected: true });
+    if (!opponentDeckId) {
+      const { deckId } = sortBy(opponentDecks, 'name')[0];
+      opponentDeckId = findKey(opponentDecks, { deckId });
+    }
+
+    if (!opponentDeckId) {
+      throw new functions.https.HttpsError(
+        'not-found',
+        'Opponent deck was not found.',
+      );
+    }
+
     batch.set(
       admin
         .firestore()
@@ -57,6 +90,10 @@ module.exports = functions.https.onCall(async ({ lobby }, context) => {
         .doc(),
       {
         created: admin.firestore.FieldValue.serverTimestamp(),
+        decks: {
+          [context.auth.uid]: deck,
+          [opponent]: opponentDeckId,
+        },
         players,
       },
     );
