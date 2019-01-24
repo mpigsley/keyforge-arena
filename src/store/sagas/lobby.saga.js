@@ -24,10 +24,10 @@ import {
   ACCEPT_CHALLENGE,
 } from 'store/actions/lobby.actions';
 import { LOGGED_IN, SIGNED_OUT } from 'store/actions/user.actions';
-import { getUserId, getPathname } from 'store/selectors/base.selectors';
+import { getUserId, getLobbies } from 'store/selectors/base.selectors';
 import { activeDeckId } from 'store/selectors/deck.selectors';
 import { createAction } from 'utils/store';
-import { some, includes, find } from 'constants/lodash';
+import { size, find, includes, keys } from 'constants/lodash';
 
 const createLobbyListener = uid =>
   eventChannel(emit => {
@@ -38,6 +38,7 @@ const createLobbyListener = uid =>
 function* lobbyHandler(channel, uid) {
   while (true) {
     const { update, deleted } = yield take(channel);
+    const lobbies = yield select(getLobbies);
     yield put(createAction(LOBBIES_UPDATED.SUCCESS, { update, deleted }));
     if (find(update, ({ creator }) => creator !== uid)) {
       yield call(
@@ -46,9 +47,7 @@ function* lobbyHandler(channel, uid) {
         'Accept it now on your dashboard.',
       );
     }
-    const path = yield select(getPathname);
-    if (some(deleted, id => includes(path, id))) {
-      yield put(push('/dashboard'));
+    if (size(deleted) && includes(keys(lobbies), ...deleted)) {
       yield call(
         toastr.info,
         'Challenge Cancelled',

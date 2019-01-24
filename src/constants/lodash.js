@@ -6,6 +6,7 @@ import find from 'lodash/find';
 import findKey from 'lodash/findKey';
 import flatten from 'lodash/flatten';
 import includes from 'lodash/includes';
+import keys from 'lodash/keys';
 import map from 'lodash/map';
 import mapValues from 'lodash/mapValues';
 import omit from 'lodash/omit';
@@ -28,6 +29,7 @@ export {
   findKey,
   flatten,
   includes,
+  keys,
   map,
   mapValues,
   omit,
