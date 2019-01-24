@@ -1,5 +1,4 @@
 import {
-  // CHALLENGE,
   CANCEL_CHALLENGE,
   ACCEPT_CHALLENGE,
   LOBBIES_UPDATED,
@@ -15,7 +14,6 @@ const initialState = {
 
 export default function lobby(state = initialState, action) {
   switch (action.type) {
-    // case CHALLENGE.SUCCESS:
     case LOBBIES_UPDATED.SUCCESS:
       return {
         ...state,
