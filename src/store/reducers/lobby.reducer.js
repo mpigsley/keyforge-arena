@@ -20,11 +20,7 @@ export default function lobby(state = initialState, action) {
         models: omit({ ...state.models, ...action.update }, ...action.deleted),
       };
     case CANCEL_CHALLENGE.PENDING:
-      return {
-        ...state,
-        isCancelling: action.challenge,
-        models: omit(state.models, action.challenge),
-      };
+      return { ...state, isCancelling: action.challenge };
     case CANCEL_CHALLENGE.SUCCESS:
     case CANCEL_CHALLENGE.ERROR:
       return { ...state, isCancelling: undefined };
