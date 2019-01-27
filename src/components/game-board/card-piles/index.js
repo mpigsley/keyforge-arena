@@ -96,6 +96,65 @@ export default function CardPiles({
     </FlexContainer>
   );
 
+  const sizeStyle = { width: modifiedCardWidth, height: cardHeight };
+  let discardElement = (
+    <FlexContainer
+      align="center"
+      justify="center"
+      direction="column"
+      className={styles.emptyPile}
+      style={{ width: modifiedCardWidth - 3, height: cardHeight - 3 }}
+    >
+      <span className={styles.pileTitle}>Discard Pile</span>
+    </FlexContainer>
+  );
+  if (discarded.length) {
+    const lastCard = discarded[discarded.length - 1];
+    discardElement = (
+      <img
+        className={styles.discardPile}
+        alt={lastCard.card}
+        src={lastCard.image.link}
+        style={sizeStyle}
+      />
+    );
+  }
+
+  let drawElement = (
+    <FlexContainer
+      align="center"
+      justify="center"
+      direction="column"
+      className={styles.emptyPile}
+      style={{
+        width: modifiedCardWidth - 3,
+        height: cardHeight - 3,
+        marginRight: PADDING,
+      }}
+    >
+      <span className={styles.pileTitle}>Draw</span>
+    </FlexContainer>
+  );
+  if (numDraw) {
+    drawElement = (
+      <div
+        className={styles.drawContainer}
+        style={{ ...sizeStyle, marginRight: PADDING }}
+      >
+        <FlexContainer
+          align="center"
+          justify="center"
+          direction="column"
+          className={styles.hoverData}
+        >
+          <span className={styles.pileTitle}>Deck</span>
+          <span className={styles.pileSize}>{numDraw}</span>
+        </FlexContainer>
+        <CardBack width={modifiedCardWidth} />
+      </div>
+    );
+  }
+
   return (
     <div
       className={classNames(styles.container, className)}
@@ -108,16 +167,8 @@ export default function CardPiles({
           [styles['row--opponent']]: isOpponent,
         })}
       >
-        <div>
-          <CardBack
-            width={modifiedCardWidth}
-            style={{ marginRight: PADDING }}
-          />
-        </div>
-        <div
-          className={styles.discardPile}
-          style={{ width: modifiedCardWidth, height: cardHeight }}
-        />
+        {drawElement}
+        {discardElement}
         {!isVertical && staticPiles}
       </FlexContainer>
     </div>

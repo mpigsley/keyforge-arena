@@ -56,7 +56,7 @@ export default function GameBoard({ hasLoaded, deckDetails }) {
         <CardPiles
           isOpponent
           className={styles.leftSide}
-          numDraw={opponentDeck.cards - 11}
+          numDraw={opponentDeck.cards.length - 14}
           discarded={theirDiscard}
           archived={theirArchived}
           purged={theirPurged}
@@ -70,7 +70,7 @@ export default function GameBoard({ hasLoaded, deckDetails }) {
       <div className={styles.side}>
         <CardPiles
           className={styles.leftSide}
-          numDraw={myCards.cards - 11}
+          numDraw={userDeck.cards.length - 11}
           discarded={myDiscard}
           archived={myArchived}
           purged={myPurged}
