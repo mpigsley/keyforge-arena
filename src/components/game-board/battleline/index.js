@@ -33,6 +33,7 @@ export default function Battleline({ cards, isOpponent }) {
   return (
     <FlexContainer
       direction="column"
+      className={styles.battleline}
       justify={isOpponent ? 'flexEnd' : 'flexStart'}
       style={{ padding: `${VERTICAL_PADDING}px ${HORIZONTAL_PADDING}px` }}
     >
