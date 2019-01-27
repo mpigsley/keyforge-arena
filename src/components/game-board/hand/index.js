@@ -16,7 +16,7 @@ const DEFAULT_OVERLAP = CARD_WIDTH * 0.6;
 export default function Hand({ cards }) {
   const [hovered, setHovered] = useState();
   const { width, height } = useDimensions();
-  const handWidth = width / 2;
+  const handWidth = width * (3 / 7);
   const handHeight = height * 0.18;
   const containerWidth = Math.min(
     handWidth,

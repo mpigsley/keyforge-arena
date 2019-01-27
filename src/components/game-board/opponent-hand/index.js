@@ -13,7 +13,7 @@ const DEFAULT_OVERLAP = CARD_WIDTH * 0.6;
 
 export default function OpponentHand({ handSize }) {
   const { width } = useDimensions();
-  const handWidth = width / 2;
+  const handWidth = width * (3 / 7);
   const containerWidth = Math.min(
     handWidth,
     Math.max(0, (handSize - 1) * DEFAULT_OVERLAP + CARD_WIDTH),
