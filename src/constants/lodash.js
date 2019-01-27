@@ -12,6 +12,7 @@ import omit from 'lodash/omit';
 import pick from 'lodash/pick';
 import reduce from 'lodash/reduce';
 import size from 'lodash/size';
+import slice from 'lodash/slice';
 import some from 'lodash/some';
 import sortBy from 'lodash/sortBy';
 import take from 'lodash/take';
@@ -34,6 +35,7 @@ export {
   pick,
   reduce,
   size,
+  slice,
   some,
   sortBy,
   take,

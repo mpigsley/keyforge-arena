@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import FlexContainer from 'primitives/flex-container';
 
 import { useDimensions } from 'utils/effects';
+import { CardsType } from 'constants/types';
 import styles from './styles.module.scss';
 
 const CARD_PADDING = 10;
@@ -74,15 +75,7 @@ export default function Battleline({ cards, isOpponent }) {
 
 Battleline.propTypes = {
   isOpponent: PropTypes.bool,
-  cards: PropTypes.arrayOf(
-    PropTypes.shape({
-      image: PropTypes.shape({
-        link: PropTypes.string.isRequired,
-      }).isRequired,
-      house: PropTypes.string.isRequired,
-      card: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
+  cards: CardsType.isRequired,
 };
 
 Battleline.defaultProps = {

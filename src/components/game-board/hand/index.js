@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import FlexContainer from 'primitives/flex-container';
 
 import { useDimensions } from 'utils/effects';
+import { CardsType } from 'constants/types';
 import styles from './styles.module.scss';
 
 const CARD_RATIO = 300 / 420;
@@ -71,15 +71,7 @@ export default function Hand({ cards }) {
 }
 
 Hand.propTypes = {
-  cards: PropTypes.arrayOf(
-    PropTypes.shape({
-      image: PropTypes.shape({
-        link: PropTypes.string.isRequired,
-      }).isRequired,
-      house: PropTypes.string.isRequired,
-      card: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
+  cards: CardsType.isRequired,
 };
 
 Hand.defaultProps = {};
