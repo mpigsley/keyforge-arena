@@ -1,0 +1,20 @@
+.row--horizontal {
+  height: 100%;
+  align-items: flex-end;
+}
+
+.purgePile {
+  background-color: red;
+}
+
+.archivePile {
+  background-color: blue;
+}
+
+.drawPile {
+  background-color: black;
+}
+
+.discardPile {
+  background-color: green;
+}
