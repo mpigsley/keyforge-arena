@@ -54,6 +54,7 @@ export default function GameBoard({ hasLoaded, deckDetails }) {
     <div className={classNames(styles.container, styles.gameBoard)}>
       <div className={styles.opponentSide}>
         <CardPiles
+          isOpponent
           className={styles.leftSide}
           numDraw={opponentDeck.cards - 11}
           discarded={theirDiscard}

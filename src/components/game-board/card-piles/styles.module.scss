@@ -1,6 +1,12 @@
-.row--horizontal {
-  height: 100%;
-  align-items: flex-end;
+.row {
+  &--horizontal {
+    height: 100%;
+    align-items: flex-end;
+  }
+
+  &--opponent {
+    align-items: flex-start;
+  }
 }
 
 .purgePile {
