@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import FlexContainer from 'primitives/flex-container';
+import CardBack from 'primitives/card-back';
 
 import { CardsType } from 'constants/types';
 import { useDimensions } from 'utils/effects';
@@ -37,7 +38,9 @@ export default function CardPiles({
     (innerWidth - PADDING * 2 - modifiedPileWidth) / 2;
   const verticalCardWidth =
     (innerHeight - PADDING - modifiedPileHeight) * CARD_RATIO;
-  const isVertical = verticalCardWidth > horizontalCardWidth;
+  const isVertical =
+    verticalCardWidth > horizontalCardWidth ||
+    (!purged.length && !archived.length);
   const cardWidth = Math.min(
     Math.max(verticalCardWidth, horizontalCardWidth),
     MAX_CARD_WIDTH,
@@ -58,22 +61,38 @@ export default function CardPiles({
       direction={isVertical ? 'row' : 'column'}
       style={staticContainerStyle}
     >
-      <div
-        className={styles.purgePile}
-        style={{
-          width: staticWidth,
-          height: staticHeight,
-          marginRight: isVertical ? PADDING : 0,
-          marginBottom: isVertical ? 0 : PADDING,
-        }}
-      />
-      <div
-        className={styles.archivePile}
-        style={{
-          width: staticWidth,
-          height: staticHeight,
-        }}
-      />
+      {!!purged.length && (
+        <FlexContainer
+          align="center"
+          justify="center"
+          direction="column"
+          className={styles.staticPile}
+          style={{
+            width: staticWidth,
+            height: staticHeight,
+            marginRight: isVertical ? PADDING : 0,
+            marginBottom: isVertical ? 0 : PADDING,
+          }}
+        >
+          <span className={styles.pileTitle}>Purged</span>
+          <span className={styles.pileSize}>{purged.length}</span>
+        </FlexContainer>
+      )}
+      {!!archived.length && (
+        <FlexContainer
+          align="center"
+          justify="center"
+          direction="column"
+          className={styles.staticPile}
+          style={{
+            width: staticWidth,
+            height: staticHeight,
+          }}
+        >
+          <span className={styles.pileTitle}>Archived</span>
+          <span className={styles.pileSize}>{archived.length}</span>
+        </FlexContainer>
+      )}
     </FlexContainer>
   );
 
@@ -89,14 +108,12 @@ export default function CardPiles({
           [styles['row--opponent']]: isOpponent,
         })}
       >
-        <div
-          className={styles.drawPile}
-          style={{
-            width: modifiedCardWidth,
-            height: cardHeight,
-            marginRight: PADDING,
-          }}
-        />
+        <div>
+          <CardBack
+            width={modifiedCardWidth}
+            style={{ marginRight: PADDING }}
+          />
+        </div>
         <div
           className={styles.discardPile}
           style={{ width: modifiedCardWidth, height: cardHeight }}

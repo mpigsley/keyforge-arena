@@ -2,12 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import FlexContainer from 'primitives/flex-container';
+import CardBack from 'primitives/card-back';
 
-import Logo from 'images/logo.png';
 import { useDimensions } from 'utils/effects';
 import styles from './styles.module.scss';
 
-const CARD_RATIO = 300 / 420;
 const CARD_WIDTH = 130;
 const DEFAULT_OVERLAP = CARD_WIDTH * 0.6;
 
@@ -30,23 +29,14 @@ export default function OpponentHand({ handSize }) {
         className={styles.relativeContainer}
       >
         {[...Array(handSize)].map((_, i) => (
-          <FlexContainer
+          <CardBack
             key={i /* eslint-disable-line */}
+            isFlipped
+            isOutlined
             className={styles.card}
-            style={{
-              left: i * overlap,
-              width: CARD_WIDTH,
-              height: CARD_WIDTH / CARD_RATIO,
-            }}
-          >
-            <FlexContainer
-              className={styles.inner}
-              align="center"
-              justify="center"
-            >
-              <img className={styles.logo} alt="logo" src={Logo} />
-            </FlexContainer>
-          </FlexContainer>
+            width={CARD_WIDTH}
+            style={{ left: i * overlap }}
+          />
         ))}
       </div>
     </FlexContainer>

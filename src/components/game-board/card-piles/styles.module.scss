@@ -1,3 +1,5 @@
+@import '~styles/theme';
+
 .row {
   &--horizontal {
     height: 100%;
@@ -9,12 +11,23 @@
   }
 }
 
-.purgePile {
-  background-color: red;
+.pileTitle {
+  color: $medium;
+  font-size: 0.6rem;
+  font-weight: 600;
+  margin-bottom: 0.1rem;
 }
 
-.archivePile {
-  background-color: blue;
+.pileSize {
+  color: $medium;
+  font-size: 1.2rem;
+  font-weight: 100;
+}
+
+.staticPile {
+  background: radial-gradient(ellipse at center, white 30%, $shadow 100%);
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 .drawPile {

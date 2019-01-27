@@ -1,27 +1,8 @@
-@import '~styles/theme';
-
 .relativeContainer {
   position: relative;
 }
 
-$margin: 10px;
 .card {
-  border: 2px solid white;
-  background-image: linear-gradient(to bottom right, $dark, $medium);
-  border-radius: $margin;
-  bottom: 0;
   position: absolute;
-}
-
-.inner {
-  background-color: $veryLight;
-  border: 2px solid $dark;
-  height: calc(100% - 22px);
-  margin: $margin;
-  width: 100%;
-}
-
-.logo {
-  transform: rotate(180deg);
-  width: 60%;
+  bottom: 0;
 }
