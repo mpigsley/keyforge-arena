@@ -35,15 +35,12 @@ export default function DeckDetails({
   isInitialized,
 }) {
   const [isConfirmDelete, setConfirmDelete] = useState(false);
-  const fetchImages = useCallback(
-    () => {
-      const deck = decks[selected];
-      if (deck) {
-        fetchCardImages(deck.expansion, deck);
-      }
-    },
-    [decks, selected],
-  );
+  const fetchImages = useCallback(() => {
+    const deck = decks[selected];
+    if (deck) {
+      fetchCardImages(deck.expansion, deck);
+    }
+  }, [decks, selected]);
   useEffect(fetchImages);
 
   const deck = decks[selected];
