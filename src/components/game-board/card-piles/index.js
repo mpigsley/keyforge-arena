@@ -5,16 +5,19 @@ import classNames from 'classnames';
 import FlexContainer from 'primitives/flex-container';
 import CardBack from 'primitives/card-back';
 
-import { CARD_RATIO, MAX_CARD_WIDTH } from 'constants/game-board';
+import {
+  CARD_RATIO,
+  MAX_CARD_WIDTH,
+  HORIZONTAL_PADDING,
+  VERTICAL_PADDING,
+} from 'constants/game-board';
 import { CardsType } from 'constants/types';
 import { useDimensions } from 'utils/effects';
 
 import styles from './styles.module.scss';
 
-const HORIZONTAL_PADDING = 20;
 const STATIC_PILE_WIDTH = 100;
 const STATIC_PILE_HEIGHT = 75;
-const PADDING = 8;
 
 export default function CardPiles({
   className,
@@ -31,12 +34,12 @@ export default function CardPiles({
     ? STATIC_PILE_HEIGHT * 0.7
     : STATIC_PILE_HEIGHT;
   const { height, width } = useDimensions();
-  const innerHeight = height * (isOpponent ? 0.2 : 0.3) - PADDING * 2;
+  const innerHeight = height * (isOpponent ? 0.2 : 0.3) - VERTICAL_PADDING * 2;
   const innerWidth = width * (2 / 7) - HORIZONTAL_PADDING * 2;
   const horizontalCardWidth =
-    (innerWidth - PADDING * 2 - modifiedPileWidth) / 2;
+    (innerWidth - VERTICAL_PADDING * 2 - modifiedPileWidth) / 2;
   const verticalCardWidth =
-    (innerHeight - PADDING - modifiedPileHeight) * CARD_RATIO;
+    (innerHeight - VERTICAL_PADDING - modifiedPileHeight) * CARD_RATIO;
   const isVertical =
     verticalCardWidth > horizontalCardWidth ||
     (!purged.length && !archived.length);
@@ -50,10 +53,10 @@ export default function CardPiles({
   const staticWidth = isVertical ? cardWidth : modifiedPileWidth;
   const staticHeight = isVertical
     ? modifiedPileHeight
-    : (cardHeight - PADDING) / 2;
+    : (cardHeight - VERTICAL_PADDING) / 2;
   const staticContainerStyle = isVertical
-    ? { marginBottom: PADDING }
-    : { marginLeft: PADDING };
+    ? { marginBottom: VERTICAL_PADDING }
+    : { marginLeft: VERTICAL_PADDING };
 
   const staticPiles = (
     <FlexContainer
@@ -69,8 +72,8 @@ export default function CardPiles({
           style={{
             width: staticWidth,
             height: staticHeight,
-            marginRight: isVertical ? PADDING : 0,
-            marginBottom: isVertical ? 0 : PADDING,
+            marginRight: isVertical ? VERTICAL_PADDING : 0,
+            marginBottom: isVertical ? 0 : VERTICAL_PADDING,
           }}
         >
           <span className={styles.pileTitle}>Purged</span>
@@ -128,7 +131,7 @@ export default function CardPiles({
       style={{
         width: modifiedCardWidth - 3,
         height: cardHeight - 3,
-        marginRight: PADDING,
+        marginRight: VERTICAL_PADDING,
       }}
     >
       <span className={styles.pileTitle}>Draw</span>
@@ -138,7 +141,7 @@ export default function CardPiles({
     drawElement = (
       <div
         className={styles.drawContainer}
-        style={{ ...sizeStyle, marginRight: PADDING }}
+        style={{ ...sizeStyle, marginRight: VERTICAL_PADDING }}
       >
         <FlexContainer
           align="center"
@@ -157,7 +160,7 @@ export default function CardPiles({
   return (
     <div
       className={classNames(styles.container, className)}
-      style={{ padding: `${PADDING}px ${HORIZONTAL_PADDING}px` }}
+      style={{ padding: `${VERTICAL_PADDING}px ${HORIZONTAL_PADDING}px` }}
     >
       {isVertical && staticPiles}
       <FlexContainer

@@ -3,14 +3,17 @@ import PropTypes from 'prop-types';
 
 import FlexContainer from 'primitives/flex-container';
 
-import { CARD_RATIO, ZOOMED_WIDTH } from 'constants/game-board';
+import {
+  CARD_RATIO,
+  ZOOMED_WIDTH,
+  HORIZONTAL_PADDING,
+  VERTICAL_PADDING,
+} from 'constants/game-board';
 import { useDimensions } from 'utils/effects';
 import { CardsType } from 'constants/types';
 import styles from './styles.module.scss';
 
 const CARD_PADDING = 10;
-const HORIZONTAL_PADDING = 20;
-const VERTICAL_PADDING = 8;
 
 export default function Battleline({ cards, isOpponent }) {
   const { height, width } = useDimensions();
@@ -44,7 +47,9 @@ export default function Battleline({ cards, isOpponent }) {
             className={styles.imgContainer}
             style={{
               width: `${scaledWidth}px`,
-              padding: `0px ${CARD_PADDING / 2}px`,
+              paddingLeft: i !== 0 ? `${CARD_PADDING / 2}px` : 0,
+              paddingRight:
+                i !== cards.length - 1 ? `${CARD_PADDING / 2}px` : 0,
             }}
           >
             <img
