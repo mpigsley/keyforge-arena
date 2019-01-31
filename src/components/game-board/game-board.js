@@ -4,9 +4,10 @@ import classNames from 'classnames';
 
 import OpponentHand from 'components/game-board/opponent-hand';
 import Battleline from 'components/game-board/battleline';
-import FlexContainer from 'primitives/flex-container';
 import CardPiles from 'components/game-board/card-piles';
+import Artifacts from 'components/game-board/artifacts';
 import Hand from 'components/game-board/hand';
+import FlexContainer from 'primitives/flex-container';
 import Spinner from 'primitives/spinner';
 import Header from 'primitives/header';
 
@@ -43,12 +44,14 @@ export default function GameBoard({ hasLoaded, deckDetails }) {
   const theirDiscard = slice(opponentDeck.cards, 3, 10);
   const theirArchived = [];
   const theirPurged = slice(opponentDeck.cards, 10, 11);
+  const theirArtifacts = slice(opponentDeck.cards, 11, 14);
 
   const userDeck = find(deckDetails, { isCurrentUser: true });
   const myCards = take(userDeck.cards, 6);
   const myDiscard = slice(userDeck.cards, 6, 10);
   const myArchived = slice(userDeck.cards, 10, 12);
   const myPurged = [];
+  const myArtifacts = slice(userDeck.cards, 12, 13);
 
   return (
     <div className={classNames(styles.container, styles.gameBoard)}>
@@ -63,7 +66,7 @@ export default function GameBoard({ hasLoaded, deckDetails }) {
         />
         <OpponentHand handSize={4} />
         <div />
-        <div className={styles.rightSide} />
+        <Artifacts className={styles.rightSide} artifacts={theirArtifacts} />
       </div>
       <Battleline cards={theirCards} isOpponent />
       <Battleline cards={myCards} />
@@ -77,7 +80,7 @@ export default function GameBoard({ hasLoaded, deckDetails }) {
         />
         <div />
         <Hand cards={myCards} />
-        <div className={styles.rightSide} />
+        <Artifacts className={styles.rightSide} artifacts={myArtifacts} />
       </div>
     </div>
   );

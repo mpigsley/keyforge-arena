@@ -3,15 +3,13 @@ import classNames from 'classnames';
 
 import FlexContainer from 'primitives/flex-container';
 
+import { CARD_RATIO, ZOOMED_WIDTH, MAX_CARD_WIDTH } from 'constants/game-board';
 import { useDimensions } from 'utils/effects';
 import { CardsType } from 'constants/types';
 import styles from './styles.module.scss';
 
-const CARD_RATIO = 300 / 420;
-const CARD_WIDTH = 130;
-const ZOOMED_WIDTH = 250;
 const EXTRA_PADDING = 10;
-const DEFAULT_OVERLAP = CARD_WIDTH * 0.6;
+const DEFAULT_OVERLAP = MAX_CARD_WIDTH * 0.6;
 
 export default function Hand({ cards }) {
   const [hovered, setHovered] = useState();
@@ -20,17 +18,17 @@ export default function Hand({ cards }) {
   const handHeight = height * 0.18;
   const containerWidth = Math.min(
     handWidth,
-    Math.max(0, (cards.length - 1) * DEFAULT_OVERLAP + CARD_WIDTH),
+    Math.max(0, (cards.length - 1) * DEFAULT_OVERLAP + MAX_CARD_WIDTH),
   );
-  const zoomScale = ZOOMED_WIDTH / CARD_WIDTH;
+  const zoomScale = ZOOMED_WIDTH / MAX_CARD_WIDTH;
   const overlap =
     containerWidth === handWidth
-      ? (handWidth - CARD_WIDTH) / (cards.length - 1)
+      ? (handWidth - MAX_CARD_WIDTH) / (cards.length - 1)
       : DEFAULT_OVERLAP;
 
-  const scaleDiff = (ZOOMED_WIDTH - CARD_WIDTH) / (CARD_RATIO * 2);
+  const scaleDiff = (ZOOMED_WIDTH - MAX_CARD_WIDTH) / (CARD_RATIO * 2);
   const offset =
-    CARD_WIDTH / CARD_RATIO + scaleDiff + EXTRA_PADDING - handHeight;
+    MAX_CARD_WIDTH / CARD_RATIO + scaleDiff + EXTRA_PADDING - handHeight;
 
   return (
     <FlexContainer justify="center">

@@ -5,13 +5,12 @@ import classNames from 'classnames';
 import FlexContainer from 'primitives/flex-container';
 import CardBack from 'primitives/card-back';
 
+import { CARD_RATIO, MAX_CARD_WIDTH } from 'constants/game-board';
 import { CardsType } from 'constants/types';
 import { useDimensions } from 'utils/effects';
 
 import styles from './styles.module.scss';
 
-const MAX_CARD_WIDTH = 140;
-const CARD_RATIO = 300 / 420;
 const HORIZONTAL_PADDING = 20;
 const STATIC_PILE_WIDTH = 100;
 const STATIC_PILE_HEIGHT = 75;

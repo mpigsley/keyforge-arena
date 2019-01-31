@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import FlexContainer from 'primitives/flex-container';
 
+import { CARD_RATIO, ZOOMED_WIDTH } from 'constants/game-board';
 import { useDimensions } from 'utils/effects';
 import { CardsType } from 'constants/types';
 import styles from './styles.module.scss';
@@ -10,8 +11,6 @@ import styles from './styles.module.scss';
 const CARD_PADDING = 10;
 const HORIZONTAL_PADDING = 20;
 const VERTICAL_PADDING = 8;
-const CARD_RATIO = 300 / 420;
-const ZOOMED_WIDTH = 250;
 
 export default function Battleline({ cards, isOpponent }) {
   const { height, width } = useDimensions();
