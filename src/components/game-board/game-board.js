@@ -18,7 +18,9 @@ import styles from './styles.module.scss';
 export default function GameBoard({ hasLoaded, deckDetails }) {
   const isConstrained = useDimensionConstraints(650, 550);
   if (!hasLoaded || isConstrained) {
-    let content = <Header>Increase Window Size</Header>;
+    let content = (
+      <Header className={styles.header}>Increase Window Size</Header>
+    );
     if (!hasLoaded) {
       content = (
         <>

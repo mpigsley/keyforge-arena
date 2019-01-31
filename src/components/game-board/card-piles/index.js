@@ -36,10 +36,14 @@ export default function CardPiles({
     : STATIC_PILE_HEIGHT;
   const innerHeight = height * (isOpponent ? 0.2 : 0.3) - VERTICAL_PADDING * 2;
   const innerWidth = width * (2 / 7) - HORIZONTAL_PADDING * 2;
-  const horizontalCardWidth =
-    (innerWidth - VERTICAL_PADDING * 2 - modifiedPileWidth) / 2;
-  const verticalCardWidth =
-    (innerHeight - VERTICAL_PADDING - modifiedPileHeight) * CARD_RATIO;
+  const horizontalCardWidth = Math.min(
+    (innerWidth - VERTICAL_PADDING * 2 - modifiedPileWidth) / 2,
+    innerHeight * CARD_RATIO,
+  );
+  const verticalCardWidth = Math.min(
+    (innerHeight - VERTICAL_PADDING - modifiedPileHeight) * CARD_RATIO,
+    (innerWidth - VERTICAL_PADDING) / 2,
+  );
   const isVertical =
     verticalCardWidth > horizontalCardWidth ||
     (!purged.length && !archived.length);

@@ -23,7 +23,6 @@ export default function Artifacts({ className, artifacts, isOpponent }) {
     (innerWidth - (artifacts.length - 1) * VERTICAL_PADDING) / artifacts.length,
     MAX_CARD_WIDTH,
   );
-  console.log(cardWidth / CARD_RATIO, innerHeight);
   const cardHeight = Math.min(cardWidth / CARD_RATIO, innerHeight);
   const modifiedCardWidth = cardHeight * CARD_RATIO;
 
