@@ -66,7 +66,11 @@ export default function GameBoard({ hasLoaded, deckDetails }) {
         />
         <OpponentHand handSize={4} />
         <div />
-        <Artifacts className={styles.rightSide} artifacts={theirArtifacts} />
+        <Artifacts
+          className={styles.rightSide}
+          artifacts={theirArtifacts}
+          isOpponent
+        />
       </div>
       <Battleline cards={theirCards} isOpponent />
       <Battleline cards={myCards} />

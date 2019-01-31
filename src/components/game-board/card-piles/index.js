@@ -27,13 +27,13 @@ export default function CardPiles({
   purged,
   archived,
 }) {
+  const { height, width } = useDimensions();
   const modifiedPileWidth = isOpponent
     ? STATIC_PILE_WIDTH * 0.7
     : STATIC_PILE_WIDTH;
   const modifiedPileHeight = isOpponent
     ? STATIC_PILE_HEIGHT * 0.7
     : STATIC_PILE_HEIGHT;
-  const { height, width } = useDimensions();
   const innerHeight = height * (isOpponent ? 0.2 : 0.3) - VERTICAL_PADDING * 2;
   const innerWidth = width * (2 / 7) - HORIZONTAL_PADDING * 2;
   const horizontalCardWidth =
