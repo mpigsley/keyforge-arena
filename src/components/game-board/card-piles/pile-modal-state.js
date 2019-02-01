@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 
 import CardModal from 'components/game-board/card-modal';
 
+import { capitalize } from 'constants/lodash';
 import { CardsType } from 'constants/types';
 
 const PILE_TYPES = {
@@ -39,7 +40,8 @@ export default Wrapped =>
           />
           <CardModal
             cards={props[openPile]}
-            onCancel={() => this.setState({ openPile: undefined })}
+            title={`${capitalize(openPile)} Cards`}
+            onClose={() => this.setState({ openPile: undefined })}
           />
         </Fragment>
       );

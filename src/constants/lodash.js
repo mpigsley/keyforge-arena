@@ -11,6 +11,7 @@ import mapValues from 'lodash/mapValues';
 import omit from 'lodash/omit';
 import pick from 'lodash/pick';
 import reduce from 'lodash/reduce';
+import reverse from 'lodash/reverse';
 import size from 'lodash/size';
 import slice from 'lodash/slice';
 import some from 'lodash/some';
@@ -34,6 +35,7 @@ export {
   omit,
   pick,
   reduce,
+  reverse,
   size,
   slice,
   some,

@@ -1,0 +1,36 @@
+@import '~styles/theme';
+
+.modal {
+  height: 100%;
+  width: 100%;
+}
+
+.overlay {
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1000;
+}
+
+.container {
+  display: grid;
+  grid-template-rows: 82px auto;
+  height: 100%;
+}
+
+.header {
+  flex: 1;
+  margin-left: 50px;
+  text-align: center;
+}
+
+.close {
+  cursor: pointer;
+  padding: 1rem;
+}
