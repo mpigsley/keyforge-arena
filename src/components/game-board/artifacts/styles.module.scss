@@ -1,0 +1,8 @@
+.artifact {
+  transition: transform 0.2s ease-in-out;
+  transition-delay: 0s;
+
+  &:hover {
+    transition-delay: 0.2s;
+  }
+}

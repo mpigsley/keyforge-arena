@@ -1,8 +1,8 @@
 import Firebase from 'firebase/app';
 import dayjs from 'dayjs';
 
-export const createGame = lobby =>
-  Firebase.functions().httpsCallable('createGame')({ lobby });
+export const createGame = (lobby, deck) =>
+  Firebase.functions().httpsCallable('createGame')({ lobby, deck });
 
 export const getGame = id =>
   Firebase.firestore()

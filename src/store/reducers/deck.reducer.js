@@ -1,4 +1,6 @@
 import { LOCATION_CHANGE } from 'connected-react-router';
+import { matchPath } from 'react-router';
+
 import {
   TOGGLED_SUBMIT_MODAL,
   TOGGLED_CHANGE_MODAL,
@@ -19,6 +21,7 @@ const initialState = {
   isSubmittingDeck: false,
   isChangeModalOpen: false,
   isChangingSelected: false,
+  selected: null,
   error: null,
   models: {},
 };
@@ -70,15 +73,20 @@ export default function deck(state = initialState, action) {
       };
     case DELETED.SUCCESS:
       return { ...state, models: omit(state.models, action.id) };
-    case LOCATION_CHANGE:
+    case LOCATION_CHANGE: {
+      const { pathname } = action.payload.location;
+      const routeMatch = matchPath(pathname, { path: `/deck/:id/:rest?` });
+      const selected = routeMatch ? routeMatch.params.id : null;
       return {
         ...state,
+        selected,
         error: null,
         isSubmittingDeck: false,
         isSubmitModalOpen: false,
         isChangingSelected: false,
         isChangeModalOpen: false,
       };
+    }
     case SIGNED_OUT.SUCCESS:
       return initialState;
     default:

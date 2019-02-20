@@ -9,7 +9,7 @@ import Input from 'primitives/input';
 import Label from 'primitives/label';
 import Modal from 'primitives/modal';
 
-import { usePrevious } from 'utils/custom-effects';
+import { usePrevious } from 'utils/effects';
 import { searchForUser } from 'store/api/search.api';
 
 import styles from './styles.module.scss';

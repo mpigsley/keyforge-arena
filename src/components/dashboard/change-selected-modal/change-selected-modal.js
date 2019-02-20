@@ -10,7 +10,7 @@ import Button from 'primitives/button';
 import Modal from 'primitives/modal';
 
 import { CheckCircle, Circle } from 'constants/icons';
-import { usePrevious } from 'utils/custom-effects';
+import { usePrevious } from 'utils/effects';
 
 import styles from './styles.module.scss';
 
@@ -21,7 +21,7 @@ export default function ChangeSelectedModal({
   isOpen,
   isChanging,
   toggleChangeModal,
-  selectedDeck,
+  activeDeck,
   changeSelected,
 }) {
   const previousIsOpen = usePrevious(isOpen);
@@ -29,13 +29,13 @@ export default function ChangeSelectedModal({
 
   useEffect(() => {
     if (!previousIsOpen && isOpen) {
-      setSelected(selectedDeck.key);
+      setSelected(activeDeck.key);
     }
   });
 
   const onConfirm = () => {
-    if (selected !== selectedDeck.key) {
-      changeSelected(selectedDeck.key, selected);
+    if (selected !== activeDeck.key) {
+      changeSelected(activeDeck.key, selected);
     }
   };
 
@@ -89,7 +89,7 @@ ChangeSelectedModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   isChanging: PropTypes.bool.isRequired,
   toggleChangeModal: PropTypes.func.isRequired,
-  selectedDeck: PropTypes.shape({
+  activeDeck: PropTypes.shape({
     key: PropTypes.string.isRequired,
   }).isRequired,
   changeSelected: PropTypes.func.isRequired,

@@ -1,13 +1,32 @@
-import { put, all, takeEvery, spawn, call, take } from 'redux-saga/effects';
+import {
+  put,
+  all,
+  takeEvery,
+  spawn,
+  call,
+  take,
+  select,
+} from 'redux-saga/effects';
 import { push } from 'connected-react-router';
 import { eventChannel } from 'redux-saga';
 
+import {
+  getIsDecksInitialized,
+  getPathname,
+  getDecks,
+} from 'store/selectors/base.selectors';
+import { hasLoadedGameDecks, gameDecks } from 'store/selectors/game.selectors';
+import {
+  UPDATED as UPDATED_DECKS,
+  fetchDeck,
+} from 'store/actions/deck.actions';
 import { LOGGED_IN, SIGNED_OUT } from 'store/actions/user.actions';
+import { fetchCardImages } from 'store/actions/image.actions';
 import { GAMES_UPDATED } from 'store/actions/game.actions';
 import { gameListener } from 'store/api/game.api';
 
 import { createAction } from 'utils/store';
-import { size } from 'constants/lodash';
+import { size, map, some } from 'constants/lodash';
 
 const createGameListener = uid =>
   eventChannel(emit => {
@@ -19,8 +38,40 @@ function* gameHandler(channel) {
   while (true) {
     const { update, deleted } = yield take(channel);
     yield put(createAction(GAMES_UPDATED.SUCCESS, { update, deleted }));
-    if (size(update)) {
-      yield put(push(`/game/${Object.keys(update)[0]}`));
+    const pathname = yield select(getPathname);
+    if (some(deleted, key => pathname.includes(key))) {
+      yield put(push('/dashboard'));
+    } else if (size(update)) {
+      const key = Object.keys(update)[0];
+      if (!pathname.includes(key)) {
+        yield put(push(`/game/${key}`));
+      }
+
+      const isDecksInitialized = yield select(getIsDecksInitialized);
+      if (!isDecksInitialized) {
+        yield take(UPDATED_DECKS.SUCCESS);
+      }
+
+      const decks = yield select(getDecks);
+      const unknownDecks = Object.values(update[key].decks).filter(
+        deck => !decks[deck],
+      );
+      if (unknownDecks.length) {
+        yield all(unknownDecks.map(id => put(fetchDeck(id))));
+      }
+
+      let hasAllDecks = false;
+      while (!hasAllDecks) {
+        yield take(UPDATED_DECKS.SUCCESS);
+        hasAllDecks = yield select(hasLoadedGameDecks);
+      }
+
+      const selectedDecks = yield select(gameDecks);
+      yield all(
+        map(selectedDecks, ({ expansion, ...selected }) =>
+          put(fetchCardImages(expansion, selected)),
+        ),
+      );
     }
   }
 }

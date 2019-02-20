@@ -30,8 +30,8 @@ export default function Decks({ decks, toDeck, match }) {
     <Navigation>
       <div className={styles.decks}>
         <DeckSearch className={styles.searchBar} />
-        <DeckList selected={selected} className={styles.list} />
-        <DeckDetails selected={selected} className={styles.details} />
+        <DeckList className={styles.list} />
+        <DeckDetails className={styles.details} />
       </div>
       <CardTooltip />
       <AddDeckModal />

@@ -25,7 +25,7 @@ export default function Navigation({
       <FlexContainer>
         {renderProtectedLink(
           <NavLink
-            to="/decks"
+            to="/deck"
             className={styles.navLink}
             activeClassName={styles['navLink--active']}
           >

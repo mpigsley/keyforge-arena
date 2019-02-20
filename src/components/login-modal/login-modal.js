@@ -8,7 +8,7 @@ import FlexContainer from 'primitives/flex-container';
 import Label from 'primitives/label';
 import Input from 'primitives/input';
 import { X } from 'constants/icons';
-import { usePrevious } from 'utils/custom-effects';
+import { usePrevious } from 'utils/effects';
 
 import styles from './styles.module.scss';
 

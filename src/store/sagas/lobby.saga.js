@@ -7,7 +7,6 @@ import {
   takeEvery,
   select,
 } from 'redux-saga/effects';
-import { push } from 'connected-react-router';
 import { toastr } from 'react-redux-toastr';
 import { eventChannel } from 'redux-saga';
 
@@ -24,9 +23,10 @@ import {
   ACCEPT_CHALLENGE,
 } from 'store/actions/lobby.actions';
 import { LOGGED_IN, SIGNED_OUT } from 'store/actions/user.actions';
-import { getUserId, getPathname } from 'store/selectors/base.selectors';
+import { getUserId } from 'store/selectors/base.selectors';
+import { activeDeckId } from 'store/selectors/deck.selectors';
 import { createAction } from 'utils/store';
-import { some, includes, find } from 'constants/lodash';
+import { find } from 'constants/lodash';
 
 const createLobbyListener = uid =>
   eventChannel(emit => {
@@ -43,15 +43,6 @@ function* lobbyHandler(channel, uid) {
         toastr.info,
         "You've Been Challenged!",
         'Accept it now on your dashboard.',
-      );
-    }
-    const path = yield select(getPathname);
-    if (some(deleted, id => includes(path, id))) {
-      yield put(push('/dashboard'));
-      yield call(
-        toastr.info,
-        'Challenge Cancelled',
-        'Your opponent has decided not to accept.',
       );
     }
   }
@@ -97,7 +88,8 @@ function* cancelChallengeFlow({ challenge }) {
 
 function* createGameFlow({ challenge }) {
   try {
-    yield call(createGame, challenge);
+    const deck = yield select(activeDeckId);
+    yield call(createGame, challenge, deck);
     yield put(createAction(ACCEPT_CHALLENGE.SUCCESS));
   } catch (error) {
     yield put(createAction(ACCEPT_CHALLENGE.ERROR, { error: error.message }));

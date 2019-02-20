@@ -10,6 +10,7 @@ export const getAreConnectionsInitialized = state =>
 
 /* Deck */
 export const getDecks = state => state.deck.models;
+export const getSelectedDeck = state => state.deck.selected;
 export const getDeckSearchTerm = state => state.deck.searchTerm;
 export const getIsSubmitModalOpen = state => state.deck.isSubmitModalOpen;
 export const getIsSubmittingDeck = state => state.deck.isSubmittingDeck;
@@ -17,6 +18,10 @@ export const getIsChangeModalOpen = state => state.deck.isChangeModalOpen;
 export const getIsChangingSelected = state => state.deck.isChangingSelected;
 export const getIsDecksInitialized = state => state.deck.isInitialized;
 export const getDeckError = state => state.deck.error;
+
+/* Game */
+export const getGames = state => state.game.models;
+export const getSelectedGame = state => state.game.selected;
 
 /* Image */
 export const getHouseImages = state => state.image.houses;

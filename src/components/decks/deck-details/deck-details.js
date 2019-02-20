@@ -13,7 +13,6 @@ import Button from 'primitives/button';
 import { map, sortBy, capitalize } from 'constants/lodash';
 import { Trash } from 'constants/icons';
 import coreCards from 'constants/expansions/cota';
-import { getUniqueCards } from 'utils/deck';
 
 import { ReactComponent as Common } from 'images/common.svg';
 import { ReactComponent as Uncommon } from 'images/uncommon.svg';
@@ -36,15 +35,12 @@ export default function DeckDetails({
   isInitialized,
 }) {
   const [isConfirmDelete, setConfirmDelete] = useState(false);
-  const fetchImages = useCallback(
-    () => {
-      const deck = decks[selected];
-      if (deck) {
-        fetchCardImages(deck.expansion, getUniqueCards(deck));
-      }
-    },
-    [decks, selected],
-  );
+  const fetchImages = useCallback(() => {
+    const deck = decks[selected];
+    if (deck) {
+      fetchCardImages(deck.expansion, deck);
+    }
+  }, [decks, selected]);
   useEffect(fetchImages);
 
   const deck = decks[selected];
@@ -121,11 +117,13 @@ export default function DeckDetails({
                 className={styles.house}
               >
                 <FlexContainer align="center" direction="column">
-                  <img
-                    className={styles.houseImg}
-                    src={houseImages[house]}
-                    alt={house}
-                  />
+                  {!!houseImages[house] && (
+                    <img
+                      className={styles.houseImg}
+                      src={houseImages[house].link}
+                      alt={house}
+                    />
+                  )}
                   <h3>{capitalize(house)}</h3>
                 </FlexContainer>
                 <FlexContainer direction="column" className={styles.cards}>

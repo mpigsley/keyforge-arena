@@ -1,0 +1,27 @@
+.battleline:hover {
+  z-index: 100;
+}
+
+.imgContainer {
+  max-height: 100%;
+  text-align: center;
+
+  &:first-of-type {
+    padding-left: 0;
+  }
+
+  &:last-of-type {
+    padding-right: 0;
+  }
+}
+
+.card {
+  max-height: 100%;
+  max-width: 100%;
+  transition: transform 0.2s ease-in-out;
+  transition-delay: 0s;
+
+  &:hover {
+    transition-delay: 0.2s;
+  }
+}

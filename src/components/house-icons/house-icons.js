@@ -9,14 +9,19 @@ import styles from './styles.module.scss';
 export default function HouseIcons({ className, houseImages, houses }) {
   return (
     <FlexContainer className={classNames(className, styles.container)}>
-      {Object.keys(houses).map(house => (
-        <img
-          key={house}
-          className={styles.img}
-          alt={house}
-          src={houseImages[house]}
-        />
-      ))}
+      {Object.keys(houses).map(house => {
+        if (!houseImages[house]) {
+          return null;
+        }
+        return (
+          <img
+            key={house}
+            className={styles.img}
+            alt={house}
+            src={houseImages[house].link}
+          />
+        );
+      })}
     </FlexContainer>
   );
 }

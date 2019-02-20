@@ -1,12 +1,18 @@
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { getIsInitialized } from 'store/selectors/base.selectors';
+import {
+  hasGameLoaded,
+  selectedGameStart,
+  getGameDeckDetails,
+} from 'store/selectors/game.selectors';
 
 import GameBoard from './game-board';
 
 const mapStateToProps = createStructuredSelector({
-  isInitialized: getIsInitialized,
+  deckDetails: getGameDeckDetails,
+  hasLoaded: hasGameLoaded,
+  gameStart: selectedGameStart,
 });
 
 export default connect(mapStateToProps)(GameBoard);

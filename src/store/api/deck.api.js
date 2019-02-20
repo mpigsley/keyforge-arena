@@ -16,16 +16,21 @@ export const getDecksByUser = uid =>
       return decks;
     });
 
+export const getDeck = id =>
+  Firebase.firestore()
+    .collection('decks')
+    .doc(id)
+    .get()
+    .then(deck => {
+      if (deck.exists) {
+        return [deck.id, deck.data()];
+      }
+      return [];
+    });
+
 export const getDecks = deckIds =>
-  Promise.all(
-    deckIds.map(id =>
-      Firebase.firestore()
-        .collection('decks')
-        .doc(id)
-        .get(),
-    ),
-  ).then(decks =>
-    decks.reduce((obj, deck) => ({ ...obj, [deck.id]: deck.data() }), {}),
+  Promise.all(deckIds.map(getDeck)).then(decks =>
+    decks.reduce((obj, [id, deck]) => ({ ...obj, [id]: deck }), {}),
   );
 
 export const submitDeck = link =>

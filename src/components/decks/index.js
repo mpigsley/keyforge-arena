@@ -11,7 +11,7 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const mapDispatchToProps = dispatch => ({
-  toDeck: deckId => dispatch(push(`/decks/${deckId}`)),
+  toDeck: deckId => dispatch(push(`/deck/${deckId}`)),
 });
 
 export default connect(

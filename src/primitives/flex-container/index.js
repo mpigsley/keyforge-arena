@@ -59,7 +59,7 @@ FlexContainer.propTypes = {
     'initial',
     'inherit',
   ]),
-  direction: PropTypes.oneOf(['row', 'column']),
+  direction: PropTypes.oneOf(['row', 'column', 'rowReverse', 'columnReverse']),
   wrap: PropTypes.bool,
   scroll: PropTypes.bool,
   flex: PropTypes.string,

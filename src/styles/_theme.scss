@@ -6,4 +6,5 @@ $border: #e5e5e5;
 $primary: #691317;
 $active: #0aa5ff;
 
-$box-shadow: 0px 0px 10px 0px #e0e0e0;
+$shadow: #e0e0e0;
+$box-shadow: 0px 0px 10px 0px $shadow;

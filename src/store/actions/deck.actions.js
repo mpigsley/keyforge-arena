@@ -15,6 +15,7 @@ export const toggleSubmitModal = () => ({ type: TOGGLED_SUBMIT_MODAL });
 export const toggleChangeModal = () => ({ type: TOGGLED_CHANGE_MODAL });
 export const submitNewDeck = link => ({ type: SUBMITTED.PENDING, link });
 export const deleteDeck = id => ({ type: DELETED.PENDING, id });
+export const fetchDeck = id => ({ type: UPDATED.PENDING, id });
 export const changeSelected = (previous, current) => ({
   type: CHANGED_SELECTED.PENDING,
   previous,

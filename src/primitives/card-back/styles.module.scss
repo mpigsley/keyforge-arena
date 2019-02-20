@@ -1,0 +1,26 @@
+@import '~styles/theme';
+
+.card {
+  background-image: linear-gradient(to bottom right, $dark, $medium);
+  border-radius: 8px;
+
+  &--outlined {
+    border: 2px solid white;
+    margin: -2px;
+  }
+}
+
+.inner {
+  background-color: $veryLight;
+  border: 1.5px solid $dark;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.logo {
+  width: 70%;
+
+  &--flipped {
+    transform: rotate(180deg);
+  }
+}

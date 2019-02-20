@@ -31,9 +31,6 @@ Firebase.initializeApp({
   messagingSenderId: process.env.REACT_APP_SENDER_ID,
 });
 
-// Temporary until deprecation notice goes away
-Firebase.firestore().settings({ timestampsInSnapshots: true });
-
 const store = createStore();
 
 ReactDOM.render(
@@ -43,7 +40,7 @@ ReactDOM.render(
         <Route exact path="/" component={Home} />
         <Route exact path="/dashboard" component={Protected(Dashboard)} />
         <Route exact path="/profile" component={Protected(Profile)} />
-        <Route path="/decks/:id?" component={Protected(Decks)} />
+        <Route path="/deck/:id?" component={Protected(Decks)} />
         <Route path="/game/:id" component={Protected(GameBoard)} />
       </Switch>
     </ConnectedRouter>

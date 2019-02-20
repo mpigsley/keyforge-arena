@@ -6,7 +6,7 @@ import FlexContainer from 'primitives/flex-container';
 import Spinner from 'primitives/spinner';
 import Button from 'primitives/button';
 import Header from 'primitives/header';
-import { size } from 'constants/lodash';
+import { size, includes } from 'constants/lodash';
 
 import styles from './styles.module.scss';
 
@@ -46,7 +46,11 @@ export default function ConnectionListItem({
       </Button>
     </div>
   );
-  if ([isReplyingTo, isCancelling, isAccepting].includes(key)) {
+
+  if (
+    (challenge && includes([isAccepting, isCancelling], challenge)) ||
+    isReplyingTo === key
+  ) {
     action = <Spinner />;
   } else if (pending) {
     action = (

@@ -9,9 +9,12 @@ const ReactHint = ReactHintFactory(React);
 export default function CardTooltip({ cardImages }) {
   const renderCardImage = target => {
     const { card } = target.dataset;
+    if (!cardImages[card]) {
+      return undefined;
+    }
     return (
       <div className="react-hint__content">
-        <img src={cardImages[card]} width={250} height={350} alt={card} />
+        <img src={cardImages[card].link} width={250} height={350} alt={card} />
       </div>
     );
   };

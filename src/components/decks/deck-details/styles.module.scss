@@ -79,3 +79,16 @@ $icon-size: 18px;
   font-weight: bold;
   margin-right: 0.5rem;
 }
+
+@media (max-width: 900px) {
+  .houses {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .house {
+    max-width: 100%;
+    width: 100%;
+    padding-bottom: 1rem;
+  }
+}

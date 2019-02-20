@@ -1,10 +1,7 @@
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import {
-  getSelectedDeck,
-  getSortedDecks,
-} from 'store/selectors/deck.selectors';
+import { activeDeck, getSortedDecks } from 'store/selectors/deck.selectors';
 import {
   getIsChangeModalOpen,
   getIsChangingSelected,
@@ -15,9 +12,9 @@ import ChangeSelectedModal from './change-selected-modal';
 
 const mapStateToProps = createStructuredSelector({
   isChanging: getIsChangingSelected,
-  selectedDeck: getSelectedDeck,
   isOpen: getIsChangeModalOpen,
   decks: getSortedDecks,
+  activeDeck,
 });
 
 export default connect(

@@ -1,0 +1,29 @@
+@import '~styles/theme';
+
+.container {
+  overflow-x: auto;
+  width: 100vw;
+}
+
+.cardContainer {
+  margin: 0 auto;
+  white-space: nowrap;
+}
+
+.card {
+  margin: 0 0.8rem 2rem;
+
+  &:first-of-type {
+    margin-left: 2rem;
+  }
+
+  &:last-of-type {
+    margin-right: 2rem;
+  }
+}
+
+.directionText {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0 0.8rem 1rem;
+}

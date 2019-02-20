@@ -12,7 +12,7 @@ export default function DeckList({ className, decks }) {
     <div className={className}>
       {decks.map(({ key, name, houses }) => (
         <NavLink
-          to={`/decks/${key}`}
+          to={`/deck/${key}`}
           activeClassName={styles['item--active']}
           className={styles.item}
           key={key}
