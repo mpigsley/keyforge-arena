@@ -7,7 +7,7 @@ import CardBack from 'primitives/card-back';
 
 import {
   CARD_RATIO,
-  MAX_CARD_WIDTH,
+  MAX_MINOR_CARD_WIDTH,
   HORIZONTAL_PADDING,
   VERTICAL_PADDING,
 } from 'constants/game-board';
@@ -52,7 +52,7 @@ export default function CardPiles({
     (!purged.length && !archived.length);
   const cardWidth = Math.min(
     Math.max(verticalCardWidth, horizontalCardWidth),
-    MAX_CARD_WIDTH,
+    MAX_MINOR_CARD_WIDTH,
   );
   const cardHeight = Math.min(cardWidth / CARD_RATIO, innerHeight);
   const modifiedCardWidth = cardHeight * CARD_RATIO;

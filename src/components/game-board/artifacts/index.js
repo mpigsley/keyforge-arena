@@ -7,7 +7,7 @@ import {
   CARD_RATIO,
   HORIZONTAL_PADDING,
   VERTICAL_PADDING,
-  MAX_CARD_WIDTH,
+  MAX_MINOR_CARD_WIDTH,
 } from 'constants/game-board';
 import { CardsType } from 'constants/types';
 import { useDimensions } from 'utils/effects';
@@ -21,7 +21,7 @@ export default function Artifacts({ className, artifacts, isOpponent }) {
 
   const cardWidth = Math.min(
     (innerWidth - (artifacts.length - 1) * VERTICAL_PADDING) / artifacts.length,
-    MAX_CARD_WIDTH,
+    MAX_MINOR_CARD_WIDTH,
   );
   const cardHeight = Math.min(cardWidth / CARD_RATIO, innerHeight);
   const modifiedCardWidth = cardHeight * CARD_RATIO;
