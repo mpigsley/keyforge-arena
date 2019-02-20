@@ -19,7 +19,7 @@ export const gameListener = (uid, cb) =>
       'created',
       '>',
       dayjs()
-        .subtract(2, 'week')
+        .subtract(2, 'minute')
         .toDate(),
     )
     .onSnapshot(snapshot => {

@@ -5,6 +5,7 @@ import FlexContainer from 'primitives/flex-container';
 
 import {
   CARD_RATIO,
+  ZOOMED_WIDTH,
   HORIZONTAL_PADDING,
   VERTICAL_PADDING,
   MAX_MINOR_CARD_WIDTH,
@@ -26,6 +27,11 @@ export default function Artifacts({ className, artifacts, isOpponent }) {
   const cardHeight = Math.min(cardWidth / CARD_RATIO, innerHeight);
   const modifiedCardWidth = cardHeight * CARD_RATIO;
 
+  const zoomScale = ZOOMED_WIDTH / modifiedCardWidth;
+  const zoomHeight = ZOOMED_WIDTH / CARD_RATIO;
+  const bottomOverhang = (zoomHeight - cardHeight) / 2;
+  const rightOverhang = (ZOOMED_WIDTH - modifiedCardWidth) / 2;
+
   return (
     <FlexContainer
       className={className}
@@ -36,7 +42,7 @@ export default function Artifacts({ className, artifacts, isOpponent }) {
       {artifacts.map(({ card, image }, i) => (
         <img
           key={`${card}-${i}` /* eslint-disable-line */}
-          className={styles.discardPile}
+          className={styles.artifact}
           alt={card}
           src={image.link}
           style={{
@@ -45,6 +51,17 @@ export default function Artifacts({ className, artifacts, isOpponent }) {
             paddingLeft: i !== 0 ? `${VERTICAL_PADDING / 2}px` : 0,
             paddingRight:
               i !== artifacts.length - 1 ? `${VERTICAL_PADDING / 2}px` : 0,
+          }}
+          onMouseEnter={e => {
+            const bottomOffset = bottomOverhang / zoomScale;
+            const rightOffset = rightOverhang / zoomScale;
+            const verticalDirection = isOpponent ? '' : '-';
+            const scale = `scale(${zoomScale})`;
+            const transform = `translate(-${rightOffset}px, ${verticalDirection}${bottomOffset}px)`;
+            e.target.style.transform = `${scale} ${transform}`;
+          }}
+          onMouseLeave={e => {
+            e.target.style.transform = '';
           }}
         />
       ))}
