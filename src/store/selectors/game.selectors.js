@@ -14,6 +14,11 @@ export const selectedGame = createSelector(
   (games, selected) => games[selected],
 );
 
+export const selectedGameStart = createSelector(
+  [selectedGame],
+  game => (game ? game.created.toDate() : undefined),
+);
+
 export const gameDecks = createSelector(
   [selectedGame, getDecks],
   (game, decks) => (!game ? [] : mapValues(game.decks, id => decks[id])),

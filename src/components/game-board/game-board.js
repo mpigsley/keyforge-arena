@@ -7,6 +7,7 @@ import Battleline from 'components/game-board/battleline';
 import CardPiles from 'components/game-board/card-piles';
 import Artifacts from 'components/game-board/artifacts';
 import Hand from 'components/game-board/hand';
+import GameState from 'components/game-board/game-state';
 import FlexContainer from 'primitives/flex-container';
 import Spinner from 'primitives/spinner';
 import Header from 'primitives/header';
@@ -15,7 +16,7 @@ import { useDimensionConstraints } from 'utils/effects';
 import { find, take, slice } from 'constants/lodash';
 import styles from './styles.module.scss';
 
-export default function GameBoard({ hasLoaded, deckDetails }) {
+export default function GameBoard({ hasLoaded, deckDetails, gameStart }) {
   const isConstrained = useDimensionConstraints(650, 550);
   if (!hasLoaded || isConstrained) {
     let content = (
@@ -67,7 +68,7 @@ export default function GameBoard({ hasLoaded, deckDetails }) {
           purged={theirPurged}
         />
         <OpponentHand handSize={4} />
-        <div />
+        <GameState numKeys={1} numAember={4} aemberCost={6} isOpponent />
         <Artifacts
           className={styles.rightSide}
           artifacts={theirArtifacts}
@@ -84,7 +85,13 @@ export default function GameBoard({ hasLoaded, deckDetails }) {
           archived={myArchived}
           purged={myPurged}
         />
-        <div />
+        <GameState
+          numKeys={2}
+          numAember={7}
+          aemberCost={6}
+          turn={5}
+          gameStart={gameStart}
+        />
         <Hand cards={myCards} />
         <Artifacts className={styles.rightSide} artifacts={myArtifacts} />
       </div>
@@ -95,4 +102,9 @@ export default function GameBoard({ hasLoaded, deckDetails }) {
 GameBoard.propTypes = {
   hasLoaded: PropTypes.bool.isRequired,
   deckDetails: PropTypes.shape().isRequired,
+  gameStart: PropTypes.instanceOf(Date),
+};
+
+GameBoard.defaultProps = {
+  gameStart: undefined,
 };

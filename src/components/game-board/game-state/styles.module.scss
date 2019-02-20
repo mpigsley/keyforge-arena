@@ -1,0 +1,12 @@
+@import '~styles/theme';
+
+.turnTimer,
+.aember {
+  color: $medium;
+  flex: 1;
+  text-align: center;
+}
+
+.check {
+  color: $active;
+}

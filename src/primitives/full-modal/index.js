@@ -37,5 +37,5 @@ export default function FullModal({ title, onClose, children, ...props }) {
 FullModal.propTypes = {
   title: PropTypes.string.isRequired,
   onClose: PropTypes.func.isRequired,
-  children: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired,
 };

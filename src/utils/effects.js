@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import dayjs from 'dayjs';
 
 import { debounce } from 'constants/lodash';
 
@@ -19,9 +20,7 @@ export const usePrevious = value => {
 export const useResize = cb =>
   useEffect(() => {
     window.addEventListener('resize', cb);
-    return () => {
-      window.removeEventListener('resize', cb);
-    };
+    return () => window.removeEventListener('resize', cb);
   }, []);
 
 export const useDimensions = () => {
@@ -67,4 +66,16 @@ export const useAnimation = cb =>
     };
     raf = requestAnimationFrame(loop);
     return () => cancelAnimationFrame(raf);
+  });
+
+export const useTimer = (startTime, cb, isDisabled) =>
+  useEffect(() => {
+    const timer = setInterval(() => {
+      const diff = dayjs().diff(startTime);
+      const formattedTime = dayjs(diff).format('mm:ss');
+      if (!isDisabled) {
+        cb(formattedTime);
+      }
+    }, 1000);
+    return () => clearInterval(timer);
   });
