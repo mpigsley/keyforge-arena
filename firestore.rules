@@ -30,6 +30,9 @@ service cloud.firestore {
         allow read: if ensureAuth() && ensureUser(uid);
         allow write: if false;
       }
+      match /protected/{uid} {
+        allow read, write: if false;
+      }
       match /actions/{actionId} {
         allow read: if ensureAuth() && isInvolvedInGame() && isFinished();
         allow write: if false;
