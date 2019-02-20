@@ -1,6 +1,41 @@
 const admin = require('firebase-admin');
 const functions = require('firebase-functions');
-const { flatten, uniq, sortBy, size, findKey, map } = require('lodash');
+const chance = require('chance').Chance();
+const {
+  flatten,
+  uniq,
+  sortBy,
+  findKey,
+  reduce,
+  take,
+  drop,
+} = require('lodash');
+
+const initialSharedState = () => ({
+  house: '',
+  turn: 1,
+  aember: 0,
+  keys: 0,
+  artifacts: [],
+  battlelines: [],
+  purged: [],
+  discard: [],
+});
+
+const createDeck = ({ expansion, houses }) =>
+  reduce(
+    houses,
+    (arr, cards, house) => [
+      ...arr,
+      ...cards.map(card => `${expansion}-${house}-${card}`),
+    ],
+    [],
+  );
+
+const shuffleAndDrawHand = (deck, handSize) => {
+  const shuffledDeck = chance.shuffle(createDeck(deck));
+  return [take(shuffledDeck, handSize), drop(shuffledDeck, handSize)];
+};
 
 module.exports = functions.https.onCall(async ({ lobby, deck }, context) => {
   if (!context.auth) {
@@ -42,28 +77,42 @@ module.exports = functions.https.onCall(async ({ lobby, deck }, context) => {
       ),
     );
 
-    const batch = admin.firestore().batch();
     const lobbyIds = uniq(
       flatten(playerLobbies.map(snapshot => snapshot.docs.map(doc => doc.id))),
     );
-    lobbyIds.forEach(id =>
-      batch.delete(
+    await Promise.all(
+      lobbyIds.map(id =>
         admin
           .firestore()
           .collection('lobby')
-          .doc(id),
+          .doc(id)
+          .delete(),
       ),
     );
 
     const opponent = players.filter(uid => uid !== context.auth.uid)[0];
-    const deckSnapshot = await admin
-      .firestore()
-      .collection('decks')
-      .where('creator', '==', opponent)
-      .get();
+    const [opponentDeckSnapshot, playerDeckSnapshot] = await Promise.all([
+      admin
+        .firestore()
+        .collection('decks')
+        .where('creator', '==', opponent)
+        .get(),
+      admin
+        .firestore()
+        .collection('decks')
+        .doc(deck)
+        .get(),
+    ]);
+
+    let playerDeck;
+    if (playerDeckSnapshot.exists) {
+      playerDeck = playerDeckSnapshot.data();
+    } else {
+      throw new functions.https.HttpsError('not-found', 'Deck was not found.');
+    }
 
     let opponentDecks = {};
-    deckSnapshot.forEach(doc => {
+    opponentDeckSnapshot.forEach(doc => {
       opponentDecks = {
         ...opponentDecks,
         [doc.id]: doc.data(),
@@ -83,22 +132,72 @@ module.exports = functions.https.onCall(async ({ lobby, deck }, context) => {
       );
     }
 
-    batch.set(
+    const firstPlayer = chance.pickone(players);
+    const playerHandSize = firstPlayer === context.auth.id ? 7 : 6;
+    const opponentHandSize = firstPlayer === opponent ? 7 : 6;
+    const newGame = await admin
+      .firestore()
+      .collection('games')
+      .add({
+        created: admin.firestore.FieldValue.serverTimestamp(),
+        isFinished: false,
+        turn: firstPlayer,
+        state: {
+          [context.auth.uid]: {
+            ...initialSharedState(),
+            handSize: playerHandSize,
+            deckSize: 36 - playerHandSize,
+            deck,
+          },
+          [opponent]: {
+            ...initialSharedState(),
+            handSize: opponentHandSize,
+            deckSize: 36 - opponentHandSize,
+            deck: opponentDeckId,
+          },
+        },
+        players,
+      });
+
+    const [playerHand, shuffledPlayerDeck] = shuffleAndDrawHand(
+      playerDeck,
+      playerHandSize,
+    );
+    const [opponentHand, shuffledOpponentDeck] = shuffleAndDrawHand(
+      opponentDecks[opponentDeckId],
+      opponentHandSize,
+    );
+
+    await Promise.all([
       admin
         .firestore()
         .collection('games')
-        .doc(),
-      {
-        created: admin.firestore.FieldValue.serverTimestamp(),
-        decks: {
-          [context.auth.uid]: deck,
-          [opponent]: opponentDeckId,
-        },
-        players,
-      },
-    );
-
-    await batch.commit();
+        .doc(newGame.id)
+        .collection('state')
+        .doc(context.auth.id)
+        .set({ hand: playerHand, archived: [] }),
+      admin
+        .firestore()
+        .collection('games')
+        .doc(newGame.id)
+        .collection('protected')
+        .doc(context.auth.id)
+        .set({ deck: shuffledPlayerDeck }),
+      admin
+        .firestore()
+        .collection('games')
+        .doc(newGame.id)
+        .collection('state')
+        .doc(opponent)
+        .set({ hand: opponentHand, archived: [] }),
+      admin
+        .firestore()
+        .collection('games')
+        .doc(newGame.id)
+        .collection('protected')
+        .doc(opponent)
+        .set({ deck: shuffledOpponentDeck }),
+    ]);
   } catch (e) {
     console.error(e);
     if (e.code === 'not-found') {
