@@ -14,13 +14,13 @@ const PILE_TYPES = {
 export default Wrapped =>
   class PileModalState extends Component {
     static propTypes = {
-      [PILE_TYPES.DISCARDED]: CardsType.isRequired,
-      [PILE_TYPES.PURGED]: CardsType.isRequired,
-      [PILE_TYPES.ARCHIVED]: CardsType,
+      discarded: CardsType.isRequired,
+      purged: CardsType.isRequired,
+      archived: CardsType,
     };
 
     static defaultProps = {
-      [PILE_TYPES.ARCHIVED]: [], // eslint-disable-line
+      archived: [],
     };
 
     state = {
