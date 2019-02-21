@@ -135,10 +135,49 @@ module.exports = functions.https.onCall(async ({ lobby, deck }, context) => {
     const firstPlayer = chance.pickone(players);
     const playerHandSize = firstPlayer === context.auth.uid ? 7 : 6;
     const opponentHandSize = firstPlayer === opponent ? 7 : 6;
-    const newGame = await admin
+    const [playerHand, shuffledPlayerDeck] = shuffleAndDrawHand(
+      playerDeck,
+      playerHandSize,
+    );
+    const [opponentHand, shuffledOpponentDeck] = shuffleAndDrawHand(
+      opponentDecks[opponentDeckId],
+      opponentHandSize,
+    );
+    const gameRef = admin
       .firestore()
       .collection('games')
-      .add({
+      .doc();
+
+    await Promise.all([
+      admin
+        .firestore()
+        .collection('games')
+        .doc(gameRef.id)
+        .collection('state')
+        .doc(context.auth.uid)
+        .set({ hand: playerHand, archived: [] }),
+      admin
+        .firestore()
+        .collection('games')
+        .doc(gameRef.id)
+        .collection('protected')
+        .doc(context.auth.uid)
+        .set({ deck: shuffledPlayerDeck }),
+      admin
+        .firestore()
+        .collection('games')
+        .doc(gameRef.id)
+        .collection('state')
+        .doc(opponent)
+        .set({ hand: opponentHand, archived: [] }),
+      admin
+        .firestore()
+        .collection('games')
+        .doc(gameRef.id)
+        .collection('protected')
+        .doc(opponent)
+        .set({ deck: shuffledOpponentDeck }),
+      gameRef.set({
         created: admin.firestore.FieldValue.serverTimestamp(),
         isFinished: false,
         turn: firstPlayer,
@@ -157,46 +196,7 @@ module.exports = functions.https.onCall(async ({ lobby, deck }, context) => {
           },
         },
         players,
-      });
-
-    const [playerHand, shuffledPlayerDeck] = shuffleAndDrawHand(
-      playerDeck,
-      playerHandSize,
-    );
-    const [opponentHand, shuffledOpponentDeck] = shuffleAndDrawHand(
-      opponentDecks[opponentDeckId],
-      opponentHandSize,
-    );
-
-    await Promise.all([
-      admin
-        .firestore()
-        .collection('games')
-        .doc(newGame.id)
-        .collection('state')
-        .doc(context.auth.uid)
-        .set({ hand: playerHand, archived: [] }),
-      admin
-        .firestore()
-        .collection('games')
-        .doc(newGame.id)
-        .collection('protected')
-        .doc(context.auth.uid)
-        .set({ deck: shuffledPlayerDeck }),
-      admin
-        .firestore()
-        .collection('games')
-        .doc(newGame.id)
-        .collection('state')
-        .doc(opponent)
-        .set({ hand: opponentHand, archived: [] }),
-      admin
-        .firestore()
-        .collection('games')
-        .doc(newGame.id)
-        .collection('protected')
-        .doc(opponent)
-        .set({ deck: shuffledOpponentDeck }),
+      }),
     ]);
   } catch (e) {
     console.error(e);
