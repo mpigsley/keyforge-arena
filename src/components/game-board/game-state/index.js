@@ -20,7 +20,7 @@ const MAX_KEY_SIZE = 50;
 export default function GameState({
   numKeys,
   numAember,
-  aemberCost,
+  keyCost,
   turn,
   gameStart,
   isOpponent,
@@ -64,10 +64,10 @@ export default function GameState({
       </div>
       <div
         className={classNames(styles.aember, {
-          [styles.check]: numAember > aemberCost,
+          [styles.check]: numAember > keyCost,
         })}
       >
-        {numAember} / {aemberCost} Æmber
+        {numAember} / {keyCost} Æmber
       </div>
     </FlexContainer>
   );
@@ -76,7 +76,7 @@ export default function GameState({
 GameState.propTypes = {
   numKeys: PropTypes.number.isRequired,
   numAember: PropTypes.number.isRequired,
-  aemberCost: PropTypes.number.isRequired,
+  keyCost: PropTypes.number.isRequired,
   turn: PropTypes.number,
   gameStart: PropTypes.instanceOf(Date),
   isOpponent: PropTypes.bool,

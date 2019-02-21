@@ -3,14 +3,16 @@ import { createStructuredSelector } from 'reselect';
 
 import {
   hasGameLoaded,
+  getPlayerState,
+  getOpponentState,
   selectedGameStart,
-  getGameDeckDetails,
 } from 'store/selectors/game.selectors';
 
 import GameBoard from './game-board';
 
 const mapStateToProps = createStructuredSelector({
-  deckDetails: getGameDeckDetails,
+  playerState: getPlayerState,
+  opponentState: getOpponentState,
   hasLoaded: hasGameLoaded,
   gameStart: selectedGameStart,
 });

@@ -1,5 +1,9 @@
 @import '~styles/theme';
 
+.container {
+  flex-direction: flex-end;
+}
+
 .row {
   &--horizontal {
     height: 100%;

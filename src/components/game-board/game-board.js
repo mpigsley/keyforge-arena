@@ -13,10 +13,15 @@ import Spinner from 'primitives/spinner';
 import Header from 'primitives/header';
 
 import { useDimensionConstraints } from 'utils/effects';
-import { find, take, slice } from 'constants/lodash';
+import { UserGameState } from 'constants/types';
 import styles from './styles.module.scss';
 
-export default function GameBoard({ hasLoaded, deckDetails, gameStart }) {
+export default function GameBoard({
+  hasLoaded,
+  gameStart,
+  playerState,
+  opponentState,
+}) {
   const isConstrained = useDimensionConstraints(650, 550);
   if (!hasLoaded || isConstrained) {
     let content = (
@@ -42,58 +47,52 @@ export default function GameBoard({ hasLoaded, deckDetails, gameStart }) {
     );
   }
 
-  const opponentDeck = find(deckDetails, { isCurrentUser: false });
-  const theirCards = take(opponentDeck.cards, 3);
-  const theirDiscard = slice(opponentDeck.cards, 3, 10);
-  const theirArchived = [];
-  const theirPurged = slice(opponentDeck.cards, 10, 11);
-  const theirArtifacts = slice(opponentDeck.cards, 11, 14);
-
-  const userDeck = find(deckDetails, { isCurrentUser: true });
-  const myCards = take(userDeck.cards, 6);
-  const myDiscard = slice(userDeck.cards, 6, 10);
-  const myArchived = slice(userDeck.cards, 10, 12);
-  const myPurged = [];
-  const myArtifacts = slice(userDeck.cards, 12, 13);
-
   return (
     <div className={classNames(styles.container, styles.gameBoard)}>
       <div className={styles.opponentSide}>
         <CardPiles
           isOpponent
           className={styles.leftSide}
-          numDraw={opponentDeck.cards.length - 14}
-          discarded={theirDiscard}
-          archived={theirArchived}
-          purged={theirPurged}
+          numDraw={opponentState.deckSize}
+          numArchived={opponentState.archiveSize}
+          discarded={opponentState.discard}
+          purged={opponentState.purged}
         />
-        <OpponentHand handSize={4} />
-        <GameState numKeys={1} numAember={4} aemberCost={6} isOpponent />
+        <OpponentHand handSize={opponentState.handSize} />
+        <GameState
+          numKeys={opponentState.keys}
+          numAember={opponentState.aember}
+          keyCost={opponentState.keyCost}
+          isOpponent
+        />
         <Artifacts
           className={styles.rightSide}
-          artifacts={theirArtifacts}
+          artifacts={opponentState.artifacts}
           isOpponent
         />
       </div>
-      <Battleline cards={theirCards} isOpponent />
-      <Battleline cards={myCards} />
+      <Battleline cards={opponentState.battlelines} isOpponent />
+      <Battleline cards={playerState.battlelines} />
       <div className={styles.side}>
         <CardPiles
           className={styles.leftSide}
-          numDraw={userDeck.cards.length - 11}
-          discarded={myDiscard}
-          archived={myArchived}
-          purged={myPurged}
+          numDraw={playerState.deckSize}
+          discarded={playerState.discard}
+          archived={playerState.archived}
+          purged={playerState.purged}
         />
         <GameState
-          numKeys={2}
-          numAember={7}
-          aemberCost={6}
-          turn={5}
+          numKeys={playerState.keys}
+          numAember={playerState.aember}
+          keyCost={playerState.keyCost}
+          turn={playerState.turn}
           gameStart={gameStart}
         />
-        <Hand cards={myCards} />
-        <Artifacts className={styles.rightSide} artifacts={myArtifacts} />
+        <Hand cards={playerState.hand} />
+        <Artifacts
+          className={styles.rightSide}
+          artifacts={playerState.artifacts}
+        />
       </div>
     </div>
   );
@@ -101,10 +100,13 @@ export default function GameBoard({ hasLoaded, deckDetails, gameStart }) {
 
 GameBoard.propTypes = {
   hasLoaded: PropTypes.bool.isRequired,
-  deckDetails: PropTypes.shape().isRequired,
   gameStart: PropTypes.instanceOf(Date),
+  playerState: UserGameState,
+  opponentState: UserGameState,
 };
 
 GameBoard.defaultProps = {
   gameStart: undefined,
+  playerState: undefined,
+  opponentState: undefined,
 };
