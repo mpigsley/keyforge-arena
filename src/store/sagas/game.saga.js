@@ -26,7 +26,7 @@ import { GAMES_UPDATED } from 'store/actions/game.actions';
 import { gameListener } from 'store/api/game.api';
 
 import { createAction } from 'utils/store';
-import { size, map, some } from 'constants/lodash';
+import { size, map, some, mapValues } from 'constants/lodash';
 
 const createGameListener = uid =>
   eventChannel(emit => {
@@ -36,8 +36,17 @@ const createGameListener = uid =>
 
 function* gameHandler(channel) {
   while (true) {
-    const { update, deleted } = yield take(channel);
-    yield put(createAction(GAMES_UPDATED.SUCCESS, { update, deleted }));
+    const { update, deleted, personal } = yield take(channel);
+    const gameUpdate = mapValues(update, game => ({
+      ...game,
+      state: mapValues(game.state, (state, uid) => ({
+        ...state,
+        ...(personal[uid] || {}),
+      })),
+    }));
+    yield put(
+      createAction(GAMES_UPDATED.SUCCESS, { update: gameUpdate, deleted }),
+    );
     const pathname = yield select(getPathname);
     if (some(deleted, key => pathname.includes(key))) {
       yield put(push('/dashboard'));
