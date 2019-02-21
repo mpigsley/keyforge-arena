@@ -53,9 +53,9 @@ function* gameHandler(channel) {
       }
 
       const decks = yield select(getDecks);
-      const unknownDecks = Object.values(update[key].decks).filter(
-        deck => !decks[deck],
-      );
+      const unknownDecks = Object.values(update[key].state)
+        .map(state => state.deck)
+        .filter(deck => !decks[deck]);
       if (unknownDecks.length) {
         yield all(unknownDecks.map(id => put(fetchDeck(id))));
       }

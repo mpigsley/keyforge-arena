@@ -21,7 +21,8 @@ export const selectedGameStart = createSelector(
 
 export const gameDecks = createSelector(
   [selectedGame, getDecks],
-  (game, decks) => (!game ? [] : mapValues(game.decks, id => decks[id])),
+  (game, decks) =>
+    !game ? [] : mapValues(game.state, state => decks[state.deck]),
 );
 
 export const hasLoadedGameDecks = createSelector(

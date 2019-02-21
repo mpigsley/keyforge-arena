@@ -133,7 +133,7 @@ module.exports = functions.https.onCall(async ({ lobby, deck }, context) => {
     }
 
     const firstPlayer = chance.pickone(players);
-    const playerHandSize = firstPlayer === context.auth.id ? 7 : 6;
+    const playerHandSize = firstPlayer === context.auth.uid ? 7 : 6;
     const opponentHandSize = firstPlayer === opponent ? 7 : 6;
     const newGame = await admin
       .firestore()
@@ -174,14 +174,14 @@ module.exports = functions.https.onCall(async ({ lobby, deck }, context) => {
         .collection('games')
         .doc(newGame.id)
         .collection('state')
-        .doc(context.auth.id)
+        .doc(context.auth.uid)
         .set({ hand: playerHand, archived: [] }),
       admin
         .firestore()
         .collection('games')
         .doc(newGame.id)
         .collection('protected')
-        .doc(context.auth.id)
+        .doc(context.auth.uid)
         .set({ deck: shuffledPlayerDeck }),
       admin
         .firestore()
