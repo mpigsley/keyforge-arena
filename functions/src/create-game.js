@@ -12,6 +12,8 @@ const {
 } = require('lodash');
 
 const initialSharedState = () => ({
+  keyCost: 6,
+  archiveSize: 0,
   house: '',
   turn: 1,
   aember: 0,
