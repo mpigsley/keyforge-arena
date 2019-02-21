@@ -16,7 +16,11 @@ export default Wrapped =>
     static propTypes = {
       [PILE_TYPES.DISCARDED]: CardsType.isRequired,
       [PILE_TYPES.PURGED]: CardsType.isRequired,
-      [PILE_TYPES.ARCHIVED]: CardsType.isRequired,
+      [PILE_TYPES.ARCHIVED]: CardsType,
+    };
+
+    static defaultProps = {
+      [PILE_TYPES.ARCHIVED]: [], // eslint-disable-line
     };
 
     state = {

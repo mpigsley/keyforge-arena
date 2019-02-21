@@ -25,6 +25,7 @@ export default function CardPiles({
   numDraw,
   discarded,
   purged,
+  numArchived,
   archived,
   onOpenDiscard,
   onOpenPurged,
@@ -49,7 +50,7 @@ export default function CardPiles({
   );
   const isVertical =
     verticalCardWidth > horizontalCardWidth ||
-    (!purged.length && !archived.length);
+    (!purged.length && !archived.length && !numArchived);
   const cardWidth = Math.min(
     Math.max(verticalCardWidth, horizontalCardWidth),
     MAX_MINOR_CARD_WIDTH,
@@ -65,7 +66,7 @@ export default function CardPiles({
     ? { marginBottom: VERTICAL_PADDING }
     : { marginLeft: VERTICAL_PADDING };
 
-  const staticPiles = (
+  const staticPiles = !!purged.length && (!!archived.length || !!numArchived) && (
     <FlexContainer
       direction={isVertical ? 'row' : 'column'}
       style={staticContainerStyle}
@@ -88,7 +89,7 @@ export default function CardPiles({
           <span className={styles.pileSize}>{purged.length}</span>
         </FlexContainer>
       )}
-      {!!archived.length && (
+      {(!!archived.length || !!numArchived) && (
         <FlexContainer
           align="center"
           justify="center"
@@ -101,7 +102,9 @@ export default function CardPiles({
           }}
         >
           <span className={styles.pileTitle}>Archived</span>
-          <span className={styles.pileSize}>{archived.length}</span>
+          <span className={styles.pileSize}>
+            {archived.length || numArchived}
+          </span>
         </FlexContainer>
       )}
     </FlexContainer>
@@ -168,13 +171,15 @@ export default function CardPiles({
   }
 
   return (
-    <div
+    <FlexContainer
+      direction={isVertical ? 'column' : undefined}
+      justify={isOpponent ? 'flexStart' : 'flexEnd'}
       className={classNames(styles.container, className)}
       style={{ padding: `${VERTICAL_PADDING}px ${HORIZONTAL_PADDING}px` }}
     >
       {isVertical && staticPiles}
       <FlexContainer
-        className={classNames({
+        className={classNames(styles.row, {
           [styles['row--horizontal']]: !isVertical,
           [styles['row--opponent']]: isOpponent,
         })}
@@ -183,7 +188,7 @@ export default function CardPiles({
         {discardElement}
         {!isVertical && staticPiles}
       </FlexContainer>
-    </div>
+    </FlexContainer>
   );
 }
 
@@ -193,7 +198,8 @@ CardPiles.propTypes = {
   numDraw: PropTypes.number.isRequired,
   discarded: CardsType.isRequired,
   purged: CardsType.isRequired,
-  archived: CardsType.isRequired,
+  numArchived: PropTypes.number,
+  archived: CardsType,
   onOpenDiscard: PropTypes.func.isRequired,
   onOpenPurged: PropTypes.func.isRequired,
   onOpenArchived: PropTypes.func.isRequired,
@@ -202,4 +208,6 @@ CardPiles.propTypes = {
 CardPiles.defaultProps = {
   isOpponent: false,
   className: undefined,
+  numArchived: 0,
+  archived: [],
 };

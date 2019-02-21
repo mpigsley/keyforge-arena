@@ -1,18 +1,33 @@
 {
   "indexes": [
     {
-      "collectionId": "lobby",
+      "collectionGroup": "games",
+      "queryScope": "COLLECTION",
       "fields": [
-        { "fieldPath": "players", "mode": "ARRAY_CONTAINS" },
-        { "fieldPath": "created", "mode": "ASCENDING" }
+        {
+          "fieldPath": "players",
+          "arrayConfig": "CONTAINS"
+        },
+        {
+          "fieldPath": "created",
+          "order": "ASCENDING"
+        }
       ]
     },
     {
-      "collectionId": "games",
+      "collectionGroup": "lobby",
+      "queryScope": "COLLECTION",
       "fields": [
-        { "fieldPath": "players", "mode": "ARRAY_CONTAINS" },
-        { "fieldPath": "created", "mode": "ASCENDING" }
+        {
+          "fieldPath": "players",
+          "arrayConfig": "CONTAINS"
+        },
+        {
+          "fieldPath": "created",
+          "order": "ASCENDING"
+        }
       ]
     }
-  ]
+  ],
+  "fieldOverrides": []
 }

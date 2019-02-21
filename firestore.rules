@@ -6,6 +6,9 @@ service cloud.firestore {
   	function ensureUser(uid) {
 			return ensureAuth() && uid == request.auth.uid;
     }
+    function isInvolved(data) {
+      return request.auth.uid in data.players;
+    }
 
     match /decks/{deckId} {
       allow create: if false;
@@ -13,17 +16,33 @@ service cloud.firestore {
       allow read: if ensureAuth();
     }
     match /games/{gameId} {
-      allow read, write: if ensureAuth();
+      function isFinished() {
+        return resource.data.isFinished == true;
+      }
+      function isInvolvedInGame() {
+        return isInvolved(resource.data);
+      }
+
+      allow read: if ensureAuth() && isInvolvedInGame();
+      allow write: if false;
+
+      match /state/{uid} {
+        allow read: if ensureAuth() && ensureUser(uid);
+        allow write: if false;
+      }
+      match /protected/{uid} {
+        allow read, write: if false;
+      }
+      match /actions/{actionId} {
+        allow read: if ensureAuth() && isInvolvedInGame() && isFinished();
+        allow write: if false;
+      }
     }
     match /user-search/{uid} {
       allow write: if false;
       allow read: if ensureAuth();
     }
     match /lobby/{lobbyId} {
-      function isInvolved(data) {
-        return request.auth.uid in data.players;
-      }
-
       allow create: if ensureAuth();
       allow update: if false;
       allow delete: if ensureAuth() && isInvolved(resource.data);

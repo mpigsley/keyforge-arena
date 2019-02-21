@@ -11,6 +11,14 @@ export const getGame = id =>
     .get()
     .then(doc => doc.data());
 
+export const getPersonalGameState = (uid, gameId) =>
+  Firebase.firestore()
+    .collection('games')
+    .doc(gameId)
+    .collection('state')
+    .doc(uid)
+    .get();
+
 export const gameListener = (uid, cb) =>
   Firebase.firestore()
     .collection('games')
@@ -19,21 +27,30 @@ export const gameListener = (uid, cb) =>
       'created',
       '>',
       dayjs()
-        .subtract(2, 'minute')
+        .subtract(2, 'week')
         .toDate(),
     )
     .onSnapshot(snapshot => {
       let update = {};
       let deleted = [];
+      const personalStatePromises = [];
       snapshot.docChanges().forEach(change => {
         if (change.type === 'removed') {
           deleted = [...deleted, change.doc.id];
         } else {
+          personalStatePromises.push(getPersonalGameState(uid, change.doc.id));
           update = {
             ...update,
             [change.doc.id]: change.doc.data(),
           };
         }
       });
-      cb({ update, deleted });
+
+      Promise.all(personalStatePromises).then(personalStates => {
+        const personal = personalStates.reduce(
+          (obj, state) => ({ ...obj, [state.id]: state.data() }),
+          {},
+        );
+        cb({ update, deleted, personal });
+      });
     });
