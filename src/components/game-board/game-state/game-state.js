@@ -33,8 +33,6 @@ export default function GameState({
   const [time, setTime] = useState('00:00');
   useTimer(gameStart, setTime, isOpponent);
 
-  console.log(houses, houseImages);
-
   return (
     <FlexContainer direction="column" justify="center">
       <FlexContainer align="center">

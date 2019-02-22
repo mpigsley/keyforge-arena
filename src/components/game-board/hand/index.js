@@ -14,6 +14,7 @@ const DEFAULT_OVERLAP = MAX_CARD_WIDTH * 0.6;
 export default function Hand({ cards }) {
   const [hovered, setHovered] = useState();
   const { width, height } = useDimensions();
+
   const handWidth = width * (3 / 7);
   const handHeight = height * 0.12;
   const containerWidth = Math.min(
@@ -38,7 +39,7 @@ export default function Hand({ cards }) {
         onMouseLeave={() => setHovered()}
         onMouseMove={e => {
           const hoverIndex = Math.min(
-            Math.floor(e.nativeEvent.offsetX / overlap),
+            Math.floor((e.pageX - e.target.parentNode.offsetLeft) / overlap),
             cards.length - 1,
           );
           if (hoverIndex !== hovered) {
