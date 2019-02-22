@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 
 import CardModal from 'components/game-board/card-modal';
 
@@ -31,7 +31,7 @@ export default Wrapped =>
       const { props, state } = this;
       const { openPile } = state;
       return (
-        <Fragment>
+        <>
           <Wrapped
             {...this.props}
             onOpenDiscard={() =>
@@ -47,7 +47,7 @@ export default Wrapped =>
             title={`${capitalize(openPile)} Cards`}
             onClose={() => this.setState({ openPile: undefined })}
           />
-        </Fragment>
+        </>
       );
     }
   };

@@ -7,7 +7,7 @@ import {
   getSelectedGame,
   getCardImages,
 } from 'store/selectors/base.selectors';
-import { find, every, flatten, mapValues, size } from 'constants/lodash';
+import { find, every, flatten, mapValues, size, keys } from 'constants/lodash';
 
 export const selectedGame = createSelector(
   [getGames, getSelectedGame],
@@ -48,17 +48,19 @@ export const hasGameLoaded = createSelector(
 );
 
 const cardIdsToObjects = (cardIds, cardImages) =>
-  cardIds.map(id => {
-    const [expansion, house, card] = id.split('-');
-    return {
-      card,
-      expansion,
-      house,
-      image: cardImages[`${expansion}-${card}`],
-    };
-  });
+  cardIds
+    .map(id => {
+      const [expansion, house, card] = id.split('-');
+      return {
+        card,
+        expansion,
+        house,
+        image: cardImages[`${expansion}-${card}`],
+      };
+    })
+    .filter(card => card.image);
 
-const buildState = (state, cardImages) => ({
+const buildState = (state, deck, cardImages) => ({
   ...state,
   artifacts: cardIdsToObjects(state.artifacts, cardImages),
   battlelines: cardIdsToObjects(state.battlelines, cardImages),
@@ -66,18 +68,25 @@ const buildState = (state, cardImages) => ({
   discard: cardIdsToObjects(state.discard, cardImages),
   hand: cardIdsToObjects(state.hand || [], cardImages),
   archived: cardIdsToObjects(state.archived || [], cardImages),
+  houses: keys((deck || {}).houses),
 });
 
 export const getPlayerState = createSelector(
-  [selectedGame, getUserId, getCardImages],
-  (game, userId, cardImages) =>
-    !game ? undefined : buildState(game.state[userId], cardImages),
+  [selectedGame, getUserId, getCardImages, gameDecks],
+  (game, userId, cardImages, decks) =>
+    !game
+      ? undefined
+      : buildState(game.state[userId], decks[userId], cardImages),
 );
 
 export const getOpponentState = createSelector(
-  [selectedGame, getUserId, getCardImages],
-  (game, userId, cardImages) =>
-    !game
-      ? undefined
-      : buildState(find(game.state, (_, uid) => uid !== userId), cardImages),
+  [selectedGame, getUserId, getCardImages, gameDecks],
+  (game, userId, cardImages, decks) => {
+    if (!game) {
+      return undefined;
+    }
+    const opponentState = find(game.state, (_, uid) => uid !== userId);
+    const opponentDeck = find(decks, (_, uid) => uid !== userId);
+    return buildState(opponentState, opponentDeck, cardImages);
+  },
 );

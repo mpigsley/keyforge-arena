@@ -1,5 +1,17 @@
 @import '~styles/theme';
 
+$keySize: 45px;
+.key,
+.house {
+  height: $keySize;
+  margin-right: 8px;
+  width: $keySize;
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+}
+
 .turnTimer,
 .aember {
   color: $medium;
@@ -9,4 +21,33 @@
 
 .check {
   color: $active;
+}
+
+.secondRow {
+  margin-top: 0.5rem;
+}
+
+$iconSize: 15px;
+.turnIcon {
+  fill: $light;
+  height: $iconSize;
+  margin-right: 0.5rem;
+  width: $iconSize;
+
+  &--active {
+    fill: $medium;
+  }
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+}
+
+.turnText {
+  color: $medium;
+  font-size: 0.8rem;
+}
+
+.actionBtn {
+  margin: 0 auto;
 }
