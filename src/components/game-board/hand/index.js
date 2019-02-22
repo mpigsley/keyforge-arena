@@ -36,7 +36,6 @@ export default function Hand({ cards }) {
       <div
         className={styles.relativeContainer}
         style={{ width: containerWidth }}
-        onMouseLeave={() => setHovered()}
         onMouseMove={e => {
           const hoverIndex = Math.min(
             Math.floor((e.pageX - e.target.parentNode.offsetLeft) / overlap),
@@ -45,16 +44,25 @@ export default function Hand({ cards }) {
           if (hoverIndex !== hovered) {
             setHovered(hoverIndex);
           }
+          e.preventDefault();
         }}
       >
-        {cards.map(({ image, house, card }, i) => (
+        {cards.map(({ image, expansion, house, card }, i) => (
           <img
+            draggable
             key={`${card}-${i}` /* eslint-disable-line */}
             src={image.link}
             alt={`${house}-${card}`}
             className={classNames(styles.card, {
               [styles['card--hovered']]: i === hovered,
             })}
+            onDragStart={e =>
+              e.dataTransfer.setData(
+                'card',
+                `${expansion}-${house}-${card}-${i}`,
+              )
+            }
+            onMouseLeave={() => setHovered()}
             style={{
               left: i * overlap,
               transform:

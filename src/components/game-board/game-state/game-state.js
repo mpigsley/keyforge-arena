@@ -79,6 +79,7 @@ export default function GameState({
           <div>
             {houses.map(house => (
               <img
+                key={house}
                 src={houseImages[house].link}
                 className={styles.house}
                 alt={house}

@@ -36,6 +36,12 @@ export default function Battleline({ cards, isOpponent }) {
   return (
     <FlexContainer
       direction="column"
+      onDragOver={e => e.preventDefault()}
+      onDrop={e => {
+        e.preventDefault();
+        const card = e.dataTransfer.getData('card');
+        console.log(card);
+      }}
       className={styles.battleline}
       justify={isOpponent ? 'flexEnd' : 'flexStart'}
       style={{ padding: `${VERTICAL_PADDING}px ${HORIZONTAL_PADDING}px` }}
