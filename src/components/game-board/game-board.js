@@ -64,6 +64,8 @@ export default function GameBoard({
           numAember={opponentState.aember}
           keyCost={opponentState.keyCost}
           houses={opponentState.houses}
+          turn={playerState.turn}
+          gameStart={gameStart}
           isOpponent
         />
         <Artifacts
@@ -86,9 +88,7 @@ export default function GameBoard({
           numKeys={playerState.keys}
           numAember={playerState.aember}
           keyCost={playerState.keyCost}
-          turn={playerState.turn}
           houses={opponentState.houses}
-          gameStart={gameStart}
         />
         <Hand cards={playerState.hand} />
         <Artifacts

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import Button from 'primitives/button';
 import FlexContainer from 'primitives/flex-container';
 import { useTimer } from 'utils/effects';
 
@@ -29,33 +28,77 @@ export default function GameState({
   houseImages,
   gameStart,
   isOpponent,
+  isChoosingHouse,
+  turnSequenceText,
 }) {
   const [time, setTime] = useState('00:00');
-  useTimer(gameStart, setTime, isOpponent);
+  useTimer(gameStart, setTime, !isOpponent);
+
+  let leftSide;
+  if (isOpponent) {
+    leftSide = (
+      <div className={styles.left}>
+        Turn {turn} | {time}
+      </div>
+    );
+  } else {
+    leftSide = (
+      <FlexContainer flex="1" direction="column" align="center">
+        <div>
+          <ForgeKey className={classNames(styles.turnIcon)} />
+          <ChooseHouse className={classNames(styles.turnIcon)} />
+          <PlayCards className={classNames(styles.turnIcon)} />
+          <Ready className={classNames(styles.turnIcon)} />
+          <DrawCards className={classNames(styles.turnIcon)} />
+        </div>
+        <span className={styles.turnText}>{turnSequenceText}</span>
+      </FlexContainer>
+    );
+  }
+
+  let center;
+  if (!isOpponent && isChoosingHouse) {
+    center = (
+      <FlexContainer align="center" className={styles.secondRow}>
+        <div>
+          {houses.map(house => (
+            <img
+              key={house}
+              src={houseImages[house].link}
+              className={styles.house}
+              alt={house}
+            />
+          ))}
+        </div>
+      </FlexContainer>
+    );
+  } else {
+    center = (
+      <div>
+        <img
+          src={numKeys > 0 ? ForgedBlue : UnforgedBlue}
+          className={styles.key}
+          alt="Blue Key"
+        />
+        <img
+          src={numKeys > 1 ? ForgedYellow : UnforgedYellow}
+          className={styles.key}
+          alt="Yellow Key"
+        />
+        <img
+          src={numKeys > 2 ? ForgedRed : UnforgedRed}
+          className={styles.key}
+          alt="Yellow Key"
+        />
+      </div>
+    );
+  }
 
   return (
     <FlexContainer direction="column" justify="center">
       <FlexContainer align="center">
-        <div className={styles.turnTimer}>
-          {!isOpponent && `Turn ${turn} | ${time}`}
-        </div>
-        <div>
-          <img
-            src={numKeys > 0 ? ForgedBlue : UnforgedBlue}
-            className={styles.key}
-            alt="Blue Key"
-          />
-          <img
-            src={numKeys > 1 ? ForgedYellow : UnforgedYellow}
-            className={styles.key}
-            alt="Yellow Key"
-          />
-          <img
-            src={numKeys > 2 ? ForgedRed : UnforgedRed}
-            className={styles.key}
-            alt="Yellow Key"
-          />
-        </div>
+        {leftSide}
+        {center}
         <div
           className={classNames(styles.aember, {
             [styles.check]: numAember > keyCost,
@@ -64,33 +107,6 @@ export default function GameState({
           {numAember} / {keyCost} Æmber
         </div>
       </FlexContainer>
-      {!isOpponent && (
-        <FlexContainer align="center" className={styles.secondRow}>
-          <FlexContainer flex="1" direction="column" align="center">
-            <div>
-              <ForgeKey className={classNames(styles.turnIcon)} />
-              <ChooseHouse className={classNames(styles.turnIcon)} />
-              <PlayCards className={classNames(styles.turnIcon)} />
-              <Ready className={classNames(styles.turnIcon)} />
-              <DrawCards className={classNames(styles.turnIcon)} />
-            </div>
-            <span className={styles.turnText}>Opponent's Turn</span>
-          </FlexContainer>
-          <div>
-            {houses.map(house => (
-              <img
-                key={house}
-                src={houseImages[house].link}
-                className={styles.house}
-                alt={house}
-              />
-            ))}
-          </div>
-          <FlexContainer flex="1" align="center">
-            <Button className={styles.actionBtn}>End Turn</Button>
-          </FlexContainer>
-        </FlexContainer>
-      )}
     </FlexContainer>
   );
 }
@@ -104,10 +120,13 @@ GameState.propTypes = {
   houseImages: PropTypes.shape().isRequired,
   gameStart: PropTypes.instanceOf(Date),
   isOpponent: PropTypes.bool,
+  isChoosingHouse: PropTypes.bool,
+  turnSequenceText: PropTypes.string.isRequired,
 };
 
 GameState.defaultProps = {
   turn: undefined,
   gameStart: undefined,
   isOpponent: false,
+  isChoosingHouse: false,
 };

@@ -71,7 +71,7 @@ const buildState = (state, deck, cardImages) => ({
   houses: keys((deck || {}).houses),
 });
 
-export const getPlayerState = createSelector(
+export const playerState = createSelector(
   [selectedGame, getUserId, getCardImages, gameDecks],
   (game, userId, cardImages, decks) =>
     !game
@@ -79,14 +79,27 @@ export const getPlayerState = createSelector(
       : buildState(game.state[userId], decks[userId], cardImages),
 );
 
-export const getOpponentState = createSelector(
+export const opponentState = createSelector(
   [selectedGame, getUserId, getCardImages, gameDecks],
   (game, userId, cardImages, decks) => {
     if (!game) {
       return undefined;
     }
-    const opponentState = find(game.state, (_, uid) => uid !== userId);
-    const opponentDeck = find(decks, (_, uid) => uid !== userId);
-    return buildState(opponentState, opponentDeck, cardImages);
+    const state = find(game.state, (_, uid) => uid !== userId);
+    const deck = find(decks, (_, uid) => uid !== userId);
+    return buildState(state, deck, cardImages);
+  },
+);
+
+export const turnSequenceText = createSelector(
+  [selectedGame, getUserId, playerState],
+  (game, userId, player) => {
+    if (game.turn !== userId) {
+      return "Opponent's Turn";
+    }
+    if (!player.house) {
+      return 'Choose a House';
+    }
+    return 'Play, Discard, & Use House Cards';
   },
 );

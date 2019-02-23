@@ -15,7 +15,7 @@ const initialSharedState = () => ({
   keyCost: 6,
   archiveSize: 0,
   house: '',
-  turn: 1,
+  turn: 0,
   aember: 0,
   keys: 0,
   artifacts: [],
