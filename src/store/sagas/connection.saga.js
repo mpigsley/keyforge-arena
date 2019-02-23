@@ -1,4 +1,12 @@
-import { put, all, call, take, takeEvery, spawn } from 'redux-saga/effects';
+import {
+  put,
+  all,
+  call,
+  take,
+  takeEvery,
+  spawn,
+  select,
+} from 'redux-saga/effects';
 import { eventChannel } from 'redux-saga';
 import { toastr } from 'react-redux-toastr';
 
@@ -9,8 +17,10 @@ import {
 } from 'store/api/connection.api';
 import { REQUEST, REPLY, UPDATE } from 'store/actions/connection.actions';
 import { LOGGED_IN, SIGNED_OUT } from 'store/actions/user.actions';
+import { getConnections } from 'store/selectors/base.selectors';
 
 import { createAction } from 'utils/store';
+import { isEqual } from 'constants/lodash';
 
 const createConnectionPingInterval = () =>
   eventChannel(emit => {
@@ -20,7 +30,10 @@ const createConnectionPingInterval = () =>
 
 function* connectionPing() {
   const connections = yield call(pingConnection);
-  yield put(createAction(UPDATE.SUCCESS, { connections }));
+  const currentConnections = yield select(getConnections);
+  if (!isEqual(currentConnections, connections)) {
+    yield put(createAction(UPDATE.SUCCESS, { connections }));
+  }
 }
 
 function* pingHandler(channel) {
