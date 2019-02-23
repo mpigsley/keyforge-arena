@@ -16,7 +16,7 @@ This project is a front-end application written in React + Redux with a [Firebas
 
 1.  `npm i` and `cd functions && npm i`
 2.  `cp .env.example .env.local`
-3.  Create a [firebase project](https://console.firebase.google.com/) and fill out `.env`.
+3.  Create a [firebase project](https://console.firebase.google.com/) and fill out `.env.local`.
 4.  Ensure you enable authentication and the Firestore database in the web interface.
 5.  `$(npm bin)/firebase login` or use your global firebase instance if you installed it globally.
 6.  `$(npm bin)/firebase use --add` and select the project you configured in the firebase console.
