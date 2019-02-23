@@ -9,22 +9,22 @@ export const CardType = PropTypes.shape({
   card: PropTypes.string.isRequired,
 });
 
-export const CardsType = PropTypes.arrayOf(CardType.isRequired);
+export const CardsType = PropTypes.arrayOf(CardType);
 
 export const UserGameState = PropTypes.shape({
-  aember: PropTypes.number.isRequired,
-  keyCost: PropTypes.number.isRequired,
+  aember: PropTypes.number,
+  keyCost: PropTypes.number,
   archived: CardsType,
-  archiveSize: PropTypes.number.isRequired,
-  artifacts: CardsType.isRequired,
-  battlelines: CardsType.isRequired,
-  deck: PropTypes.string.isRequired,
-  deckSize: PropTypes.number.isRequired,
-  discard: CardsType.isRequired,
+  archiveSize: PropTypes.number,
+  artifacts: CardsType,
+  battlelines: CardsType,
+  deck: PropTypes.string,
+  deckSize: PropTypes.number,
+  discard: CardsType,
   hand: CardsType,
-  handSize: PropTypes.number.isRequired,
-  house: PropTypes.string.isRequired,
-  keys: PropTypes.number.isRequired,
-  purged: CardsType.isRequired,
-  turn: PropTypes.number.isRequired,
+  handSize: PropTypes.number,
+  house: PropTypes.string,
+  keys: PropTypes.number,
+  purged: CardsType,
+  turn: PropTypes.number,
 });

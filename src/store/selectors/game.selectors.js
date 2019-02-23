@@ -5,9 +5,12 @@ import {
   getDecks,
   getGames,
   getSelectedGame,
+  getInitializedGame,
   getCardImages,
+  getCardModal,
 } from 'store/selectors/base.selectors';
-import { find, every, flatten, mapValues, size, keys } from 'constants/lodash';
+import { find, every, mapValues, size, keys, map } from 'constants/lodash';
+import CARD_MODAL_TYPES from 'constants/card-modal-types';
 
 export const selectedGame = createSelector(
   [getGames, getSelectedGame],
@@ -31,20 +34,8 @@ export const hasLoadedGameDecks = createSelector(
 );
 
 export const hasGameLoaded = createSelector(
-  [hasLoadedGameDecks, gameDecks, getCardImages],
-  (loadedDecks, decks, images) => {
-    if (!loadedDecks) {
-      return false;
-    }
-    const imageRefs = Object.values(decks).reduce(
-      (arr, { expansion, houses }) => [
-        ...arr,
-        ...flatten(Object.values(houses)).map(id => `${expansion}-${id}`),
-      ],
-      [],
-    );
-    return every(imageRefs, ref => images[ref]);
-  },
+  [getSelectedGame, getInitializedGame],
+  (selected, initialized) => !!initialized && selected === initialized,
 );
 
 const cardIdsToObjects = (cardIds, cardImages) =>
@@ -71,33 +62,52 @@ const buildState = (state, deck, cardImages) => ({
   houses: keys((deck || {}).houses),
 });
 
-export const playerState = createSelector(
-  [selectedGame, getUserId, getCardImages, gameDecks],
-  (game, userId, cardImages, decks) =>
-    !game
-      ? undefined
-      : buildState(game.state[userId], decks[userId], cardImages),
-);
-
-export const opponentState = createSelector(
+export const gameState = createSelector(
   [selectedGame, getUserId, getCardImages, gameDecks],
   (game, userId, cardImages, decks) => {
     if (!game) {
       return undefined;
     }
-    const state = find(game.state, (_, uid) => uid !== userId);
-    const deck = find(decks, (_, uid) => uid !== userId);
-    return buildState(state, deck, cardImages);
+    return {
+      ...game,
+      state: map(game.state, (state, key) => ({
+        key,
+        isOpponent: key !== userId,
+        ...buildState(state, decks[key], cardImages),
+      })),
+    };
+  },
+);
+
+export const cardModal = createSelector(
+  [gameState, getCardModal],
+  (game, cardModalKey) => {
+    const { listKey, ...cardModalConfig } =
+      CARD_MODAL_TYPES[cardModalKey] || {};
+    const playerState = find(game.state, { isOpponent: false }) || {};
+    const opponentState = find(game.state, { isOpponent: true }) || {};
+    const cardLists = {
+      hand: playerState.hand,
+      discard: playerState.discard,
+      purged: playerState.purged,
+      archived: playerState.purged,
+      opponentDiscard: opponentState.discard,
+      opponentPurged: opponentState.purged,
+    };
+    return {
+      ...cardModalConfig,
+      cards: cardLists[listKey] || [],
+    };
   },
 );
 
 export const turnSequenceText = createSelector(
-  [selectedGame, getUserId, playerState],
-  (game, userId, player) => {
+  [getUserId, gameState],
+  (userId, game) => {
     if (game.turn !== userId) {
       return "Opponent's Turn";
     }
-    if (!player.house) {
+    if (!find(game.state, { isOpponent: false }).house) {
       return 'Choose a House';
     }
     return 'Play, Discard, & Use House Cards';

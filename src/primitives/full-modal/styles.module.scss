@@ -7,7 +7,7 @@
 
 .overlay {
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.9);
   bottom: 0;
   display: flex;
   justify-content: center;
@@ -22,15 +22,29 @@
   display: grid;
   grid-template-rows: 82px auto;
   height: 100%;
-}
 
-.header {
-  flex: 1;
-  margin-left: 50px;
-  text-align: center;
+  &--fullHeight {
+    display: flex;
+    align-items: center;
+  }
 }
 
 .close {
   cursor: pointer;
   padding: 1rem;
+}
+
+.contentContainer {
+  flex: 1;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.headers {
+  margin-bottom: 2rem;
+
+  * {
+    margin: 0;
+    max-width: 600px;
+  }
 }

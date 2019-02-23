@@ -1,4 +1,10 @@
-import CardPiles from './card-piles';
-import PileModalState from './pile-modal-state';
+import { connect } from 'react-redux';
 
-export default PileModalState(CardPiles);
+import { updateCardModal } from 'store/actions/game.actions';
+
+import CardPiles from './card-piles';
+
+export default connect(
+  undefined,
+  { updateCardModal },
+)(CardPiles);

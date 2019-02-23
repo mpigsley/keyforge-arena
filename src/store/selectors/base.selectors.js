@@ -21,7 +21,9 @@ export const getDeckError = state => state.deck.error;
 
 /* Game */
 export const getGames = state => state.game.models;
+export const getCardModal = state => state.game.cardModal;
 export const getSelectedGame = state => state.game.selected;
+export const getInitializedGame = state => state.game.initializedGame;
 
 /* Image */
 export const getHouseImages = state => state.image.houses;

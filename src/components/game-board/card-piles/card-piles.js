@@ -13,6 +13,7 @@ import {
 } from 'constants/game-board';
 import { CardsType } from 'constants/types';
 import { useDimensions } from 'utils/effects';
+import CARD_MODAL_TYPES from 'constants/card-modal-types';
 
 import styles from './styles.module.scss';
 
@@ -27,9 +28,7 @@ export default function CardPiles({
   purged,
   numArchived,
   archived,
-  onOpenDiscard,
-  onOpenPurged,
-  onOpenArchived,
+  updateCardModal,
 }) {
   const { height, width } = useDimensions();
   const modifiedPileWidth = isOpponent
@@ -76,7 +75,13 @@ export default function CardPiles({
           align="center"
           justify="center"
           direction="column"
-          onClick={onOpenPurged}
+          onClick={() =>
+            updateCardModal(
+              isOpponent
+                ? CARD_MODAL_TYPES.OPPONENTS_PURGED_PILE.key
+                : CARD_MODAL_TYPES.PURGED_PILE.key,
+            )
+          }
           className={styles.staticPile}
           style={{
             width: staticWidth,
@@ -94,7 +99,11 @@ export default function CardPiles({
           align="center"
           justify="center"
           direction="column"
-          onClick={onOpenArchived}
+          onClick={() => {
+            if (!isOpponent) {
+              updateCardModal(CARD_MODAL_TYPES.ARCHIVED_PILE.key);
+            }
+          }}
           className={styles.staticPile}
           style={{
             width: staticWidth,
@@ -126,7 +135,13 @@ export default function CardPiles({
     const lastCard = discarded[discarded.length - 1];
     discardElement = (
       <img
-        onClick={onOpenDiscard}
+        onClick={() =>
+          updateCardModal(
+            isOpponent
+              ? CARD_MODAL_TYPES.OPPONENTS_DISCARD_PILE.key
+              : CARD_MODAL_TYPES.DISCARD_PILE.key,
+          )
+        }
         className={styles.discardPile}
         alt={lastCard.card}
         src={lastCard.image.link}
@@ -200,9 +215,7 @@ CardPiles.propTypes = {
   purged: CardsType.isRequired,
   numArchived: PropTypes.number,
   archived: CardsType,
-  onOpenDiscard: PropTypes.func.isRequired,
-  onOpenPurged: PropTypes.func.isRequired,
-  onOpenArchived: PropTypes.func.isRequired,
+  updateCardModal: PropTypes.func.isRequired,
 };
 
 CardPiles.defaultProps = {

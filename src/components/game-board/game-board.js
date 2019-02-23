@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import OpponentHand from 'components/game-board/opponent-hand';
 import Battleline from 'components/game-board/battleline';
 import CardPiles from 'components/game-board/card-piles';
+import CardModal from 'components/game-board/card-modal';
 import Artifacts from 'components/game-board/artifacts';
 import Hand from 'components/game-board/hand';
 import GameState from 'components/game-board/game-state';
@@ -14,15 +15,21 @@ import Header from 'primitives/header';
 
 import { useDimensionConstraints } from 'utils/effects';
 import { UserGameState } from 'constants/types';
+import { find } from 'constants/lodash';
 import styles from './styles.module.scss';
 
-export default function GameBoard({
-  hasLoaded,
-  gameStart,
-  playerState,
-  opponentState,
-}) {
+export default function GameBoard({ hasLoaded, gameStart, gameState }) {
   const isConstrained = useDimensionConstraints(650, 550);
+  const playerState = find(gameState.state, { isOpponent: false }) || {};
+  const opponentState = find(gameState.state, { isOpponent: true }) || {};
+  // let initialCardModal;
+  // if (every(gameState.state, { turn: 0 }) && gameState.turn) {
+  //   initialCardModal =
+  //     gameState.turn === playerState.key
+  //       ? CARD_MODAL_VIEWTYPE.STARTING_HAND_FIRST.key
+  //       : CARD_MODAL_VIEWTYPE.STARTING_HAND_SECOND.key;
+  // }
+
   if (!hasLoaded || isConstrained) {
     let content = (
       <Header className={styles.header}>Increase Window Size</Header>
@@ -48,67 +55,71 @@ export default function GameBoard({
   }
 
   return (
-    <div className={classNames(styles.container, styles.gameBoard)}>
-      <div className={styles.opponentSide}>
-        <CardPiles
-          isOpponent
-          className={styles.leftSide}
-          numDraw={opponentState.deckSize}
-          numArchived={opponentState.archiveSize}
-          discarded={opponentState.discard}
-          purged={opponentState.purged}
-        />
-        <OpponentHand handSize={opponentState.handSize} />
-        <GameState
-          numKeys={opponentState.keys}
-          numAember={opponentState.aember}
-          keyCost={opponentState.keyCost}
-          houses={opponentState.houses}
-          turn={playerState.turn}
-          gameStart={gameStart}
-          isOpponent
-        />
-        <Artifacts
-          className={styles.rightSide}
-          artifacts={opponentState.artifacts}
-          isOpponent
-        />
+    <>
+      <div className={classNames(styles.container, styles.gameBoard)}>
+        <div className={styles.opponentSide}>
+          <CardPiles
+            isOpponent
+            className={styles.leftSide}
+            numDraw={opponentState.deckSize}
+            numArchived={opponentState.archiveSize}
+            discarded={opponentState.discard}
+            purged={opponentState.purged}
+          />
+          <OpponentHand handSize={opponentState.handSize} />
+          <GameState
+            numKeys={opponentState.keys}
+            numAember={opponentState.aember}
+            keyCost={opponentState.keyCost}
+            houses={opponentState.houses}
+            turn={playerState.turn}
+            gameStart={gameStart}
+            isOpponent
+          />
+          <Artifacts
+            className={styles.rightSide}
+            artifacts={opponentState.artifacts}
+            isOpponent
+          />
+        </div>
+        <Battleline cards={opponentState.battlelines} isOpponent />
+        <Battleline cards={playerState.battlelines} />
+        <div className={styles.side}>
+          <CardPiles
+            className={styles.leftSide}
+            numDraw={playerState.deckSize}
+            discarded={playerState.discard}
+            archived={playerState.archived}
+            purged={playerState.purged}
+          />
+          <GameState
+            numKeys={playerState.keys}
+            numAember={playerState.aember}
+            keyCost={playerState.keyCost}
+            houses={opponentState.houses}
+          />
+          <Hand cards={playerState.hand} />
+          <Artifacts
+            className={styles.rightSide}
+            artifacts={playerState.artifacts}
+          />
+        </div>
       </div>
-      <Battleline cards={opponentState.battlelines} isOpponent />
-      <Battleline cards={playerState.battlelines} />
-      <div className={styles.side}>
-        <CardPiles
-          className={styles.leftSide}
-          numDraw={playerState.deckSize}
-          discarded={playerState.discard}
-          archived={playerState.archived}
-          purged={playerState.purged}
-        />
-        <GameState
-          numKeys={playerState.keys}
-          numAember={playerState.aember}
-          keyCost={playerState.keyCost}
-          houses={opponentState.houses}
-        />
-        <Hand cards={playerState.hand} />
-        <Artifacts
-          className={styles.rightSide}
-          artifacts={playerState.artifacts}
-        />
-      </div>
-    </div>
+      <CardModal />
+    </>
   );
 }
 
 GameBoard.propTypes = {
   hasLoaded: PropTypes.bool.isRequired,
   gameStart: PropTypes.instanceOf(Date),
-  playerState: UserGameState,
-  opponentState: UserGameState,
+  gameState: PropTypes.shape({
+    state: PropTypes.arrayOf(UserGameState),
+    turn: PropTypes.string,
+  }),
 };
 
 GameBoard.defaultProps = {
   gameStart: undefined,
-  playerState: undefined,
-  opponentState: undefined,
+  gameState: {},
 };
