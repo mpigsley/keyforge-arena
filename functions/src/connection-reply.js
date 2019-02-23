@@ -1,6 +1,8 @@
 const admin = require('firebase-admin');
 const functions = require('firebase-functions');
 
+const { firestore } = require('../utils/common');
+
 module.exports = functions.https.onCall(
   async ({ connection, accepted }, context) => {
     if (!context.auth) {
@@ -16,13 +18,10 @@ module.exports = functions.https.onCall(
     }
 
     try {
-      const batch = admin.firestore().batch();
+      const batch = firestore.batch();
       if (accepted) {
         batch.set(
-          admin
-            .firestore()
-            .collection('connections')
-            .doc(context.auth.uid),
+          firestore.collection('connections').doc(context.auth.uid),
           {
             pending: admin.firestore.FieldValue.arrayRemove(connection),
             active: admin.firestore.FieldValue.arrayUnion(connection),
@@ -30,19 +29,13 @@ module.exports = functions.https.onCall(
           { merge: true },
         );
         batch.set(
-          admin
-            .firestore()
-            .collection('connections')
-            .doc(connection),
+          firestore.collection('connections').doc(connection),
           { active: admin.firestore.FieldValue.arrayUnion(context.auth.uid) },
           { merge: true },
         );
       } else {
         batch.set(
-          admin
-            .firestore()
-            .collection('connections')
-            .doc(context.auth.uid),
+          firestore.collection('connections').doc(context.auth.uid),
           { pending: admin.firestore.FieldValue.arrayRemove(connection) },
           { merge: true },
         );

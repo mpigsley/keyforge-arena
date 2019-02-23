@@ -11,6 +11,8 @@ const {
   drop,
 } = require('lodash');
 
+const { firestore } = require('../utils/common');
+
 const initialSharedState = () => ({
   keyCost: 6,
   archiveSize: 0,
@@ -58,8 +60,7 @@ module.exports = functions.https.onCall(async ({ lobby, deck }, context) => {
   }
 
   try {
-    const lobbyDoc = await admin
-      .firestore()
+    const lobbyDoc = await firestore
       .collection('lobby')
       .doc(lobby)
       .get();
@@ -71,8 +72,7 @@ module.exports = functions.https.onCall(async ({ lobby, deck }, context) => {
     const { players } = lobbyDoc.data();
     const playerLobbies = await Promise.all(
       players.map(uid =>
-        admin
-          .firestore()
+        firestore
           .collection('lobby')
           .where('players', 'array-contains', uid)
           .get(),
@@ -84,8 +84,7 @@ module.exports = functions.https.onCall(async ({ lobby, deck }, context) => {
     );
     await Promise.all(
       lobbyIds.map(id =>
-        admin
-          .firestore()
+        firestore
           .collection('lobby')
           .doc(id)
           .delete(),
@@ -94,13 +93,11 @@ module.exports = functions.https.onCall(async ({ lobby, deck }, context) => {
 
     const opponent = players.filter(uid => uid !== context.auth.uid)[0];
     const [opponentDeckSnapshot, playerDeckSnapshot] = await Promise.all([
-      admin
-        .firestore()
+      firestore
         .collection('decks')
         .where('creator', '==', opponent)
         .get(),
-      admin
-        .firestore()
+      firestore
         .collection('decks')
         .doc(deck)
         .get(),
@@ -145,35 +142,28 @@ module.exports = functions.https.onCall(async ({ lobby, deck }, context) => {
       opponentDecks[opponentDeckId],
       opponentHandSize,
     );
-    const gameRef = admin
-      .firestore()
-      .collection('games')
-      .doc();
+    const gameRef = firestore.collection('games').doc();
 
     await Promise.all([
-      admin
-        .firestore()
+      firestore
         .collection('games')
         .doc(gameRef.id)
         .collection('state')
         .doc(context.auth.uid)
         .set({ hand: playerHand, archived: [] }),
-      admin
-        .firestore()
+      firestore
         .collection('games')
         .doc(gameRef.id)
         .collection('protected')
         .doc(context.auth.uid)
         .set({ deck: shuffledPlayerDeck }),
-      admin
-        .firestore()
+      firestore
         .collection('games')
         .doc(gameRef.id)
         .collection('state')
         .doc(opponent)
         .set({ hand: opponentHand, archived: [] }),
-      admin
-        .firestore()
+      firestore
         .collection('games')
         .doc(gameRef.id)
         .collection('protected')

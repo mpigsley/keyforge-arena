@@ -1,7 +1,6 @@
-const admin = require('firebase-admin');
 const functions = require('firebase-functions');
 
-const { generateTag } = require('./utils');
+const { generateTag, firestore } = require('../utils/common');
 
 module.exports = functions.firestore
   .document('users/{userId}')
@@ -19,8 +18,7 @@ module.exports = functions.firestore
 
     while (!isUnique && failSafe < 5) {
       // eslint-disable-next-line no-await-in-loop
-      const snapshot = await admin
-        .firestore()
+      const snapshot = await firestore
         .collection('users')
         .where('username', '==', username || '')
         .where('tag', '==', tagHash)
@@ -33,23 +31,17 @@ module.exports = functions.firestore
       }
     }
 
-    const batch = admin.firestore().batch();
+    const batch = firestore.batch();
     if (tagHash === tag) {
       batch.set(
-        admin
-          .firestore()
-          .collection('users')
-          .doc(userId),
+        firestore.collection('users').doc(userId),
         { tag: tagHash },
         { merge: true },
       );
     }
 
     batch.set(
-      admin
-        .firestore()
-        .collection('user-search')
-        .doc(userId),
+      firestore.collection('user-search').doc(userId),
       { username: `${username}#${tag}` },
       { merge: true },
     );

@@ -2,6 +2,8 @@ const admin = require('firebase-admin');
 const functions = require('firebase-functions');
 const { includes } = require('lodash');
 
+const { firestore } = require('../utils/common');
+
 module.exports = functions.https.onCall(async ({ connection }, context) => {
   if (!context.auth) {
     throw new functions.https.HttpsError(
@@ -11,8 +13,7 @@ module.exports = functions.https.onCall(async ({ connection }, context) => {
   }
 
   try {
-    const existing = await admin
-      .firestore()
+    const existing = await firestore
       .collection('connections')
       .doc(connection)
       .get();
@@ -24,8 +25,7 @@ module.exports = functions.https.onCall(async ({ connection }, context) => {
       );
     }
 
-    await admin
-      .firestore()
+    await firestore
       .collection('connections')
       .doc(connection)
       .set(

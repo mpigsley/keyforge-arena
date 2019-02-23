@@ -3,6 +3,8 @@ const functions = require('firebase-functions');
 const request = require('request-promise');
 const { find } = require('lodash');
 
+const { firestore } = require('../utils/common');
+
 const EXPANSIONS = {
   341: 'cota',
 };
@@ -19,8 +21,7 @@ module.exports = functions.https.onCall(async ({ link }, context) => {
     const splitLink = link.split('/');
     const deckId = splitLink[splitLink.length - 1];
 
-    const deckSnapshot = await admin
-      .firestore()
+    const deckSnapshot = await firestore
       .collection('decks')
       .where('deckId', '==', deckId)
       .where('creator', '==', context.auth.uid)
@@ -68,13 +69,10 @@ module.exports = functions.https.onCall(async ({ link }, context) => {
       name,
     };
 
-    const ref = await admin
-      .firestore()
-      .collection('decks')
-      .add({
-        ...deck,
-        created: admin.firestore.FieldValue.serverTimestamp(),
-      });
+    const ref = await firestore.collection('decks').add({
+      ...deck,
+      created: admin.firestore.FieldValue.serverTimestamp(),
+    });
 
     return { [ref.id]: deck };
   } catch (e) {

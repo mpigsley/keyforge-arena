@@ -2,6 +2,8 @@ const admin = require('firebase-admin');
 const functions = require('firebase-functions');
 const { includes } = require('lodash');
 
+const { firestore } = require('../utils/common');
+
 module.exports = functions.https.onCall(async (data, context) => {
   if (!context.auth) {
     throw new functions.https.HttpsError(
@@ -12,13 +14,11 @@ module.exports = functions.https.onCall(async (data, context) => {
 
   try {
     const [user, connections] = await Promise.all([
-      admin
-        .firestore()
+      firestore
         .collection('users')
         .doc(context.auth.uid)
         .get(),
-      admin
-        .firestore()
+      firestore
         .collection('connections')
         .doc(context.auth.uid)
         .get(),
@@ -36,15 +36,13 @@ module.exports = functions.https.onCall(async (data, context) => {
     const [connectionUsers] = await Promise.all([
       Promise.all(
         allConnections.map(uid =>
-          admin
-            .firestore()
+          firestore
             .collection('status')
             .doc(uid)
             .get(),
         ),
       ),
-      admin
-        .firestore()
+      firestore
         .collection('status')
         .doc(context.auth.uid)
         .set({

@@ -14,7 +14,7 @@
     "eject": "react-scripts eject",
     "bootstrap": "node -r dotenv/config bootstrap/index.js dotenv_config_path=./.env.local",
     "deploy": "npm run build && firebase deploy --except functions",
-    "deploy:functions": "firebase deploy --only functions",
+    "deploy:functions": "cp src/constants/game-actions.js functions/constants && firebase deploy --only functions",
     "deploy:all": "firebase deploy",
     "scrape": "node bin/scrape-aembertree.js"
   },

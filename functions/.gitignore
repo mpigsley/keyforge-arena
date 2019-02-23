@@ -15,3 +15,5 @@
 .env.production.local
 
 npm-debug.log*
+
+constants/game-actions.js
