@@ -40,7 +40,7 @@ export default function Battleline({ cards, isOpponent }) {
       onDrop={e => {
         e.preventDefault();
         const card = e.dataTransfer.getData('card');
-        console.log(card);
+        console.log(card); // eslint-disable-line
       }}
       className={styles.battleline}
       justify={isOpponent ? 'flexEnd' : 'flexStart'}

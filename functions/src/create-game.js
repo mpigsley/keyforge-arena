@@ -1,17 +1,13 @@
 const admin = require('firebase-admin');
 const functions = require('firebase-functions');
-const chance = require('chance').Chance();
-const {
-  flatten,
-  uniq,
-  sortBy,
-  findKey,
-  reduce,
-  take,
-  drop,
-} = require('lodash');
 
-const { firestore } = require('../utils/common');
+const { flatten, uniq, sortBy, findKey } = require('../constants/lodash');
+const {
+  firestore,
+  chance,
+  shuffleAndDrawHand,
+  createDeck,
+} = require('../utils/common');
 
 const initialSharedState = () => ({
   keyCost: 6,
@@ -25,21 +21,6 @@ const initialSharedState = () => ({
   purged: [],
   discard: [],
 });
-
-const createDeck = ({ expansion, houses }) =>
-  reduce(
-    houses,
-    (arr, cards, house) => [
-      ...arr,
-      ...cards.map(card => `${expansion}-${house}-${card}`),
-    ],
-    [],
-  );
-
-const shuffleAndDrawHand = (deck, handSize) => {
-  const shuffledDeck = chance.shuffle(createDeck(deck));
-  return [take(shuffledDeck, handSize), drop(shuffledDeck, handSize)];
-};
 
 module.exports = functions.https.onCall(async ({ lobby, deck }, context) => {
   if (!context.auth) {
@@ -135,11 +116,11 @@ module.exports = functions.https.onCall(async ({ lobby, deck }, context) => {
     const playerHandSize = firstPlayer === context.auth.uid ? 7 : 6;
     const opponentHandSize = firstPlayer === opponent ? 7 : 6;
     const [playerHand, shuffledPlayerDeck] = shuffleAndDrawHand(
-      playerDeck,
+      createDeck(playerDeck),
       playerHandSize,
     );
     const [opponentHand, shuffledOpponentDeck] = shuffleAndDrawHand(
-      opponentDecks[opponentDeckId],
+      createDeck(opponentDecks[opponentDeckId]),
       opponentHandSize,
     );
     const gameRef = firestore.collection('games').doc();
@@ -148,25 +129,25 @@ module.exports = functions.https.onCall(async ({ lobby, deck }, context) => {
       firestore
         .collection('games')
         .doc(gameRef.id)
-        .collection('state')
+        .collection('personal')
         .doc(context.auth.uid)
         .set({ hand: playerHand, archived: [] }),
       firestore
         .collection('games')
         .doc(gameRef.id)
-        .collection('protected')
+        .collection('hidden')
         .doc(context.auth.uid)
         .set({ deck: shuffledPlayerDeck }),
       firestore
         .collection('games')
         .doc(gameRef.id)
-        .collection('state')
+        .collection('personal')
         .doc(opponent)
         .set({ hand: opponentHand, archived: [] }),
       firestore
         .collection('games')
         .doc(gameRef.id)
-        .collection('protected')
+        .collection('hidden')
         .doc(opponent)
         .set({ deck: shuffledOpponentDeck }),
       gameRef.set({

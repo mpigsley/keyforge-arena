@@ -1,7 +1,7 @@
 const admin = require('firebase-admin');
 const functions = require('firebase-functions');
-const { includes } = require('lodash');
 
+const { includes } = require('../constants/lodash');
 const { firestore } = require('../utils/common');
 
 module.exports = functions.https.onCall(async ({ connection }, context) => {

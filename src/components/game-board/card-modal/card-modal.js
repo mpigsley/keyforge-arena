@@ -4,6 +4,7 @@ import ReactModal from 'react-modal';
 
 import FlexContainer from 'primitives/flex-container';
 import FullModal from 'primitives/full-modal';
+import Button from 'primitives/button';
 
 import { ZOOMED_WIDTH, CARD_RATIO } from 'constants/game-board';
 import { CardsType } from 'constants/types';
@@ -13,8 +14,12 @@ import styles from './styles.module.scss';
 
 ReactModal.setAppElement('#root');
 
-export default function CardModal({ cardModal, updateCardModal }) {
-  const { cards, isStack, ...config } = cardModal;
+export default function CardModal({
+  cardModal,
+  updateCardModal,
+  handleGameAction,
+}) {
+  const { cards, isStack, actions, ...config } = cardModal;
   return (
     <FullModal
       isOpen={!!cards.length}
@@ -53,6 +58,13 @@ export default function CardModal({ cardModal, updateCardModal }) {
           ))}
         </FlexContainer>
       </FlexContainer>
+      {!!(actions || []).length && (
+        <FlexContainer justify="center">
+          {actions.map(({ action, ...buttonProps }) => (
+            <Button {...buttonProps} onClick={() => handleGameAction(action)} />
+          ))}
+        </FlexContainer>
+      )}
     </FullModal>
   );
 }
@@ -63,6 +75,7 @@ CardModal.propTypes = {
     isStack: PropTypes.bool,
   }),
   updateCardModal: PropTypes.func.isRequired,
+  handleGameAction: PropTypes.func.isRequired,
 };
 
 CardModal.defaultProps = {

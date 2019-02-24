@@ -11,9 +11,10 @@ import { push } from 'connected-react-router';
 import { eventChannel } from 'redux-saga';
 
 import {
-  getIsDecksInitialized,
-  getPathname,
   getDecks,
+  getPathname,
+  getSelectedGame,
+  getIsDecksInitialized,
 } from 'store/selectors/base.selectors';
 import {
   hasLoadedGameDecks,
@@ -34,8 +35,12 @@ import {
   GAMES_UPDATED,
   GAME_INITIALIZED,
   CARD_MODAL_UPDATED,
+  GAME_ACTION_HANDLED,
 } from 'store/actions/game.actions';
-import { gameListener } from 'store/api/game.api';
+import {
+  gameListener,
+  handleGameAction as callHandleGameAction,
+} from 'store/api/game.api';
 
 import { createAction } from 'utils/store';
 import { size, map, some, find, every } from 'constants/lodash';
@@ -134,10 +139,23 @@ function* gameSequence() {
   }
 }
 
+function* handleGameAction({ action, metadata }) {
+  try {
+    const selectedGame = yield select(getSelectedGame);
+    yield call(callHandleGameAction, selectedGame, action, metadata);
+    yield put(createAction(GAME_ACTION_HANDLED.SUCCESS));
+  } catch (error) {
+    yield put(
+      createAction(GAME_ACTION_HANDLED.ERROR, { error: error.message }),
+    );
+  }
+}
+
 export default function*() {
   yield all([
     takeEvery(LOGGED_IN.SUCCESS, gameUpdateFlow),
     takeEvery(SIGNED_OUT.SUCCESS, closeGameChannel),
     takeEvery(GAME_INITIALIZED, gameSequence),
+    takeEvery(GAME_ACTION_HANDLED.PENDING, handleGameAction),
   ]);
 }

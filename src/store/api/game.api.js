@@ -15,7 +15,7 @@ export const getPersonalGameState = (uid, gameId) =>
   Firebase.firestore()
     .collection('games')
     .doc(gameId)
-    .collection('state')
+    .collection('personal')
     .doc(uid)
     .get();
 
@@ -54,3 +54,10 @@ export const gameListener = (uid, cb) =>
         cb({ update, deleted, personal });
       });
     });
+
+export const handleGameAction = (game, action, metadata) =>
+  Firebase.functions().httpsCallable('handleGameAction')({
+    game,
+    action,
+    metadata,
+  });

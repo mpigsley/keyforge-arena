@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import { cardModal } from 'store/selectors/game.selectors';
-import { updateCardModal } from 'store/actions/game.actions';
+import { updateCardModal, handleGameAction } from 'store/actions/game.actions';
 
 import CardModal from './card-modal';
 
@@ -12,5 +12,5 @@ const mapStateToProps = createStructuredSelector({
 
 export default connect(
   mapStateToProps,
-  { updateCardModal },
+  { updateCardModal, handleGameAction },
 )(CardModal);

@@ -13,7 +13,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "bootstrap": "node -r dotenv/config bootstrap/index.js dotenv_config_path=./.env.local",
-    "copyShared": "cp src/constants/game-actions.js functions/constants",
+    "copyShared": "cp src/constants/game-action-types.js functions/constants",
     "deploy": "npm run build && firebase deploy --except functions",
     "deploy:functions": "npm run copyShared && firebase deploy --only functions",
     "deploy:all": "npm run copyShared && firebase deploy",

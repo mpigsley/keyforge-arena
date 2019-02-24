@@ -1,8 +1,8 @@
 const admin = require('firebase-admin');
 const functions = require('firebase-functions');
 const request = require('request-promise');
-const { find } = require('lodash');
 
+const { find } = require('../constants/lodash');
 const { firestore } = require('../utils/common');
 
 const EXPANSIONS = {

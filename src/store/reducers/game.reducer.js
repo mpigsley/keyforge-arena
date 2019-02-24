@@ -8,7 +8,7 @@ import {
   CARD_MODAL_UPDATED,
 } from 'store/actions/game.actions';
 
-import { omit, mapValues } from 'constants/lodash';
+import { omit, mapValues, includes } from 'constants/lodash';
 
 const initialState = {
   models: {},
@@ -22,6 +22,12 @@ export default function game(state = initialState, action) {
     case GAMES_UPDATED.SUCCESS:
       return {
         ...state,
+        initializedGame: includes(action.deleted, state.initializedGame)
+          ? null
+          : state.initializedGame,
+        selected: includes(action.deleted, state.selected)
+          ? null
+          : state.selected,
         models: omit(
           {
             ...state.models,

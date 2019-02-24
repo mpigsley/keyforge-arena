@@ -1,17 +1,26 @@
-const admin = require('firebase-admin');
+const firestore = require('firebase-admin').firestore();
+const chance = require('chance').Chance();
 
-const firestore = admin.firestore();
+const { reduce, take, drop } = require('../constants/lodash');
 
 exports.firestore = firestore;
+exports.chance = chance;
 
 exports.generateTag = () =>
   [...Array(4)].map(() => Math.floor(Math.random() * 10)).join('');
 
-exports.getGameState = async gameId => {
-  const game = await firestore
-    .collection('games')
-    .doc(gameId)
-    .get();
+const createDeck = ({ expansion, houses }) =>
+  reduce(
+    houses,
+    (arr, cards, house) => [
+      ...arr,
+      ...cards.map(card => `${expansion}-${house}-${card}`),
+    ],
+    [],
+  );
+exports.createDeck = createDeck;
 
-  return game.data();
+exports.shuffleAndDrawHand = (deck, handSize) => {
+  const shuffledDeck = chance.shuffle(deck);
+  return [take(shuffledDeck, handSize), drop(shuffledDeck, handSize)];
 };

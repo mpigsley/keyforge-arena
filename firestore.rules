@@ -26,11 +26,11 @@ service cloud.firestore {
       allow read: if ensureAuth() && isInvolvedInGame();
       allow write: if false;
 
-      match /state/{uid} {
+      match /personal/{uid} {
         allow read: if ensureAuth() && ensureUser(uid);
         allow write: if false;
       }
-      match /protected/{uid} {
+      match /hidden/{uid} {
         allow read, write: if false;
       }
       match /actions/{actionId} {
