@@ -41,21 +41,23 @@ module.exports = functions.https.onCall(async ({ lobby, deck }, context) => {
   }
 
   try {
-    const lobbyDoc = await firestore
+    const lobbySnapshot = await firestore
       .collection('lobby')
       .doc(lobby)
       .get();
 
-    if (!lobbyDoc.exists) {
+    if (!lobbySnapshot.exists) {
       throw new functions.https.HttpsError('not-found', 'Lobby was not found.');
     }
-    const lobby = lobbyDoc.data();
+    const lobbyDoc = lobbySnapshot.data();
 
-    const opponent = lobby.players.filter(uid => uid !== context.auth.uid)[0];
+    const opponent = lobbyDoc.players.filter(
+      uid => uid !== context.auth.uid,
+    )[0];
     const [opponentDeckSnapshot, playerDeckSnapshot] = await Promise.all([
       firestore
         .collection('decks')
-        .doc(lobby.deck)
+        .doc(lobbyDoc.deck)
         .get(),
       firestore
         .collection('decks')
@@ -75,7 +77,7 @@ module.exports = functions.https.onCall(async ({ lobby, deck }, context) => {
       throw new functions.https.HttpsError('not-found', 'Deck was not found.');
     }
 
-    const firstPlayer = chance.pickone(lobby.players);
+    const firstPlayer = chance.pickone(lobbyDoc.players);
     const playerHandSize = firstPlayer === context.auth.uid ? 7 : 6;
     const opponentHandSize = firstPlayer === opponent ? 7 : 6;
     const [playerHand, shuffledPlayerDeck] = shuffleAndDrawHand(
@@ -124,7 +126,7 @@ module.exports = functions.https.onCall(async ({ lobby, deck }, context) => {
 
     // Cleanup old lobbies
     const playerLobbies = await Promise.all(
-      lobby.players.map(uid =>
+      lobbyDoc.players.map(uid =>
         firestore
           .collection('lobby')
           .where('players', 'array-contains', uid)
@@ -155,10 +157,10 @@ module.exports = functions.https.onCall(async ({ lobby, deck }, context) => {
           ...initialSharedState(),
           handSize: opponentHandSize,
           deckSize: 36 - opponentHandSize,
-          deck: lobby.deck,
+          deck: lobbyDoc.deck,
         },
       },
-      players: lobby.players,
+      players: lobbyDoc.players,
     });
 
     return gameRef.id;
