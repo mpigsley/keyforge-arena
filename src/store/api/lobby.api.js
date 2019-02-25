@@ -1,17 +1,16 @@
 import Firebase from 'firebase/app';
 import dayjs from 'dayjs';
 
-export const createChallengeLobby = (player, opponent) => {
-  const doc = {
-    created: Firebase.firestore.FieldValue.serverTimestamp(),
-    players: [opponent, player],
-    creator: player,
-  };
-  return Firebase.firestore()
+export const createChallengeLobby = (player, opponent, deck) =>
+  Firebase.firestore()
     .collection('lobby')
-    .add(doc)
+    .add({
+      created: Firebase.firestore.FieldValue.serverTimestamp(),
+      players: [opponent, player],
+      creator: player,
+      deck,
+    })
     .then(ref => ref.id);
-};
 
 export const cancelLobby = lobby =>
   Firebase.firestore()

@@ -154,6 +154,7 @@ module.exports = functions.https.onCall(async ({ lobby, deck }, context) => {
         created: admin.firestore.FieldValue.serverTimestamp(),
         isFinished: false,
         turn: firstPlayer,
+        lobby,
         state: {
           [context.auth.uid]: {
             ...initialSharedState(),
@@ -171,6 +172,8 @@ module.exports = functions.https.onCall(async ({ lobby, deck }, context) => {
         players,
       }),
     ]);
+
+    return gameRef.id;
   } catch (e) {
     console.error(e);
     if (e.code === 'not-found') {

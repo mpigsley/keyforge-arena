@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Switch, Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
 import { Provider } from 'react-redux';
 import Firebase from 'firebase/app';
@@ -12,11 +12,13 @@ import 'firebase/auth';
 import createStore, { history } from 'store';
 
 import Protected from 'primitives/protected-hoc';
+import Wrapper from 'primitives/wrapper';
 import Home from 'components/home';
 import Dashboard from 'components/dashboard';
 import Decks from 'components/decks';
 import Profile from 'components/profile';
 import GameBoard from 'components/game-board';
+import Lobby from 'components/lobby';
 
 import 'react-redux-toastr/src/styles/index.scss';
 import 'react-hint/css/index.css';
@@ -36,13 +38,16 @@ const store = createStore();
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/dashboard" component={Protected(Dashboard)} />
-        <Route exact path="/profile" component={Protected(Profile)} />
-        <Route path="/deck/:id?" component={Protected(Decks)} />
-        <Route path="/game/:id" component={Protected(GameBoard)} />
-      </Switch>
+      <Wrapper>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/dashboard" component={Protected(Dashboard)} />
+          <Route exact path="/profile" component={Protected(Profile)} />
+          <Route exact path="/lobby" component={Protected(Lobby)} />
+          <Route path="/deck/:id?" component={Protected(Decks)} />
+          <Route path="/game/:id" component={Protected(GameBoard)} />
+        </Switch>
+      </Wrapper>
     </ConnectedRouter>
   </Provider>,
   document.getElementById('root'),

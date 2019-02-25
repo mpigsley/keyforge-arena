@@ -23,10 +23,11 @@ import {
   ACCEPT_CHALLENGE,
 } from 'store/actions/lobby.actions';
 import { LOGGED_IN, SIGNED_OUT } from 'store/actions/user.actions';
-import { getUserId } from 'store/selectors/base.selectors';
+import { getUserId, getCurrentLobby } from 'store/selectors/base.selectors';
 import { activeDeckId } from 'store/selectors/deck.selectors';
 import { createAction } from 'utils/store';
-import { find } from 'constants/lodash';
+import { find, includes } from 'constants/lodash';
+import { push } from 'connected-react-router';
 
 const createLobbyListener = uid =>
   eventChannel(emit => {
@@ -37,12 +38,20 @@ const createLobbyListener = uid =>
 function* lobbyHandler(channel, uid) {
   while (true) {
     const { update, deleted } = yield take(channel);
+    const currentLobby = yield select(getCurrentLobby);
     yield put(createAction(LOBBIES_UPDATED.SUCCESS, { update, deleted }));
     if (find(update, ({ creator }) => creator !== uid)) {
       yield call(
         toastr.info,
         "You've Been Challenged!",
         'Accept it now on your dashboard.',
+      );
+    }
+    if (currentLobby && includes(deleted, currentLobby)) {
+      yield call(
+        toastr.warning,
+        'Challenge Cancelled',
+        'You or your opponent has cancelled the challenge.',
       );
     }
   }
@@ -70,8 +79,10 @@ function* challengeFlow({ opponent }) {
     return;
   }
   try {
-    yield call(createChallengeLobby, player, opponent);
-    yield put(createAction(CHALLENGE.SUCCESS));
+    const deck = yield select(activeDeckId);
+    const lobby = yield call(createChallengeLobby, player, opponent, deck);
+    yield put(createAction(CHALLENGE.SUCCESS, { lobby }));
+    yield put(push('/lobby'));
   } catch (error) {
     yield put(createAction(CHALLENGE.ERROR, { error: error.message }));
   }
@@ -89,8 +100,9 @@ function* cancelChallengeFlow({ challenge }) {
 function* createGameFlow({ challenge }) {
   try {
     const deck = yield select(activeDeckId);
-    yield call(createGame, challenge, deck);
-    yield put(createAction(ACCEPT_CHALLENGE.SUCCESS));
+    const gameId = yield call(createGame, challenge, deck);
+    yield put(createAction(ACCEPT_CHALLENGE.SUCCESS, { gameId }));
+    yield put(push(`/game/${gameId}`));
   } catch (error) {
     yield put(createAction(ACCEPT_CHALLENGE.ERROR, { error: error.message }));
   }

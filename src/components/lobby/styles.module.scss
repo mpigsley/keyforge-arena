@@ -1,0 +1,14 @@
+@import '~styles/theme';
+
+.container {
+  background-image: linear-gradient(to bottom right, $border, $veryLight);
+  height: 100vh;
+
+  h1 {
+    margin: 0 0 0.5rem 0;
+  }
+
+  h3 {
+    margin: 0 0 1.5rem 0;
+  }
+}

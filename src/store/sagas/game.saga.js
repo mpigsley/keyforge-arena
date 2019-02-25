@@ -129,13 +129,13 @@ function* gameSequence() {
   while (some(currentState.state, { turn: 0 })) {
     const playerState = find(currentState.state, { isOpponent: false });
     const currentKey = yield select(getCardModal);
-    let modalKey =
-      currentState.turn === playerState.key
-        ? CARD_MODAL_TYPE.STARTING_HAND_FIRST.key
-        : CARD_MODAL_TYPE.STARTING_HAND_SECOND.key;
-
+    let modalKey;
     if (playerState.turn) {
       modalKey = CARD_MODAL_TYPE.STARTING_HAND.key;
+    } else if (currentState.turn === playerState.key) {
+      modalKey = CARD_MODAL_TYPE.STARTING_HAND_FIRST.key;
+    } else {
+      modalKey = CARD_MODAL_TYPE.STARTING_HAND_SECOND.key;
     }
     if (currentKey !== modalKey) {
       yield put(createAction(CARD_MODAL_UPDATED, { key: modalKey }));
