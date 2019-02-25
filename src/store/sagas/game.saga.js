@@ -13,6 +13,7 @@ import { eventChannel } from 'redux-saga';
 import {
   getDecks,
   getPathname,
+  getCardModal,
   getSelectedGame,
   getIsDecksInitialized,
 } from 'store/selectors/base.selectors';
@@ -43,7 +44,7 @@ import {
 } from 'store/api/game.api';
 
 import { createAction } from 'utils/store';
-import { size, map, some, find, every } from 'constants/lodash';
+import { size, map, some, find } from 'constants/lodash';
 import CARD_MODAL_TYPE from 'constants/card-modal-types';
 
 const createGameListener = uid =>
@@ -124,18 +125,27 @@ const closeGameChannel = () => {
 };
 
 function* gameSequence() {
-  const state = yield select(gameState);
-  const playerState = find(state.state, { isOpponent: false }) || {};
-  // const opponentState = find(state.state, { isOpponent: true }) || {};
-  if (every(state.state, { turn: 0 }) && state.turn) {
-    yield put(
-      createAction(CARD_MODAL_UPDATED, {
-        key:
-          state.turn === playerState.key
-            ? CARD_MODAL_TYPE.STARTING_HAND_FIRST.key
-            : CARD_MODAL_TYPE.STARTING_HAND_SECOND.key,
-      }),
-    );
+  let currentState = yield select(gameState);
+  while (some(currentState.state, { turn: 0 })) {
+    const playerState = find(currentState.state, { isOpponent: false });
+    const currentKey = yield select(getCardModal);
+    let modalKey =
+      currentState.turn === playerState.key
+        ? CARD_MODAL_TYPE.STARTING_HAND_FIRST.key
+        : CARD_MODAL_TYPE.STARTING_HAND_SECOND.key;
+
+    if (playerState.turn) {
+      modalKey = CARD_MODAL_TYPE.STARTING_HAND.key;
+    }
+    if (currentKey !== modalKey) {
+      yield put(createAction(CARD_MODAL_UPDATED, { key: modalKey }));
+    }
+    yield take(GAMES_UPDATED.SUCCESS);
+    currentState = yield select(gameState);
+  }
+
+  if (yield select(getCardModal)) {
+    yield put(createAction(CARD_MODAL_UPDATED, { key: null }));
   }
 }
 
