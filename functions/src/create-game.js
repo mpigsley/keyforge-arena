@@ -123,20 +123,11 @@ module.exports = functions.https.onCall(async ({ lobby, deck }, context) => {
         .doc(opponent),
       { deck: shuffledOpponentDeck },
     );
-
-    // Cleanup old lobbies
-    const playerLobbies = await Promise.all(
-      lobbyDoc.players.map(uid =>
-        firestore
-          .collection('lobby')
-          .where('players', 'array-contains', uid)
-          .get(),
-      ),
+    batch.set(
+      firestore.collection('lobby').doc(lobby),
+      { game: gameRef.id },
+      { merge: true },
     );
-    const lobbyIds = uniq(
-      flatten(playerLobbies.map(snapshot => snapshot.docs.map(doc => doc.id))),
-    );
-    lobbyIds.map(id => batch.delete(firestore.collection('lobby').doc(id)));
 
     await batch.commit();
 

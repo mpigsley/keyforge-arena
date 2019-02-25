@@ -1,33 +1,4 @@
 {
-  "indexes": [
-    {
-      "collectionGroup": "games",
-      "queryScope": "COLLECTION",
-      "fields": [
-        {
-          "fieldPath": "players",
-          "arrayConfig": "CONTAINS"
-        },
-        {
-          "fieldPath": "created",
-          "order": "ASCENDING"
-        }
-      ]
-    },
-    {
-      "collectionGroup": "lobby",
-      "queryScope": "COLLECTION",
-      "fields": [
-        {
-          "fieldPath": "players",
-          "arrayConfig": "CONTAINS"
-        },
-        {
-          "fieldPath": "created",
-          "order": "ASCENDING"
-        }
-      ]
-    }
-  ],
+  "indexes": [],
   "fieldOverrides": []
 }

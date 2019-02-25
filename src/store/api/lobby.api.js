@@ -1,5 +1,4 @@
 import Firebase from 'firebase/app';
-import dayjs from 'dayjs';
 
 export const createChallengeLobby = (player, opponent, deck) =>
   Firebase.firestore()
@@ -34,13 +33,6 @@ export const lobbyListener = (uid, cb) =>
   Firebase.firestore()
     .collection('lobby')
     .where('players', 'array-contains', uid)
-    .where(
-      'created',
-      '>',
-      dayjs()
-        .subtract(2, 'minute')
-        .toDate(),
-    )
     .onSnapshot(snapshot => {
       let update = {};
       let deleted = [];

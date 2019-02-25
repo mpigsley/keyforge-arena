@@ -20,6 +20,7 @@ import some from 'lodash/some';
 import sortBy from 'lodash/sortBy';
 import take from 'lodash/take';
 import uniq from 'lodash/uniq';
+import values from 'lodash/values';
 import without from 'lodash/without';
 import zipObject from 'lodash/zipObject';
 
@@ -46,6 +47,7 @@ export {
   sortBy,
   take,
   uniq,
+  values,
   without,
   zipObject,
 };

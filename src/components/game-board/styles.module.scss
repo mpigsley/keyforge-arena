@@ -1,12 +1,12 @@
 @import '~styles/theme';
 
 .container {
+  background-image: linear-gradient(to bottom right, $border, $veryLight);
   height: 100vh;
   width: 100vw;
 }
 
 .gameBoard {
-  background-image: linear-gradient(to bottom right, $border, $veryLight);
   display: grid;
   grid-template-rows: 20% 25% 25% 30%;
   overflow: hidden;

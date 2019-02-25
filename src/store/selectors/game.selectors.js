@@ -5,7 +5,6 @@ import {
   getDecks,
   getGames,
   getSelectedGame,
-  getInitializedGame,
   getCardImages,
   getCardModal,
 } from 'store/selectors/base.selectors';
@@ -31,11 +30,6 @@ export const gameDecks = createSelector(
 export const hasLoadedGameDecks = createSelector(
   [gameDecks],
   decks => size(decks) === 2 && every(Object.values(decks)),
-);
-
-export const hasGameLoaded = createSelector(
-  [getSelectedGame, getInitializedGame],
-  (selected, initialized) => !!initialized && selected === initialized,
 );
 
 const cardIdsToObjects = (cardIds, cardImages) =>

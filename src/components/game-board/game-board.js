@@ -18,23 +18,16 @@ import { UserGameState } from 'constants/types';
 import { find } from 'constants/lodash';
 import styles from './styles.module.scss';
 
-export default function GameBoard({ hasLoaded, gameStart, gameState }) {
+export default function GameBoard({ isInitialized, gameStart, gameState }) {
   const isConstrained = useDimensionConstraints(650, 550);
   const playerState = find(gameState.state, { isOpponent: false }) || {};
   const opponentState = find(gameState.state, { isOpponent: true }) || {};
-  // let initialCardModal;
-  // if (every(gameState.state, { turn: 0 }) && gameState.turn) {
-  //   initialCardModal =
-  //     gameState.turn === playerState.key
-  //       ? CARD_MODAL_VIEWTYPE.STARTING_HAND_FIRST.key
-  //       : CARD_MODAL_VIEWTYPE.STARTING_HAND_SECOND.key;
-  // }
 
-  if (!hasLoaded || isConstrained) {
+  if (!isInitialized || isConstrained) {
     let content = (
       <Header className={styles.header}>Increase Window Size</Header>
     );
-    if (!hasLoaded) {
+    if (!isInitialized) {
       content = (
         <>
           <Header>Loading Game</Header>
@@ -111,7 +104,7 @@ export default function GameBoard({ hasLoaded, gameStart, gameState }) {
 }
 
 GameBoard.propTypes = {
-  hasLoaded: PropTypes.bool.isRequired,
+  isInitialized: PropTypes.bool.isRequired,
   gameStart: PropTypes.instanceOf(Date),
   gameState: PropTypes.shape({
     state: PropTypes.arrayOf(UserGameState),

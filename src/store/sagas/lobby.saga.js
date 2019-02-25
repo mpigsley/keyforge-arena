@@ -9,11 +9,13 @@ import {
 } from 'redux-saga/effects';
 import { toastr } from 'react-redux-toastr';
 import { eventChannel } from 'redux-saga';
+import { push } from 'connected-react-router';
 
 import {
+  cancelLobby,
+  cancelLobbies,
   lobbyListener,
   createChallengeLobby,
-  cancelLobby,
 } from 'store/api/lobby.api';
 import { createGame } from 'store/api/game.api';
 import {
@@ -23,11 +25,14 @@ import {
   ACCEPT_CHALLENGE,
 } from 'store/actions/lobby.actions';
 import { LOGGED_IN, SIGNED_OUT } from 'store/actions/user.actions';
-import { getUserId, getCurrentLobby } from 'store/selectors/base.selectors';
+import {
+  getUserId,
+  getLobbies,
+  getCurrentLobby,
+} from 'store/selectors/base.selectors';
 import { activeDeckId } from 'store/selectors/deck.selectors';
 import { createAction } from 'utils/store';
-import { find, includes } from 'constants/lodash';
-import { push } from 'connected-react-router';
+import { keys, find, without } from 'constants/lodash';
 
 const createLobbyListener = uid =>
   eventChannel(emit => {
@@ -40,20 +45,26 @@ function* lobbyHandler(channel, uid) {
     const { update, deleted } = yield take(channel);
     const currentLobby = yield select(getCurrentLobby);
     yield put(createAction(LOBBIES_UPDATED.SUCCESS, { update, deleted }));
-    if (find(update, ({ creator }) => creator !== uid)) {
+    if (find(update, ({ creator, game }) => creator !== uid && !game)) {
       yield call(
         toastr.info,
         "You've Been Challenged!",
         'Accept it now on your dashboard.',
       );
     }
-    if (currentLobby && includes(deleted, currentLobby)) {
-      yield call(
-        toastr.warning,
-        'Challenge Cancelled',
-        'You or your opponent has cancelled the challenge.',
-      );
+    const gameId = (update[currentLobby] || {}).game;
+    if (gameId) {
+      yield put(createAction(ACCEPT_CHALLENGE.SUCCESS, { gameId }));
+      const lobbies = yield select(getLobbies);
+      yield call(cancelLobbies, without(keys(lobbies), currentLobby));
     }
+    // if (currentLobby && includes(deleted, currentLobby)) {
+    //   yield call(
+    //     toastr.warning,
+    //     'Challenge Cancelled',
+    //     'You or your opponent has cancelled the challenge.',
+    //   );
+    // }
   }
 }
 
@@ -102,7 +113,6 @@ function* createGameFlow({ challenge }) {
     const deck = yield select(activeDeckId);
     const gameId = yield call(createGame, challenge, deck);
     yield put(createAction(ACCEPT_CHALLENGE.SUCCESS, { gameId }));
-    yield put(push(`/game/${gameId}`));
   } catch (error) {
     yield put(createAction(ACCEPT_CHALLENGE.ERROR, { error: error.message }));
   }

@@ -12,14 +12,15 @@ import { eventChannel } from 'redux-saga';
 
 import {
   getDecks,
+  getUserId,
   getPathname,
   getCardModal,
   getSelectedGame,
+  getIsGameInitialized,
   getIsDecksInitialized,
 } from 'store/selectors/base.selectors';
 import {
   hasLoadedGameDecks,
-  hasGameLoaded,
   gameDecks,
   gameState,
 } from 'store/selectors/game.selectors';
@@ -28,47 +29,56 @@ import {
   fetchDeck,
 } from 'store/actions/deck.actions';
 import { LOGGED_IN, SIGNED_OUT } from 'store/actions/user.actions';
+import { ACCEPT_CHALLENGE } from 'store/actions/lobby.actions';
 import {
   fetchCardImages,
   FETCHED_CARD_LINKS,
 } from 'store/actions/image.actions';
 import {
-  GAMES_UPDATED,
+  GAME_UPDATED,
   GAME_INITIALIZED,
   CARD_MODAL_UPDATED,
   GAME_ACTION_HANDLED,
 } from 'store/actions/game.actions';
 import {
+  getGame,
   gameListener,
   handleGameAction as callHandleGameAction,
 } from 'store/api/game.api';
 
 import { createAction } from 'utils/store';
-import { size, map, some, find } from 'constants/lodash';
+import { size, map, some, find, values } from 'constants/lodash';
 import CARD_MODAL_TYPE from 'constants/card-modal-types';
 
-const createGameListener = uid =>
+function* existingGames() {
+  const selected = yield select(getSelectedGame);
+  if (selected) {
+    const game = yield call(getGame, selected);
+    if (game) {
+      yield put(createAction(ACCEPT_CHALLENGE.SUCCESS, { gameId: selected }));
+    } else {
+      yield put(push('/dashboard'));
+    }
+  }
+  // TODO: check for resent games, modal for re-join, finalized old games
+}
+
+const createGameListener = (gameId, userId) =>
   eventChannel(emit => {
-    const unsubscribe = gameListener(uid, emit);
+    const unsubscribe = gameListener(gameId, userId, emit);
     return () => unsubscribe();
   });
 
 function* gameUpdateHandler(channel) {
   while (true) {
-    const { update, deleted, personal } = yield take(channel);
-    yield put(
-      createAction(GAMES_UPDATED.SUCCESS, { update, deleted, personal }),
-    );
+    const update = yield take(channel);
+    yield put(createAction(GAME_UPDATED.SUCCESS, update));
 
-    const pathname = yield select(getPathname);
-    const isInitialized = yield select(hasGameLoaded);
-    if (some(deleted, key => pathname.includes(key))) {
-      yield put(push('/dashboard'));
-    } else if (size(update) && !isInitialized) {
-      // Initializing new game
-      const key = Object.keys(update)[0];
-      if (!pathname.includes(key)) {
-        yield put(push(`/game/${key}`));
+    const isInitialized = yield select(getIsGameInitialized);
+    if (!isInitialized) {
+      const pathname = yield select(getPathname);
+      if (!pathname.includes(update.gameId)) {
+        yield put(push(`/game/${update.gameId}`));
       }
 
       const isDecksInitialized = yield select(getIsDecksInitialized);
@@ -77,7 +87,7 @@ function* gameUpdateHandler(channel) {
       }
 
       const decks = yield select(getDecks);
-      const unknownDecks = Object.values(update[key].state)
+      const unknownDecks = values(update.game.state)
         .map(state => state.deck)
         .filter(deck => !decks[deck]);
       if (unknownDecks.length) {
@@ -103,18 +113,19 @@ function* gameUpdateHandler(channel) {
         imageFetches += 1;
       }
 
-      yield put(createAction(GAME_INITIALIZED, { key }));
+      yield put(createAction(GAME_INITIALIZED));
     }
   }
 }
 
 let gameChannel;
-function* gameUpdateFlow({ user }) {
+function* gameUpdateFlow({ gameId }) {
   try {
-    gameChannel = yield call(createGameListener, user.uid);
+    const userId = yield select(getUserId);
+    gameChannel = yield call(createGameListener, gameId, userId);
     yield spawn(gameUpdateHandler, gameChannel);
   } catch (error) {
-    yield put(createAction(GAMES_UPDATED.ERROR, { error: error.message }));
+    yield put(createAction(GAME_UPDATED.ERROR, { error: error.message }));
   }
 }
 
@@ -140,7 +151,7 @@ function* gameSequence() {
     if (currentKey !== modalKey) {
       yield put(createAction(CARD_MODAL_UPDATED, { key: modalKey }));
     }
-    yield take(GAMES_UPDATED.SUCCESS);
+    yield take(GAME_UPDATED.SUCCESS);
     currentState = yield select(gameState);
   }
 
@@ -163,7 +174,8 @@ function* handleGameAction({ action, metadata }) {
 
 export default function*() {
   yield all([
-    takeEvery(LOGGED_IN.SUCCESS, gameUpdateFlow),
+    takeEvery(LOGGED_IN.SUCCESS, existingGames),
+    takeEvery(ACCEPT_CHALLENGE.SUCCESS, gameUpdateFlow),
     takeEvery(SIGNED_OUT.SUCCESS, closeGameChannel),
     takeEvery(GAME_INITIALIZED, gameSequence),
     takeEvery(GAME_ACTION_HANDLED.PENDING, handleGameAction),
