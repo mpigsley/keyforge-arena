@@ -20,9 +20,10 @@ import {
   getIsDecksInitialized,
 } from 'store/selectors/base.selectors';
 import {
-  hasLoadedGameDecks,
   gameDecks,
   gameState,
+  isGameFinished,
+  hasLoadedGameDecks,
 } from 'store/selectors/game.selectors';
 import {
   UPDATED as UPDATED_DECKS,
@@ -50,7 +51,7 @@ import { createAction } from 'utils/store';
 import { size, map, some, find, values } from 'constants/lodash';
 import CARD_MODAL_TYPE from 'constants/card-modal-types';
 
-function* existingGames() {
+function* checkExistingGames() {
   const selected = yield select(getSelectedGame);
   if (selected) {
     const game = yield call(getGame, selected);
@@ -135,7 +136,7 @@ const closeGameChannel = () => {
   }
 };
 
-function* gameSequence() {
+function* preGameSequence() {
   let currentState = yield select(gameState);
   while (some(currentState.state, { turn: 0 })) {
     const playerState = find(currentState.state, { isOpponent: false });
@@ -160,6 +161,20 @@ function* gameSequence() {
   }
 }
 
+function postGameSequence() {}
+
+function* gameSequence() {
+  yield call(preGameSequence);
+
+  let isFinished = yield select(isGameFinished);
+  while (!isFinished) {
+    // Loooooop
+    isFinished = yield select(isGameFinished);
+  }
+
+  yield call(postGameSequence);
+}
+
 function* handleGameAction({ action, metadata }) {
   try {
     const selectedGame = yield select(getSelectedGame);
@@ -174,7 +189,7 @@ function* handleGameAction({ action, metadata }) {
 
 export default function*() {
   yield all([
-    takeEvery(LOGGED_IN.SUCCESS, existingGames),
+    takeEvery(LOGGED_IN.SUCCESS, checkExistingGames),
     takeEvery(ACCEPT_CHALLENGE.SUCCESS, gameUpdateFlow),
     takeEvery(SIGNED_OUT.SUCCESS, closeGameChannel),
     takeEvery(GAME_INITIALIZED, gameSequence),

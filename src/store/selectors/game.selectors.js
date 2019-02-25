@@ -21,6 +21,11 @@ export const selectedGameStart = createSelector(
   game => (game ? game.created.toDate() : undefined),
 );
 
+export const isGameFinished = createSelector(
+  [selectedGame],
+  game => !!(game || {}).isFinished,
+);
+
 export const gameDecks = createSelector(
   [selectedGame, getDecks],
   (game, decks) =>
