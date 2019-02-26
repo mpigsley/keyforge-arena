@@ -11,11 +11,14 @@ import Hand from 'components/game-board/hand';
 import GameState from 'components/game-board/game-state';
 import FlexContainer from 'primitives/flex-container';
 import Spinner from 'primitives/spinner';
+import Button from 'primitives/button';
 import Header from 'primitives/header';
 
 import { useDimensionConstraints } from 'utils/effects';
 import { UserGameState } from 'constants/types';
 import { find } from 'constants/lodash';
+import { VERTICAL_PADDING, HORIZONTAL_PADDING } from 'constants/game-board';
+
 import styles from './styles.module.scss';
 
 export default function GameBoard({ isInitialized, gameStart, gameState }) {
@@ -91,11 +94,19 @@ export default function GameBoard({ isInitialized, gameStart, gameState }) {
             keyCost={playerState.keyCost}
             houses={opponentState.houses}
           />
-          <Hand cards={playerState.hand} />
+          <Hand className={styles.hand} cards={playerState.hand} />
           <Artifacts
             className={styles.rightSide}
             artifacts={playerState.artifacts}
           />
+          <FlexContainer
+            justify="flexEnd"
+            style={{ padding: `${VERTICAL_PADDING}px ${HORIZONTAL_PADDING}px` }}
+          >
+            <Button primary className={styles.actionBtn}>
+              End Turn
+            </Button>
+          </FlexContainer>
         </div>
       </div>
       <CardModal />

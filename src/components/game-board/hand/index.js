@@ -1,22 +1,28 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import FlexContainer from 'primitives/flex-container';
 
-import { CARD_RATIO, ZOOMED_WIDTH, MAX_CARD_WIDTH } from 'constants/game-board';
+import {
+  CARD_RATIO,
+  ZOOMED_WIDTH,
+  MAX_CARD_WIDTH,
+  VERTICAL_PADDING,
+  ACTION_BUTTON_ROW_HEIGHT,
+} from 'constants/game-board';
 import { useDimensions } from 'utils/effects';
 import { CardsType } from 'constants/types';
 import styles from './styles.module.scss';
 
-const EXTRA_PADDING = 10;
 const DEFAULT_OVERLAP = MAX_CARD_WIDTH * 0.6;
 
-export default function Hand({ cards }) {
+export default function Hand({ className, cards }) {
   const [hovered, setHovered] = useState();
   const { width, height } = useDimensions();
 
   const handWidth = width * (3 / 7);
-  const handHeight = height * 0.18;
+  const handHeight = (height * (3 / 10) + ACTION_BUTTON_ROW_HEIGHT) / 2;
   const containerWidth = Math.min(
     handWidth,
     Math.max(0, (cards.length - 1) * DEFAULT_OVERLAP + MAX_CARD_WIDTH),
@@ -29,10 +35,10 @@ export default function Hand({ cards }) {
 
   const scaleDiff = (ZOOMED_WIDTH - MAX_CARD_WIDTH) / (CARD_RATIO * 2);
   const offset =
-    MAX_CARD_WIDTH / CARD_RATIO + scaleDiff + EXTRA_PADDING - handHeight;
+    MAX_CARD_WIDTH / CARD_RATIO + scaleDiff + VERTICAL_PADDING / 2 - handHeight;
 
   return (
-    <FlexContainer justify="center">
+    <FlexContainer justify="center" className={className}>
       <div
         className={styles.relativeContainer}
         style={{ width: containerWidth }}
@@ -78,6 +84,7 @@ export default function Hand({ cards }) {
 }
 
 Hand.propTypes = {
+  className: PropTypes.string.isRequired,
   cards: CardsType.isRequired,
 };
 

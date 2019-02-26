@@ -6,9 +6,10 @@ import FlexContainer from 'primitives/flex-container';
 import {
   CARD_RATIO,
   ZOOMED_WIDTH,
-  HORIZONTAL_PADDING,
   VERTICAL_PADDING,
+  HORIZONTAL_PADDING,
   MAX_MINOR_CARD_WIDTH,
+  ACTION_BUTTON_ROW_HEIGHT,
 } from 'constants/game-board';
 import { CardsType } from 'constants/types';
 import { useDimensions } from 'utils/effects';
@@ -17,7 +18,9 @@ import styles from './styles.module.scss';
 
 export default function Artifacts({ className, artifacts, isOpponent }) {
   const { height, width } = useDimensions();
-  const innerHeight = height * (isOpponent ? 0.2 : 0.3) - VERTICAL_PADDING * 2;
+  const innerHeight =
+    (isOpponent ? height * 0.2 : height * 0.3 - ACTION_BUTTON_ROW_HEIGHT) -
+    VERTICAL_PADDING * 2;
   const innerWidth = width * (2 / 7) - HORIZONTAL_PADDING * 2;
 
   const cardWidth = Math.min(

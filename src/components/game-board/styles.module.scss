@@ -23,13 +23,17 @@
 .side {
   display: grid;
   grid-auto-flow: column;
-  grid-template-areas: 'left keys right' 'left hand right';
+  grid-template-areas: 'left keys right' 'left hand right' 'left hand actions';
   grid-template-columns: 2fr 3fr 2fr;
-  grid-template-rows: 2fr 3fr;
+  grid-template-rows: 1fr 1fr 54px;
 }
 
 .leftSide {
   grid-area: left;
+}
+
+.hand {
+  grid-area: hand;
 }
 
 .rightSide {
@@ -38,4 +42,8 @@
 
 .header {
   text-align: center;
+}
+
+.actionBtn {
+  margin: 0;
 }
