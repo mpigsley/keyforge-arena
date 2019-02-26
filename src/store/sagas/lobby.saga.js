@@ -32,7 +32,7 @@ import {
 } from 'store/selectors/base.selectors';
 import { activeDeckId } from 'store/selectors/deck.selectors';
 import { createAction } from 'utils/store';
-import { keys, find, without } from 'constants/lodash';
+import { keys, find } from 'constants/lodash';
 
 const createLobbyListener = uid =>
   eventChannel(emit => {
@@ -56,7 +56,7 @@ function* lobbyHandler(channel, uid) {
     if (gameId) {
       yield put(createAction(ACCEPT_CHALLENGE.SUCCESS, { gameId }));
       const lobbies = yield select(getLobbies);
-      yield call(cancelLobbies, without(keys(lobbies), currentLobby));
+      yield call(cancelLobbies, keys(lobbies));
     }
     // if (currentLobby && includes(deleted, currentLobby)) {
     //   yield call(

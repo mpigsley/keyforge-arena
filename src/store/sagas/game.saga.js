@@ -16,13 +16,11 @@ import {
   getPathname,
   getCardModal,
   getSelectedGame,
-  getIsGameInitialized,
   getIsDecksInitialized,
 } from 'store/selectors/base.selectors';
 import {
   gameDecks,
   gameState,
-  isGameFinished,
   hasLoadedGameDecks,
 } from 'store/selectors/game.selectors';
 import {
@@ -54,7 +52,8 @@ import CARD_MODAL_TYPE from 'constants/card-modal-types';
 function* checkExistingGames() {
   const selected = yield select(getSelectedGame);
   if (selected) {
-    const game = yield call(getGame, selected);
+    const userId = yield select(getUserId);
+    const game = yield call(getGame, selected, userId);
     if (game) {
       yield put(createAction(ACCEPT_CHALLENGE.SUCCESS, { gameId: selected }));
     } else {
@@ -74,57 +73,56 @@ function* gameUpdateHandler(channel) {
   while (true) {
     const update = yield take(channel);
     yield put(createAction(GAME_UPDATED.SUCCESS, update));
-
-    const isInitialized = yield select(getIsGameInitialized);
-    if (!isInitialized) {
-      const pathname = yield select(getPathname);
-      if (!pathname.includes(update.gameId)) {
-        yield put(push(`/game/${update.gameId}`));
-      }
-
-      const isDecksInitialized = yield select(getIsDecksInitialized);
-      if (!isDecksInitialized) {
-        yield take(UPDATED_DECKS.SUCCESS);
-      }
-
-      const decks = yield select(getDecks);
-      const unknownDecks = values(update.game.state)
-        .map(state => state.deck)
-        .filter(deck => !decks[deck]);
-      if (unknownDecks.length) {
-        yield all(unknownDecks.map(id => put(fetchDeck(id))));
-      }
-
-      let hasAllDecks = false;
-      while (!hasAllDecks) {
-        yield take(UPDATED_DECKS.SUCCESS);
-        hasAllDecks = yield select(hasLoadedGameDecks);
-      }
-
-      const selectedDecks = yield select(gameDecks);
-      yield all(
-        map(selectedDecks, ({ expansion, ...selected }) =>
-          put(fetchCardImages(expansion, selected)),
-        ),
-      );
-
-      let imageFetches = 0;
-      while (imageFetches < size(selectedDecks)) {
-        yield take(FETCHED_CARD_LINKS.SUCCESS);
-        imageFetches += 1;
-      }
-
-      yield put(createAction(GAME_INITIALIZED));
-    }
   }
 }
 
 let gameChannel;
-function* gameUpdateFlow({ gameId }) {
+function* gameInitializationFlow({ gameId }) {
   try {
+    const pathname = yield select(getPathname);
+    if (!pathname.includes(gameId)) {
+      yield put(push(`/game/${gameId}`));
+    }
+
     const userId = yield select(getUserId);
+    const update = yield call(getGame, gameId, userId);
+    yield put(createAction(GAME_UPDATED.SUCCESS, update));
     gameChannel = yield call(createGameListener, gameId, userId);
     yield spawn(gameUpdateHandler, gameChannel);
+
+    const isDecksInitialized = yield select(getIsDecksInitialized);
+    if (!isDecksInitialized) {
+      yield take(UPDATED_DECKS.SUCCESS);
+    }
+
+    const decks = yield select(getDecks);
+    const unknownDecks = values(update.game.state)
+      .map(state => state.deck)
+      .filter(deck => !decks[deck]);
+    if (unknownDecks.length) {
+      yield all(unknownDecks.map(id => put(fetchDeck(id))));
+    }
+
+    let hasAllDecks = false;
+    while (!hasAllDecks) {
+      yield take(UPDATED_DECKS.SUCCESS);
+      hasAllDecks = yield select(hasLoadedGameDecks);
+    }
+
+    const selectedDecks = yield select(gameDecks);
+    yield all(
+      map(selectedDecks, ({ expansion, ...selected }) =>
+        put(fetchCardImages(expansion, selected)),
+      ),
+    );
+
+    let imageFetches = 0;
+    while (imageFetches < size(selectedDecks)) {
+      yield take(FETCHED_CARD_LINKS.SUCCESS);
+      imageFetches += 1;
+    }
+
+    yield put(createAction(GAME_INITIALIZED));
   } catch (error) {
     yield put(createAction(GAME_UPDATED.ERROR, { error: error.message }));
   }
@@ -166,11 +164,11 @@ function postGameSequence() {}
 function* gameSequence() {
   yield call(preGameSequence);
 
-  let isFinished = yield select(isGameFinished);
-  while (!isFinished) {
-    // Loooooop
-    isFinished = yield select(isGameFinished);
-  }
+  // let isFinished = yield select(isGameFinished);
+  // while (!isFinished) {
+  //   // Loooooop
+  //   isFinished = yield select(isGameFinished);
+  // }
 
   yield call(postGameSequence);
 }
@@ -190,7 +188,7 @@ function* handleGameAction({ action, metadata }) {
 export default function*() {
   yield all([
     takeEvery(LOGGED_IN.SUCCESS, checkExistingGames),
-    takeEvery(ACCEPT_CHALLENGE.SUCCESS, gameUpdateFlow),
+    takeEvery(ACCEPT_CHALLENGE.SUCCESS, gameInitializationFlow),
     takeEvery(SIGNED_OUT.SUCCESS, closeGameChannel),
     takeEvery(GAME_INITIALIZED, gameSequence),
     takeEvery(GAME_ACTION_HANDLED.PENDING, handleGameAction),
