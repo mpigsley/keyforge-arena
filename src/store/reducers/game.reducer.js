@@ -5,14 +5,17 @@ import { SIGNED_OUT } from 'store/actions/user.actions';
 import {
   GAME_UPDATED,
   GAME_INITIALIZED,
+  SEQUENCE_UPDATED,
   CARD_MODAL_UPDATED,
 } from 'store/actions/game.actions';
+import GAME_SEQUENCE from 'constants/game-sequence';
 
 const initialState = {
   models: {},
-  selected: null,
+  sequence: undefined,
+  selected: undefined,
   initializedGame: false,
-  cardModal: null,
+  cardModal: undefined,
 };
 
 export default function game(state = initialState, action) {
@@ -26,16 +29,22 @@ export default function game(state = initialState, action) {
         },
       };
     case GAME_INITIALIZED:
-      return { ...state, initializedGame: true };
+      return {
+        ...state,
+        initializedGame: true,
+        sequence: GAME_SEQUENCE.OPPONENT.key,
+      };
     case CARD_MODAL_UPDATED:
       return { ...state, cardModal: action.key };
+    case SEQUENCE_UPDATED:
+      return { ...state, sequence: action.sequence };
     case LOCATION_CHANGE: {
       const { pathname } = action.payload.location;
       const routeMatch = matchPath(pathname, { path: `/game/:id/:rest?` });
       if (routeMatch) {
         return { ...state, selected: routeMatch.params.id };
       }
-      return { ...state, selected: null };
+      return { ...state, selected: undefined };
     }
     case SIGNED_OUT.SUCCESS:
       return initialState;

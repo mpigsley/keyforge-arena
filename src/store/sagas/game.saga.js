@@ -2,6 +2,7 @@ import {
   put,
   all,
   takeEvery,
+  delay,
   spawn,
   call,
   take,
@@ -21,6 +22,7 @@ import {
 import {
   gameDecks,
   gameState,
+  isGameFinished,
   hasLoadedGameDecks,
 } from 'store/selectors/game.selectors';
 import {
@@ -35,7 +37,9 @@ import {
 } from 'store/actions/image.actions';
 import {
   GAME_UPDATED,
+  TURN_COMPLETE,
   GAME_INITIALIZED,
+  SEQUENCE_UPDATED,
   CARD_MODAL_UPDATED,
   GAME_ACTION_HANDLED,
 } from 'store/actions/game.actions';
@@ -46,7 +50,8 @@ import {
 } from 'store/api/game.api';
 
 import { createAction } from 'utils/store';
-import { size, map, some, find, values } from 'constants/lodash';
+import GAME_SEQUENCE from 'constants/game-sequence';
+import { size, map, some, find, values, every } from 'constants/lodash';
 import CARD_MODAL_TYPE from 'constants/card-modal-types';
 
 function* checkExistingGames() {
@@ -161,14 +166,38 @@ function* preGameSequence() {
 
 function postGameSequence() {}
 
+const QUICK_SEQUENCE_TIMEOUT = 200;
 function* gameSequence() {
   yield call(preGameSequence);
 
-  // let isFinished = yield select(isGameFinished);
-  // while (!isFinished) {
-  //   // Loooooop
-  //   isFinished = yield select(isGameFinished);
-  // }
+  const userId = yield select(getUserId);
+  let isFinished = yield select(isGameFinished);
+  while (!isFinished) {
+    const currentState = yield select(gameState);
+    if (currentState.turn !== userId) {
+      yield put(
+        createAction(SEQUENCE_UPDATED, {
+          sequence: GAME_SEQUENCE.OPPONENT.key,
+        }),
+      );
+      yield take(TURN_COMPLETE);
+    }
+
+    if (!every(currentState.state, { turn: 1 })) {
+      yield put(
+        createAction(SEQUENCE_UPDATED, { sequence: GAME_SEQUENCE.FORGE.key }),
+      );
+      call(delay, QUICK_SEQUENCE_TIMEOUT);
+    }
+
+    yield put(
+      createAction(SEQUENCE_UPDATED, { sequence: GAME_SEQUENCE.HOUSE.key }),
+    );
+
+    yield take(TURN_COMPLETE);
+
+    isFinished = yield select(isGameFinished);
+  }
 
   yield call(postGameSequence);
 }

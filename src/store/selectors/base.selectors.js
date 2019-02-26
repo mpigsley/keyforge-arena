@@ -23,6 +23,7 @@ export const getDeckError = state => state.deck.error;
 export const getGames = state => state.game.models;
 export const getCardModal = state => state.game.cardModal;
 export const getSelectedGame = state => state.game.selected;
+export const getGameSequence = state => state.game.sequence;
 export const getIsGameInitialized = state => state.game.initializedGame;
 
 /* Image */

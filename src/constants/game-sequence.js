@@ -1,0 +1,26 @@
+export default {
+  OPPONENT: {
+    key: 'OPPONENT',
+    name: "Opponent's Turn",
+  },
+  FORGE: {
+    key: 'FORGE',
+    name: 'Forge a Key',
+  },
+  HOUSE: {
+    key: 'HOUSE',
+    name: 'Choose a House',
+  },
+  MAIN: {
+    key: 'MAIN',
+    name: 'Play, Discard, & Use House Cards',
+  },
+  READY: {
+    key: 'READY',
+    name: 'Ready Cards',
+  },
+  DRAW: {
+    key: 'DRAW',
+    name: 'Draw Cards',
+  },
+};

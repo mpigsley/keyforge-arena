@@ -32,6 +32,7 @@ $iconSize: 15px;
   fill: $light;
   height: $iconSize;
   margin-right: 0.5rem;
+  transition: fill 0.2s linear;
   width: $iconSize;
 
   &--active {

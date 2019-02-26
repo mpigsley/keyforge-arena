@@ -1,14 +1,16 @@
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { getHouseImages } from 'store/selectors/base.selectors';
-import { turnSequenceText } from 'store/selectors/game.selectors';
+import {
+  getHouseImages,
+  getGameSequence,
+} from 'store/selectors/base.selectors';
 
 import GameState from './game-state';
 
 const mapStateToProps = createStructuredSelector({
+  turnSequence: getGameSequence,
   houseImages: getHouseImages,
-  turnSequenceText,
 });
 
 export default connect(mapStateToProps)(GameState);

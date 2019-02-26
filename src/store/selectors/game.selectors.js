@@ -4,9 +4,9 @@ import {
   getUserId,
   getDecks,
   getGames,
-  getSelectedGame,
   getCardImages,
   getCardModal,
+  getSelectedGame,
 } from 'store/selectors/base.selectors';
 import { find, every, mapValues, size, keys, map } from 'constants/lodash';
 import CARD_MODAL_TYPES from 'constants/card-modal-types';
@@ -97,18 +97,5 @@ export const cardModal = createSelector(
       ...cardModalConfig,
       cards: cardLists[listKey] || [],
     };
-  },
-);
-
-export const turnSequenceText = createSelector(
-  [getUserId, gameState],
-  (userId, game) => {
-    if (game.turn !== userId) {
-      return "Opponent's Turn";
-    }
-    if (!find(game.state, { isOpponent: false }).house) {
-      return 'Choose a House';
-    }
-    return 'Play, Discard, & Use House Cards';
   },
 );

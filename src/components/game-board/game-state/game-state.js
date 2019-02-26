@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import FlexContainer from 'primitives/flex-container';
+import GAME_SEQUENCE from 'constants/game-sequence';
 import { useTimer } from 'utils/effects';
 
 import UnforgedBlue from 'images/unforged-blue.png';
@@ -29,7 +30,7 @@ export default function GameState({
   gameStart,
   isOpponent,
   isChoosingHouse,
-  turnSequenceText,
+  turnSequence,
 }) {
   const [time, setTime] = useState('00:00');
   useTimer(gameStart, setTime, !isOpponent);
@@ -45,13 +46,40 @@ export default function GameState({
     leftSide = (
       <FlexContainer flex="1" direction="column" align="center">
         <div>
-          <ForgeKey className={classNames(styles.turnIcon)} />
-          <ChooseHouse className={classNames(styles.turnIcon)} />
-          <PlayCards className={classNames(styles.turnIcon)} />
-          <Ready className={classNames(styles.turnIcon)} />
-          <DrawCards className={classNames(styles.turnIcon)} />
+          <ForgeKey
+            className={classNames(styles.turnIcon, {
+              [styles['turnIcon--active']]:
+                turnSequence === GAME_SEQUENCE.FORGE.key,
+            })}
+          />
+          <ChooseHouse
+            className={classNames(styles.turnIcon, {
+              [styles['turnIcon--active']]:
+                turnSequence === GAME_SEQUENCE.HOUSE.key,
+            })}
+          />
+          <PlayCards
+            className={classNames(styles.turnIcon, {
+              [styles['turnIcon--active']]:
+                turnSequence === GAME_SEQUENCE.MAIN.key,
+            })}
+          />
+          <Ready
+            className={classNames(styles.turnIcon, {
+              [styles['turnIcon--active']]:
+                turnSequence === GAME_SEQUENCE.READY.key,
+            })}
+          />
+          <DrawCards
+            className={classNames(styles.turnIcon, {
+              [styles['turnIcon--active']]:
+                turnSequence === GAME_SEQUENCE.DRAW.key,
+            })}
+          />
         </div>
-        <span className={styles.turnText}>{turnSequenceText}</span>
+        <span className={styles.turnText}>
+          {GAME_SEQUENCE[turnSequence].name}
+        </span>
       </FlexContainer>
     );
   }
@@ -121,7 +149,7 @@ GameState.propTypes = {
   gameStart: PropTypes.instanceOf(Date),
   isOpponent: PropTypes.bool,
   isChoosingHouse: PropTypes.bool,
-  turnSequenceText: PropTypes.string.isRequired,
+  turnSequence: PropTypes.string.isRequired,
 };
 
 GameState.defaultProps = {
