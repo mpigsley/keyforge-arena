@@ -37,16 +37,11 @@ export const hasLoadedGameDecks = createSelector(
   decks => size(decks) === 2 && every(Object.values(decks)),
 );
 
-const cardIdsToObjects = (cardIds, cardImages) =>
+const cardIdsToObjects = cardIds =>
   cardIds
     .map(id => {
       const [expansion, house, card] = id.split('-');
-      return {
-        card,
-        expansion,
-        house,
-        image: cardImages[`${expansion}-${card}`],
-      };
+      return { card, expansion, house };
     })
     .filter(card => card.image);
 

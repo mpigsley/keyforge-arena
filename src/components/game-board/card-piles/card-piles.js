@@ -4,6 +4,7 @@ import classNames from 'classnames';
 
 import FlexContainer from 'primitives/flex-container';
 import CardBack from 'primitives/card-back';
+import Card from 'components/card';
 
 import {
   CARD_RATIO,
@@ -132,9 +133,13 @@ export default function CardPiles({
     </FlexContainer>
   );
   if (discarded.length) {
-    const lastCard = discarded[discarded.length - 1];
+    const { expansion, card } = discarded[discarded.length - 1];
     discardElement = (
-      <img
+      <Card
+        expansion={expansion}
+        card={card}
+        className={styles.discardPile}
+        style={sizeStyle}
         onClick={() =>
           updateCardModal(
             isOpponent
@@ -142,10 +147,6 @@ export default function CardPiles({
               : CARD_MODAL_TYPES.DISCARD_PILE.key,
           )
         }
-        className={styles.discardPile}
-        alt={lastCard.card}
-        src={lastCard.image.link}
-        style={sizeStyle}
       />
     );
   }

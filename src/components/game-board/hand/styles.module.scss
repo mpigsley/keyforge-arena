@@ -1,3 +1,5 @@
+@import '~styles/theme';
+
 .relativeContainer {
   position: relative;
   user-select: none;
@@ -5,11 +7,12 @@
 }
 
 .card {
-  padding-bottom: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
   position: absolute;
   top: 0;
   width: 130px;
-  transition: transform 0.2s ease-in-out;
+
   z-index: 0;
 
   &--hovered {

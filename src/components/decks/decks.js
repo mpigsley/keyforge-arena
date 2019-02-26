@@ -5,7 +5,7 @@ import Navigation from 'components/navigation';
 import DeckDetails from 'components/decks/deck-details';
 import DeckSearch from 'components/decks/deck-search';
 import DeckList from 'components/decks/deck-list';
-import CardTooltip from 'components/decks/card-tooltip';
+import CardTooltip from 'primitives/card-tooltip';
 import AddDeckModal from 'components/decks/add-deck-modal';
 
 import { size, sortBy, map } from 'constants/lodash';

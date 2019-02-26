@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import FlexContainer from 'primitives/flex-container';
+import Card from 'components/card';
 
 import {
   CARD_RATIO,
@@ -11,6 +12,7 @@ import {
 } from 'constants/game-board';
 import { useDimensions } from 'utils/effects';
 import { CardsType } from 'constants/types';
+
 import styles from './styles.module.scss';
 
 const CARD_PADDING = 10;
@@ -47,7 +49,7 @@ export default function Battleline({ cards, isOpponent }) {
       style={{ padding: `${VERTICAL_PADDING}px ${HORIZONTAL_PADDING}px` }}
     >
       <FlexContainer justify="center">
-        {cards.map(({ image, house, card }, i) => (
+        {cards.map(({ expansion, card }, i) => (
           <div
             key={`${card}-${i}` /* eslint-disable-line */}
             className={styles.imgContainer}
@@ -58,9 +60,9 @@ export default function Battleline({ cards, isOpponent }) {
                 i !== cards.length - 1 ? `${CARD_PADDING / 2}px` : 0,
             }}
           >
-            <img
-              src={image.link}
-              alt={`${house}-${card}`}
+            <Card
+              expansion={expansion}
+              card={card}
               className={styles.card}
               onMouseEnter={e => {
                 const offset = (ZOOMED_WIDTH - scaledWidth) / (zoomScale * 2);

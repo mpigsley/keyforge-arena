@@ -5,6 +5,7 @@ import ReactModal from 'react-modal';
 import FlexContainer from 'primitives/flex-container';
 import FullModal from 'primitives/full-modal';
 import Button from 'primitives/button';
+import Card from 'components/card';
 
 import { ZOOMED_WIDTH, CARD_RATIO } from 'constants/game-board';
 import { CardsType } from 'constants/types';
@@ -32,7 +33,7 @@ export default function CardModal({
         className={styles.container}
       >
         <FlexContainer className={styles.cardContainer}>
-          {reverse(cards).map(({ card, image, house }, i) => (
+          {reverse(cards).map(({ card, expansion }, i) => (
             <FlexContainer
               className={styles.card}
               direction="column"
@@ -46,13 +47,13 @@ export default function CardModal({
               {isStack && i === cards.length - 1 && cards.length > 1 && (
                 <span className={styles.directionText}>Bottom</span>
               )}
-              <img
+              <Card
+                expansion={expansion}
+                card={card}
                 style={{
                   width: ZOOMED_WIDTH,
                   height: ZOOMED_WIDTH / CARD_RATIO,
                 }}
-                src={image.link}
-                alt={`${house}-${card}`}
               />
             </FlexContainer>
           ))}

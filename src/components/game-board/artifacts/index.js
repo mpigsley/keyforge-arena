@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import FlexContainer from 'primitives/flex-container';
+import Card from 'components/card';
 
 import {
   CARD_RATIO,
@@ -42,12 +43,12 @@ export default function Artifacts({ className, artifacts, isOpponent }) {
       justify="flexEnd"
       style={{ padding: `${VERTICAL_PADDING}px ${HORIZONTAL_PADDING}px` }}
     >
-      {artifacts.map(({ card, image }, i) => (
-        <img
+      {artifacts.map(({ expansion, card }, i) => (
+        <Card
           key={`${card}-${i}` /* eslint-disable-line */}
           className={styles.artifact}
-          alt={card}
-          src={image.link}
+          expansion={expansion}
+          card={card}
           style={{
             height: cardHeight,
             width: modifiedCardWidth,

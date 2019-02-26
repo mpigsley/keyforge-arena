@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import FlexContainer from 'primitives/flex-container';
+import Card from 'components/card';
 
 import {
   CARD_RATIO,
@@ -18,7 +19,7 @@ import styles from './styles.module.scss';
 
 const DEFAULT_OVERLAP = MAX_CARD_WIDTH * 0.6;
 
-export default function Hand({ turnSequence, className, cards }) {
+export default function Hand({ turnSequence, className, cards, playerHouse }) {
   const [hovered, setHovered] = useState();
   const { width, height } = useDimensions();
 
@@ -54,12 +55,15 @@ export default function Hand({ turnSequence, className, cards }) {
           e.preventDefault();
         }}
       >
-        {cards.map(({ image, expansion, house, card }, i) => (
-          <img
-            draggable={turnSequence === GAME_SEQUENCE.MAIN.key}
+        {cards.map(({ expansion, house, card }, i) => (
+          <Card
+            expansion={expansion}
+            card={card}
+            active={house === playerHouse}
+            draggable={
+              turnSequence === GAME_SEQUENCE.MAIN.key && house === playerHouse
+            }
             key={`${card}-${i}` /* eslint-disable-line */}
-            src={image.link}
-            alt={`${house}-${card}`}
             className={classNames(styles.card, {
               [styles['card--hovered']]: i === hovered,
             })}
@@ -88,4 +92,5 @@ Hand.propTypes = {
   turnSequence: PropTypes.string.isRequired,
   className: PropTypes.string.isRequired,
   cards: CardsType.isRequired,
+  playerHouse: PropTypes.string.isRequired,
 };
