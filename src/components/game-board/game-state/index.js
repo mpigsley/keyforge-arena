@@ -5,6 +5,7 @@ import {
   getHouseImages,
   getGameSequence,
 } from 'store/selectors/base.selectors';
+import { chooseHouse } from 'store/actions/game.actions';
 
 import GameState from './game-state';
 
@@ -13,4 +14,7 @@ const mapStateToProps = createStructuredSelector({
   houseImages: getHouseImages,
 });
 
-export default connect(mapStateToProps)(GameState);
+export default connect(
+  mapStateToProps,
+  { chooseHouse },
+)(GameState);

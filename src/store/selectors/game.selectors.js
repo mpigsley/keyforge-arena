@@ -78,6 +78,11 @@ export const gameState = createSelector(
   },
 );
 
+export const opponentTurn = createSelector(
+  [gameState, getUserId],
+  (state, userId) => state.turn !== userId,
+);
+
 export const cardModal = createSelector(
   [gameState, getCardModal],
   (game, cardModalKey) => {

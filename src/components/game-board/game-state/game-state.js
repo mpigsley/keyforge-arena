@@ -29,8 +29,8 @@ export default function GameState({
   houseImages,
   gameStart,
   isOpponent,
-  isChoosingHouse,
   turnSequence,
+  chooseHouse,
 }) {
   const [time, setTime] = useState('00:00');
   useTimer(gameStart, setTime, !isOpponent);
@@ -85,7 +85,7 @@ export default function GameState({
   }
 
   let center;
-  if (!isOpponent && isChoosingHouse) {
+  if (!isOpponent && turnSequence === GAME_SEQUENCE.HOUSE.key) {
     center = (
       <FlexContainer align="center" className={styles.secondRow}>
         <div>
@@ -93,6 +93,7 @@ export default function GameState({
             <img
               key={house}
               src={houseImages[house].link}
+              onClick={() => chooseHouse(house)}
               className={styles.house}
               alt={house}
             />
@@ -148,13 +149,12 @@ GameState.propTypes = {
   houseImages: PropTypes.shape().isRequired,
   gameStart: PropTypes.instanceOf(Date),
   isOpponent: PropTypes.bool,
-  isChoosingHouse: PropTypes.bool,
   turnSequence: PropTypes.string.isRequired,
+  chooseHouse: PropTypes.func.isRequired,
 };
 
 GameState.defaultProps = {
   turn: undefined,
   gameStart: undefined,
   isOpponent: false,
-  isChoosingHouse: false,
 };

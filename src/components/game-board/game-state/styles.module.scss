@@ -12,6 +12,16 @@ $keySize: 45px;
   }
 }
 
+.house {
+  border-radius: 50%;
+  cursor: pointer;
+  transition: box-shadow 0.1s linear;
+
+  &:hover {
+    box-shadow: 0px 0px 15px 0px $medium;
+  }
+}
+
 .left,
 .aember {
   color: $medium;
@@ -47,6 +57,8 @@ $iconSize: 15px;
 .turnText {
   color: $medium;
   font-size: 0.8rem;
+  margin: 0 0.2rem;
+  text-align: center;
 }
 
 .actionBtn {

@@ -17,11 +17,13 @@ import {
   getPathname,
   getCardModal,
   getSelectedGame,
+  getGameSequence,
   getIsDecksInitialized,
 } from 'store/selectors/base.selectors';
 import {
   gameDecks,
   gameState,
+  opponentTurn,
   isGameFinished,
   hasLoadedGameDecks,
 } from 'store/selectors/game.selectors';
@@ -38,10 +40,11 @@ import {
 import {
   GAME_UPDATED,
   TURN_COMPLETE,
+  HOUSE_CHANGED,
   GAME_INITIALIZED,
-  SEQUENCE_UPDATED,
   CARD_MODAL_UPDATED,
   GAME_ACTION_HANDLED,
+  updateSequence,
 } from 'store/actions/game.actions';
 import {
   getGame,
@@ -166,35 +169,36 @@ function* preGameSequence() {
 
 function postGameSequence() {}
 
-const QUICK_SEQUENCE_TIMEOUT = 200;
+const QUICK_SEQUENCE_TIMEOUT = 750;
 function* gameSequence() {
   yield call(preGameSequence);
 
-  const userId = yield select(getUserId);
   let isFinished = yield select(isGameFinished);
   while (!isFinished) {
-    const currentState = yield select(gameState);
-    if (currentState.turn !== userId) {
-      yield put(
-        createAction(SEQUENCE_UPDATED, {
-          sequence: GAME_SEQUENCE.OPPONENT.key,
-        }),
-      );
-      yield take(TURN_COMPLETE);
+    while (yield select(opponentTurn)) {
+      const currentGameSequence = yield select(getGameSequence);
+      if (currentGameSequence !== GAME_SEQUENCE.OPPONENT.key) {
+        yield put(updateSequence(GAME_SEQUENCE.OPPONENT.key));
+      }
+      yield take(GAME_UPDATED.SUCCESS);
     }
 
-    if (!every(currentState.state, { turn: 1 })) {
-      yield put(
-        createAction(SEQUENCE_UPDATED, { sequence: GAME_SEQUENCE.FORGE.key }),
-      );
-      call(delay, QUICK_SEQUENCE_TIMEOUT);
+    if (!every(yield select(gameState).state, { turn: 1 })) {
+      yield put(updateSequence(GAME_SEQUENCE.FORGE.key));
+      yield delay(QUICK_SEQUENCE_TIMEOUT);
     }
 
-    yield put(
-      createAction(SEQUENCE_UPDATED, { sequence: GAME_SEQUENCE.HOUSE.key }),
-    );
+    yield put(updateSequence(GAME_SEQUENCE.HOUSE.key));
+    yield take(HOUSE_CHANGED);
 
+    yield put(updateSequence(GAME_SEQUENCE.MAIN.key));
     yield take(TURN_COMPLETE);
+
+    yield put(updateSequence(GAME_SEQUENCE.READY.key));
+    yield delay(QUICK_SEQUENCE_TIMEOUT);
+
+    yield put(updateSequence(GAME_SEQUENCE.DRAW.key));
+    yield delay(QUICK_SEQUENCE_TIMEOUT);
 
     isFinished = yield select(isGameFinished);
   }

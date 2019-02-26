@@ -18,10 +18,17 @@ import { useDimensionConstraints } from 'utils/effects';
 import { UserGameState } from 'constants/types';
 import { find } from 'constants/lodash';
 import { VERTICAL_PADDING, HORIZONTAL_PADDING } from 'constants/game-board';
+import GAME_SEQUENCE from 'constants/game-sequence';
 
 import styles from './styles.module.scss';
 
-export default function GameBoard({ isInitialized, gameStart, gameState }) {
+export default function GameBoard({
+  isInitialized,
+  gameStart,
+  gameState,
+  turnSequence,
+  endTurn,
+}) {
   const isConstrained = useDimensionConstraints(650, 550);
   const playerState = find(gameState.state, { isOpponent: false }) || {};
   const opponentState = find(gameState.state, { isOpponent: true }) || {};
@@ -92,7 +99,7 @@ export default function GameBoard({ isInitialized, gameStart, gameState }) {
             numKeys={playerState.keys}
             numAember={playerState.aember}
             keyCost={playerState.keyCost}
-            houses={opponentState.houses}
+            houses={playerState.houses}
           />
           <Hand className={styles.hand} cards={playerState.hand} />
           <Artifacts
@@ -103,7 +110,12 @@ export default function GameBoard({ isInitialized, gameStart, gameState }) {
             justify="flexEnd"
             style={{ padding: `${VERTICAL_PADDING}px ${HORIZONTAL_PADDING}px` }}
           >
-            <Button primary className={styles.actionBtn}>
+            <Button
+              primary
+              disabled={turnSequence !== GAME_SEQUENCE.MAIN.key}
+              onClick={endTurn}
+              className={styles.actionBtn}
+            >
               End Turn
             </Button>
           </FlexContainer>
@@ -116,6 +128,8 @@ export default function GameBoard({ isInitialized, gameStart, gameState }) {
 
 GameBoard.propTypes = {
   isInitialized: PropTypes.bool.isRequired,
+  turnSequence: PropTypes.string,
+  endTurn: PropTypes.func.isRequired,
   gameStart: PropTypes.instanceOf(Date),
   gameState: PropTypes.shape({
     state: PropTypes.arrayOf(UserGameState),
@@ -124,6 +138,7 @@ GameBoard.propTypes = {
 };
 
 GameBoard.defaultProps = {
+  turnSequence: GAME_SEQUENCE.OPPONENT.key,
   gameStart: undefined,
   gameState: {},
 };
