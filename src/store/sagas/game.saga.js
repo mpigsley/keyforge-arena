@@ -23,6 +23,7 @@ import {
 import {
   gameDecks,
   gameState,
+  playerHouse,
   opponentTurn,
   isGameFinished,
   hasLoadedGameDecks,
@@ -45,6 +46,7 @@ import {
   CARD_MODAL_UPDATED,
   GAME_ACTION_HANDLED,
   updateSequence,
+  handleGameAction,
 } from 'store/actions/game.actions';
 import {
   getGame,
@@ -53,9 +55,10 @@ import {
 } from 'store/api/game.api';
 
 import { createAction } from 'utils/store';
-import GAME_SEQUENCE from 'constants/game-sequence';
+import GAME_SEQUENCE from 'constants/game-sequence.json';
 import { size, map, some, find, values, every } from 'constants/lodash';
 import CARD_MODAL_TYPE from 'constants/card-modal-types';
+import GAME_ACTION_TYPES from 'constants/game-action-types.json';
 
 function* checkExistingGames() {
   const selected = yield select(getSelectedGame);
@@ -188,8 +191,12 @@ function* gameSequence() {
       yield delay(QUICK_SEQUENCE_TIMEOUT);
     }
 
-    yield put(updateSequence(GAME_SEQUENCE.HOUSE.key));
-    yield take(HOUSE_CHANGED);
+    const currentHouse = yield select(playerHouse);
+    if (!currentHouse) {
+      yield put(updateSequence(GAME_SEQUENCE.HOUSE.key));
+      const { house } = yield take(HOUSE_CHANGED);
+      yield put(handleGameAction(GAME_ACTION_TYPES.CHOOSE_HOUSE, { house }));
+    }
 
     yield put(updateSequence(GAME_SEQUENCE.MAIN.key));
     yield take(TURN_COMPLETE);
@@ -206,7 +213,7 @@ function* gameSequence() {
   yield call(postGameSequence);
 }
 
-function* handleGameAction({ action, metadata }) {
+function* onHandleGameAction({ action, metadata }) {
   try {
     const selectedGame = yield select(getSelectedGame);
     yield call(callHandleGameAction, selectedGame, action, metadata);
@@ -224,6 +231,6 @@ export default function*() {
     takeEvery(ACCEPT_CHALLENGE.SUCCESS, gameInitializationFlow),
     takeEvery(SIGNED_OUT.SUCCESS, closeGameChannel),
     takeEvery(GAME_INITIALIZED, gameSequence),
-    takeEvery(GAME_ACTION_HANDLED.PENDING, handleGameAction),
+    takeEvery(GAME_ACTION_HANDLED.PENDING, onHandleGameAction),
   ]);
 }

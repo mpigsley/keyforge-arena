@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import FlexContainer from 'primitives/flex-container';
-import GAME_SEQUENCE from 'constants/game-sequence';
+import GAME_SEQUENCE from 'constants/game-sequence.json';
+import HOUSES from 'constants/houses.json';
 import { useTimer } from 'utils/effects';
 
 import UnforgedBlue from 'images/unforged-blue.png';
@@ -25,6 +26,7 @@ export default function GameState({
   numAember,
   keyCost,
   turn,
+  house,
   houses,
   houseImages,
   gameStart,
@@ -44,7 +46,12 @@ export default function GameState({
     );
   } else {
     leftSide = (
-      <FlexContainer flex="1" direction="column" align="center">
+      <FlexContainer
+        flex="1"
+        direction="column"
+        align="center"
+        className={styles.left}
+      >
         <div>
           <ForgeKey
             className={classNames(styles.turnIcon, {
@@ -89,13 +96,13 @@ export default function GameState({
     center = (
       <FlexContainer align="center" className={styles.secondRow}>
         <div>
-          {houses.map(house => (
+          {houses.map(houseKey => (
             <img
-              key={house}
-              src={houseImages[house].link}
-              onClick={() => chooseHouse(house)}
+              key={houseKey}
+              src={houseImages[houseKey].link}
+              onClick={() => chooseHouse(houseKey)}
               className={styles.house}
-              alt={house}
+              alt={houseKey}
             />
           ))}
         </div>
@@ -128,13 +135,27 @@ export default function GameState({
       <FlexContainer align="center">
         {leftSide}
         {center}
-        <div
-          className={classNames(styles.aember, {
-            [styles.check]: numAember > keyCost,
-          })}
+        <FlexContainer
+          flex="1"
+          direction="column"
+          align="center"
+          justify="center"
+          className={styles.right}
         >
-          {numAember} / {keyCost} Æmber
-        </div>
+          <span
+            className={classNames(styles.aember, {
+              [styles['aember--check']]: numAember > keyCost,
+            })}
+          >
+            {numAember} / {keyCost} Æmber
+          </span>
+          {!!house && (
+            <span className={styles.chosenHouse}>
+              House:
+              <span className={styles.houseName}>{HOUSES[house].name}</span>
+            </span>
+          )}
+        </FlexContainer>
       </FlexContainer>
     </FlexContainer>
   );
@@ -145,6 +166,7 @@ GameState.propTypes = {
   numAember: PropTypes.number.isRequired,
   keyCost: PropTypes.number.isRequired,
   turn: PropTypes.number,
+  house: PropTypes.string.isRequired,
   houses: PropTypes.arrayOf(PropTypes.string).isRequired,
   houseImages: PropTypes.shape().isRequired,
   gameStart: PropTypes.instanceOf(Date),

@@ -1,4 +1,4 @@
-const GAME_ACTION_TYPES = require('../constants/game-action-types');
+const GAME_ACTION_TYPES = require('../constants/game-action-types.json');
 const { shuffleAndDrawHand } = require('./common');
 
 const DEFAULT_CONFIG = {
@@ -52,5 +52,22 @@ module.exports = {
         },
       };
     },
+  },
+  [GAME_ACTION_TYPES.CHOOSE_HOUSE]: {
+    ...DEFAULT_CONFIG,
+    validate: ({ uid, game, metadata }) =>
+      metadata.house && game.turn === uid && !game.state[uid].house,
+    invokeAction: ({ uid, game, metadata }) => ({
+      game: {
+        ...game,
+        state: {
+          ...game.state,
+          [uid]: {
+            ...game.state[uid],
+            house: metadata.house,
+          },
+        },
+      },
+    }),
   },
 };

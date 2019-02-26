@@ -80,7 +80,12 @@ export const gameState = createSelector(
 
 export const opponentTurn = createSelector(
   [gameState, getUserId],
-  (state, userId) => state.turn !== userId,
+  (game, userId) => game.turn !== userId,
+);
+
+export const playerHouse = createSelector(
+  [gameState],
+  game => (find(game.state, { isOpponent: false }) || {}).house,
 );
 
 export const cardModal = createSelector(

@@ -1,7 +1,7 @@
 const functions = require('firebase-functions');
 
 const { getGameState, saveGameState } = require('../utils/game-sync');
-const GAME_ACTION_TYPES = require('../constants/game-action-types');
+const GAME_ACTION_TYPES = require('../constants/game-action-types.json');
 const actionConfig = require('../utils/action-config');
 
 module.exports = functions.https.onCall(

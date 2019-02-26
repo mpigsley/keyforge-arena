@@ -1,4 +1,4 @@
-import GAME_ACTION_TYPES from 'constants/game-action-types';
+import GAME_ACTION_TYPES from 'constants/game-action-types.json';
 
 const STARTING_ACTIONS = [
   {

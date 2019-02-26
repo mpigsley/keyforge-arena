@@ -8,7 +8,7 @@ import {
   SEQUENCE_UPDATED,
   CARD_MODAL_UPDATED,
 } from 'store/actions/game.actions';
-import GAME_SEQUENCE from 'constants/game-sequence';
+import GAME_SEQUENCE from 'constants/game-sequence.json';
 
 const initialState = {
   models: {},

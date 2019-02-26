@@ -23,14 +23,19 @@ $keySize: 45px;
 }
 
 .left,
-.aember {
+.right {
   color: $medium;
   flex: 1;
+  margin: 0 0.2rem;
   text-align: center;
 }
 
-.check {
-  color: $active;
+.aember {
+  color: $medium;
+
+  &--check {
+    color: $active;
+  }
 }
 
 .secondRow {
@@ -57,10 +62,18 @@ $iconSize: 15px;
 .turnText {
   color: $medium;
   font-size: 0.8rem;
-  margin: 0 0.2rem;
   text-align: center;
 }
 
 .actionBtn {
   margin: 0 auto;
+}
+
+.chosenHouse {
+  color: $medium;
+}
+
+.houseName {
+  color: $active;
+  margin-left: 0.3rem;
 }

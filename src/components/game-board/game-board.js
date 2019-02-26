@@ -18,7 +18,7 @@ import { useDimensionConstraints } from 'utils/effects';
 import { UserGameState } from 'constants/types';
 import { find } from 'constants/lodash';
 import { VERTICAL_PADDING, HORIZONTAL_PADDING } from 'constants/game-board';
-import GAME_SEQUENCE from 'constants/game-sequence';
+import GAME_SEQUENCE from 'constants/game-sequence.json';
 
 import styles from './styles.module.scss';
 
@@ -74,6 +74,7 @@ export default function GameBoard({
             numKeys={opponentState.keys}
             numAember={opponentState.aember}
             keyCost={opponentState.keyCost}
+            house={opponentState.house}
             houses={opponentState.houses}
             turn={playerState.turn}
             gameStart={gameStart}
@@ -99,6 +100,7 @@ export default function GameBoard({
             numKeys={playerState.keys}
             numAember={playerState.aember}
             keyCost={playerState.keyCost}
+            house={playerState.house}
             houses={playerState.houses}
           />
           <Hand className={styles.hand} cards={playerState.hand} />
