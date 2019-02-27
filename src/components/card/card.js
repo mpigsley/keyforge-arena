@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
+import { omit } from 'constants/lodash';
+
 import styles from './styles.module.scss';
 
 export default function Card({
@@ -20,21 +22,20 @@ export default function Card({
         [styles['card--active']]: active,
       })}
       alt={key}
-      {...props}
+      {...omit(props, 'dispatch')}
     />
   );
 }
 
 Card.propTypes = {
-  className: PropTypes.string.isRequired,
+  className: PropTypes.string,
   active: PropTypes.bool,
-  cardImages: PropTypes.arrayOf(
-    PropTypes.shape({ link: PropTypes.string.isRequired }),
-  ).isRequired,
+  cardImages: PropTypes.shape().isRequired,
   expansion: PropTypes.string.isRequired,
   card: PropTypes.string.isRequired,
 };
 
 Card.defaultProps = {
+  className: undefined,
   active: false,
 };

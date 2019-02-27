@@ -38,7 +38,8 @@ export const getGame = (gameId, uid) =>
         return modifyWithPersonal(uid, gameId, doc);
       }
       return undefined;
-    });
+    })
+    .catch(() => {});
 
 export const gameListener = (gameId, uid, cb) =>
   Firebase.firestore()

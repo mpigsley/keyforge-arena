@@ -57,13 +57,13 @@ export default function Hand({ turnSequence, className, cards, playerHouse }) {
       >
         {cards.map(({ expansion, house, card }, i) => (
           <Card
+            key={`${card}-${i}` /* eslint-disable-line */}
             expansion={expansion}
             card={card}
             active={house === playerHouse}
             draggable={
               turnSequence === GAME_SEQUENCE.MAIN.key && house === playerHouse
             }
-            key={`${card}-${i}` /* eslint-disable-line */}
             className={classNames(styles.card, {
               [styles['card--hovered']]: i === hovered,
             })}

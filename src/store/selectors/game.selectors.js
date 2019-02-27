@@ -38,12 +38,10 @@ export const hasLoadedGameDecks = createSelector(
 );
 
 const cardIdsToObjects = cardIds =>
-  cardIds
-    .map(id => {
-      const [expansion, house, card] = id.split('-');
-      return { card, expansion, house };
-    })
-    .filter(card => card.image);
+  cardIds.map(id => {
+    const [expansion, house, card] = id.split('-');
+    return { card, expansion, house };
+  });
 
 const buildState = (state, deck, cardImages) => ({
   ...state,

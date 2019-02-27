@@ -83,7 +83,11 @@ const createGameListener = (gameId, userId) =>
 function* gameUpdateHandler(channel) {
   while (true) {
     const update = yield take(channel);
-    yield put(createAction(GAME_UPDATED.SUCCESS, update));
+    if (!update) {
+      yield put(push('/dashboard'));
+    } else {
+      yield put(createAction(GAME_UPDATED.SUCCESS, update));
+    }
   }
 }
 
