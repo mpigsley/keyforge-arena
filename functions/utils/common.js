@@ -1,7 +1,7 @@
 const firestore = require('firebase-admin').firestore();
 const chance = require('chance').Chance();
 
-const { reduce, take, drop } = require('../constants/lodash');
+const { reduce, take, drop, sortBy } = require('../constants/lodash');
 
 exports.firestore = firestore;
 exports.chance = chance;
@@ -22,5 +22,8 @@ exports.createDeck = createDeck;
 
 exports.shuffleAndDrawHand = (deck, handSize) => {
   const shuffledDeck = chance.shuffle(deck);
-  return [take(shuffledDeck, handSize), drop(shuffledDeck, handSize)];
+  return [
+    sortBy(take(shuffledDeck, handSize), card => card.split('-')[1]),
+    drop(shuffledDeck, handSize),
+  ];
 };
