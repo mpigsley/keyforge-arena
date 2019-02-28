@@ -32,7 +32,6 @@ export default function OpponentHand({ handSize }) {
           <CardBack
             key={i /* eslint-disable-line */}
             isFlipped
-            isOutlined
             className={styles.card}
             width={MAX_CARD_WIDTH}
             style={{ left: i * overlap }}
