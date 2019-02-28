@@ -139,6 +139,7 @@ function* gameInitializationFlow({ gameId }) {
 
     yield put(createAction(GAME_INITIALIZED));
   } catch (error) {
+    console.error(error);
     yield put(createAction(GAME_UPDATED.ERROR, { error: error.message }));
   }
 }

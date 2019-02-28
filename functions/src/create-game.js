@@ -123,11 +123,6 @@ module.exports = functions.https.onCall(async ({ lobby, deck }, context) => {
         .doc(opponent),
       { deck: shuffledOpponentDeck },
     );
-    batch.set(
-      firestore.collection('lobby').doc(lobby),
-      { game: gameRef.id },
-      { merge: true },
-    );
 
     await batch.commit();
 
@@ -153,6 +148,12 @@ module.exports = functions.https.onCall(async ({ lobby, deck }, context) => {
       },
       players: lobbyDoc.players,
     });
+
+    // Do this last to avoid a race condition
+    await firestore
+      .collection('lobby')
+      .doc(lobby)
+      .set({ game: gameRef.id }, { merge: true });
 
     return gameRef.id;
   } catch (e) {
