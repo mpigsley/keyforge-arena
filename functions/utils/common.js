@@ -1,3 +1,4 @@
+const uuid = require('uuid/v4');
 const firestore = require('firebase-admin').firestore();
 const chance = require('chance').Chance();
 
@@ -15,6 +16,7 @@ const createDeck = ({ expansion, houses }) =>
     (arr, cards, house) => [
       ...arr,
       ...cards.map(card => ({
+        key: uuid(),
         expansion,
         house,
         card,

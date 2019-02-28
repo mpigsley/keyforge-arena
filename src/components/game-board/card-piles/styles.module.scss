@@ -17,6 +17,7 @@
 
 .pileTitle {
   color: $medium;
+  pointer-events: none;
   font-size: 0.6rem;
   font-weight: 600;
   margin-bottom: 0.1rem;
@@ -57,9 +58,22 @@
 
 .discardPile {
   cursor: pointer;
+
+  &--accepting {
+  }
 }
 
 .emptyPile {
   border: 1.5px dashed $light;
   border-radius: 8px;
+  transition: all 0.2s linear;
+
+  &--accepting {
+    border: 0;
+    background-color: $active;
+
+    .pileTitle {
+      color: $veryLight;
+    }
+  }
 }

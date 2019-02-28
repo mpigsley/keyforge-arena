@@ -55,9 +55,9 @@ export default function Hand({ turnSequence, className, cards, playerHouse }) {
           e.preventDefault();
         }}
       >
-        {cards.map(({ expansion, house, card }, i) => (
+        {cards.map(({ key, expansion, house, card }, i) => (
           <Card
-            key={`${card}-${i}` /* eslint-disable-line */}
+            key={key}
             expansion={expansion}
             card={card}
             active={house === playerHouse}
@@ -67,12 +67,7 @@ export default function Hand({ turnSequence, className, cards, playerHouse }) {
             className={classNames(styles.card, {
               [styles['card--hovered']]: i === hovered,
             })}
-            onDragStart={e =>
-              e.dataTransfer.setData(
-                'card',
-                `${expansion}-${house}-${card}-${i}`,
-              )
-            }
+            onDragStart={e => e.dataTransfer.setData('card', key)}
             onMouseLeave={() => setHovered()}
             style={{
               left: i * overlap,

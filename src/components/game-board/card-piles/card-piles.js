@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
@@ -30,7 +30,9 @@ export default function CardPiles({
   numArchived,
   archived,
   updateCardModal,
+  discardCard,
 }) {
+  const [isAcceptingCard, setIsAcceptingCard] = useState(false);
   const { height, width } = useDimensions();
   const modifiedPileWidth = isOpponent
     ? STATIC_PILE_WIDTH * 0.7
@@ -120,13 +122,27 @@ export default function CardPiles({
     </FlexContainer>
   );
 
-  const sizeStyle = { width: modifiedCardWidth, height: cardHeight };
+  const discardProps = {
+    style: { width: modifiedCardWidth, height: cardHeight },
+    onDragEnter: () => setIsAcceptingCard(true),
+    onDragLeave: () => setIsAcceptingCard(false),
+    onDragOver: e => e.preventDefault(),
+    onDrop: e => {
+      e.preventDefault();
+      discardCard(e.dataTransfer.getData('card'));
+      setIsAcceptingCard(false);
+    },
+  };
+
   let discardElement = (
     <FlexContainer
+      {...discardProps}
       align="center"
       justify="center"
       direction="column"
-      className={styles.emptyPile}
+      className={classNames(styles.emptyPile, {
+        [styles['emptyPile--accepting']]: isAcceptingCard,
+      })}
       style={{ width: modifiedCardWidth - 3, height: cardHeight - 3 }}
     >
       <span className={styles.pileTitle}>Discard Pile</span>
@@ -138,8 +154,9 @@ export default function CardPiles({
       <Card
         expansion={expansion}
         card={card}
-        className={styles.discardPile}
-        style={sizeStyle}
+        className={classNames(styles.discardPile, {
+          [styles['discardPile--accepting']]: isAcceptingCard,
+        })}
         onClick={() =>
           updateCardModal(
             isOpponent
@@ -147,6 +164,7 @@ export default function CardPiles({
               : CARD_MODAL_TYPES.DISCARD_PILE.key,
           )
         }
+        {...discardProps}
       />
     );
   }
@@ -170,7 +188,7 @@ export default function CardPiles({
     drawElement = (
       <div
         className={styles.drawContainer}
-        style={{ ...sizeStyle, marginRight: VERTICAL_PADDING }}
+        style={{ ...discardProps.style, marginRight: VERTICAL_PADDING }}
       >
         <FlexContainer
           align="center"
@@ -217,6 +235,7 @@ CardPiles.propTypes = {
   numArchived: PropTypes.number,
   archived: CardsType,
   updateCardModal: PropTypes.func.isRequired,
+  discardCard: PropTypes.func.isRequired,
 };
 
 CardPiles.defaultProps = {

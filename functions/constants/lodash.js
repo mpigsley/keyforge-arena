@@ -1,4 +1,5 @@
 const drop = require('lodash/drop');
+const filter = require('lodash/filter');
 const find = require('lodash/find');
 const findKey = require('lodash/findKey');
 const flatten = require('lodash/flatten');
@@ -11,6 +12,7 @@ const uniq = require('lodash/uniq');
 
 module.exports = {
   drop,
+  filter,
   find,
   findKey,
   flatten,

@@ -1,5 +1,6 @@
 const GAME_ACTION_TYPES = require('../constants/game-action-types.json');
 const { shuffleAndDrawHand } = require('./common');
+const { find, filter } = require('../constants/lodash');
 
 const DEFAULT_CONFIG = {
   validate: () => true,
@@ -83,6 +84,36 @@ module.exports = {
             ...game.state[uid],
             turn: game.state[uid].turn++,
             house: '',
+          },
+        },
+      },
+    }),
+  },
+  [GAME_ACTION_TYPES.DISCARD_CARD]: {
+    ...DEFAULT_CONFIG,
+    validate: ({ uid, game, metadata, personal }) => {
+      const { house } = game.state[uid];
+      const card = find(personal[uid].hand, { key: metadata.key });
+      console.log(game.turn, uid, house, card);
+      return game.turn === uid && house && card && card.house === house;
+    },
+    invokeAction: ({ uid, game, metadata, personal }) => ({
+      personal: {
+        [uid]: {
+          ...personal[uid],
+          hand: filter(personal[uid].hand, ({ key }) => key !== metadata.key),
+        },
+      },
+      game: {
+        ...game,
+        state: {
+          ...game.state,
+          [uid]: {
+            ...game.state[uid],
+            discard: [
+              find(personal[uid].hand, { key: metadata.key }),
+              ...game.state[uid].discard,
+            ],
           },
         },
       },

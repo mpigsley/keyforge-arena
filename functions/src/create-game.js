@@ -1,7 +1,6 @@
 const admin = require('firebase-admin');
 const functions = require('firebase-functions');
 
-const { flatten, uniq, sortBy, findKey } = require('../constants/lodash');
 const {
   firestore,
   chance,
