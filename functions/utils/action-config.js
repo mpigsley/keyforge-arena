@@ -70,4 +70,22 @@ module.exports = {
       },
     }),
   },
+  [GAME_ACTION_TYPES.END_TURN]: {
+    ...DEFAULT_CONFIG,
+    validate: ({ uid, game }) => game.turn === uid && game.state[uid].house,
+    invokeAction: ({ uid, game }) => ({
+      game: {
+        ...game,
+        turn: game.players.filter(player => player !== uid)[0],
+        state: {
+          ...game.state,
+          [uid]: {
+            ...game.state[uid],
+            turn: game.state[uid].turn++,
+            house: '',
+          },
+        },
+      },
+    }),
+  },
 };

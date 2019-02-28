@@ -40,7 +40,7 @@ import {
 } from 'store/actions/image.actions';
 import {
   GAME_UPDATED,
-  TURN_COMPLETE,
+  ENDED_TURN,
   HOUSE_CHANGED,
   GAME_INITIALIZED,
   CARD_MODAL_UPDATED,
@@ -204,7 +204,8 @@ function* gameSequence() {
     }
 
     yield put(updateSequence(GAME_SEQUENCE.MAIN.key));
-    yield take(TURN_COMPLETE);
+    yield take(ENDED_TURN);
+    yield put(handleGameAction(GAME_ACTION_TYPES.END_TURN));
 
     yield put(updateSequence(GAME_SEQUENCE.READY.key));
     yield delay(QUICK_SEQUENCE_TIMEOUT);

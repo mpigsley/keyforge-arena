@@ -4,14 +4,14 @@ const ACTION_PREFIX = '@@game';
 export const GAME_UPDATED = createAsyncTypes(`${ACTION_PREFIX}/GAME_UPDATED`);
 export const GAME_INITIALIZED = `${ACTION_PREFIX}/GAME_INITIALIZED`;
 export const CARD_MODAL_UPDATED = `${ACTION_PREFIX}/CARD_MODAL_UPDATED`;
-export const TURN_COMPLETE = `${ACTION_PREFIX}/TURN_COMPLETE`;
+export const ENDED_TURN = `${ACTION_PREFIX}/ENDED_TURN`;
 export const HOUSE_CHANGED = `${ACTION_PREFIX}/HOUSE_CHANGED`;
 export const SEQUENCE_UPDATED = `${ACTION_PREFIX}/SEQUENCE_UPDATED`;
 export const GAME_ACTION_HANDLED = createAsyncTypes(
   `${ACTION_PREFIX}/GAME_ACTION_HANDLED`,
 );
 
-export const endTurn = () => ({ type: TURN_COMPLETE });
+export const endTurn = () => ({ type: ENDED_TURN });
 export const chooseHouse = house => ({ type: HOUSE_CHANGED, house });
 export const updateCardModal = key => ({ type: CARD_MODAL_UPDATED, key });
 export const updateSequence = sequence => ({
