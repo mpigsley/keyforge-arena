@@ -69,6 +69,11 @@ export const opponentTurn = createSelector(
   (game, userId) => game.turn !== userId,
 );
 
+export const playerTurn = createSelector(
+  [gameState, getUserId],
+  (game, userId) => game.turn === userId,
+);
+
 export const playerHouse = createSelector(
   [gameState],
   game => (find(game.state, { isOpponent: false }) || {}).house,

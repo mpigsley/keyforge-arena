@@ -24,6 +24,7 @@ import styles from './styles.module.scss';
 
 export default function GameBoard({
   isInitialized,
+  isHandlingAction,
   gameStart,
   gameState,
   turnSequence,
@@ -114,7 +115,9 @@ export default function GameBoard({
           >
             <Button
               primary
-              disabled={turnSequence !== GAME_SEQUENCE.MAIN.key}
+              disabled={
+                turnSequence !== GAME_SEQUENCE.MAIN.key || isHandlingAction
+              }
               onClick={endTurn}
               className={styles.actionBtn}
             >
@@ -130,6 +133,7 @@ export default function GameBoard({
 
 GameBoard.propTypes = {
   isInitialized: PropTypes.bool.isRequired,
+  isHandlingAction: PropTypes.bool.isRequired,
   turnSequence: PropTypes.string,
   endTurn: PropTypes.func.isRequired,
   gameStart: PropTypes.instanceOf(Date),

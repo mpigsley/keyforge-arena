@@ -23,6 +23,7 @@ import {
 import {
   gameDecks,
   gameState,
+  playerTurn,
   playerHouse,
   opponentTurn,
   isGameFinished,
@@ -212,6 +213,10 @@ function* gameSequence() {
 
     yield put(updateSequence(GAME_SEQUENCE.DRAW.key));
     yield delay(QUICK_SEQUENCE_TIMEOUT);
+
+    while (yield select(playerTurn)) {
+      yield take(GAME_UPDATED.SUCCESS);
+    }
 
     isFinished = yield select(isGameFinished);
   }
