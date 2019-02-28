@@ -7,6 +7,7 @@ import {
   GAME_INITIALIZED,
   SEQUENCE_UPDATED,
   CARD_MODAL_UPDATED,
+  GAME_ACTION_HANDLED,
 } from 'store/actions/game.actions';
 import GAME_SEQUENCE from 'constants/game-sequence.json';
 
@@ -15,6 +16,7 @@ const initialState = {
   sequence: undefined,
   selected: undefined,
   initializedGame: false,
+  isHandlingAction: false,
   cardModal: undefined,
 };
 
@@ -38,6 +40,11 @@ export default function game(state = initialState, action) {
       return { ...state, cardModal: action.key };
     case SEQUENCE_UPDATED:
       return { ...state, sequence: action.sequence };
+    case GAME_ACTION_HANDLED.PENDING:
+      return { ...state, isHandlingAction: true };
+    case GAME_ACTION_HANDLED.SUCCESS:
+    case GAME_ACTION_HANDLED.ERROR:
+      return { ...state, isHandlingAction: false };
     case LOCATION_CHANGE: {
       const { pathname } = action.payload.location;
       const routeMatch = matchPath(pathname, { path: `/game/:id/:rest?` });

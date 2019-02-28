@@ -4,6 +4,7 @@ import ReactModal from 'react-modal';
 
 import FlexContainer from 'primitives/flex-container';
 import FullModal from 'primitives/full-modal';
+import Spinner from 'primitives/spinner';
 import Button from 'primitives/button';
 import Card from 'components/card';
 
@@ -17,10 +18,29 @@ ReactModal.setAppElement('#root');
 
 export default function CardModal({
   cardModal,
+  isHandlingAction,
   updateCardModal,
   handleGameAction,
 }) {
   const { cards, isStack, actions, ...config } = cardModal;
+  let actionElement;
+  if ((actions || []).length) {
+    if (isHandlingAction) {
+      actionElement = (
+        <FlexContainer justify="center">
+          <Spinner size={36} className={styles.spinner} />
+        </FlexContainer>
+      );
+    } else {
+      actionElement = (
+        <FlexContainer justify="center">
+          {actions.map(({ action, ...buttonProps }) => (
+            <Button {...buttonProps} onClick={() => handleGameAction(action)} />
+          ))}
+        </FlexContainer>
+      );
+    }
+  }
   return (
     <FullModal
       isOpen={!!cards.length}
@@ -59,13 +79,7 @@ export default function CardModal({
           ))}
         </FlexContainer>
       </FlexContainer>
-      {!!(actions || []).length && (
-        <FlexContainer justify="center">
-          {actions.map(({ action, ...buttonProps }) => (
-            <Button {...buttonProps} onClick={() => handleGameAction(action)} />
-          ))}
-        </FlexContainer>
-      )}
+      {actionElement}
     </FullModal>
   );
 }
@@ -75,6 +89,7 @@ CardModal.propTypes = {
     cards: CardsType,
     isStack: PropTypes.bool,
   }),
+  isHandlingAction: PropTypes.bool.isRequired,
   updateCardModal: PropTypes.func.isRequired,
   handleGameAction: PropTypes.func.isRequired,
 };
