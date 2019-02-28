@@ -4,7 +4,6 @@ import {
   getUserId,
   getDecks,
   getGames,
-  getCardImages,
   getCardModal,
   getSelectedGame,
 } from 'store/selectors/base.selectors';
@@ -37,26 +36,20 @@ export const hasLoadedGameDecks = createSelector(
   decks => size(decks) === 2 && every(Object.values(decks)),
 );
 
-const cardIdsToObjects = cardIds =>
-  cardIds.map(id => {
-    const [expansion, house, card] = id.split('-');
-    return { card, expansion, house };
-  });
-
-const buildState = (state, deck, cardImages) => ({
+const buildState = (state, deck) => ({
   ...state,
-  artifacts: cardIdsToObjects(state.artifacts, cardImages),
-  battlelines: cardIdsToObjects(state.battlelines, cardImages),
-  purged: cardIdsToObjects(state.purged, cardImages),
-  discard: cardIdsToObjects(state.discard, cardImages),
-  hand: cardIdsToObjects(state.hand || [], cardImages),
-  archived: cardIdsToObjects(state.archived || [], cardImages),
+  artifacts: state.artifacts,
+  battlelines: state.battlelines,
+  purged: state.purged,
+  discard: state.discard,
+  hand: state.hand || [],
+  archived: state.archived || [],
   houses: keys((deck || {}).houses),
 });
 
 export const gameState = createSelector(
-  [selectedGame, getUserId, getCardImages, gameDecks],
-  (game, userId, cardImages, decks) => {
+  [selectedGame, getUserId, gameDecks],
+  (game, userId, decks) => {
     if (!game) {
       return undefined;
     }
@@ -65,7 +58,7 @@ export const gameState = createSelector(
       state: map(game.state, (state, key) => ({
         key,
         isOpponent: key !== userId,
-        ...buildState(state, decks[key], cardImages),
+        ...buildState(state, decks[key]),
       })),
     };
   },

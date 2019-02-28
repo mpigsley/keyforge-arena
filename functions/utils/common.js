@@ -14,7 +14,11 @@ const createDeck = ({ expansion, houses }) =>
     houses,
     (arr, cards, house) => [
       ...arr,
-      ...cards.map(card => `${expansion}-${house}-${card}`),
+      ...cards.map(card => ({
+        expansion,
+        house,
+        card,
+      })),
     ],
     [],
   );
@@ -23,7 +27,7 @@ exports.createDeck = createDeck;
 exports.shuffleAndDrawHand = (deck, handSize) => {
   const shuffledDeck = chance.shuffle(deck);
   return [
-    sortBy(take(shuffledDeck, handSize), card => card.split('-')[1]),
+    sortBy(take(shuffledDeck, handSize), 'house'),
     drop(shuffledDeck, handSize),
   ];
 };
