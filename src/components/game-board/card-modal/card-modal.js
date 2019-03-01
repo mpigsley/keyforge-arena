@@ -10,7 +10,6 @@ import Card from 'components/card';
 
 import { ZOOMED_WIDTH, CARD_RATIO } from 'constants/game-board';
 import { CardsType } from 'constants/types';
-import { reverse } from 'constants/lodash';
 
 import styles from './styles.module.scss';
 
@@ -53,7 +52,7 @@ export default function CardModal({
         className={styles.container}
       >
         <FlexContainer className={styles.cardContainer}>
-          {reverse(cards).map(({ card, expansion }, i) => (
+          {cards.map(({ card, expansion }, i) => (
             <FlexContainer
               className={styles.card}
               direction="column"

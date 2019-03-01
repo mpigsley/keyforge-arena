@@ -149,7 +149,7 @@ export default function CardPiles({
     </FlexContainer>
   );
   if (discarded.length) {
-    const { expansion, card } = discarded[discarded.length - 1];
+    const { expansion, card } = discarded[0];
     discardElement = (
       <Card
         expansion={expansion}

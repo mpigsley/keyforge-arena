@@ -10,11 +10,13 @@ const {
 
 const initialSharedState = () => ({
   keyCost: 6,
+  maxHandSize: 6,
   archiveSize: 0,
   house: '',
   turn: 0,
   aember: 0,
   keys: 0,
+  chain: 0,
   artifacts: [],
   battlelines: [],
   purged: [],
