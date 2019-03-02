@@ -67,7 +67,10 @@ export default function Hand({ turnSequence, className, cards, playerHouse }) {
             className={classNames(styles.card, {
               [styles['card--hovered']]: i === hovered,
             })}
-            onDragStart={e => e.dataTransfer.setData('card', key)}
+            onDragStart={e => {
+              e.dataTransfer.setDragImage(e.target, 0, 0);
+              e.dataTransfer.setData('card', key);
+            }}
             onMouseLeave={() => setHovered()}
             style={{
               left: i * overlap,

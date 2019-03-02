@@ -12,7 +12,7 @@ import Button from 'primitives/button';
 
 import { map, sortBy, capitalize } from 'constants/lodash';
 import { Trash } from 'constants/icons';
-import coreCards from 'constants/expansions/cota';
+import coreCards from 'constants/cards/en/cota';
 
 import { ReactComponent as Common } from 'images/common.svg';
 import { ReactComponent as Uncommon } from 'images/uncommon.svg';
