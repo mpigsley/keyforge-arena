@@ -17,7 +17,7 @@
     "deploy": "npm run build && firebase deploy --except functions",
     "deploy:functions": "npm run copyShared && firebase deploy --only functions",
     "deploy:all": "npm run copyShared && firebase deploy",
-    "scrape": "node bin/scrape-aembertree.js"
+    "fetch": "node bootstrap/fetch-cards.js"
   },
   "dependencies": {
     "chance": "^1.0.16",
@@ -56,7 +56,9 @@
     "eslint-plugin-react-hooks": "0.0.0",
     "firebase-admin": "^7.0.0",
     "firebase-tools": "^6.3.1",
-    "prettier": "^1.15.2"
+    "prettier": "^1.15.2",
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.7"
   },
   "jest": {
     "collectCoverageFrom": [
