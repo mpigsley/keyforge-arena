@@ -1,5 +1,5 @@
 const GAME_ACTION_TYPES = require('../constants/game-action-types.json');
-const { shuffleAndDrawHand } = require('./common');
+const { shuffleAndDrawHand, removeExhaustion } = require('./common');
 const { find, filter, take, drop } = require('../constants/lodash');
 
 const DEFAULT_CONFIG = {
@@ -108,6 +108,8 @@ module.exports = {
               handSize: hand.length,
               turn: game.state[uid].turn + 1,
               chain: Math.max(game.state[uid].chain - 1, 0),
+              battleline: removeExhaustion(game.state[uid].battleline),
+              artifacts: removeExhaustion(game.state[uid].artifacts),
               house: '',
             },
           },
@@ -152,32 +154,36 @@ module.exports = {
       const card = find(personal[uid].hand, { key: metadata.key });
       return game.turn === uid && house && card && card.house === house;
     },
-    invokeAction: ({ uid, game, metadata, personal }) => ({
-      personal: {
-        [uid]: {
-          ...personal[uid],
-          hand: filter(personal[uid].hand, ({ key }) => key !== metadata.key),
-        },
-      },
-      game: {
-        ...game,
-        state: {
-          ...game.state,
+    invokeAction: ({ uid, game, metadata, personal }) => {
+      const card = {
+        ...find(personal[uid].hand, { key: metadata.key }),
+        isExhausted: true,
+      };
+      let battleline = game.state[uid].battleline;
+      if (metadata.isLeftFlank) {
+        battleline = [card, ...battleline];
+      } else {
+        battleline = [...battleline, card];
+      }
+      return {
+        personal: {
           [uid]: {
-            ...game.state[uid],
-            handSize: game.state[uid].handSize - 1,
-            battleline: [
-              metadata.isLeftFlank
-                ? find(personal[uid].hand, { key: metadata.key })
-                : undefined,
-              ...game.state[uid].battleline,
-              !metadata.isLeftFlank
-                ? find(personal[uid].hand, { key: metadata.key })
-                : undefined,
-            ].filter(card => card),
+            ...personal[uid],
+            hand: filter(personal[uid].hand, ({ key }) => key !== metadata.key),
           },
         },
-      },
-    }),
+        game: {
+          ...game,
+          state: {
+            ...game.state,
+            [uid]: {
+              ...game.state[uid],
+              handSize: game.state[uid].handSize - 1,
+              battleline,
+            },
+          },
+        },
+      };
+    },
   },
 };

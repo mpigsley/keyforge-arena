@@ -16,7 +16,11 @@ const createDeck = ({ expansion, houses }) =>
     (arr, cards, house) => [
       ...arr,
       ...cards.map(card => ({
+        isExhausted: false,
+        isStunned: false,
+        powerMod: 0,
         key: uuid(),
+        damage: 0,
         expansion,
         house,
         card,
@@ -25,6 +29,9 @@ const createDeck = ({ expansion, houses }) =>
     [],
   );
 exports.createDeck = createDeck;
+
+exports.removeExhaustion = cards =>
+  cards.map(card => ({ ...card, isExhausted: false }));
 
 exports.shuffleAndDrawHand = (deck, handSize) => {
   const shuffledDeck = chance.shuffle(deck);
