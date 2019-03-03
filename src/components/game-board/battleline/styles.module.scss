@@ -1,5 +1,11 @@
+@import '~styles/theme';
+
 .battleline:hover {
   z-index: 100;
+}
+
+.inner {
+  pointer-events: none;
 }
 
 .imgContainer {
@@ -23,4 +29,11 @@
   &:hover {
     transition-delay: 0.2s;
   }
+}
+
+.cardOutline {
+  border: 1.5px dashed $light;
+  border-radius: 8px;
+  pointer-events: none;
+  transition: all 0.2s linear;
 }
