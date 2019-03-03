@@ -25,9 +25,14 @@
   max-height: 100%;
   max-width: 100%;
   transition-delay: 0s;
+  pointer-events: all;
 
   &:hover {
     transition-delay: 0.2s;
+  }
+
+  &--accepting {
+    pointer-events: none;
   }
 }
 

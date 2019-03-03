@@ -19,7 +19,13 @@ import styles from './styles.module.scss';
 
 const DEFAULT_OVERLAP = MAX_CARD_WIDTH * 0.6;
 
-export default function Hand({ turnSequence, className, cards, playerHouse }) {
+export default function Hand({
+  turnSequence,
+  className,
+  cards,
+  playerHouse,
+  startDrag,
+}) {
   const [hovered, setHovered] = useState();
   const { width, height } = useDimensions();
 
@@ -70,6 +76,7 @@ export default function Hand({ turnSequence, className, cards, playerHouse }) {
             onDragStart={e => {
               e.dataTransfer.setDragImage(e.target, 0, 0);
               e.dataTransfer.setData('card', key);
+              startDrag();
             }}
             onMouseLeave={() => setHovered()}
             style={{
@@ -91,4 +98,5 @@ Hand.propTypes = {
   className: PropTypes.string.isRequired,
   cards: CardsType.isRequired,
   playerHouse: PropTypes.string.isRequired,
+  startDrag: PropTypes.func.isRequired,
 };

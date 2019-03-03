@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
@@ -29,10 +29,15 @@ export default function GameBoard({
   gameState,
   turnSequence,
   endTurn,
+  endDrag,
 }) {
   const isConstrained = useDimensionConstraints(650, 550);
   const playerState = find(gameState.state, { isOpponent: false }) || {};
   const opponentState = find(gameState.state, { isOpponent: true }) || {};
+  useEffect(() => {
+    document.addEventListener('dragend', endDrag);
+    return () => document.removeEventListener('dragend', endDrag);
+  }, []);
 
   if (!isInitialized || isConstrained) {
     let content = (
@@ -136,6 +141,7 @@ GameBoard.propTypes = {
   isHandlingAction: PropTypes.bool.isRequired,
   turnSequence: PropTypes.string,
   endTurn: PropTypes.func.isRequired,
+  endDrag: PropTypes.func.isRequired,
   gameStart: PropTypes.instanceOf(Date),
   gameState: PropTypes.shape({
     state: PropTypes.arrayOf(UserGameState),

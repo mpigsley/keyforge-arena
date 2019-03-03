@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 import FlexContainer from 'primitives/flex-container';
 import Card from 'components/card';
@@ -17,7 +18,12 @@ import styles from './styles.module.scss';
 
 const CARD_PADDING = 10;
 
-export default function Battleline({ cards, isOpponent, playCreature }) {
+export default function Battleline({
+  cards,
+  isOpponent,
+  isDragging,
+  playCreature,
+}) {
   const [isAcceptingCard, setIsAcceptingCard] = useState(false);
   const cardNum = cards.length + (isAcceptingCard ? 1 : 0);
   const { height, width } = useDimensions();
@@ -84,7 +90,9 @@ export default function Battleline({ cards, isOpponent, playCreature }) {
             <Card
               expansion={expansion}
               card={card}
-              className={styles.card}
+              className={classNames(styles.card, {
+                [styles['card--accepting']]: isDragging,
+              })}
               onMouseEnter={e => {
                 const offset = (ZOOMED_WIDTH - scaledWidth) / (zoomScale * 2);
                 if (i === 0 && needTranslate) {
@@ -109,6 +117,7 @@ export default function Battleline({ cards, isOpponent, playCreature }) {
 Battleline.propTypes = {
   isOpponent: PropTypes.bool,
   cards: CardsType.isRequired,
+  isDragging: PropTypes.bool.isRequired,
   playCreature: PropTypes.func.isRequired,
 };
 

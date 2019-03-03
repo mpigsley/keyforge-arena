@@ -3,6 +3,7 @@ import { matchPath } from 'react-router';
 
 import { SIGNED_OUT } from 'store/actions/user.actions';
 import {
+  DRAG,
   GAME_UPDATED,
   GAME_INITIALIZED,
   SEQUENCE_UPDATED,
@@ -17,6 +18,7 @@ const initialState = {
   selected: undefined,
   initializedGame: false,
   isHandlingAction: false,
+  isDragging: false,
   cardModal: undefined,
 };
 
@@ -45,6 +47,10 @@ export default function game(state = initialState, action) {
     case GAME_ACTION_HANDLED.SUCCESS:
     case GAME_ACTION_HANDLED.ERROR:
       return { ...state, isHandlingAction: false };
+    case DRAG.PENDING:
+      return { ...state, isDragging: true };
+    case DRAG.SUCCESS:
+      return { ...state, isDragging: false };
     case LOCATION_CHANGE: {
       const { pathname } = action.payload.location;
       const routeMatch = matchPath(pathname, { path: `/game/:id/:rest?` });

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { endTurn } from 'store/actions/game.actions';
+import { endTurn, endDrag } from 'store/actions/game.actions';
 import { gameState, selectedGameStart } from 'store/selectors/game.selectors';
 import {
   getIsHandlingAction,
@@ -21,6 +21,7 @@ const mapStateToProps = createStructuredSelector({
 
 const mapDispatchToProps = dispatch => ({
   endTurn: () => dispatch(endTurn()),
+  endDrag: () => dispatch(endDrag()),
 });
 
 export default connect(
