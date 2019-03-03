@@ -17,6 +17,7 @@ import { CardsType } from 'constants/types';
 import styles from './styles.module.scss';
 
 const CARD_PADDING = 10;
+const DRAG_ATTRIBUTE = 'data-ignore-leave';
 const FLANK = { LEFT: 'LEFT', RIGHT: 'RIGHT' };
 
 export default function Battleline({
@@ -26,6 +27,7 @@ export default function Battleline({
   playCreature,
 }) {
   const [flank, setFlank] = useState();
+
   const cardNum = cards.length + (flank ? 1 : 0);
   const { height, width } = useDimensions();
   const battlelineHeight = height / 4 - VERTICAL_PADDING * 2;
@@ -45,8 +47,9 @@ export default function Battleline({
   const needTranslate = scaleOverhang > extraSideWidth;
 
   let dragEvents;
-  if (!isOpponent) {
+  if (isDragging && !isOpponent) {
     dragEvents = {
+      [DRAG_ATTRIBUTE]: true,
       onDragOver: e => e.preventDefault(),
       onDrop: e => {
         e.preventDefault();
@@ -57,7 +60,7 @@ export default function Battleline({
   }
 
   let dropContainers;
-  if (isDragging && dragEvents) {
+  if (dragEvents) {
     dropContainers = (
       <>
         <div
@@ -78,7 +81,11 @@ export default function Battleline({
     <FlexContainer
       direction="column"
       className={styles.battleline}
-      onDragLeave={() => setFlank()}
+      onDragLeave={e => {
+        if (dragEvents && !e.relatedTarget.hasAttribute(DRAG_ATTRIBUTE)) {
+          setFlank();
+        }
+      }}
       justify={isOpponent ? 'flexEnd' : 'flexStart'}
       style={{ padding: `${VERTICAL_PADDING}px ${HORIZONTAL_PADDING}px` }}
     >
@@ -87,9 +94,9 @@ export default function Battleline({
           <div
             className={styles.cardOutline}
             style={{
-              width: `${scaledWidth}px`,
-              height: `${scaledWidth / CARD_RATIO}px`,
-              paddingRight: cardNum > 1 ? `${CARD_PADDING / 2}px` : 0,
+              width: `${scaledWidth - 3}px`,
+              height: `${scaledWidth / CARD_RATIO - 3}px`,
+              paddingRight: cardNum > 1 ? `${CARD_PADDING / 2 + 3}px` : 0,
             }}
           />
         )}
@@ -133,7 +140,7 @@ export default function Battleline({
             style={{
               width: `${scaledWidth - 3}px`,
               height: `${scaledWidth / CARD_RATIO - 3}px`,
-              paddingLeft: cardNum > 1 ? `${CARD_PADDING / 2}px` : 0,
+              paddingLeft: cardNum > 1 ? `${CARD_PADDING / 2 + 3}px` : 0,
             }}
           />
         )}
