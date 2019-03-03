@@ -14,7 +14,7 @@ export const UserGameState = PropTypes.shape({
   archived: CardsType,
   archiveSize: PropTypes.number,
   artifacts: CardsType,
-  battlelines: CardsType,
+  battleline: CardsType,
   deck: PropTypes.string,
   deckSize: PropTypes.number,
   discard: CardsType,

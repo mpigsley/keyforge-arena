@@ -39,7 +39,7 @@ export const hasLoadedGameDecks = createSelector(
 const buildState = (state, deck) => ({
   ...state,
   artifacts: state.artifacts,
-  battlelines: state.battlelines,
+  battleline: state.battleline,
   purged: state.purged,
   discard: state.discard,
   hand: state.hand || [],

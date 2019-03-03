@@ -18,7 +18,7 @@ const initialSharedState = () => ({
   keys: 0,
   chain: 0,
   artifacts: [],
-  battlelines: [],
+  battleline: [],
   purged: [],
   discard: [],
 });

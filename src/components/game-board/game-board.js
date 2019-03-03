@@ -87,8 +87,8 @@ export default function GameBoard({
             isOpponent
           />
         </div>
-        <Battleline cards={opponentState.battlelines} isOpponent />
-        <Battleline cards={playerState.battlelines} />
+        <Battleline cards={opponentState.battleline} isOpponent />
+        <Battleline cards={playerState.battleline} />
         <div className={styles.side}>
           <CardPiles
             className={styles.leftSide}
