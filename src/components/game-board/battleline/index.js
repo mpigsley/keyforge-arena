@@ -12,8 +12,8 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const mapDispatchToProps = dispatch => ({
-  playCreature: key =>
-    dispatch(handleGameAction(PLAY_CREATURE, { key, isLeftFlank: true })),
+  playCreature: (key, isLeftFlank) =>
+    dispatch(handleGameAction(PLAY_CREATURE, { key, isLeftFlank })),
 });
 
 export default connect(

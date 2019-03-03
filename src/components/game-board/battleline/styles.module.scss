@@ -1,7 +1,11 @@
 @import '~styles/theme';
 
-.battleline:hover {
-  z-index: 100;
+.battleline {
+  position: relative;
+
+  &:hover {
+    z-index: 100;
+  }
 }
 
 .inner {
@@ -30,10 +34,6 @@
   &:hover {
     transition-delay: 0.2s;
   }
-
-  &--accepting {
-    pointer-events: none;
-  }
 }
 
 .cardOutline {
@@ -41,4 +41,20 @@
   border-radius: 8px;
   pointer-events: none;
   transition: all 0.2s linear;
+}
+
+.drop {
+  bottom: 0;
+  position: absolute;
+  top: 0;
+
+  &--left {
+    left: 0;
+    right: 50%;
+  }
+
+  &--right {
+    left: 50%;
+    right: 0;
+  }
 }

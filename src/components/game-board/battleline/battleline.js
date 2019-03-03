@@ -17,6 +17,7 @@ import { CardsType } from 'constants/types';
 import styles from './styles.module.scss';
 
 const CARD_PADDING = 10;
+const FLANK = { LEFT: 'LEFT', RIGHT: 'RIGHT' };
 
 export default function Battleline({
   cards,
@@ -24,8 +25,8 @@ export default function Battleline({
   isDragging,
   playCreature,
 }) {
-  const [isAcceptingCard, setIsAcceptingCard] = useState(false);
-  const cardNum = cards.length + (isAcceptingCard ? 1 : 0);
+  const [flank, setFlank] = useState();
+  const cardNum = cards.length + (flank ? 1 : 0);
   const { height, width } = useDimensions();
   const battlelineHeight = height / 4 - VERTICAL_PADDING * 2;
   const paddingWidth = (cardNum - 1) * CARD_PADDING;
@@ -43,30 +44,46 @@ export default function Battleline({
   const extraSideWidth = (width - cardsWidth) / 2;
   const needTranslate = scaleOverhang > extraSideWidth;
 
-  let dragEvents = {};
+  let dragEvents;
   if (!isOpponent) {
     dragEvents = {
-      onDragEnter: () => setIsAcceptingCard(true),
-      onDragLeave: () => setIsAcceptingCard(false),
       onDragOver: e => e.preventDefault(),
       onDrop: e => {
         e.preventDefault();
-        playCreature(e.dataTransfer.getData('card'));
-        setIsAcceptingCard(false);
+        playCreature(e.dataTransfer.getData('card'), flank === FLANK.LEFT);
+        setFlank();
       },
     };
   }
 
+  let dropContainers;
+  if (isDragging && dragEvents) {
+    dropContainers = (
+      <>
+        <div
+          className={classNames(styles.drop, styles['drop--left'])}
+          onDragEnter={() => setFlank(FLANK.LEFT)}
+          {...dragEvents}
+        />
+        <div
+          className={classNames(styles.drop, styles['drop--right'])}
+          onDragEnter={() => setFlank(FLANK.RIGHT)}
+          {...dragEvents}
+        />
+      </>
+    );
+  }
+
   return (
     <FlexContainer
-      {...dragEvents}
       direction="column"
       className={styles.battleline}
+      onDragLeave={() => setFlank()}
       justify={isOpponent ? 'flexEnd' : 'flexStart'}
       style={{ padding: `${VERTICAL_PADDING}px ${HORIZONTAL_PADDING}px` }}
     >
       <FlexContainer justify="center" className={styles.inner}>
-        {isAcceptingCard && (
+        {flank === FLANK.LEFT && (
           <div
             className={styles.cardOutline}
             style={{
@@ -83,16 +100,17 @@ export default function Battleline({
             style={{
               width: `${scaledWidth}px`,
               paddingLeft:
-                i !== 0 || isAcceptingCard ? `${CARD_PADDING / 2}px` : 0,
-              paddingRight: i !== cardNum - 1 ? `${CARD_PADDING / 2}px` : 0,
+                i !== 0 || flank === FLANK.LEFT ? `${CARD_PADDING / 2}px` : 0,
+              paddingRight:
+                i !== cardNum - 1 || flank === FLANK.RIGHT
+                  ? `${CARD_PADDING / 2}px`
+                  : 0,
             }}
           >
             <Card
               expansion={expansion}
               card={card}
-              className={classNames(styles.card, {
-                [styles['card--accepting']]: isDragging,
-              })}
+              className={styles.card}
               onMouseEnter={e => {
                 const offset = (ZOOMED_WIDTH - scaledWidth) / (zoomScale * 2);
                 if (i === 0 && needTranslate) {
@@ -109,7 +127,18 @@ export default function Battleline({
             />
           </div>
         ))}
+        {flank === FLANK.RIGHT && (
+          <div
+            className={styles.cardOutline}
+            style={{
+              width: `${scaledWidth - 3}px`,
+              height: `${scaledWidth / CARD_RATIO - 3}px`,
+              paddingLeft: cardNum > 1 ? `${CARD_PADDING / 2}px` : 0,
+            }}
+          />
+        )}
       </FlexContainer>
+      {dropContainers}
     </FlexContainer>
   );
 }
