@@ -66,7 +66,7 @@ export default function Hand({
             key={key}
             expansion={expansion}
             card={card}
-            active={house === playerHouse}
+            isActive={house === playerHouse}
             draggable={
               turnSequence === GAME_SEQUENCE.MAIN.key && house === playerHouse
             }

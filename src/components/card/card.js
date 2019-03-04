@@ -8,7 +8,8 @@ import styles from './styles.module.scss';
 
 export default function Card({
   className,
-  active,
+  isActive,
+  isExhausted,
   cardImages,
   expansion,
   card,
@@ -19,7 +20,8 @@ export default function Card({
     <img
       src={(cardImages[key] || {}).link}
       className={classNames(styles.card, className, {
-        [styles['card--active']]: active,
+        [styles['card--active']]: isActive,
+        [styles['card--exhausted']]: isExhausted,
       })}
       alt={key}
       {...omit(props, 'dispatch')}
@@ -29,7 +31,8 @@ export default function Card({
 
 Card.propTypes = {
   className: PropTypes.string,
-  active: PropTypes.bool,
+  isActive: PropTypes.bool,
+  isExhausted: PropTypes.bool,
   cardImages: PropTypes.shape().isRequired,
   expansion: PropTypes.string.isRequired,
   card: PropTypes.string.isRequired,
@@ -37,5 +40,6 @@ Card.propTypes = {
 
 Card.defaultProps = {
   className: undefined,
-  active: false,
+  isActive: false,
+  isExhausted: false,
 };

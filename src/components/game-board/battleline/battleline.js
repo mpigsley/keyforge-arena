@@ -8,8 +8,9 @@ import Card from 'components/card';
 import {
   CARD_RATIO,
   ZOOMED_WIDTH,
-  HORIZONTAL_PADDING,
+  MAX_CARD_WIDTH,
   VERTICAL_PADDING,
+  HORIZONTAL_PADDING,
 } from 'constants/game-board';
 import { useDimensions } from 'utils/effects';
 import { CardsType } from 'constants/types';
@@ -25,6 +26,7 @@ export default function Battleline({
   isOpponent,
   isDragging,
   playCreature,
+  playerHouse,
 }) {
   const [flank, setFlank] = useState();
 
@@ -33,13 +35,16 @@ export default function Battleline({
   const battlelineHeight = height / 4 - VERTICAL_PADDING * 2;
   const paddingWidth = (cardNum - 1) * CARD_PADDING;
   const innerWidth = width - HORIZONTAL_PADDING * 2 - paddingWidth;
+  const exhaustedNum = cards.filter(({ isExhausted }) => isExhausted).length;
 
-  const defaultWidth = innerWidth / cardNum;
+  const defaultWidth =
+    innerWidth / (cardNum - exhaustedNum + exhaustedNum / CARD_RATIO);
   const scaledWidth = Math.min(
     battlelineHeight * CARD_RATIO,
     defaultWidth,
-    150,
+    MAX_CARD_WIDTH,
   );
+  const scaledHeight = scaledWidth / CARD_RATIO;
   const zoomScale = ZOOMED_WIDTH / scaledWidth;
   const cardsWidth = cardNum * scaledWidth + paddingWidth;
   const scaleOverhang = (ZOOMED_WIDTH - scaledWidth) / 2;
@@ -95,17 +100,18 @@ export default function Battleline({
             className={styles.cardOutline}
             style={{
               width: `${scaledWidth - 3}px`,
-              height: `${scaledWidth / CARD_RATIO - 3}px`,
+              height: `${scaledHeight - 3}px`,
               paddingRight: cardNum > 1 ? `${CARD_PADDING / 2 + 3}px` : 0,
             }}
           />
         )}
-        {cards.map(({ expansion, card }, i) => (
+        {cards.map(({ expansion, card, house, isExhausted }, i) => (
           <div
             key={`${card}-${i}` /* eslint-disable-line */}
             className={styles.imgContainer}
             style={{
-              width: `${scaledWidth}px`,
+              height: `${scaledHeight}px`,
+              width: `${isExhausted ? scaledHeight : scaledWidth}px`,
               paddingLeft:
                 i !== 0 || flank === FLANK.LEFT ? `${CARD_PADDING / 2}px` : 0,
               paddingRight:
@@ -118,6 +124,8 @@ export default function Battleline({
               expansion={expansion}
               card={card}
               className={styles.card}
+              isActive={house === playerHouse}
+              isExhausted={isExhausted}
               onMouseEnter={e => {
                 const offset = (ZOOMED_WIDTH - scaledWidth) / (zoomScale * 2);
                 if (i === 0 && needTranslate) {
@@ -139,7 +147,7 @@ export default function Battleline({
             className={styles.cardOutline}
             style={{
               width: `${scaledWidth - 3}px`,
-              height: `${scaledWidth / CARD_RATIO - 3}px`,
+              height: `${scaledHeight - 3}px`,
               paddingLeft: cardNum > 1 ? `${CARD_PADDING / 2 + 3}px` : 0,
             }}
           />
@@ -155,6 +163,7 @@ Battleline.propTypes = {
   cards: CardsType.isRequired,
   isDragging: PropTypes.bool.isRequired,
   playCreature: PropTypes.func.isRequired,
+  playerHouse: PropTypes.string.isRequired,
 };
 
 Battleline.defaultProps = {
