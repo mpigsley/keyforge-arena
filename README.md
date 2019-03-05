@@ -4,6 +4,10 @@ Play Keyforge online, track chain as you play with particular decks, and challen
 
 This is very much so a **work in progress**.
 
+### Example Game Board
+
+![Example Game Board](mpigsley.github.com/keyforge-arena/src/images/example-game-board.png)
+
 ### V1 Roadmap
 
 - [x] Authentication
@@ -30,6 +34,7 @@ This is very much so a **work in progress**.
 - [ ] Handle mavericks by showing another house on the card
 - [ ] Automatically complete any old, uncompleted games
 - [ ] Game rejoin logic
+- [ ] Internationalization
 
 ## Feature Requests & Bugs
 
