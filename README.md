@@ -6,7 +6,7 @@ This is very much so a **work in progress**.
 
 ### Example Game Board
 
-![Example Game Board](mpigsley.github.com/keyforge-arena/src/images/example-game-board.png)
+[[https://github.com/mpigsley/keyforge-arena/blob/master/src/images/example-game-board.png|alt=example-game-board]]
 
 ### V1 Roadmap
 
