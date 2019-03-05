@@ -4,6 +4,33 @@ Play Keyforge online, track chain as you play with particular decks, and challen
 
 This is very much so a **work in progress**.
 
+### V1 Roadmap
+
+- [x] Authentication
+- [x] Build script to pull cards for every expansion and chosen language
+- [x] Deck upload & manager
+- [x] Dashboard and deck selection
+- [x] Invite new connections & reply to requests
+- [x] Check which connections are online
+- [x] Challenge your connections & reply to challenges
+- [x] Render game board at any screen size
+- [x] Game lifecycle (passing turns, choosing houses, etc.)
+- [x] Mulligan/keep opening hands
+- [x] Discard cards from active house in main phase
+- [x] Play exhausted creatures on either flank in main phase
+- [x] Draw up to hand size at the end of turn
+- [x] Ready cards in play at end of turn
+- [ ] Play exhausted artifacts in main phase
+- [ ] Play actions in main phase
+- [ ] Creature fighting
+- [ ] Creature reaping
+- [ ] Perform a card action outside of fighting/reaping
+- [ ] Handle individual card rules
+- [ ] Invoke action immediately on the client, check for validity when game is updated
+- [ ] Handle mavericks by showing another house on the card
+- [ ] Automatically complete any old, uncompleted games
+- [ ] Game rejoin logic
+
 ## Feature Requests & Bugs
 
 Feel free to [open an issue](https://github.com/mpigsley/keyforge-arena/issues/new) if there is a feature you'd like to see or something is broken. Pull requests are always welcome.

@@ -124,7 +124,7 @@ export default function Battleline({
               expansion={expansion}
               card={card}
               className={styles.card}
-              isActive={house === playerHouse}
+              isActive={!isOpponent && !isExhausted && house === playerHouse}
               isExhausted={isExhausted}
               onMouseEnter={e => {
                 const offset = (ZOOMED_WIDTH - scaledWidth) / (zoomScale * 2);
