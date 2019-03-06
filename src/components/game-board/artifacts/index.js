@@ -56,7 +56,7 @@ export default function Artifacts({ className, artifacts, isOpponent }) {
             paddingRight:
               i !== artifacts.length - 1 ? `${VERTICAL_PADDING / 2}px` : 0,
           }}
-          onMouseEnter={e => {
+          onContextMenu={e => {
             const bottomOffset = bottomOverhang / zoomScale;
             const rightOffset = rightOverhang / zoomScale;
             const verticalDirection = isOpponent ? '' : '-';

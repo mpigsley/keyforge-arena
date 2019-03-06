@@ -126,8 +126,10 @@ export default function Battleline({
               className={styles.card}
               isActive={!isOpponent && !isExhausted && house === playerHouse}
               isExhausted={isExhausted}
-              onMouseEnter={e => {
+              onContextMenu={e => {
+                e.preventDefault();
                 const offset = (ZOOMED_WIDTH - scaledWidth) / (zoomScale * 2);
+                e.target.parentNode.style.zIndex = 100;
                 if (i === 0 && needTranslate) {
                   e.target.style.transform = `scale(${zoomScale}) translate(${offset}px)`;
                 } else if (i === cardNum - 1 && needTranslate) {
@@ -138,6 +140,7 @@ export default function Battleline({
               }}
               onMouseLeave={e => {
                 e.target.style.transform = '';
+                e.target.parentNode.style.zIndex = 1;
               }}
             />
           </div>
