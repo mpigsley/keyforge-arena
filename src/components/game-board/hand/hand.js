@@ -24,7 +24,7 @@ export default function Hand({
   className,
   cards,
   playerHouse,
-  startDrag,
+  setUsedCard,
 }) {
   const [hovered, setHovered] = useState();
   const { width, height } = useDimensions();
@@ -67,17 +67,18 @@ export default function Hand({
             expansion={expansion}
             card={card}
             isActive={house === playerHouse}
-            draggable={
-              turnSequence === GAME_SEQUENCE.MAIN.key && house === playerHouse
-            }
+            onClick={() => {
+              if (
+                turnSequence !== GAME_SEQUENCE.MAIN.key ||
+                house !== playerHouse
+              ) {
+                return;
+              }
+              setUsedCard(key);
+            }}
             className={classNames(styles.card, {
               [styles['card--hovered']]: i === hovered,
             })}
-            onDragStart={e => {
-              e.dataTransfer.setDragImage(e.target, 0, 0);
-              e.dataTransfer.setData('card', key);
-              startDrag();
-            }}
             onMouseLeave={() => setHovered()}
             style={{
               left: i * overlap,
@@ -98,5 +99,5 @@ Hand.propTypes = {
   className: PropTypes.string.isRequired,
   cards: CardsType.isRequired,
   playerHouse: PropTypes.string.isRequired,
-  startDrag: PropTypes.func.isRequired,
+  setUsedCard: PropTypes.func.isRequired,
 };

@@ -4,6 +4,7 @@ import { matchPath } from 'react-router';
 import { SIGNED_OUT } from 'store/actions/user.actions';
 import {
   DRAG,
+  USED_CARD,
   GAME_UPDATED,
   GAME_INITIALIZED,
   SEQUENCE_UPDATED,
@@ -19,6 +20,7 @@ const initialState = {
   initializedGame: false,
   isHandlingAction: false,
   isDragging: false,
+  usedCard: null,
   cardModal: undefined,
 };
 
@@ -47,6 +49,8 @@ export default function game(state = initialState, action) {
     case GAME_ACTION_HANDLED.SUCCESS:
     case GAME_ACTION_HANDLED.ERROR:
       return { ...state, isHandlingAction: false };
+    case USED_CARD:
+      return { ...state, usedCard: action.key };
     case DRAG.PENDING:
       return { ...state, isDragging: true };
     case DRAG.SUCCESS:

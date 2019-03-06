@@ -1,0 +1,16 @@
+@import '~styles/theme';
+
+.svg {
+  display: none;
+  height: 100vh;
+  left: 0;
+  position: absolute;
+  stroke: $active;
+  stroke-width: 3px;
+  top: 0;
+  width: 100vw;
+
+  &--active {
+    display: block;
+  }
+}

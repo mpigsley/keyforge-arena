@@ -10,6 +10,7 @@ import Artifacts from 'components/game-board/artifacts';
 import Hand from 'components/game-board/hand';
 import GameState from 'components/game-board/game-state';
 import FlexContainer from 'primitives/flex-container';
+import ActionArrow from 'primitives/action-arrow';
 import Spinner from 'primitives/spinner';
 import Button from 'primitives/button';
 import Header from 'primitives/header';
@@ -132,6 +133,7 @@ export default function GameBoard({
         </div>
       </div>
       <CardModal />
+      <ActionArrow isActive />
     </>
   );
 }

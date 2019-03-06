@@ -79,3 +79,30 @@ export const useTimer = (startTime, cb, isDisabled) =>
     }, 1000);
     return () => clearInterval(timer);
   });
+
+export const useCursorPosition = cb =>
+  useEffect(() => {
+    const handler = event => {
+      let eventDoc;
+      let doc;
+      let body;
+      const e = event || window.event;
+      if (e.pageX == null && e.clientX != null) {
+        eventDoc = (e.target && e.target.ownerDocument) || document;
+        doc = eventDoc.documentElement;
+        body = eventDoc.body; // eslint-disable-line
+
+        e.pageX =
+          event.clientX +
+          ((doc && doc.scrollLeft) || (body && body.scrollLeft) || 0) -
+          ((doc && doc.clientLeft) || (body && body.clientLeft) || 0);
+        e.pageY =
+          event.clientY +
+          ((doc && doc.scrollTop) || (body && body.scrollTop) || 0) -
+          ((doc && doc.clientTop) || (body && body.clientTop) || 0);
+      }
+      cb(e.pageX, e.pageY);
+    };
+    document.addEventListener('mousemove', handler);
+    return () => document.removeEventListener('mousemove', handler);
+  }, []);
