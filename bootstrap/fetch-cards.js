@@ -1,16 +1,24 @@
 const fs = require('fs');
 const prettier = require('prettier');
 const request = require('request-promise-native');
-const { map, reduce, some, size } = require('lodash');
+const { map, reduce, some, size, mapValues, pick, omit } = require('lodash');
 
 const PAGE_SIZE = 50;
-const EXPANSION_SIZES = {
-  341: 370,
-};
+const EXPANSION_SIZES = { 341: 370 };
 const LANGUAGES = ['en', 'fr'];
-const EXPANSION_NAMES = {
-  341: 'cota',
-};
+const EXPANSION_NAMES = { 341: 'cota' };
+const LANG_AGNOSTIC_KEYS = [
+  'id',
+  'house',
+  'card_type',
+  'traits',
+  'amber',
+  'power',
+  'armor',
+  'rarity',
+  'card_number',
+  'expansion',
+];
 
 const remainingCards = newCards =>
   some(
@@ -64,10 +72,52 @@ const fetchCards = async () => {
           cardsForLang,
           (cards, expansion) =>
             new Promise((resolve, reject) => {
-              const formattedJson = prettier.format(JSON.stringify(cards), {
-                parser: 'json',
-              });
+              const formattedJson = prettier.format(
+                JSON.stringify(
+                  mapValues(cards, card => omit(card, 'is_maverick')),
+                ),
+                {
+                  parser: 'json',
+                },
+              );
               const directory = `./src/constants/cards/${lang}`;
+              if (!fs.existsSync(directory)) {
+                fs.mkdirSync(directory);
+              }
+              fs.writeFile(
+                `${directory}/${EXPANSION_NAMES[expansion]}.json`,
+                formattedJson,
+                'utf8',
+                err => {
+                  if (err) {
+                    reject(err);
+                  } else {
+                    resolve();
+                  }
+                },
+              );
+            }),
+        ),
+      );
+
+      if (lang !== 'en') {
+        return;
+      }
+
+      await Promise.all(
+        map(
+          cardsForLang,
+          (cards, expansion) =>
+            new Promise((resolve, reject) => {
+              const formattedJson = prettier.format(
+                JSON.stringify(
+                  mapValues(cards, card => pick(card, ...LANG_AGNOSTIC_KEYS)),
+                ),
+                {
+                  parser: 'json',
+                },
+              );
+              const directory = `./src/constants/expansions`;
               if (!fs.existsSync(directory)) {
                 fs.mkdirSync(directory);
               }

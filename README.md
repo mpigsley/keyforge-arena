@@ -26,6 +26,7 @@ This is very much so a **work in progress**.
 - [x] Ready cards in play at end of turn
 - [ ] Play exhausted artifacts in main phase
 - [ ] Play actions in main phase
+- [ ] Play an upgrade on a creature in the main phase
 - [ ] Creature fighting
 - [ ] Creature reaping
 - [ ] Perform a card action outside of fighting/reaping

@@ -2,7 +2,11 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import { endTurn, endDrag } from 'store/actions/game.actions';
-import { gameState, selectedGameStart } from 'store/selectors/game.selectors';
+import {
+  opponentState,
+  playerState,
+  selectedGameStart,
+} from 'store/selectors/game.selectors';
 import {
   getIsHandlingAction,
   getIsGameInitialized,
@@ -16,7 +20,8 @@ const mapStateToProps = createStructuredSelector({
   isInitialized: getIsGameInitialized,
   turnSequence: getGameSequence,
   gameStart: selectedGameStart,
-  gameState,
+  opponentState,
+  playerState,
 });
 
 const mapDispatchToProps = dispatch => ({

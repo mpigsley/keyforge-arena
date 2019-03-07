@@ -12,7 +12,7 @@ export const GAME_ACTION_HANDLED = createAsyncTypes(
   `${ACTION_PREFIX}/GAME_ACTION_HANDLED`,
 );
 
-export const startDrag = () => ({ type: DRAG.PENDING });
+export const startDrag = key => ({ type: DRAG.PENDING, key });
 export const endDrag = () => ({ type: DRAG.SUCCESS });
 export const endTurn = () => ({ type: ENDED_TURN });
 export const chooseHouse = house => ({ type: HOUSE_CHANGED, house });

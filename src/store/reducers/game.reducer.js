@@ -18,7 +18,7 @@ const initialState = {
   selected: undefined,
   initializedGame: false,
   isHandlingAction: false,
-  isDragging: false,
+  draggedCard: undefined,
   cardModal: undefined,
 };
 
@@ -48,9 +48,9 @@ export default function game(state = initialState, action) {
     case GAME_ACTION_HANDLED.ERROR:
       return { ...state, isHandlingAction: false };
     case DRAG.PENDING:
-      return { ...state, isDragging: true };
+      return { ...state, draggedCard: action.key };
     case DRAG.SUCCESS:
-      return { ...state, isDragging: false };
+      return { ...state, draggedCard: undefined };
     case LOCATION_CHANGE: {
       const { pathname } = action.payload.location;
       const routeMatch = matchPath(pathname, { path: `/game/:id/:rest?` });

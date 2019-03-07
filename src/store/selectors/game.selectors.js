@@ -5,10 +5,13 @@ import {
   getDecks,
   getGames,
   getCardModal,
+  getDraggedCard,
   getSelectedGame,
 } from 'store/selectors/base.selectors';
 import { find, every, mapValues, size, keys, map } from 'constants/lodash';
 import CARD_MODAL_TYPES from 'constants/card-modal-types';
+import CARDS_BY_EXPANSION from 'constants/expansion-cards';
+import CARD_TYPES from 'constants/card-types';
 
 export const selectedGame = createSelector(
   [getGames, getSelectedGame],
@@ -64,6 +67,16 @@ export const gameState = createSelector(
   },
 );
 
+export const playerState = createSelector(
+  [gameState],
+  game => find((game || {}).state, { isOpponent: false }) || {},
+);
+
+export const opponentState = createSelector(
+  [gameState],
+  game => find((game || {}).state, { isOpponent: true }) || {},
+);
+
 export const opponentTurn = createSelector(
   [gameState, getUserId],
   (game, userId) => game.turn !== userId,
@@ -75,24 +88,59 @@ export const playerTurn = createSelector(
 );
 
 export const playerHouse = createSelector(
-  [gameState],
-  game => (find(game.state, { isOpponent: false }) || {}).house,
+  [playerState],
+  state => state.house,
+);
+
+export const playerHand = createSelector(
+  [playerState],
+  state => state.hand || [],
+);
+
+export const draggedCardType = createSelector(
+  [playerHand, getDraggedCard],
+  (hand, cardKey) => {
+    const { expansion, card } = find(hand, { key: cardKey }) || {};
+    if (!card) {
+      return undefined;
+    }
+    return find(CARDS_BY_EXPANSION[expansion], { card_number: Number(card) })
+      .card_type;
+  },
+);
+
+export const isDraggedAction = createSelector(
+  [draggedCardType],
+  type => type === CARD_TYPES.ACTION,
+);
+
+export const isDraggedArtifact = createSelector(
+  [draggedCardType],
+  type => type === CARD_TYPES.ARTIFACT,
+);
+
+export const isDraggedCreature = createSelector(
+  [draggedCardType],
+  type => type === CARD_TYPES.CREATURE,
+);
+
+export const isDraggedUpgrade = createSelector(
+  [draggedCardType],
+  type => type === CARD_TYPES.UPGRADE,
 );
 
 export const cardModal = createSelector(
-  [gameState, getCardModal],
-  (game, cardModalKey) => {
+  [playerState, opponentState, getCardModal],
+  (player, opponent, cardModalKey) => {
     const { listKey, ...cardModalConfig } =
       CARD_MODAL_TYPES[cardModalKey] || {};
-    const playerState = find(game.state, { isOpponent: false }) || {};
-    const opponentState = find(game.state, { isOpponent: true }) || {};
     const cardLists = {
-      hand: playerState.hand,
-      discard: playerState.discard,
-      purged: playerState.purged,
-      archived: playerState.purged,
-      opponentDiscard: opponentState.discard,
-      opponentPurged: opponentState.purged,
+      hand: player.hand,
+      discard: player.discard,
+      purged: player.purged,
+      archived: player.purged,
+      opponentDiscard: opponent.discard,
+      opponentPurged: opponent.purged,
     };
     return {
       ...cardModalConfig,

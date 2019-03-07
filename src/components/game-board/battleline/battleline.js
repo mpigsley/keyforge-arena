@@ -24,7 +24,7 @@ const FLANK = { LEFT: 'LEFT', RIGHT: 'RIGHT' };
 export default function Battleline({
   cards,
   isOpponent,
-  isDragging,
+  isDraggedCreature,
   playCreature,
   playerHouse,
 }) {
@@ -52,7 +52,7 @@ export default function Battleline({
   const needTranslate = scaleOverhang > extraSideWidth;
 
   let dragEvents;
-  if (isDragging && !isOpponent) {
+  if (isDraggedCreature && !isOpponent) {
     dragEvents = {
       [DRAG_ATTRIBUTE]: true,
       onDragOver: e => e.preventDefault(),
@@ -164,7 +164,7 @@ export default function Battleline({
 Battleline.propTypes = {
   isOpponent: PropTypes.bool,
   cards: CardsType.isRequired,
-  isDragging: PropTypes.bool.isRequired,
+  isDraggedCreature: PropTypes.bool.isRequired,
   playCreature: PropTypes.func.isRequired,
   playerHouse: PropTypes.string.isRequired,
 };

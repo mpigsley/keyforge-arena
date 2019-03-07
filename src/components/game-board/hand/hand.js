@@ -76,7 +76,7 @@ export default function Hand({
             onDragStart={e => {
               e.dataTransfer.setDragImage(e.target, 0, 0);
               e.dataTransfer.setData('card', key);
-              startDrag();
+              startDrag(key);
             }}
             onMouseLeave={() => setHovered()}
             style={{

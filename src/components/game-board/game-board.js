@@ -16,7 +16,6 @@ import Header from 'primitives/header';
 
 import { useDimensionConstraints } from 'utils/effects';
 import { UserGameState } from 'constants/types';
-import { find } from 'constants/lodash';
 import { VERTICAL_PADDING, HORIZONTAL_PADDING } from 'constants/game-board';
 import GAME_SEQUENCE from 'constants/game-sequence.json';
 
@@ -26,14 +25,13 @@ export default function GameBoard({
   isInitialized,
   isHandlingAction,
   gameStart,
-  gameState,
+  playerState,
+  opponentState,
   turnSequence,
   endTurn,
   endDrag,
 }) {
   const isConstrained = useDimensionConstraints(650, 550);
-  const playerState = find(gameState.state, { isOpponent: false }) || {};
-  const opponentState = find(gameState.state, { isOpponent: true }) || {};
   useEffect(() => {
     document.addEventListener('dragend', endDrag);
     return () => document.removeEventListener('dragend', endDrag);
