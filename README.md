@@ -24,7 +24,7 @@ This is very much so a **work in progress**.
 - [x] Play exhausted creatures on either flank in main phase
 - [x] Draw up to hand size at the end of turn
 - [x] Ready cards in play at end of turn
-- [ ] Play exhausted artifacts in main phase
+- [x] Play exhausted artifacts in main phase
 - [ ] Play actions in main phase
 - [ ] Play an upgrade on a creature in the main phase
 - [ ] Creature fighting
@@ -32,7 +32,7 @@ This is very much so a **work in progress**.
 - [ ] Perform a card action outside of fighting/reaping
 - [ ] Handle individual card rules
 - [ ] Invoke action immediately on the client, check for validity when game is updated
-- [ ] Handle mavericks by showing another house on the card
+- [ ] Handle mavericks by showing another house on the card & maverick identifier
 - [ ] Automatically complete any old, uncompleted games
 - [ ] Game rejoin logic
 - [ ] Internationalization

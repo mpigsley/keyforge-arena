@@ -1,0 +1,2222 @@
+{
+  "1": {
+    "card_title": "Colère",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_1_7C854VPW72RH_fr.png",
+    "card_text": "Jouez : Redressez une créature alliée et faites-la combattre.",
+    "flavor_text": "« Ne les mets pas en colère, me dis-tu ? Le truc, c’est que les Brobnar sont en colère de naissance ! » – Le Vieux Bruno"
+  },
+  "2": {
+    "card_title": "À Mains Nues",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_2_53CXMQCJ46PP_fr.png",
+    "card_text": "Jouez : Placez chaque artéfact au sommet du deck de son propriétaire.",
+    "flavor_text": ""
+  },
+  "3": {
+    "card_title": "Le Prix du Sang",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_3_XX937XGH258R_fr.png",
+    "card_text": "Jouez : Placez 2 A du stock commun sur une créature ennemie.",
+    "flavor_text": "« Toi ! Trafiquant d’Aombre. Ton compte est bon ! »"
+  },
+  "4": {
+    "card_title": "Frères d’Armes",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_4_75MHQJM77RGH_fr.png",
+    "card_text": "Jouez : Choisissez une Maison. Pour le reste du tour, chaque créature alliée de cette Maison peut combattre.",
+    "flavor_text": ""
+  },
+  "5": {
+    "card_title": "Terre Brûlée",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_5_7WCGR88265CM_fr.png",
+    "card_text": "Jouez : Si votre adversaire possède au moins 7 A, il perd 4 A.",
+    "flavor_text": "« Si tu es incapable de le protéger, alors tu ne le mérites pas. » – Avalanche Bilgum"
+  },
+  "6": {
+    "card_title": "Le Défi du Champion",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_6_PJ6HFMR62X8F_fr.png",
+    "card_text": "Jouez : Détruisez chaque créature ennemie à l’exception de la plus puissante. Détruisez chaque créature alliée à l’exception de la plus puissante. Redressez votre créature restante et faites-la combattre.",
+    "flavor_text": ""
+  },
+  "7": {
+    "card_title": "Le Destin des Lâches",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_7_CFRV9R6JG7P7_fr.png",
+    "card_text": "Jouez : Détruisez chaque créature non blessée. Gagnez 3 chaînes.",
+    "flavor_text": ""
+  },
+  "8": {
+    "card_title": "Suivez le Chef",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_8_4CGG6P6JQ44W_fr.png",
+    "card_text": "Jouez : Pour le reste du tour, chaque créature alliée peut combattre.",
+    "flavor_text": ""
+  },
+  "9": {
+    "card_title": "Boule de Lave",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_9_G7F5XC6J5QMG_fr.png",
+    "card_text": "Jouez : Infligez 4 D à une créature avec une projection de 2 D.",
+    "flavor_text": "« Hop… Attrape ! »"
+  },
+  "10": {
+    "card_title": "Piller les Cadavres",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_10_48CVW9F66MJ8_fr.png",
+    "card_text": "Jouez : Pour le reste du tour, gagnez 1 A chaque fois qu’une créature ennemie est détruite.",
+    "flavor_text": "« Pille les cadavres ! Tous en piste ! Pille les cadavres ! Tous en piste ! » – Chant de guerre Brobnar"
+  },
+  "11": {
+    "card_title": "Prends ça, M. Je-Sais-Tout",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_11_R2V4JJXQRVGH_fr.png",
+    "card_text": "Jouez : Volez 2 A si votre adversaire possède au moins 3 cartes Logos en jeu.",
+    "flavor_text": "« Ces robots se croient malins. Moi, je leur explique la vie. »"
+  },
+  "12": {
+    "card_title": "Mandale",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_12_8QF6VM4C23R9_fr.png",
+    "card_text": "Jouez : Infligez 3 D à une créature.",
+    "flavor_text": "« Pan dans les dents. »"
+  },
+  "13": {
+    "card_title": "Assaut Impitoyable",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_13_967HJV9Q3J5P_fr.png",
+    "card_text": "Jouez : Redressez jusqu’à 3 créatures alliées différentes et faites-les combattre l’une après l’autre.",
+    "flavor_text": ""
+  },
+  "14": {
+    "card_title": "Forgeron",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_14_CV3QCM67C9GM_fr.png",
+    "card_text": "Jouez : Gagnez 2 A si vous contrôlez plus de créatures que votre adversaire.",
+    "flavor_text": ""
+  },
+  "15": {
+    "card_title": "Sonnez les Trompettes",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_15_8HXH9WQ5P4V4_fr.png",
+    "card_text": "Jouez : Défaussez des cartes du sommet de votre deck jusqu’à ce que vous défaussiez une créature Brobnar ou que vous soyez à court de cartes. Si vous avez défaussé une créature Brobnar de la sorte, placez-la dans votre main.",
+    "flavor_text": ""
+  },
+  "16": {
+    "card_title": "Séisme",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_16_HQJ525M2CVG9_fr.png",
+    "card_text": "Jouez : Sonnez une créature et chacun de ses voisins.",
+    "flavor_text": ""
+  },
+  "17": {
+    "card_title": "Camp Non Gardé",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_17_64F73PR27H7P_fr.png",
+    "card_text": "Jouez : Pour chacune de vos créatures en surnombre par rapport à celles de votre adversaire, une créature alliée capture 1 A. Chaque créature ne peut pas capturer plus de 1 A de la sorte.",
+    "flavor_text": ""
+  },
+  "18": {
+    "card_title": "Chant Guerrier",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_18_Q84XVC2GVCPR_fr.png",
+    "card_text": "Jouez : Pour le reste du tour, gagnez 1 A chaque fois qu’une créature alliée combat.",
+    "flavor_text": ""
+  },
+  "19": {
+    "card_title": "Auto-Cannon",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_19_XRFQ9GHJ98C3_fr.png",
+    "card_text": "Infligez 1 D à chaque créature après son entrée en jeu.",
+    "flavor_text": ""
+  },
+  "20": {
+    "card_title": "Bannière de Guerre",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_20_3FQVR3V3CR7F_fr.png",
+    "card_text": "Chaque créature alliée gagne +1 en puissance.",
+    "flavor_text": ""
+  },
+  "21": {
+    "card_title": "Canon",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_21_CRMGW6QVC5HC_fr.png",
+    "card_text": "Action : Infligez 2 D à une créature.",
+    "flavor_text": ""
+  },
+  "22": {
+    "card_title": "Gantelet de Pouvoir",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_22_5F6F47CPQM7J_fr.png",
+    "card_text": "Action : Redressez une créature alliée et faites-la combattre.",
+    "flavor_text": "« C’est quand je leur ai dit “emmenez-moi à votre chef” que je me suis pris un pain dans la gueule » – Capitaine Val Jericho"
+  },
+  "23": {
+    "card_title": "Obélisque de Fer",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_23_G489GRF3RCV2_fr.png",
+    "card_text": "Les clés de votre adversaire coûtent +1 A pour chaque créature Brobnar alliée blessée.",
+    "flavor_text": ""
+  },
+  "24": {
+    "card_title": "Javelot de Puissance",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_24_CG2485CM5HV4_fr.png",
+    "card_text": "Omni : Sacrifiez le Javelot de Puissance. Infligez 4 D à une créature.",
+    "flavor_text": ""
+  },
+  "25": {
+    "card_title": "Pile de Crânes",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_25_M6WXP2FVXH53_fr.png",
+    "card_text": "Chaque fois qu’une créature ennemie est détruite pendant votre tour, une créature alliée capture 1 A.",
+    "flavor_text": ""
+  },
+  "26": {
+    "card_title": "Bombe Sonique",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_26_WGX3X54PQCMP_fr.png",
+    "card_text": "Omni : Sacrifiez la Bombe Sonique. Votre adversaire perd 2 A.",
+    "flavor_text": "« Je crois que ce truc m’a rendu sourd ! – Hein ? J’entends rien ! Je crois que ce truc m’a rendu sourd ! »"
+  },
+  "27": {
+    "card_title": "Butin de Guerre",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_27_5G98X8WW3V6G_fr.png",
+    "card_text": "Action : Gagnez 1 A pour chaque créature ennemie détruite en combat ce tour-ci.",
+    "flavor_text": "Ce qui compte, ce n’est pas le trésor lui-même, mais la façon dont on l’a obtenu."
+  },
+  "28": {
+    "card_title": "Avalanche Bilgum",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_28_VP32QGRWMRW3_fr.png",
+    "card_text": "Après avoir forgé une clé, infligez 2 D à chaque créature ennemie.",
+    "flavor_text": "« Certains l’appellent chef, d’autres la traitent de démon. Pour moi, c’est juste Avalanche » – L'Anguille"
+  },
+  "29": {
+    "card_title": "Valdr",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_29_97VGG57XM738_fr.png",
+    "card_text": "Valdr inflige +2 D quand elle attaque une créature ennemie située sur un flanc.",
+    "flavor_text": "« Récoltez-moi cet Aombre. Et magnez-vous ! »"
+  },
+  "30": {
+    "card_title": "Bobosse",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_30_X82H79CQ6XH6_fr.png",
+    "card_text": "Jouez : Votre adversaire perd 1 A.",
+    "flavor_text": "« Il casse tout ce qu’il n’aime pas. Et il n’aime rien. »"
+  },
+  "31": {
+    "card_title": "Trembleterre",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_31_C7RGGJ9WG7XW_fr.png",
+    "card_text": "Jouez : Détruisez chaque créature dont la puissance est inférieure ou égale à 3.",
+    "flavor_text": "« T’as senti ça ? »"
+  },
+  "32": {
+    "card_title": "Crachefeu",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_32_PVV2WC6R6QWP_fr.png",
+    "card_text": "Avant le Combat : Infligez 1 D à chaque créature ennemie.",
+    "flavor_text": "Devinez pourquoi on l’appelle comme ça."
+  },
+  "33": {
+    "card_title": "Chef de Gang",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_33_FGH2M9G9W45J_fr.png",
+    "card_text": "Jouez : Vous pouvez redresser une créature voisine et la faire combattre.",
+    "flavor_text": "« Pour une baston, faut être deux. Mais si on est plus, c’est encore mieux. »"
+  },
+  "34": {
+    "card_title": "Snib la Grenade",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_34_WJXC3F32R7CP_fr.png",
+    "card_text": "Détruit : Votre adversaire perd 2 A.",
+    "flavor_text": ""
+  },
+  "35": {
+    "card_title": "Chasseur de Têtes",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_35_M3H9MVCF63W7_fr.png",
+    "card_text": "Combat : gagnez 1 A.",
+    "flavor_text": "« C’est une tête… enfin, il me semble. »"
+  },
+  "36": {
+    "card_title": "Hebe le Balèze",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_36_73MRHJRCWXP4_fr.png",
+    "card_text": "Jouez : Infligez 2 D à chaque créature qui n’est pas blessée.",
+    "flavor_text": "Il est bien plus grand en vrai."
+  },
+  "37": {
+    "card_title": "Dragon Kelifi",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_37_PGMRV99HCWG7_fr.png",
+    "card_text": "Le Dragon Kelifi ne peut pas être joué si vous possédez moins de 7 A. Combat/Moisson : Gagnez 1 A. Infligez 5 D à une créature.",
+    "flavor_text": ""
+  },
+  "38": {
+    "card_title": "Le Roi des Cimes",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_38_VH6FGMM4HCH4_fr.png",
+    "card_text": "Chaque créature Brobnar ennemie subit -2 en puissance.",
+    "flavor_text": "Renverser ce roi demande de déplacer des montagnes."
+  },
+  "39": {
+    "card_title": "Krump",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_39_Q64CQC29J542_fr.png",
+    "card_text": "Après qu’une créature est détruite en combattant Krump, son contrôleur perd 1 A.",
+    "flavor_text": ""
+  },
+  "40": {
+    "card_title": "Lomir Poingdefeu",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_40_MH3839C78779_fr.png",
+    "card_text": "Jouez : Si votre adversaire possède au moins 7 A, il perd 2 A.",
+    "flavor_text": "« J’aurais cru que son nom relevait plus de… la métaphore. » - Quixo « l’Aventurier »"
+  },
+  "41": {
+    "card_title": "Pillard Gobelin",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_41_779WFQQ368X7_fr.png",
+    "card_text": "Insaisissable. (Chaque tour, la première fois que cette créature est attaquée, aucun dégât n’est infligé.) Moisson : Pour le reste du tour, gagnez 1 A chaque fois qu’une créature ennemie est détruite.",
+    "flavor_text": ""
+  },
+  "42": {
+    "card_title": "Mugwump",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_42_6G82WPR8965X_fr.png",
+    "card_text": "Après qu’une créature est détruite en combattant Mugwump, soignez entièrement Mugwump et ajoutez-lui un marqueur +1 en puissance.",
+    "flavor_text": ""
+  },
+  "43": {
+    "card_title": "Pingle l'Enquiquineur",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_43_PC7XR5283WJ_fr.png",
+    "card_text": "Insaisissable. (Chaque tour, la première fois que cette créature est attaquée, aucun dégât n’est infligé.) Infligez 1 D à chaque créature ennemie après son﻿ entrée en jeu.",
+    "flavor_text": ""
+  },
+  "44": {
+    "card_title": "Géant Lance-Roc",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_44_HP3GQM2F73G5_fr.png",
+    "card_text": "Pendant votre tour, chaque fois que vous défaussez une carte Brobnar de votre main, vous pouvez infliger 4 D à une créature.",
+    "flavor_text": ""
+  },
+  "45": {
+    "card_title": "Ogre Allègre",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_45_HWPQ963W848R_fr.png",
+    "card_text": "À la fin de votre tour, si vous avez joué une seule carte ce tour-ci, l’Ogre Allègre se soigne de 2 dégâts et capture 1 A.",
+    "flavor_text": "« Je le vois plutôt comme un Ogre aigre » – L’Anguille"
+  },
+  "46": {
+    "card_title": "Ékrazzz",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_46_MXF2PV92XQPW_fr.png",
+    "card_text": "Jouez : Sonnez une créature.",
+    "flavor_text": "« Je ne suis pas certain qu’il connaisse d’autres mots. »"
+  },
+  "47": {
+    "card_title": "Crocag L'Infatigable",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_47_QHVVFWHGJM8R_fr.png",
+    "card_text": "Crocag L’Infatigable ne peut pas moissonner. Vous pouvez utiliser Crocag L’Infatigable comme s’il appartenait à la Maison active. Si votre adversaire ne possède aucune créature en jeu, détruisez Crocag L’Infatigable.",
+    "flavor_text": ""
+  },
+  "48": {
+    "card_title": "Troll",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_48_CPX86RFXW765_fr.png",
+    "card_text": "Moisson : Le Troll se soigne de 3 dégâts.",
+    "flavor_text": "Ne le nourrissez pas, il partira de lui-même."
+  },
+  "49": {
+    "card_title": "Tambour de Guerre",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_49_3J962PMQJRJ6_fr.png",
+    "card_text": "Jouez : Renvoyez chaque autre créature Brobnar alliée dans votre main.",
+    "flavor_text": ""
+  },
+  "50": {
+    "card_title": "Sang des Titans",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_50_3GJFRPFVMF7M_fr.png",
+    "card_text": "Cette créature gagne +5 en puissance.",
+    "flavor_text": "« Le Sang des Géants ? Pourquoi s’arrêter en si bon chemin ? » – Pingle l’Enquiquineur"
+  },
+  "51": {
+    "card_title": "Cœur de Phénix",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_51_6X84PQ7GMFP9_fr.png",
+    "card_text": "Cette créature gagne : « Détruit : Renvoyez cette créature dans la main de son propriétaire et infligez 3 D à chaque créature en jeu ».",
+    "flavor_text": ""
+  },
+  "52": {
+    "card_title": "Maîtrise de Ta Mère",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_52_9664WG465QGC_fr.png",
+    "card_text": "Cette créature gagne provocation Jouez : Soignez entièrement cette créature.",
+    "flavor_text": "« Ta mère, elle est tellement petite que… »"
+  },
+  "53": {
+    "card_title": "Donnant-Donnant",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_53_CJXQV688FHG_fr.png",
+    "card_text": "Jouez : Défaussez la carte du sommet du deck de votre adversaire et révélez sa main. Vous gagnez 1 A pour chaque carte révélée appartenant à la Maison de la carte défaussée. Votre adversaire résout ensuite cet effet sur vous.",
+    "flavor_text": ""
+  },
+  "54": {
+    "card_title": "Debout les Morts !",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_54_F9GHFCWJ233R_fr.png",
+    "card_text": "Jouez : Choisissez une Maison. Renvoyez dans votre main chaque créature de cette Maison se trouvant dans votre défausse. Gagnez 1 chaîne.",
+    "flavor_text": ""
+  },
+  "55": {
+    "card_title": "Contrôler les Faibles",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_55_7CJ4H2WMJWQ2_fr.png",
+    "card_text": "Jouez : Choisissez une Maison sur la carte d’identité de votre adversaire. Votre adversaire doit choisir cette Maison en tant que Maison active lors de son prochain tour.",
+    "flavor_text": ""
+  },
+  "56": {
+    "card_title": "Néant Rampant",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_56_4RHHVXPC3X35_fr.png",
+    "card_text": "Jouez : Purgez jusqu’à 2 cartes d’une défausse.",
+    "flavor_text": "« Dans mon classement des néants, celui-ci arrive dans les trois derniers. » – Dr Escotera"
+  },
+  "57": {
+    "card_title": "Danse du Jugement",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_57_QR3X35J5GWCR_fr.png",
+    "card_text": "Jouez : Choisissez un nombre. Détruisez chaque créature dont la puissance est égale à ce nombre.",
+    "flavor_text": ""
+  },
+  "58": {
+    "card_title": "Peur",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_58_7RV7CX53R83P_fr.png",
+    "card_text": "Jouez : Renvoyez une créature ennemie dans la main de son propriétaire.",
+    "flavor_text": ""
+  },
+  "59": {
+    "card_title": "Portail vers Dis",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_59_WW6PQP2CGM8H_fr.png",
+    "card_text": "Jouez : Détruisez chaque créature. Gagnez 3 Chaînes.",
+    "flavor_text": ""
+  },
+  "60": {
+    "card_title": "Baguenaude",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_60_8J78GV8GV57Q_fr.png",
+    "card_text": "Jouez : Infligez 3 D à une créature. Si elle n’est pas détruite, son propriétaire défausse une carte au hasard de sa main.",
+    "flavor_text": "« J’ai la migraine rien qu’en tentant de comprendre ces… choses. »"
+  },
+  "61": {
+    "card_title": "Le Poids de la Culpabilité",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_61_HM8RPQWR5X46_fr.png",
+    "card_text": "Jouez : Détruisez chaque créature qui possède de l’A.",
+    "flavor_text": "Vas-y, prends. Je sais que t’en as envie."
+  },
+  "62": {
+    "card_title": "Main de Dis",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_62_8WF3JF84X9VM_fr.png",
+    "card_text": "Jouez : Détruisez une créature qui n’est pas située sur un flanc.",
+    "flavor_text": "« Laissez-moi vous donner un coup de main… »"
+  },
+  "63": {
+    "card_title": "Hécatombe",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_63_4HRPQ25HC9QR_fr.png",
+    "card_text": "Jouez : Détruisez chaque créature de Dis. Chaque joueur gagne 1 A pour chaque créature qu’il contrôlait détruite de la sorte.",
+    "flavor_text": ""
+  },
+  "64": {
+    "card_title": "Vrilles de la Souffrance",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_64_WCMG558RP6QV_fr.png",
+    "card_text": "Jouez : Infligez 1 D à chaque créature. Infligez 3 D supplémentaires à chaque créature si votre adversaire a forgé une clé lors de son tour précédent.",
+    "flavor_text": ""
+  },
+  "65": {
+    "card_title": "Hystérie",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_65_HX7W9345R87F_fr.png",
+    "card_text": "Jouez : Renvoyez chaque créature dans la main de son propriétaire.",
+    "flavor_text": "« Au secours ! Je ne peux pas m’en empêcher ! »"
+  },
+  "66": {
+    "card_title": "Marteau à Clé",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_66_RR9GCHVXP44C_fr.png",
+    "card_text": "Jouez : Si votre adversaire a forgé une clé lors de son tour précédent, elle redevient non forgée. Votre adversaire gagne 6 A.",
+    "flavor_text": "Quelle heure est-il ?"
+  },
+  "67": {
+    "card_title": "Aiguillon Cérébral",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_67_GJXV3PCXVPMW_fr.png",
+    "card_text": "Jouez : Votre adversaire défausse une carte au hasard de sa main.",
+    "flavor_text": ""
+  },
+  "68": {
+    "card_title": "Pandémonium",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_68_52H2XVR2J45G_fr.png",
+    "card_text": "Jouez : Chaque créature non blessée capture 1 A à son adversaire.",
+    "flavor_text": ""
+  },
+  "69": {
+    "card_title": "Poltergeist",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_69_P2P8M5XWMHCW_fr.png",
+    "card_text": "Jouez : Utilisez un artéfact contrôlé par n’importe quel joueur comme s’il était à vous. Détruisez cet artéfact.",
+    "flavor_text": ""
+  },
+  "70": {
+    "card_title": "Armure Chauffée à Blanc",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_70_QXV6993G25X7_fr.png",
+    "card_text": "Jouez : Chaque créature ennemie qui possède une armure perd toute son armure jusqu’à la fin du tour et subit 1 D pour chaque point d’armure perdu de la sorte.",
+    "flavor_text": ""
+  },
+  "71": {
+    "card_title": "Les Trois Parques",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_71_5P29489P6443_fr.png",
+    "card_text": "Jouez : Détruisez les trois créatures les plus puissantes.",
+    "flavor_text": "« Destitution, Dédain et Défenestration. »"
+  },
+  "72": {
+    "card_title": "Rituel d’Annihilation",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_72_H2HJ8R9HF5C_fr.png",
+    "card_text": "Quand une créature devrait aller dans la défausse depuis le jeu, elle est purgée à la place.",
+    "flavor_text": ""
+  },
+  "73": {
+    "card_title": "Gadget de Domination",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_73_QRQ93X7RG4J9_fr.png",
+    "card_text": "Action : Utilisez une créature alliée.",
+    "flavor_text": "« Je sais, j’aurais pas du l’piquer, mais… y brillait tell’ment… » – Oui-Oui le Filou"
+  },
+  "74": {
+    "card_title": "Clé de Dis",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_74_RP2JCG669GWQ_fr.png",
+    "card_text": "Omni : Sacrifiez la Clé de Dis. Détruisez chaque créature.",
+    "flavor_text": ""
+  },
+  "75": {
+    "card_title": "Fouet des Rêves Brisés",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_75_5WF77V8WRRPP_fr.png",
+    "card_text": "Action : les Clés coûtent +3 A pendant le prochain tour de votre adversaire.",
+    "flavor_text": "« Au début, je me disais que rien ne pouvait blesser un Archonte… » – Capitaine Val Jericho"
+  },
+  "76": {
+    "card_title": "Bibliothèque des Damnés",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_76_QR2M3J84P2GX_fr.png",
+    "card_text": "Action : Archivez une carte.",
+    "flavor_text": "« Ce lieu donne une autre signification à l’expression : se perdre dans un livre. » – Doc Livreton"
+  },
+  "77": {
+    "card_title": "Gardevie",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_77_46M5PVW2VRX9_fr.png",
+    "card_text": "Omni : Sacrifiez GardeVie. Votre adversaire ne peut pas jouer de créatures lors de son prochain tour.",
+    "flavor_text": ""
+  },
+  "78": {
+    "card_title": "Autel sacrificiel",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_78_Q7JWX2HW28FX_fr.png",
+    "card_text": "Action : Purgez une créature Humaine alliée en jeu. Si vous le faites, jouez une créature de votre défausse.",
+    "flavor_text": ""
+  },
+  "79": {
+    "card_title": "Caverne Hurlante",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_79_WQCG263H8RWW_fr.png",
+    "card_text": "Action : Mélangez votre main et votre défausse dans votre deck.",
+    "flavor_text": "« C’était toi, ou ça venait de la caverne ? » – Capitaine Val Jericho"
+  },
+  "80": {
+    "card_title": "Arracheur d’Âmes",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_80_79QFRXPXVQ33_fr.png",
+    "card_text": "Chaque fois qu’une créature est détruite, son propriétaire gagne 1 A.",
+    "flavor_text": "Personne ne rentre. Personne ne sort. Et pourtant le feu brûle toujours."
+  },
+  "81": {
+    "card_title": "Charrette",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_81_GM7WM322M4_fr.png",
+    "card_text": "Jouez : Capturez 3 A.",
+    "flavor_text": "Il n’aime pas partager."
+  },
+  "82": {
+    "card_title": "Cossard",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_82_HVV8PJ352J78_fr.png",
+    "card_text": "Insaisissable. (Chaque tour, la première fois que cette créature est attaquée, aucun dégât n’est infligé.) Jouez : Si votre adversaire possède au moins 7 A, capturez le tout.",
+    "flavor_text": ""
+  },
+  "83": {
+    "card_title": "Farfadet Poussière",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_83_9V7X379WFV8V_fr.png",
+    "card_text": "Détruit : gagnez 2 A.",
+    "flavor_text": "Quand le démon n’est pas là, les farfadets dansent."
+  },
+  "84": {
+    "card_title": "Mangemort",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_84_5P9QW3X62X46_fr.png",
+    "card_text": "Combat/Moisson : Purgez une créature d’une défausse. Si vous le faites, ajoutez un marqueur +1 en puissance sur le Mangemort.",
+    "flavor_text": ""
+  },
+  "85": {
+    "card_title": "Farfadet Braise",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_85_C72X25358RG2_fr.png",
+    "card_text": "Votre adversaire ne peut pas jouer plus de 2 cartes chaque tour.",
+    "flavor_text": ""
+  },
+  "86": {
+    "card_title": "Gabos Longbras",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_86_33RP646XMQ93_fr.png",
+    "card_text": "Avant le Combat : Choisissez une créature. Gabos Longbras inflige des dégâts à cette créature plutôt qu’à celle qu’il combat.",
+    "flavor_text": ""
+  },
+  "87": {
+    "card_title": "Greking le Suzerain",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_87_JFFVJ73VP9VQ_fr.png",
+    "card_text": "Après qu’une créature est détruite en combattant Greking le Suzerain, remettez cette créature en jeu sous votre contrôle.",
+    "flavor_text": ""
+  },
+  "88": {
+    "card_title": "Démon Gardien",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_88_W95JX5C22HW7_fr.png",
+    "card_text": "Jouez/Combat/Moisson : Soignez jusqu’à 2 dégâts d’une créature. Infligez le même montant de dégâts à une autre créature.",
+    "flavor_text": ""
+  },
+  "89": {
+    "card_title": "Maître du 1",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_89_RF2PX33PJW8W_fr.png",
+    "card_text": "Moisson : Vous pouvez détruire une créature avec une puissance de 1.",
+    "flavor_text": "Le premier péché est la peur."
+  },
+  "90": {
+    "card_title": "Maître du 2",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_90_6PRCRMHM5G4W_fr.png",
+    "card_text": "Moisson : Vous pouvez détruire une créature avec une puissance de 2.",
+    "flavor_text": "Le second péché est l’apathie."
+  },
+  "91": {
+    "card_title": "Maître du 3",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_91_JQ7CXW28FW88_fr.png",
+    "card_text": "Moisson : Vous pouvez détruire une créature avec une puissance de 3.",
+    "flavor_text": "Le troisième péché est l’avarice."
+  },
+  "92": {
+    "card_title": "Démon des Abîmes",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_92_CRW34FMH3JF2_fr.png",
+    "card_text": "Action : Volez 1 A.",
+    "flavor_text": "« Ils viennent d’un autre monde, ils sont faits de chair et d’acier, ils sont l’incarnation du mal et rôdent dans les ténèbres. Les appeler “démons” ne me dérange pas le moins du monde. » – Officier Scientifique Wu"
+  },
+  "93": {
+    "card_title": "Seigneur des Abîmes",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_93_95PVMCCHQ7P2_fr.png",
+    "card_text": "Provocation. (Les voisins de cette créature ne peuvent pas être attaqués à moins d’également avoir provocation.) Tant que le Seigneur des Abîmes est jeu, vous devez choisir Dis en tant que Maison active.",
+    "flavor_text": ""
+  },
+  "94": {
+    "card_title": "Restringuntus",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_94_F38PVXG83G8X_fr.png",
+    "card_text": "Jouez : Choisissez une Maison. Votre adversaire ne peut pas choisir cette Maison comme étant sa Maison active jusqu’à ce que Restringuntus quitte le jeu.",
+    "flavor_text": ""
+  },
+  "95": {
+    "card_title": "Bancroche",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_95_563MPX64P3XC_fr.png",
+    "card_text": "À la fin du tour, votre adversaire perd 1 A.",
+    "flavor_text": "« Vous voulez des Farfadets ? Voilà comment on s’y prend. »"
+  },
+  "96": {
+    "card_title": "Écornifleur",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_96_4J8576237M3X_fr.png",
+    "card_text": "Jouez : Si votre adversaire possède 4 A ou plus, volez 1 A.",
+    "flavor_text": "« Les démons ne donnent jamais. Ils prennent. » – Le Parchemin Sacré"
+  },
+  "97": {
+    "card_title": "Pingre",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_97_RM5XHC9QXGC5_fr.png",
+    "card_text": "Combat/Moisson : Renvoyez un artéfact ou une créature située sur le flanc dans la main de son propriétaire.",
+    "flavor_text": "Les gens ont raison d’avoir peur du noir."
+  },
+  "98": {
+    "card_title": "Voleur d’Âmes",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_98_JJGJFX44Q6GF_fr.png",
+    "card_text": "Après qu’une créature est détruite en combattant le Voleur d’Âmes, purgez cette créature et gagnez 1 A.",
+    "flavor_text": ""
+  },
+  "99": {
+    "card_title": "Succube",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_99_C63GPXC7XM83_fr.png",
+    "card_text": "Lors de son étape « Piocher des Cartes », votre adversaire refait sa main avec 1 carte de moins.",
+    "flavor_text": ""
+  },
+  "100": {
+    "card_title": "Tentacus",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_100_WQWQX27FH7M2_fr.png",
+    "card_text": "Votre adversaire doit vous payer 1 A pour pouvoir utiliser un artéfact.",
+    "flavor_text": ""
+  },
+  "101": {
+    "card_title": "La Terreur",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_101_9W755VJWMG92_fr.png",
+    "card_text": "Jouez : Si votre adversaire ne possède pas d’A, gagnez 2 A.",
+    "flavor_text": "« Avant, je pensais que ces créatures pouvaient être sauvées. Mais ça, c’était avant. » – Champion Anaphiel"
+  },
+  "102": {
+    "card_title": "Tocsin",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_102_CG7PMM7PJ3G6_fr.png",
+    "card_text": "Moisson : Votre adversaire défausse une carte au hasard de sa main.",
+    "flavor_text": ""
+  },
+  "103": {
+    "card_title": "Tolas",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_103_PMC43W3QPFW4_fr.png",
+    "card_text": "Insaisissable. (Chaque tour, la première fois que cette créature est attaquée, aucun dégât n’est infligé.) Chaque fois qu’une créature est détruite, son adversaire gagne 1 A.",
+    "flavor_text": ""
+  },
+  "104": {
+    "card_title": "Troubarou",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_104_VCQ8F8XMQJCH_fr.png",
+    "card_text": "Vous devez perdre 3 A pour jouer Troubarou. Provocation. (Les voisins de cette créature ne peuvent pas être attaqués à moins d’également avoir provocation.) Détruit : Gagnez 5 A.",
+    "flavor_text": ""
+  },
+  "105": {
+    "card_title": "Collier de Domination",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_105_Q3C3948M2HPH_fr.png",
+    "card_text": "Vous contrôlez cette créature.",
+    "flavor_text": "« OBÉIS ! »"
+  },
+  "106": {
+    "card_title": "Couronné de Flammes",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_106_4G49CMC5XCX4_fr.png",
+    "card_text": "Cette créature gagne +2 en puissance et gagne hasardeux 2. (Avant que cette créature ne soit Attaquée, infligez 2 D à l’ennemi attaquant.)",
+    "flavor_text": ""
+  },
+  "107": {
+    "card_title": "Quark Tueur Bondissant",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_107_X3G2GX9QW86R_fr.png",
+    "card_text": "Jouez : Détruisez une créature ennemie et une créature alliée. Vous pouvez répéter cet effet autant de fois que vous le souhaitez, tant qu’il est possible de le résoudre entièrement.",
+    "flavor_text": ""
+  },
+  "108": {
+    "card_title": "Porte Dimensionnelle",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_108_XHW22F7FH9FM_fr.png",
+    "card_text": "Jouez : Pour le reste du tour, tout l’A que vous devriez gagner en moissonnant est volé à votre adversaire.",
+    "flavor_text": ""
+  },
+  "109": {
+    "card_title": "Principe d’Effervescence",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_109_9382CVHW3F7H_fr.png",
+    "card_text": "Jouez : Chaque joueur perd la moitié de son A (arrondir la perte à l’inférieur). Gagnez 1 chaîne.",
+    "flavor_text": ""
+  },
+  "110": {
+    "card_title": "Sublimation",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_110_4W42XPXRVP7V_fr.png",
+    "card_text": "Jouez : Votre adversaire ne peut pas utiliser ses créatures pour combattre lors de son prochain tour.",
+    "flavor_text": ""
+  },
+  "111": {
+    "card_title": "Sauvé par son Moi Futur",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_111_5WMP36R2MHF_fr.png",
+    "card_text": "Jouez : Cherchez un Voyageur Temporel dans votre deck et dans votre défausse, révélez-le et placez-le dans votre main. Mélangez votre défausse dans votre deck.",
+    "flavor_text": ""
+  },
+  "112": {
+    "card_title": "Greffe Dimensionnelle",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_112_VWRCJXGG9J99_fr.png",
+    "card_text": "Jouez : Si votre adversaire forge une clé lors de son prochain tour, il doit vous donner tout son A restant.",
+    "flavor_text": ""
+  },
+  "113": {
+    "card_title": "Savoir, c'est Pouvoir",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_113_9V5G7WCPW27X_fr.png",
+    "card_text": "Jouez : Choisissez : Archivez une carte, ou gagnez 1 A  pour chacune de vos cartes archivées.",
+    "flavor_text": ""
+  },
+  "114": {
+    "card_title": "Recherches en Labo",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_114_X6V5QX33Q589_fr.png",
+    "card_text": "Jouez : Archivez une carte.",
+    "flavor_text": "La minutie est la clé du progrès."
+  },
+  "115": {
+    "card_title": "Accès à la Bibliothèque",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_115_4J2C745JC5V2_fr.png",
+    "card_text": "Jouez : Pour le reste du tour, chaque fois que vous jouez une autre carte, piochez une carte.",
+    "flavor_text": ""
+  },
+  "116": {
+    "card_title": "Siphon Neurologique",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_116_CW34G484FFRV_fr.png",
+    "card_text": "Jouez : Si votre adversaire possède plus d’A que vous, volez 1 A et piochez une carte.",
+    "flavor_text": ""
+  },
+  "117": {
+    "card_title": "Déphasage",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_117_HP2M3PV8GPJ7_fr.png",
+    "card_text": "Jouez : Vous pouvez jouer une carte n’appartenant pas à la Maison Logos ce tour-ci.",
+    "flavor_text": ""
+  },
+  "118": {
+    "card_title": "Éclair Positronique",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_118_9RQFX349V37W_fr.png",
+    "card_text": "Jouez : Infligez 3 D à une créature située sur le flanc. Infligez 2 D à son voisin. Infligez 1 D à l’autre voisin de la seconde créature.",
+    "flavor_text": ""
+  },
+  "119": {
+    "card_title": "Archives à Accès Aléatoire",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_119_5J4359XWQQ74_fr.png",
+    "card_text": "Jouez : Archivez la carte du sommet de votre deck.",
+    "flavor_text": "« 3.14159, Niffleurs, Glutamate Monosodique … »"
+  },
+  "120": {
+    "card_title": "Activation à Distance",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_120_V59VPJJ255WQ_fr.png",
+    "card_text": "Jouez : Utilisez un artéfact de votre adversaire comme s’il était à vous.",
+    "flavor_text": ""
+  },
+  "121": {
+    "card_title": "Inversion Temporelle",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_121_CXQ8C95R8C87_fr.png",
+    "card_text": "Jouez : Échangez votre deck et votre défausse. Ensuite, mélangez votre deck.",
+    "flavor_text": "… temps le dans arrière en revenir pouvais je si"
+  },
+  "122": {
+    "card_title": "Tempête de Parasites",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_122_HRQG3433R5R4_fr.png",
+    "card_text": "Jouez : Votre adversaire ne peut pas jouer de cartes d’action lors de son prochain tour.",
+    "flavor_text": ""
+  },
+  "123": {
+    "card_title": "Recherche Approximative",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_123_R3C97J8JMPRV_fr.png",
+    "card_text": "Jouez : Archivez une carte. Défaussez une carte.",
+    "flavor_text": "Ne vous embarrassez pas des détails. Le progrès survient lorsqu’on s’y attend le moins."
+  },
+  "124": {
+    "card_title": "Éclairs Jumelés",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_124_636R5683G3F_fr.png",
+    "card_text": "Jouez : Infligez 2 D à une créature et infligez 2 D à une créature différente.",
+    "flavor_text": ""
+  },
+  "125": {
+    "card_title": "Trou de Ver Imprévisible",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_125_H2RWQ5VF7V7_fr.png",
+    "card_text": "Jouez : Jouez la carte du sommet de votre deck.",
+    "flavor_text": "« Si jamais nous parvenions à récupérer la sonde d’exploration, pense à ce que nous pourrions découvrir ! »"
+  },
+  "126": {
+    "card_title": "Exploiteur d’Anomalie",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_126_F66C7VF2HR8Q_fr.png",
+    "card_text": "Action : Détruisez une créature blessée.",
+    "flavor_text": ""
+  },
+  "127": {
+    "card_title": "Portail du Chaos",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_127_R2424CG64G8M_fr.png",
+    "card_text": "Action : Choisissez une Maison. Révélez la carte du sommet de votre deck. Si elle appartient à la Maison choisie, jouez-la.",
+    "flavor_text": ""
+  },
+  "128": {
+    "card_title": "Machine de la Mort",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_128_8VF3XM5JM75C_fr.png",
+    "card_text": "Action : Défaussez la carte du sommet du deck de chaque joueur. Pour chacune de ces cartes, détruisez une créature ou un artéfact de la même Maison que la carte révélée, si possible. Si cette action n’a pas détruit 2 cartes, détruisez la Machine de la Mort.",
+    "flavor_text": ""
+  },
+  "129": {
+    "card_title": "Bibliothèque de Babil",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_129_WR7JW9MF9F2R_fr.png",
+    "card_text": "Action : Piochez une carte.",
+    "flavor_text": "Lorsque vous construisez des archives rassemblant tout le savoir de la galaxie, ne vous étonnez pas de ne pas y comprendre grand-chose."
+  },
+  "130": {
+    "card_title": "Parchemin de Möbius",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_130_JRGHQ4HQ5QHC_fr.png",
+    "card_text": "Action : Archivez le Parchemin de Möbius et jusqu’à 2 cartes de votre main.",
+    "flavor_text": "Il était une fois un parchemin qui commençait par : Il était une fois…"
+  },
+  "131": {
+    "card_title": "Univers de Poche",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_131_Q67W5PMV8768_fr.png",
+    "card_text": "Vous pouvez dépenser des A de l’Univers de Poche quand vous forgez des clés. Action : Déplacez 1 A de votre réserve sur l’Univers de Poche.",
+    "flavor_text": ""
+  },
+  "132": {
+    "card_title": "Boîte de Pinder",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_132_XQ93M42M9FR5_fr.png",
+    "card_text": "Action : Purgez une créature en jeu. Si vous le faites, votre adversaire prend le contrôle de la Boîte de Pinder. Si la Boîte de Pinder quitte le jeu, ramenez en jeu toutes les cartes qu’elle a purgées.",
+    "flavor_text": ""
+  },
+  "133": {
+    "card_title": "Fouisseur Spectral",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_133_FJGQFR6XJPHQ_fr.png",
+    "card_text": "Action : Choisissez une créature. Pour le reste du tour, cette créature est considérée comme étant située sur un flanc et gagne : « Moisson : Piochez 1 carte ».",
+    "flavor_text": ""
+  },
+  "134": {
+    "card_title": "Bidule Bizarre",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_134_J3JWR285J2M3_fr.png",
+    "card_text": "Après avoir forgé une clé, détruisez chaque créature et artéfact.",
+    "flavor_text": "« Rappelle-moi pourquoi on a construit ce truc, déjà ? »"
+  },
+  "135": {
+    "card_title": "La Fosse Rugissante",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_135_GVHX66578HV5_fr.png",
+    "card_text": "Lors de son étape « piocher des cartes », chaque jouer refait sa main avec 1 carte supplémentaire.",
+    "flavor_text": ""
+  },
+  "136": {
+    "card_title": "Batdrone",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_136_82MF23JH58M3_fr.png",
+    "card_text": "Escarmouche. (Quand vous utilisez cette créature en Combat, elle ne subit pas de dégâts en retour.) Combat : Volez 1 A.",
+    "flavor_text": "Le pire, c’est quand ils chantent."
+  },
+  "137": {
+    "card_title": "Mangeur de Cerveaux",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_137_F8PFV5JC764_fr.png",
+    "card_text": "Après qu’une créature est détruite en combattant le Mangeur de Cerveaux, piochez une carte.",
+    "flavor_text": ""
+  },
+  "138": {
+    "card_title": "Dextre",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_138_WVWFRR3PMG3H_fr.png",
+    "card_text": "Jouez : Capturez 1 A. Détruit : Placez Dextre au sommet de votre deck.",
+    "flavor_text": ""
+  },
+  "139": {
+    "card_title": "Doc Livreton",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_139_678M74P9FW66_fr.png",
+    "card_text": "Moisson : Piochez une carte.",
+    "flavor_text": "« T’inquiète, Momo. Je vais t’installer ce rayon de la mort quantique en deux-deux. »"
+  },
+  "140": {
+    "card_title": "Dr Escotera",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_140_GGR9WQGX52CC_fr.png",
+    "card_text": "Jouez : gagnez 1 A pour chaque clé forgée possédée par votre adversaire.",
+    "flavor_text": "« Réaction intéressante. Mais qu’est-ce que cela veut dire ? »"
+  },
+  "141": {
+    "card_title": "Dysania",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_141_MMQJWC7Q6V3_fr.png",
+    "card_text": "Jouez : Votre adversaire défausse chacune de ses cartes archivées. Vous gagnez 1 A pour chaque carte défaussée de la sorte.",
+    "flavor_text": ""
+  },
+  "142": {
+    "card_title": "Archiviste de Ganymède",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_142_9RC9J993WM9F_fr.png",
+    "card_text": "Moisson : Archivez une carte.",
+    "flavor_text": "« Ils ont insisté pour que je leur laisse mon équipage. J’ai refusé poliment. » – Capitaine Val Jericho"
+  },
+  "143": {
+    "card_title": "Harland Bloquesprit",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_143_G7C9MP3P4VX2_fr.png",
+    "card_text": "Jouez : Prenez le contrôle d’une créature ennemie située sur un flanc jusqu’à ce que Harland Bloquesprit quitte le jeu.",
+    "flavor_text": ""
+  },
+  "144": {
+    "card_title": "Quixo « l’Aventurier »",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_144_7XJ66GGGX9P3_fr.png",
+    "card_text": "Escarmouche. (Quand vous utilisez cette créature en combat, elle ne subit pas de dégâts en retour.) Combat : Piochez une carte.",
+    "flavor_text": "« … j’omettrai ce passage dans mes mémoires. »"
+  },
+  "145": {
+    "card_title": "Mère",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_145_65HF32HQGF2G_fr.png",
+    "card_text": "Lors de votre étape « Piocher des Cartes », refaites votre main avec 1 carte supplémentaire.",
+    "flavor_text": "« Bien entendu qu’elle est indispensable : elle est la mère des inventions ! »"
+  },
+  "146": {
+    "card_title": "Requin Neutronique",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_146_92H2X974PG8Q_fr.png",
+    "card_text": "Jouez/Combat/Moisson : Détruisez une créature ou un artéfact ennemi et une créature ou un artéfact allié. Défaussez la carte du sommet de votre deck. Si cette carte n’appartient pas à la Maison Logos, déclenchez de nouveau cet effet.",
+    "flavor_text": ""
+  },
+  "147": {
+    "card_title": "Archéologue de Novu",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_147_X27M5CQW494F_fr.png",
+    "card_text": "Action : Archivez une carte de votre défausse.",
+    "flavor_text": "« Les poubelles d’une civilisation sont… des poubelles, en fait. »"
+  },
+  "148": {
+    "card_title": "Ozmo, Martianologue",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_148_R25C9WHJ9V29_fr.png",
+    "card_text": "Insaisissable. (Chaque tour, la première fois que cette créature est attaquée, aucun dégât n’est infligé.) Combat/Moisson : Soignez 3 dégâts sur une créature de Mars ou sonnez une créature de Mars.",
+    "flavor_text": ""
+  },
+  "149": {
+    "card_title": "Insecte Psychique",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_149_GW4755VJMRRP_fr.png",
+    "card_text": "Jouez/Moisson : Regardez la main de votre adversaire.",
+    "flavor_text": "« J’en fabriquerais bien plus, mais j’ai réalisé que lire les esprits faibles ne présentait aucun intérêt. » – Moreau le Biologiste"
+  },
+  "150": {
+    "card_title": "Réplicateur",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_150_8QGJM4R2RQQW_fr.png",
+    "card_text": "Moisson : déclenchez l’effet de moisson d’une autre créature en jeu comme si vous en étiez le contrôleur. (Cette créature ne s’incline pas.)",
+    "flavor_text": ""
+  },
+  "151": {
+    "card_title": "Pozclop Fouineur",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_151_XC9823CQ2V92_fr.png",
+    "card_text": "Détruit : Archivez la carte du sommet de votre deck.",
+    "flavor_text": ""
+  },
+  "152": {
+    "card_title": "Skippy le Porc Gourou",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_152_3PXCFH529CPG_fr.png",
+    "card_text": "Jouez : Votre adversaire ne peut utiliser aucune carte lors du prochain tour. (Il peut toujours jouer ou défausser des cartes.)",
+    "flavor_text": ""
+  },
+  "153": {
+    "card_title": "Voyageur Temporel",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_153_X83CX7XJ5GRX_fr.png",
+    "card_text": "Jouez : Piochez 2 cartes. Action : Mélangez le Voyageur Temporel dans votre deck.",
+    "flavor_text": ""
+  },
+  "154": {
+    "card_title": "Titan Mécano",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_154_M7WH2HV6J2FX_fr.png",
+    "card_text": "Tant que le Titan Mécano est situé sur un flanc, chaque clé coûte -1 A.",
+    "flavor_text": "S’ils viennent, c’est pour bosser."
+  },
+  "155": {
+    "card_title": "Théoricien Vespilon",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_155_4XJVMF643M6C_fr.png",
+    "card_text": "Insaisissable. (Chaque tour, la première fois que cette créature est attaquée, aucun dégât n’est infligé.) Moisson : Choisissez une Maison. Révélez la carte du sommet de votre deck. Si elle appartient à la Maison choisie, archivez-la et gagnez 1 A. Sinon défaussez-la.",
+    "flavor_text": ""
+  },
+  "156": {
+    "card_title": "Analyste Veylan",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_156_4F6VP56RFQQ5_fr.png",
+    "card_text": "Chaque fois que vous utilisez un artéfact, gagnez 1 A.",
+    "flavor_text": "Les Logos sont scindés en deux camps : les Théoriciens et les Mécaniciens. Chaque camp est convaincu d’être supérieur à l’autre."
+  },
+  "157": {
+    "card_title": "Thérapie Expérimentale",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_157_4FCPWQMVGPC_fr.png",
+    "card_text": "Cette créature appartient à toutes les Maisons. Jouez : Sonnez cette créature et inclinez-la.",
+    "flavor_text": "« C’est pour la science, alors soyez franc. Comment vous sentez-vous ? »"
+  },
+  "158": {
+    "card_title": "Bottes-Fusées",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_158_WMW7JV5QGXW6_fr.png",
+    "card_text": "Cette créature gagne : « Combat/Moisson : Si c’est la première fois que la créature est utilisée ce tour-ci, redressez-la ».",
+    "flavor_text": "« Youpiiiiiiiiii ! »"
+  },
+  "159": {
+    "card_title": "Sandales de Transposition",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_159_RQ6V4VP7WP2P_fr.png",
+    "card_text": "Cette créature gagne : « Action : Échangez la position de cette créature avec celle d’une autre créature alliée de votre ligne de front. Vous pouvez utiliser cette autre créature ce tour-ci ».",
+    "flavor_text": ""
+  },
+  "160": {
+    "card_title": "Nuages d'Ammoniac",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_160_VQMVCX37C6XQ_fr.png",
+    "card_text": "Jouez : Infligez 3 D à chaque créature.",
+    "flavor_text": "Partiellement nuageux avec risque de pluie acide."
+  },
+  "161": {
+    "card_title": "Flotte de Guerre",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_161_FPHCPHPMX8W8_fr.png",
+    "card_text": "Jouez : Révélez n’importe quel nombre de cartes de Mars de votre main. Pour chaque carte révélée de la sorte, piochez 1 carte.",
+    "flavor_text": ""
+  },
+  "162": {
+    "card_title": "Transduction Extrême",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_162_J3M2V5CXFJ4W_fr.png",
+    "card_text": "Jouez : Choisissez une Maison. Révélez la main de votre adversaire. Défaussez chaque créature de cette Maison que vous révélez de la sorte.",
+    "flavor_text": ""
+  },
+  "163": {
+    "card_title": "Décharge IEM",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_163_HWF789XR9CMR_fr.png",
+    "card_text": "Jouez : Chaque créature de Mars et chaque créature Robot est sonnée. Chaque artéfact est détruit.",
+    "flavor_text": ""
+  },
+  "164": {
+    "card_title": "Ordre Hypnotique",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_164_QCCQ9VXCQH7X_fr.png",
+    "card_text": "Jouez : Pour chaque créature de Mars alliée, choisissez une créature ennemie qui capture 1 A à son propre camp.",
+    "flavor_text": ""
+  },
+  "165": {
+    "card_title": "Aombre Irradié",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_165_V5XGG2973F82_fr.png",
+    "card_text": "Jouez : Si votre adversaire possède au moins 6 A, infligez 3 D à chaque créature ennemie.",
+    "flavor_text": "« Ils ont empoisonné Mars. On ne peut pas les laisser faire la même chose ici. » – Père des Ours"
+  },
+  "166": {
+    "card_title": "Enlèvement de Clé",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_166_FC5W5F2668JC_fr.png",
+    "card_text": "Jouez : Renvoyez chaque créature de Mars dans la main de son propriétaire. Vous pouvez ensuite forger une clé à son coût actuel +9 A, réduit de 1 A pour chacune de vos cartes en main.",
+    "flavor_text": ""
+  },
+  "167": {
+    "card_title": "Molosses Martiens",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_167_3M79PQ4XJ4W2_fr.png",
+    "card_text": "Jouez : Choisissez une créature. Pour chaque créature blessée, donnez à la créature choisie deux marqueurs +1 en puissance.",
+    "flavor_text": "Qui a laissé sortir les… chiens ?"
+  },
+  "168": {
+    "card_title": "Nous Sommes Vos Amis",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_168_QMP27WWQ4X3X_fr.png",
+    "card_text": "Jouez : Révélez votre main. Purgez chaque créature révélée de la sorte﻿ qui n’appartient pas à la Maison de Mars et gagnez 1 A pour chaque carte purgée de la sorte.",
+    "flavor_text": ""
+  },
+  "169": {
+    "card_title": "Enlèvement de Masse",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_169_V74WF7V4MC37_fr.png",
+    "card_text": "Jouez : Placez 3 créatures ennemies blessées dans vos archives. Si n’importe laquelle de ces créatures quitte vos archives, elle est placée dans la main de son propriétaire.",
+    "flavor_text": ""
+  },
+  "170": {
+    "card_title": "Saison des Amours",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_170_6C5MPJVJ5G9R_fr.png",
+    "card_text": "Jouez : Mélangez chaque créature de Mars dans le deck de son propriétaire. Chaque joueur gagne 1 A pour chaque créature mélangée dans son deck de la sorte.",
+    "flavor_text": ""
+  },
+  "171": {
+    "card_title": "Soutien du Vaisseau-Mère",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_171_C9HXR9JCPGP9_fr.png",
+    "card_text": "Jouez : Pour chaque créature de Mars alliée redressée, infligez 2 D à une créature. (Vous pouvez choisir une créature différente chaque fois.)",
+    "flavor_text": ""
+  },
+  "172": {
+    "card_title": "Bombardement Orbital",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_172_4CX23PH9H69J_fr.png",
+    "card_text": "Jouez : Révélez n’importe quel nombre de cartes de Mars de votre main. Pour chaque carte révélée de la sorte, infligez 2 D à une créature. (Vous pouvez choisir une créature différente chaque fois.)",
+    "flavor_text": ""
+  },
+  "173": {
+    "card_title": "Étoiles Phosphoreuses",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_173_H5C875HQR3RC_fr.png",
+    "card_text": "Jouez : Sonnez chaque créature qui n’appartient pas à la Maison de Mars. Gagnez 2 chaînes.",
+    "flavor_text": "« Les martiens sont dingues du parfum de cette épice, mais moi, ça me rappelle les pieds du Vieux Bruno. » – L’Anguille"
+  },
+  "174": {
+    "card_title": "Réseau Psychique",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_174_Q59H8QWGHQCR_fr.png",
+    "card_text": "Jouez : Volez 1 A pour chaque créature de Mars alliée redressée.",
+    "flavor_text": ""
+  },
+  "175": {
+    "card_title": "Collecte d'Échantillons",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_175_6FF5HPJG5FFV_fr.png",
+    "card_text": "Jouez : Placez une créature ennemie dans vos archives pour chaque clé que votre adversaire a forgée. Si n’importe laquelle de ces créatures quitte vos archives, elle est placée dans la main de son propriétaire.",
+    "flavor_text": ""
+  },
+  "176": {
+    "card_title": "Tempête Fracassante",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_176_8PCPFPFV9CQC_fr.png",
+    "card_text": "Jouez : Perdez tout votre A. Votre adversaire perd ensuite trois fois le total d’A que vous avez perdu de la sorte.",
+    "flavor_text": "« Ça marche ! »"
+  },
+  "177": {
+    "card_title": "Atterrissage en Douceur",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_177_F3R3FCFQQQG8_fr.png",
+    "card_text": "Jouez : La prochaine créature ou le prochain artéfact que vous jouez ce tour-ci entre en jeu redressé.",
+    "flavor_text": "Un bon atterrissage, c’est celui dont on sort vivant…"
+  },
+  "178": {
+    "card_title": "Mégaphone",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_178_7J9MG8W9F6GM_fr.png",
+    "card_text": "Jouez : Redressez une créature de Mars ou sonnez une créature qui n’appartient pas à la Maison de Mars.",
+    "flavor_text": ""
+  },
+  "179": {
+    "card_title": "Mémoire Eidétique",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_179_69V9P82V8QCF_fr.png",
+    "card_text": "Jouez : Pour chaque créature alliée redressée, gagnez 1 A. Renvoyez chaque créature alliée dans votre main.",
+    "flavor_text": ""
+  },
+  "180": {
+    "card_title": "Phéromones de Combat",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_180_HQXG9V9X249X_fr.png",
+    "card_text": "Omni : Sacrifiez les Phéromones de Combat. Vous pouvez utiliser jusqu’à 2 autres cartes de Mars ce tour-ci.",
+    "flavor_text": "« Ne vous inquiétez pas. Cela va juste piquer un peu... beaucoup. »"
+  },
+  "181": {
+    "card_title": "Comm-Pod",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_181_MXX6XH3QQRCV_fr.png",
+    "card_text": "Action : Révélez n’importe quel nombre de cartes de Mars de votre main. Pour chaque carte révélée de la sorte, vous pouvez redresser une créature de Mars.",
+    "flavor_text": ""
+  },
+  "182": {
+    "card_title": "Ruche Cristalline",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_182_QC7VW6G544RQ_fr.png",
+    "card_text": "Action : Pour le reste du tour, gagnez 1 A chaque fois qu’une créature moissonne.",
+    "flavor_text": "Nova Hellas dans toute sa gloire !"
+  },
+  "183": {
+    "card_title": "Virus Maison",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_183_3G89HPF6R2GX_fr.png",
+    "card_text": "Omni : Sacrifiez le Virus Maison. Purgez une créature de votre main. Détruisez chaque créature qui partage un trait avec la créature purgée.",
+    "flavor_text": ""
+  },
+  "184": {
+    "card_title": "Puits Dévoreur",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_184_8MM9F8HJV6HG_fr.png",
+    "card_text": "Action : Défaussez une créature de votre main. Si vous le faites, gagnez 1 A.",
+    "flavor_text": ""
+  },
+  "185": {
+    "card_title": "Portail d’Invasion",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_185_6C5RX4PMJ5R2_fr.png",
+    "card_text": "Action : Défaussez des cartes du sommet de votre deck jusqu’à défausser une créature de Mars ou que vous soyez à court de cartes. Si vous défaussez une créature de Mars de la sorte, prenez-la dans votre main.",
+    "flavor_text": ""
+  },
+  "186": {
+    "card_title": "Chambre d’Incubation",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_186_PRG4HJPG6GX8_fr.png",
+    "card_text": "Omni : Révélez une carte de Mars de votre main. Si vous le faites, archivez-la.",
+    "flavor_text": "La plupart des Martiens du Creuset proviennent de ces réservoirs."
+  },
+  "187": {
+    "card_title": "Canon-Mère",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_187_886VP3RR6C5F_fr.png",
+    "card_text": "Action : Révélez n’importe quel nombre de cartes de Mars de votre main. Infligez à une créature un montant de dégâts égal au nombre de cartes de Mars révélées de la sorte.",
+    "flavor_text": ""
+  },
+  "188": {
+    "card_title": "Renifleur",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_188_JXXCR37F52MR_fr.png",
+    "card_text": "Action : Pour le reste du tour, chaque créature perd insaisissable.",
+    "flavor_text": "Même les animaux domestiques des Martiens ont une dent contre les autres formes de vie du Creuset."
+  },
+  "189": {
+    "card_title": "Gadget Permuteur",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_189_Q8749GRQ2RRW_fr.png",
+    "card_text": "Action : Renvoyez une créature de Mars alliée redressée dans votre main. Si vous le faites, mettez en jeu une créature de Mars portant un nom différent, puis redressez-la.",
+    "flavor_text": ""
+  },
+  "190": {
+    "card_title": "Blypyp",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_190_8XHXRR6J7CH2_fr.png",
+    "card_text": "Moisson : la prochaine créature de Mars que vous jouez ce tour-ci entre en jeu redressée.",
+    "flavor_text": "« Bientôt… »"
+  },
+  "191": {
+    "card_title": "Singe Pétras",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_191_MMMC6JPJ4H5P_fr.png",
+    "card_text": "Provocation. (Les voisins de cette créature ne peuvent pas être attaqués à moins d’également avoir provocation.) Le Singe Pétras entre en jeu sonné. Combat/Moisson : Vous pouvez sacrifier une autre créature alliée. Si vous le faites, soignez entièrement le Singe Pétras.",
+    "flavor_text": ""
+  },
+  "192": {
+    "card_title": "Araignée de l'Éther",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_192_P52JHFXR9X8X_fr.png",
+    "card_text": "L’Araignée de l’Éther n’inflige aucun dégât en combat. Chaque A qui devrait être ajouté à la réserve de votre adversaire est capturé par l’Araignée de l’Éther à la place.",
+    "flavor_text": ""
+  },
+  "193": {
+    "card_title": "Pinceur-Brouilleur",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_193_PXQ9229CMHHP_fr.png",
+    "card_text": "Les clés de votre adversaire coûtent +1 A. Combat/Moisson : Capturez 1 A.",
+    "flavor_text": "« À moi ! »"
+  },
+  "194": {
+    "card_title": "Grommid",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_194_J7HVR74PWP6W_fr.png",
+    "card_text": "Vous ne pouvez pas jouer de créatures. Après qu’une créature ennemie est détruite en combattant Grommid, votre adversaire perd 1 A.",
+    "flavor_text": ""
+  },
+  "195": {
+    "card_title": "« John Smyth »",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_195_8VX38X5J32VV_fr.png",
+    "card_text": "Insaisissable. (Chaque tour, la première fois que cette créature est attaquée, aucun dégât n’est infligé.) Combat/Moisson : Redressez une créature de Mars qui n’est pas un agent.",
+    "flavor_text": ""
+  },
+  "196": {
+    "card_title": "Embrouilleur d'Esprit",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_196_QG3353H2HJFM_fr.png",
+    "card_text": "Insaisissable. (Chaque tour, la première fois que cette créature est attaquée, aucun dégât n’est infligé.) Action : Choisissez une créature ennemie. Elle capture 1 A à son propre camp.",
+    "flavor_text": ""
+  },
+  "197": {
+    "card_title": "Phylyx le Désintégrateur",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_197_C637CW23C7M7_fr.png",
+    "card_text": "Insaisissable. (Chaque tour, la première fois que cette créature est attaquée, aucun dégât n’est infligé.) Action : Votre adversaire perd 1 A pour chaque autre créature de Mars alliée.",
+    "flavor_text": ""
+  },
+  "198": {
+    "card_title": "Maître-Virus Qyxxlyx",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_198_4QXQJ939VVQM_fr.png",
+    "card_text": "Combat/Moisson : Infligez 3 D à chaque créature dotée du trait Humain. Ces dégâts ne peuvent pas être annulés par une armure.",
+    "flavor_text": ""
+  },
+  "199": {
+    "card_title": "Horion",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_199_FW92QH6WPGCW_fr.png",
+    "card_text": "Après avoir joué une autre créature de Mars, soignez entièrement Horion.",
+    "flavor_text": "« Qui conduit ? – Je croyais que c’était toi. – Heu… évitons de parler de ça aux Aînés. »"
+  },
+  "200": {
+    "card_title": "Ulyq Grandegeule",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_200_CM3V8FW8C2PG_fr.png",
+    "card_text": "Combat/Moisson : Utilisez une créature alliée qui n’appartient pas à la Maison de Mars.",
+    "flavor_text": "« GLOIRE À MARS ! »"
+  },
+  "201": {
+    "card_title": "Uxlyx le Gardien de Zoo",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_201_69W23Q88QWW4_fr.png",
+    "card_text": "Insaisissable. (Chaque tour, la première fois que cette créature est attaquée, aucun dégât n’est infligé.) Moisson : Placez une créature ennemie dans vos archives. Si cette créature quitte vos archives, elle est placée dans la main de son propriétaire.",
+    "flavor_text": ""
+  },
+  "202": {
+    "card_title": "Vezyma Servodrone",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_202_99C5PXMWC2M7_fr.png",
+    "card_text": "Moisson : Vous pouvez archiver une créature ou un artéfact allié qui se trouve en jeu.",
+    "flavor_text": "« Rien de tel pour réfléchir qu’une bonne dose de violence gratuite. »"
+  },
+  "203": {
+    "card_title": "Maraudeur Yxili",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_203_8JJ739HGPCPC_fr.png",
+    "card_text": "Le Maraudeur Yxili gagne +1 en puissance pour chaque A sur sa carte. Jouez : Capturez 1 A à chaque créature de Mars alliée redressée.",
+    "flavor_text": ""
+  },
+  "204": {
+    "card_title": "Déboulonneur Yxilo",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_204_H9HQ5F59FJQX_fr.png",
+    "card_text": "Combat/Moisson : Infligez 2 D à une créature. Si ces dégâts détruisent cette créature, purgez-la.",
+    "flavor_text": ""
+  },
+  "205": {
+    "card_title": "Dominateur Yxilx",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_205_GPCHG3XCV2MV_fr.png",
+    "card_text": "Provocation. (Les voisins de cette créature ne peuvent pas être attaqués à moins d’également avoir provocation.) Le Dominateur Yxilx entre en jeu sonné.",
+    "flavor_text": "Générateur de puissance activé. Prêt à la domination."
+  },
+  "206": {
+    "card_title": "Zorg",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_206_4XXWX9CP9XGJ_fr.png",
+    "card_text": "Zorg entre en jeu sonné. Avant le Combat : Sonnez la créature que Zorg combat et chaque voisin de cette créature.",
+    "flavor_text": ""
+  },
+  "207": {
+    "card_title": "Zyzzix le Multiple",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_207_C938GRH2C993_fr.png",
+    "card_text": "Combat/Moisson : Vous pouvez révéler une créature de votre main. Si vous le faites, archivez-la, et ajoutez trois marqueurs +1 en puissance sur Zyzzix le Multiple.",
+    "flavor_text": ""
+  },
+  "208": {
+    "card_title": "Sauvegarde Biométrique",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_208_77VHC8FXXP27_fr.png",
+    "card_text": "Cette créature gagne : « Détruit : Vous pouvez placer cette créature dans les Archives de son propriétaire ».",
+    "flavor_text": ""
+  },
+  "209": {
+    "card_title": "Antenne Cérébrale",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_209_JHRJCP7RMVH2_fr.png",
+    "card_text": "Cette créature gagne : « après avoir joué une créature de Mars, redressez cette créature et pour le reste du tour, elle appartient à la Maison de Mars ».",
+    "flavor_text": ""
+  },
+  "210": {
+    "card_title": "Kit de Brouillage",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_210_HCXQ277C22FW_fr.png",
+    "card_text": "Cette créature gagne : « les clés de votre adversaire coûtent +2 A ».",
+    "flavor_text": "« C’est un truc d’humain. Y z‘appellent ça la mu-zik. »"
+  },
+  "211": {
+    "card_title": "Rayon Ardent",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_211_PQFJWQ3VVVGJ_fr.png",
+    "card_text": "Cette créature gagne : « Moisson : choisissez une créature. Infligez 1 D à cette créature pour chaque créature de Mars en jeu.",
+    "flavor_text": ""
+  },
+  "212": {
+    "card_title": "Vade Retro !",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_212_W36G9HXF9RQ7_fr.png",
+    "card_text": "Jouez : Choisissez : détruisez chaque créature de Dis, ou gagnez 1 A.",
+    "flavor_text": ""
+  },
+  "213": {
+    "card_title": "Lumière Aveuglante",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_213_P3Q4X37QMP7V_fr.png",
+    "card_text": "Jouez : Choisissez une Maison. Sonnez chaque créature de cette Maison.",
+    "flavor_text": ""
+  },
+  "214": {
+    "card_title": "Chargez !",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_214_X3RQF994MG6R_fr.png",
+    "card_text": "Jouez : Pour le reste du tour, chaque créature que vous jouez gagne : « Jouez : Infligez 2 D à une créature ennemie ».",
+    "flavor_text": ""
+  },
+  "215": {
+    "card_title": "Vague Purificatrice",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_215_RFRWH2MX953_fr.png",
+    "card_text": "Jouez : Soignez 1 dégât sur chaque créature. Gagnez 1 A par créature soignée de la sorte.",
+    "flavor_text": ""
+  },
+  "216": {
+    "card_title": "Esprit Clair",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_216_4CVXQJV2QG3P_fr.png",
+    "card_text": "Jouez : Chaque créature alliée perd le statut sonné.",
+    "flavor_text": "Le corps n’est qu’illusion. Seul l’esprit est éternel."
+  },
+  "217": {
+    "card_title": "Les Portes du Paradis",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_217_RWHMP875732G_fr.png",
+    "card_text": "Jouez : Chaque joueur qui possède au moins 6 A est réduit à 5 A.",
+    "flavor_text": "Les cités du Sanctum sont plus sûres, plus propres et plus animées que la plupart des autres cités du Creuset. Cependant, rares sont ceux qui peuvent y entrer."
+  },
+  "218": {
+    "card_title": "Une Poignée d’Élus",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_218_63PVJ7PJP3GP_fr.png",
+    "card_text": "Jouez : Pour chaque créature de votre adversaire en surnombre par rapport aux vôtres, vous gagnez 1 A.",
+    "flavor_text": ""
+  },
+  "219": {
+    "card_title": "Prise Honorable",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_219_P9V3P7F8849M_fr.png",
+    "card_text": "Jouez : Chaque créature Chevalier allié capture 1 A.",
+    "flavor_text": "« Au même titre que votre esprit, l’Aombre, qui est l’esprit de la terre, est sacrée. » – Le Parchemin Sacré"
+  },
+  "220": {
+    "card_title": "Inspiration",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_220_J4PRQX77RXV8_fr.png",
+    "card_text": "Jouez : Redressez une créature alliée et utilisez-la.",
+    "flavor_text": "« Le Sanctum a donné un but à mon existence. » – Duma la Martyre"
+  },
+  "221": {
+    "card_title": "Lance Toute Puissante",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_221_GHP2MR29293_fr.png",
+    "card_text": "Jouez : Infligez 3 D à une créature et 3 D à un voisin de cette créature.",
+    "flavor_text": ""
+  },
+  "222": {
+    "card_title": "Vœu de Pauvreté",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_222_QR5CWH4G69H3_fr.png",
+    "card_text": "Jouez : Détruisez chacun de vos artéfacts. Gagnez 2 A pour chaque artéfact détruit de la sorte.",
+    "flavor_text": ""
+  },
+  "223": {
+    "card_title": "Seul Contre Tous",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_223_PHQJHJ4P73J2_fr.png",
+    "card_text": "Jouez : Redressez et faites combattre une créature alliée trois fois, chaque fois contre une créature ennemie différente. Résolvez ces combats l’un après l’autre.",
+    "flavor_text": ""
+  },
+  "224": {
+    "card_title": "Vérité Rayonnante",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_224_J975CJ57VPP9_fr.png",
+    "card_text": "Jouez : Sonnez chaque créature ennemie qui n’est pas située sur un flanc.",
+    "flavor_text": "« En vérité, je vous le dis : la tarte, c’est meilleur que le gâteau. » – extrait des Divagations du Prophète Gizelhart"
+  },
+  "225": {
+    "card_title": "Bouclier de Justice",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_225_8WXGHPQGX9V_fr.png",
+    "card_text": "Jouez : Pour le reste du tour, aucune créature alliée ne peut subir de dégâts.",
+    "flavor_text": ""
+  },
+  "226": {
+    "card_title": "Prise d’Otages",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_226_VMCJ79WHJVR2_fr.png",
+    "card_text": "Jouez : Pour le reste du tour, chaque fois qu’une créature alliée combat, elle capture 1 A.",
+    "flavor_text": ""
+  },
+  "227": {
+    "card_title": "Redressement Judiciaire",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_227_VC53Q7XQ4C33_fr.png",
+    "card_text": "Jouez : Choisissez une créature alliée qui capture 2 A.",
+    "flavor_text": "« Un pantalon tu porteras. »"
+  },
+  "228": {
+    "card_title": "Plus Dure Sera la Chute",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_228_JQM953FW234C_fr.png",
+    "card_text": "Jouez : Purgez une créature dotée d’une puissance supérieure ou égale à 5.",
+    "flavor_text": ""
+  },
+  "229": {
+    "card_title": "La Voie de l'Esprit",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_229_J233WVWH3WPR_fr.png",
+    "card_text": "Jouez : Détruisez chaque créature dotée d’une puissance supérieure ou égale à 3.",
+    "flavor_text": "« L’esprit est éternel. La chair est faible. Abandonnez la chair, car la force terrestre constitue la pire des prisons. » – Le Dernier Livre"
+  },
+  "230": {
+    "card_title": "Œuvre de Charité",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_230_848RC8PR567J_fr.png",
+    "card_text": "(Vanilla)",
+    "flavor_text": "« Il n’existe aucun sanctuaire sur le Creuset. Il n’y a que le Sanctum. »"
+  },
+  "231": {
+    "card_title": "Quête Épique",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_231_9CW6R752CCQG_fr.png",
+    "card_text": "Jouez : Archivez chaque créature Chevalier alliée en jeu. Omni : Si vous avez joué au moins 7 cartes du Sanctum ce tour-ci, sacrifiez la Quête Épique et forgez une clé gratuitement.",
+    "flavor_text": ""
+  },
+  "232": {
+    "card_title": "Gorm d'Omm",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_232_9XQ8F9638GX2_fr.png",
+    "card_text": "Omni : Sacrifiez Gorm d’Omm. Détruisez un artéfact.",
+    "flavor_text": "« Qu’importe qu’il soit sacré ou non, un objet reste un objet. »"
+  },
+  "233": {
+    "card_title": "Blaster Sanctifié",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_233_V3CVPF24W8MR_fr.png",
+    "card_text": "Action : Soignez 3 dégâts sur une créature.",
+    "flavor_text": "Briser les épées pour en faire des socs, c’est penser petit."
+  },
+  "234": {
+    "card_title": "Potion d’Invulnérabilité",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_234_RJ99C8H7PWJH_fr.png",
+    "card_text": "Omni : Sacrifiez la Potion d’Invulnérabilité. Pour le reste du tour, aucune créature alliée ne peut subir de dégâts.",
+    "flavor_text": ""
+  },
+  "235": {
+    "card_title": "Table Ronde",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_235_MJMGJPH3545P_fr.png",
+    "card_text": "Chaque créature Chevalier alliée gagne +1 en puissance et provocation.",
+    "flavor_text": "« Venez mes chevaliers. Il est temps de nous préparer au combat. » – Le Roi Godefroy Ventgris"
+  },
+  "236": {
+    "card_title": "Sigil de la Confrérie",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_236_VWG6GMX929C6_fr.png",
+    "card_text": "Omni : Sacrifiez le Sigil de la Confrérie. Pour le reste du tour, vous pouvez utiliser des créatures du Sanctum alliées.",
+    "flavor_text": ""
+  },
+  "237": {
+    "card_title": "Reliquaire Chuchotant",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_237_MMHF7CR6FMJ2_fr.png",
+    "card_text": "Action : Renvoyez un artéfact dans la main de son propriétaire.",
+    "flavor_text": ""
+  },
+  "238": {
+    "card_title": "Bastion",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_238_4GJR4VPM7M26_fr.png",
+    "card_text": "Chaque voisin de Bastion gagne +2 en armure.",
+    "flavor_text": "« Laissez-moi être votre bouclier. »"
+  },
+  "239": {
+    "card_title": "Champion Anaphiel",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_239_FR9V84W6X65C_fr.png",
+    "card_text": "Provocation. (Les voisins de cette créature ne peuvent pas être attaqués à moins d’également avoir provocation.)",
+    "flavor_text": "« En garde, laquais ! Pour les atteindre, il te faudra d’abord me vaincre. »"
+  },
+  "240": {
+    "card_title": "Championne Tabris",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_240_C7P8FX9FVPXV_fr.png",
+    "card_text": "Combat : Capturez 1 A.",
+    "flavor_text": "« Aucune de mes prouesses martiales ne permet de me rapprocher de l’Illumination. »"
+  },
+  "241": {
+    "card_title": "Commandant Remiel",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_241_C472V3C68C9_fr.png",
+    "card_text": "Moisson : Utilisez une créature alliée qui n’appartient pas à la Maison du Sanctum.",
+    "flavor_text": "« Je n’ai pas toujours été chevalier. Peut-être qu’un jour, vous serez à ma place et que vous pourrez voir ce que je vois. »"
+  },
+  "242": {
+    "card_title": "Duma la Martyr",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_242_8X9FFJ5RC99F_fr.png",
+    "card_text": "Détruit : Soignez entièrement chaque autre créature alliée et piochez 2 cartes.",
+    "flavor_text": "« Rappelez-vous de moi. » – Duma l’Écuyère, à la Bataille de la Porte de l’Espoir"
+  },
+  "243": {
+    "card_title": "Francus",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_243_PFW5PH796X2W_fr.png",
+    "card_text": "Après qu’une créature ennemie est détruite en combattant Francus, Francus capture 1 A.",
+    "flavor_text": ""
+  },
+  "244": {
+    "card_title": "Moine Gris",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_244_4V54R77GCW9M_fr.png",
+    "card_text": "Chaque créature alliée gagne +1 en armure. Moisson : Soignez 2 dégâts sur une créature.",
+    "flavor_text": ""
+  },
+  "245": {
+    "card_title": "Hayyel le Marchand",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_245_7MHFM8Q84QMX_fr.png",
+    "card_text": "Chaque fois que vous jouez un artéfact, gagnez 1 A.",
+    "flavor_text": "« Les Illuminés sont bien au-dessus du marchandage. Moi, par contre… »"
+  },
+  "246": {
+    "card_title": "Cavalier de la Mort",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_246_JJM8J2JQ288W_fr.png",
+    "card_text": "Jouez : Renvoyez chaque créature dotée du trait cavalier de votre défausse dans votre main.",
+    "flavor_text": "L’un d’entre eux apporte la mort."
+  },
+  "247": {
+    "card_title": "Cavalier de la Famine",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_247_H927W8WQRH5X_fr.png",
+    "card_text": "Jouez/Combat/Moisson : Détruisez la créature la moins puissante.",
+    "flavor_text": "L’un d’entre eux emporte les faibles."
+  },
+  "248": {
+    "card_title": "Cavalier de la Pestilence",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_248_RQV5MQVG4FWV_fr.png",
+    "card_text": "Jouez/Combat/Moisson : Infligez 1 D à chaque créature qui n’est pas un cavalier.",
+    "flavor_text": "L’un d’entre eux offre des cadeaux empoisonnés."
+  },
+  "249": {
+    "card_title": "Cavalier de la Guerre",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_249_8MXMCQ93R9CJ_fr.png",
+    "card_text": "Jouez : Pour le reste du tour, chaque créature alliée peut être utilisée comme si elle appartenait à la Maison active, mais uniquement pour combattre.",
+    "flavor_text": "L’un d’entre eux vient guerroyer."
+  },
+  "250": {
+    "card_title": "Jehu le Bureaucrate",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_250_XMP7GGP9HP57_fr.png",
+    "card_text": "Après avoir choisi le Sanctum en tant que Maison active, gagnez 2 A.",
+    "flavor_text": "« Les chevaliers protègent le Sanctum. Ils ont droits à certains… privilèges. »"
+  },
+  "251": {
+    "card_title": "Dame Maxena",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_251_P4MXH8G4VPX4_fr.png",
+    "card_text": "Jouez : Sonnez une créature. Action : Renvoyez Dame Maxena dans la main de son propriétaire.",
+    "flavor_text": ""
+  },
+  "252": {
+    "card_title": "Seigneur Golgotha",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_252_VXMWR7MR5CW9_fr.png",
+    "card_text": "Avant le Combat : Infligez 3 D à chaque voisin de la créature que combat le Seigneur Golgotha.",
+    "flavor_text": "« Illuminé » ne signifie pas «pacifique »."
+  },
+  "253": {
+    "card_title": "La Belle Numquid",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_253_3G85FMW7C6QH_fr.png",
+    "card_text": "Jouez : Détruisez une créature ennemie. Répétez l’effet de cette carte tant que votre adversaire contrôle plus de créatures que vous.",
+    "flavor_text": ""
+  },
+  "254": {
+    "card_title": "Protectrix",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_254_W9QVJ9XWF94R_fr.png",
+    "card_text": "Moisson : Vous pouvez soigner entièrement une créature. Si vous le faites, cette créature ne peut pas subir de dégâts pour le reste du tour.",
+    "flavor_text": ""
+  },
+  "255": {
+    "card_title": "Chevalier en Maraude",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_255_HX7GPH8C78C2_fr.png",
+    "card_text": "Jouez : Capturez 1 A.",
+    "flavor_text": "« Tes mains sont trop impures pour brandir L’Aombre Sacré. »"
+  },
+  "256": {
+    "card_title": "Gardien du Sanctum",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_256_43Q78X6H273_fr.png",
+    "card_text": "Provocation. (Les voisins de cette créature ne peuvent pas être attaqués à moins d’également avoir provocation.) Combat/Moisson : Échangez les positions du Gardien du Sanctum et d’une autre créature alliée de votre ligne de front.",
+    "flavor_text": ""
+  },
+  "257": {
+    "card_title": "Sequis",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_257_WC74XH7M2MJW_fr.png",
+    "card_text": "Moisson : Capturez 1 A.",
+    "flavor_text": "« J’ai prêté allégeance à la lumière d’Aombre du Sanctum, la lumière de la vérité et de l’espoir. Et toi ? »"
+  },
+  "258": {
+    "card_title": "Sergent Zakiel",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_258_96FR2MX3FJWF_fr.png",
+    "card_text": "Jouez : Vous pouvez redresser une créature voisine et la faire combattre.",
+    "flavor_text": "« Tous ensemble ! »"
+  },
+  "259": {
+    "card_title": "Chevalier Dévoué",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_259_F6VVWM6QHCRR_fr.png",
+    "card_text": "Le Chevalier Dévoué gagne +2 en puissance tant qu’il est situé sur un flanc.",
+    "flavor_text": ""
+  },
+  "260": {
+    "card_title": "Gardien de la Porte",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_260_MJV7XGGFVMQC_fr.png",
+    "card_text": "Jouez : Si votre adversaire possède au moins 7 A, capturez-les tous sauf 5.",
+    "flavor_text": ""
+  },
+  "261": {
+    "card_title": "Le Gardien du Caveau",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_261_GRHXCM2HH6W2_fr.png",
+    "card_text": "Votre A ne peut pas être volé.",
+    "flavor_text": "En dehors des Archontes, rares sont ceux qui possèdent la capacité de détecter les Caveaux. En dehors du Sanctum, rares sont ceux qui oseraient décider quels Archontes sont dignes d’y accéder."
+  },
+  "262": {
+    "card_title": "Veemos Portelumière",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_262_VP65GQXWR45X_fr.png",
+    "card_text": "Jouez : Détruisez chaque créature insaisissable.",
+    "flavor_text": ""
+  },
+  "263": {
+    "card_title": "Cape de l'Armageddon",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_263_8WXW4FJ283XW_fr.png",
+    "card_text": "Cette créature gagne hasardeux 2 et : « Détruit : Soignez entièrement cette créature et détruisez la Cape de l’Armageddon à la place ».",
+    "flavor_text": ""
+  },
+  "264": {
+    "card_title": "Manteau du Zélote",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_264_JQ9XCRRXC36G_fr.png",
+    "card_text": "Cette créature gagne : « Vous pouvez utiliser cette créature comme si elle appartenait à la Maison active ».",
+    "flavor_text": ""
+  },
+  "265": {
+    "card_title": "Protéger les Faibles",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_265_36392V5F286G_fr.png",
+    "card_text": "Cette créature gagne +1 en armure et provocation. (Les voisins de cette créature ne peuvent pas être attaqués à moins d’également avoir provocation.)",
+    "flavor_text": ""
+  },
+  "266": {
+    "card_title": "Épaulière",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_266_F6GMMXCFJ9PC_fr.png",
+    "card_text": "Quand cette créature est située sur un flanc, elle gagne +2 en armure et +2 en puissance.",
+    "flavor_text": "« J’arrive pas à me voir. Ça me va bien ? »"
+  },
+  "267": {
+    "card_title": "Publicité Mensongère",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_267_VHQ67J5MWQV5_fr.png",
+    "card_text": "Jouez : Si votre adversaire possède plus d’A que vous, volez 1 A. Répétez cet effet si votre adversaire possède toujours plus d’A que vous.",
+    "flavor_text": "« Vous faites une super affaire. » – Le Vieux Bruno"
+  },
+  "268": {
+    "card_title": "Piège Explosif",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_268_6P3M73RFGR8W_fr.png",
+    "card_text": "Jouez : Infligez 4 D à une créature qui n’est pas située sur le flanc avec une projection de 2 D.",
+    "flavor_text": ""
+  },
+  "269": {
+    "card_title": "Coup de Grâce",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_269_V557QC8HH5C9_fr.png",
+    "card_text": "Jouez : Détruisez une créature blessée. Si vous le faites, gagnez 1 A.",
+    "flavor_text": "Vous ne verrez rien venir."
+  },
+  "270": {
+    "card_title": "Main Spectrale",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_270_5MJXHHP7VWWG_fr.png",
+    "card_text": "Jouez : Si votre adversaire possède exactement 1 A, volez-le-lui.",
+    "flavor_text": "« J’ai presque des remords d’avoir volé les Microputiens. Presque. » – Oui-Oui le Filou"
+  },
+  "271": {
+    "card_title": "Planque Secrète",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_271_3CCM38JM8932_fr.png",
+    "card_text": "Jouez : Archivez une carte.",
+    "flavor_text": "« Mais où as-tu mis ce truc… »"
+  },
+  "272": {
+    "card_title": "Traître Impérial",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_272_9W52QM6RM94X_fr.png",
+    "card_text": "Jouez : Regardez la main de votre adversaire. Vous pouvez y choisir une carte du Sanctum et la purger.",
+    "flavor_text": ""
+  },
+  "273": {
+    "card_title": "Clé de Ténèbres",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_273_VHRR6QWG3C3_fr.png",
+    "card_text": "Jouez : Forgez une clé à son coût actuel +6 A. Si votre adversaire ne possède aucun A, forgez une clé à son coût actuel +2 A à la place.",
+    "flavor_text": ""
+  },
+  "274": {
+    "card_title": "Extinction des Feux",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_274_P4W2FF886X6V_fr.png",
+    "card_text": "Jouez : Renvoyez 2 créatures ennemies dans la main de leur propriétaire.",
+    "flavor_text": ""
+  },
+  "275": {
+    "card_title": "Miasmes",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_275_5HGPVQG4QF5H_fr.png",
+    "card_text": "Jouez : Votre adversaire saute l’étape « Forger une Clé » de son prochain tour.",
+    "flavor_text": ""
+  },
+  "276": {
+    "card_title": "Décharge Neurologique",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_276_833RV7MVFCH8_fr.png",
+    "card_text": "Jouez : Volez 1 A. Si vous le faites, infligez 2 D à une créature.",
+    "flavor_text": "« On dirait que ma venue t’a fait un choc ! »"
+  },
+  "277": {
+    "card_title": "Un Dernier Braquage",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_277_HGVF3P4J7PVJ_fr.png",
+    "card_text": "Jouez : Purgez chaque créature des Ombres alliée. Volez 1 A pour chaque créature purgée de la sorte.",
+    "flavor_text": ""
+  },
+  "278": {
+    "card_title": "Oubliette",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_278_Q96GRFMV34CP_fr.png",
+    "card_text": "Jouez : Purgez une créature dotée d’une puissance inférieure ou égale à 3.",
+    "flavor_text": "« Je ne me rappelais plus qu’il y avait ce truc là-dessous »"
+  },
+  "279": {
+    "card_title": "Sacrifice du Pion",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_279_RJJJ2R3P5FHC_fr.png",
+    "card_text": "Jouez : Sacrifiez une créature alliée. Si vous le faites, infligez 3 D à une créature et 3 D à une autre.",
+    "flavor_text": "Le Pion prend le Fou de la Reine en 4."
+  },
+  "280": {
+    "card_title": "Vague Empoisonnée",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_280_3W4H8F78V4FG_fr.png",
+    "card_text": "Jouez : Infligez 2 D à chaque créature.",
+    "flavor_text": "« C’est carrément tubulaire. » – Quixo « l’Aventurier »"
+  },
+  "281": {
+    "card_title": "Murmures Incessants",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_281_MPVFFW3882CJ_fr.png",
+    "card_text": "Jouez : Infligez 2 D à une créature. Si ces dégâts détruisent cette créature, volez 1 A.",
+    "flavor_text": ""
+  },
+  "282": {
+    "card_title": "Travail de Routine",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_282_4F97HV2RJ9FC_fr.png",
+    "card_text": "Jouez : Volez 1 A. Volez ensuite 1 A pour chaque exemplaire de Travail de Routine dans votre défausse.",
+    "flavor_text": ""
+  },
+  "283": {
+    "card_title": "Trop à Protéger",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_283_J93HJ73F4PMQ_fr.png",
+    "card_text": "Jouez : Volez tout l’A de votre adversaire au-delà de 6.",
+    "flavor_text": "Le vrai crime serait de ne pas se servir."
+  },
+  "284": {
+    "card_title": "Carte au Trésor",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_284_Q7HHRF75F97J_fr.png",
+    "card_text": "Jouez : Si vous n’avez joué aucune autre carte ce tour-ci, gagnez 3 A. Vous ne pouvez plus jouer de cartes pour le reste du tour.",
+    "flavor_text": ""
+  },
+  "285": {
+    "card_title": "Bureau des Douanes",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_285_C7MWV8WQ4QPG_fr.png",
+    "card_text": "Votre adversaire doit vous payer 1 A pour jouer un artéfact.",
+    "flavor_text": ""
+  },
+  "286": {
+    "card_title": "Sigil d'Évasion",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_286_4686MGRJ87QX_fr.png",
+    "card_text": "Avant qu’une créature ne combatte, défaussez la carte du sommet du deck de son contrôleur. Si la carte défaussée appartient à la Maison active, inclinez cette créature sans générer aucun effet.",
+    "flavor_text": ""
+  },
+  "287": {
+    "card_title": "Mines à Retardement",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_287_H6CGFG593XMM_fr.png",
+    "card_text": "Omni : Sacrifiez les Mines à Retardement. Infligez 3 D à chaque créature ennemie qui n’est pas située sur un flanc.",
+    "flavor_text": ""
+  },
+  "288": {
+    "card_title": "Plan Diabolique",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_288_8FJVHVWFWC4P_fr.png",
+    "card_text": "Jouez : Mettez une carte de votre main face cachée sous le Plan Diabolique.Omni : Jouez la carte placée sous le Plan Diabolique. Sacrifiez le Plan Diabolique.",
+    "flavor_text": ""
+  },
+  "289": {
+    "card_title": "Planque",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_289_88GPJGFV248G_fr.png",
+    "card_text": "Vous pouvez dépenser des A de la Planque quand vous forgez des clés. Action : Déplacez 1 A de votre réserve sur la Planque.",
+    "flavor_text": ""
+  },
+  "290": {
+    "card_title": "Aiguille Chercheuse",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_290_PQP9MHRG7W4H_fr.png",
+    "card_text": "Action : Infligez 1 D à une créature. Si ce dégât détruit la créature, gagnez 1 A.",
+    "flavor_text": "« C’était quoi ? »"
+  },
+  "291": {
+    "card_title": "Passe-Partout",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_291_7FCVJGVJQF96_fr.png",
+    "card_text": "Action : Une créature alliée capture 1 A.",
+    "flavor_text": "Passe-partout vendu séparément."
+  },
+  "292": {
+    "card_title": "Livraison Spéciale",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_292_C98PWPG7H4FC_fr.png",
+    "card_text": "Omni : Sacrifiez Livraison Spéciale. Infligez 3 D à une créature située sur un flanc. Si ces dégâts détruisent cette créature, purgez-la.",
+    "flavor_text": ""
+  },
+  "293": {
+    "card_title": "Sigil de Vitesse",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_293_6Q53JFFFWX8F_fr.png",
+    "card_text": "Chaque tour, la première créature jouée arrive en jeu redressée.",
+    "flavor_text": ""
+  },
+  "294": {
+    "card_title": "Maillet Subtil",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_294_VJXHQQVX3C86_fr.png",
+    "card_text": "Action : Votre adversaire défausse une carte au hasard de sa main.",
+    "flavor_text": ""
+  },
+  "295": {
+    "card_title": "Le Dard",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_295_45HVFWG7RMPF_fr.png",
+    "card_text": "Sautez votre étape « forgez une clé ». Vous récoltez tous les A dépensés par votre adversaire lorsqu’il forge des clés. Action : Sacrifiez Le Dard.",
+    "flavor_text": ""
+  },
+  "296": {
+    "card_title": "Faux Jeton",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_296_QF774F23G6MR_fr.png",
+    "card_text": "Détruit : Renvoyez Faux Jeton dans la main de son propriétaire.",
+    "flavor_text": "Il y a de faux braves comme il y a de faux jetons."
+  },
+  "297": {
+    "card_title": "Ciblette",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_297_G45G2JGWP362_fr.png",
+    "card_text": "Insaisissable. (Chaque tour, la première fois que cette créature est attaquée, aucun dégât n’est infligé.) Moisson : détruisez une créature située sur le flanc.",
+    "flavor_text": ""
+  },
+  "298": {
+    "card_title": "Carlo Fantomas",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_298_5PGPFVJF9292_fr.png",
+    "card_text": "Insaisissable. Escarmouche. Chaque fois que vous jouez un artéfact, volez 1 A.",
+    "flavor_text": "« À la moindre occase, je rafle le pactole. »"
+  },
+  "299": {
+    "card_title": "Maître Espion Deipno",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_299_M3P2FVHP7MC_fr.png",
+    "card_text": "Insaisissable. (Chaque tour, la première fois que cette créature est attaquée, aucun dégât n’est infligé.) Omni : Choisissez une créature alliée. Vous pouvez utiliser cette créature ce tour-ci.",
+    "flavor_text": ""
+  },
+  "300": {
+    "card_title": "Faygin",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_300_X7RWJQRG2MRV_fr.png",
+    "card_text": "Insaisissable. (Chaque tour, la première fois que cette créature est attaquée, aucun dégât n’est infligé.) Moisson : Renvoyez un Orphelin en jeu ou dans votre défausse dans votre main.",
+    "flavor_text": ""
+  },
+  "301": {
+    "card_title": "Aspic Macis",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_301_5G45CCCH6W5J_fr.png",
+    "card_text": "Escarmouche. (Quand vous utilisez cette créature en Combat, elle ne subit pas de dégâts en retour.) Poison. (Tout dégât infligé par la puissance de cette créature durant un combat détruit la créature blessée.)",
+    "flavor_text": ""
+  },
+  "302": {
+    "card_title": "Mack le Schlass",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_302_RP49F4QFW3FM_fr.png",
+    "card_text": "Insaisissable. Vous pouvez utiliser Mack le Schlass comme s’il appartenait à la Maison active. Action : Infligez 1 D à une créature. Si ce dégât détruit la créature, gagnez 1 A.",
+    "flavor_text": ""
+  },
+  "303": {
+    "card_title": "Magda la Ratte",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_303_JJPCRGJ7CFPW_fr.png",
+    "card_text": "Insaisissable. (Chaque tour, la première fois que cette créature est attaquée, aucun dégât n’est infligé.) Jouez : Volez 2 A. Quitte le Jeu : Votre adversaire vole 2 A.",
+    "flavor_text": ""
+  },
+  "304": {
+    "card_title": "Alcine Sélénite",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_304_3QMPPH48XHXJ_fr.png",
+    "card_text": "Escarmouche. Poison. Combat : Volez 1 A.",
+    "flavor_text": "Quand le sage montre la lune, l’idiot regarde le doigt."
+  },
+  "305": {
+    "card_title": "Nexus",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_305_7QJVVWFQJPHJ_fr.png",
+    "card_text": "Insaisissable. (Chaque tour, la première fois que cette créature est attaquée, aucun dégât n’est infligé.) Moisson : Utilisez un artéfact de votre adversaire comme s’il était à vous.",
+    "flavor_text": ""
+  },
+  "306": {
+    "card_title": "Oui-Oui le Filou",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_306_6374XF5G5XMR_fr.png",
+    "card_text": "Insaisissable. (Chaque tour, la première fois que cette créature est attaquée, aucun dégât n’est infligé.) Action : Volez 1 A.",
+    "flavor_text": ""
+  },
+  "307": {
+    "card_title": "Le Vieux Bruno",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_307_7M48G5WCGGX9_fr.png",
+    "card_text": "Insaisissable. (Chaque tour, la première fois que cette créature est attaquée, aucun dégât n’est infligé.) Jouez : Capturez 3 A.",
+    "flavor_text": "« Je relance. »"
+  },
+  "308": {
+    "card_title": "L'Anguille",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_308_4VWXF7969J9H_fr.png",
+    "card_text": "Combat : Volez 1 A.",
+    "flavor_text": "« Tu fais quoi, minus ? » – Valdr"
+  },
+  "309": {
+    "card_title": "Selwyn la Receleuse",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_309_7GJ6RPFR59G2_fr.png",
+    "card_text": "Combat/Moisson : Déplacez 1 A de l’une de vos cartes vers votre réserve.",
+    "flavor_text": ""
+  },
+  "310": {
+    "card_title": "Double Ténébreux",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_310_C33C4J4W6726_fr.png",
+    "card_text": "Le Double Ténébreux n’inflige pas de dégâts en combat. Les dégâts infligés aux voisins non Spectres sont infligés au Double Ténébreux à la place.",
+    "flavor_text": ""
+  },
+  "311": {
+    "card_title": "Croc d’Argent",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_311_69G639M8F4F2_fr.png",
+    "card_text": "Croc d’Argent entre en jeu redressé.",
+    "flavor_text": "Si vous voyez des dents briller dans la nuit, c’est qu’il est déjà trop tard."
+  },
+  "312": {
+    "card_title": "Ruth Gueule d’Amour",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_312_V2H6733WRV33_fr.png",
+    "card_text": "Insaisissable. (Chaque tour, la première fois que cette créature est attaquée, aucun dégât n’est infligé.) Moisson : Si vous avez forgé une clé ce tour-ci, prenez le contrôle d’une créature ennemie située sur un flanc.",
+    "flavor_text": ""
+  },
+  "313": {
+    "card_title": "Crotale la Détale",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_313_XW5J3RPG585M_fr.png",
+    "card_text": "Jouez : Prenez le contrôle d’un artéfact ennemi. Tant que vous le contrôlez, s’il n’appartient à aucune de vos 3 Maisons, il est considéré comme appartenant à la Maison des Ombres.",
+    "flavor_text": ""
+  },
+  "314": {
+    "card_title": "Umbra",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_314_VHG44C64WFXQ_fr.png",
+    "card_text": "Escarmouche. (Quand vous utilisez cette créature en Combat, elle ne subit pas de dégâts en retour.) Combat : Volez 1 A.",
+    "flavor_text": "« Ce n’est qu’une fois la baston terminée que commence le vrai boulot. »"
+  },
+  "315": {
+    "card_title": "Orphelin",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_315_7MCP67W84FWX_fr.png",
+    "card_text": "Insaisissable. (Chaque tour, la première fois que cette créature est attaquée, aucun dégât n’est infligé.) Jouez : Volez 1 A.",
+    "flavor_text": ""
+  },
+  "316": {
+    "card_title": "Coureur Crépusculaire",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_316_P6MMX3WR7MC6_fr.png",
+    "card_text": "Cette créature gagne : « Moisson : volez 1 A ».",
+    "flavor_text": "« Je suis le Rôdeur Lunaire, le Coureur Crépusculaire, je suis Qui-Va-Là, C’est-Rien-Que-Le-Chat. » – “Le Premier Voleur“, comptine de la Maison des Ombres."
+  },
+  "317": {
+    "card_title": "Anneau d'Invisibilté",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_317_F7RPHF6XHVWC_fr.png",
+    "card_text": "Cette créature gagne insaisissable et escarmouche.﻿",
+    "flavor_text": "« Mince, je l’avais posé là… »"
+  },
+  "318": {
+    "card_title": "Dague Silencieuse",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_318_CGCC5XW8VF69_fr.png",
+    "card_text": "Cette créature gagne : « Moisson : Infligez 4 D à une créature située sur le flanc.",
+    "flavor_text": ""
+  },
+  "319": {
+    "card_title": "Chasse en Meute",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_319_75P9X98FJQHV_fr.png",
+    "card_text": "Jouez : Infligez 1 D pour chaque créature alliée en jeu. Vous pouvez répartir ces dégâts entre les créatures de votre choix.",
+    "flavor_text": "« C’est drôlement plus efficace que la chasse en solitaire ! »"
+  },
+  "320": {
+    "card_title": "Curiosité",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_320_Q6Q7VG34P9GF_fr.png",
+    "card_text": "Jouez : Détruisez chaque créature dotée du trait Scientifique.",
+    "flavor_text": "« Ça a commencé avec le chat de Schrödinger et ça a continué depuis. » – Quixo « l’Aventurier »"
+  },
+  "321": {
+    "card_title": "Hymne à la Fertilité",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_321_43VFXWMHFR7M_fr.png",
+    "card_text": "Jouez : Votre adversaire gagne 2 A.",
+    "flavor_text": ""
+  },
+  "322": {
+    "card_title": "Banc de Brume",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_322_9RH25FHMC26H_fr.png",
+    "card_text": "Jouez : Votre adversaire ne peut pas utiliser de créatures pour combattre lors de son prochain tour.",
+    "flavor_text": ""
+  },
+  "323": {
+    "card_title": "Pleine Lune",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_323_CMWHFWX8HM52_fr.png",
+    "card_text": "Jouez : Pour le reste du tour, gagnez 1 A chaque fois que vous jouez une créature.",
+    "flavor_text": "« Mathématiquement, il est impossible d’avoir une lune orbitant autour du Creuset. » « Ah oui ? et ça, c’est quoi alors ? »"
+  },
+  "324": {
+    "card_title": "Lianes-Pièges",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_324_VH9R4P26824V_fr.png",
+    "card_text": "Jouez : Renvoyez jusqu’à 3 artéfacts dans les mains de leur propriétaire.",
+    "flavor_text": ""
+  },
+  "325": {
+    "card_title": "Clé en Surtension",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_325_66XVRV5PWMVG_fr.png",
+    "card_text": "Jouez : Perdez 1 A. Si vous le faites, vous pouvez forger une clé au coût actuel.",
+    "flavor_text": "« Vous pensez peut-être que c’est de la folie, mais la folie constitue un ingrédient clé. » – Inka l’Araignée"
+  },
+  "326": {
+    "card_title": "Toile de Vie",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_326_X574G5FJP676_fr.png",
+    "card_text": "Jouez : Si votre adversaire a joué au moins 3 créatures lors de son tour précédent, volez 2 A.",
+    "flavor_text": ""
+  },
+  "327": {
+    "card_title": "Perdus dans les Bois",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_327_W6VV383R4X8P_fr.png",
+    "card_text": "Jouez : Choisissez 2 créatures alliées et 2 créatures ennemies. Mélangez chacune des créatures choisies dans le deck de son propriétaire.",
+    "flavor_text": ""
+  },
+  "328": {
+    "card_title": "Mimétisme",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_328_7H4999VX47XJ_fr.png",
+    "card_text": "Quand vous jouez cette carte, considérez-la comme un exemplaire d’une carte d’action présente dans la défausse de votre adversaire.",
+    "flavor_text": "Il paraît que si on s’aventure suffisamment loin dans le Creuset, on finit par se rencontrer soi-même."
+  },
+  "329": {
+    "card_title": "L’Appel de la Nature",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_329_387QVR6XM2M3_fr.png",
+    "card_text": "Jouez : Renvoyez jusqu’à 3 créatures dans la main de leur propriétaire.",
+    "flavor_text": "« Quand faut y aller, faut y aller… »"
+  },
+  "330": {
+    "card_title": "Manœuvre Nocturne",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_330_R4Q6P7M74J89_fr.png",
+    "card_text": "Jouez : Inclinez jusqu’à 3 créatures.",
+    "flavor_text": "Sur chaque monde, on trouve des créatures qui se complaisent dans les ténèbres, mais sur le Creuset, elles y sont toutes."
+  },
+  "331": {
+    "card_title": "Nature Périlleuse",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_331_QF7G64HGJ35G_fr.png",
+    "card_text": "Jouez : Détruisez chaque créature Insaisissable.",
+    "flavor_text": "Les Architectes se sont donné beaucoup de mal pour rendre le Creuset habitable par les diverses créatures de la galaxie. Par contre, ils n’en ont pas fait un endroit sûr."
+  },
+  "332": {
+    "card_title": "Renaissance",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_332_R2GQWP4RXCM4_fr.png",
+    "card_text": "Jouez : Renvoyez une créature de votre défausse dans votre main.",
+    "flavor_text": "« Au fond de chaque ours, il y a… un autre ours. » – Dr Escotera"
+  },
+  "333": {
+    "card_title": "Sauver la Meute",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_333_4J9WMP4Q2F2G_fr.png",
+    "card_text": "Jouez : Détruisez chaque créature blessée. Gagnez 1 chaîne.",
+    "flavor_text": ""
+  },
+  "334": {
+    "card_title": "Reconnaissance",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_334_W8RW3VC8V333_fr.png",
+    "card_text": "Jouez : Pour le reste du tour, jusqu’à 2 créatures alliées gagnent escarmouche. Faites ensuite combattre chacune de ces créatures, l’une après l’autre.",
+    "flavor_text": ""
+  },
+  "335": {
+    "card_title": "Piétinement",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_335_QV8XP6G2RJ4V_fr.png",
+    "card_text": "Jouez : Si vous avez utilisé au moins 3 créatures ce tour-ci, volez 2 A.",
+    "flavor_text": "« Mieux vaut courir avec le troupeau plutôt que de se faire piétiner par lui. » – Père des Ours"
+  },
+  "336": {
+    "card_title": "Un Simple Rhume",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_336_6J5XR2JH8X5G_fr.png",
+    "card_text": "Jouez : Infligez 1 D à chaque créature. Vous pouvez détruire toutes les créatures de Mars.",
+    "flavor_text": "« En fait, il s’avère que nous avons affaire à une version simplifiée du rhume complexe. » – Dr Escotera"
+  },
+  "337": {
+    "card_title": "Rappel des Troupes",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_337_WP75XF628MRC_fr.png",
+    "card_text": "Jouez : Renvoyez chaque créature Niffleur alliée en jeu et dans votre défausse dans votre main.",
+    "flavor_text": ""
+  },
+  "338": {
+    "card_title": "Vigueur",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_338_CR6PV8PPC85R_fr.png",
+    "card_text": "Jouez : Soignez jusqu’à 3 dégâts sur une créature. Si vous avez soigné 3 dégâts, gagnez 1 A.",
+    "flavor_text": ""
+  },
+  "339": {
+    "card_title": "Mot de Rappel",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_339_XXH795WXQ6J6_fr.png",
+    "card_text": "Jouez : Infligez 1 D à chaque créature ennemie pour chaque A qu’elle possède. Renvoyez tout l’A présent sur ces créatures dans votre réserve.",
+    "flavor_text": ""
+  },
+  "340": {
+    "card_title": "Flûte à Ours",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_340_94548CJ4JMP9_fr.png",
+    "card_text": "Action : Soignez entièrement un Ours Vénérable. Si aucun Ours Vénérable ne se trouve en jeu, cherchez dans votre deck et votre défausse ; prenez chaque Ours Vénérable que vous y trouvez et placez-les dans votre main. Si vous le faites, mélangez votre défausse dans votre deck.",
+    "flavor_text": ""
+  },
+  "341": {
+    "card_title": "Graine de Népenthes",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_341_M3P5Q4RWG42_fr.png",
+    "card_text": "Sacrifiez la Graine de Népenthes. Renvoyez une carte de votre défausse dans votre main.",
+    "flavor_text": ""
+  },
+  "342": {
+    "card_title": "Rituel de l’Équilibre",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_342_CCCJH6Q4C2GR_fr.png",
+    "card_text": "Action : Si votre adversaire possède au moins 6 A, volez 1 A.",
+    "flavor_text": "L’équilibre est-il un moyen d’atteindre la fin, ou est-il la fin elle-même ?"
+  },
+  "343": {
+    "card_title": "Rituel de la Chasse",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_343_MWRP2VMRJ7R7_fr.png",
+    "card_text": "Omni : Sacrifiez le Rituel de la Chasse. Pour le reste du tour, vous pouvez utiliser les créatures des Indomptés alliées.",
+    "flavor_text": ""
+  },
+  "344": {
+    "card_title": "Arbre-Monde",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_344_JWRCR9MQX696_fr.png",
+    "card_text": "Action : Renvoyez une créature de votre défausse au sommet de votre deck.",
+    "flavor_text": ""
+  },
+  "345": {
+    "card_title": "Ours Vénérable",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_345_V9F9WCXJ5VHR_fr.png",
+    "card_text": "Assaut 2. (Avant que cette créature n’attaque, infligez 2 D à la créature ennemie.)",
+    "flavor_text": "« Et quand je dis “ours“, c’est au sens large du terme » – Quixo « L’aventurier »."
+  },
+  "346": {
+    "card_title": "Vieille Branche",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_346_GFJP96HGWG24_fr.png",
+    "card_text": "Vieille Branche ne peut combattre que les créatures sonnées.",
+    "flavor_text": "Moisson : Sonnez et inclinez une créature."
+  },
+  "347": {
+    "card_title": "Sorcière des Bois",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_347_44X322787G78_fr.png",
+    "card_text": "Lors de chaque tour durant lequel la Maison des Indomptés n’est pas votre Maison active, vous pouvez jouer une carte des Indomptés.",
+    "flavor_text": ""
+  },
+  "348": {
+    "card_title": "Tâteronce",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_348_X9R7J6J64H38_fr.png",
+    "card_text": "Hasardeux 5. (Avant que cette créature ne soit attaquée, infligez 5 D à l’ennemi attaquant.)",
+    "flavor_text": "La nature dispose de tout un tas de moyens de dire « pas touche »."
+  },
+  "349": {
+    "card_title": "Chota Hazri",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_349_CGCR6RQRM629_fr.png",
+    "card_text": "Jouez : Perdez 1 A. Si vous le faites, vous pouvez forger une clé au coût actuel.",
+    "flavor_text": "« Y plein de machines dans la nature. Y en a même qui sont vivantes. »"
+  },
+  "350": {
+    "card_title": "Fée Rosée",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_350_6X8HWG4MJPCC_fr.png",
+    "card_text": "Insaisissable. (Chaque tour, la première fois que cette créature est attaquée, aucun dégât n’est infligé.) Moisson : Gagnez 1 A.",
+    "flavor_text": ""
+  },
+  "351": {
+    "card_title": "Lutin Poussière",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_351_PFJXP2G7VWVP_fr.png",
+    "card_text": "On dit que les fées ont été créées par les Architectes pour prendre soin des plantes et des animaux du Creuset. Au cours des âges qui ont suivi leur création, certaines sont devenues un peu… excentriques.",
+    "flavor_text": ""
+  },
+  "352": {
+    "card_title": "Flaxia",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_352_JVPG4792RH9C_fr.png",
+    "card_text": "Jouez : Gagnez 2 A si vous contrôlez plus de créatures que votre adversaire.",
+    "flavor_text": ""
+  },
+  "353": {
+    "card_title": "Foufrouteux",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_353_5P9MP78G2R8Q_fr.png",
+    "card_text": "Jouez : Votre adversaire gagne 1 A.",
+    "flavor_text": ""
+  },
+  "354": {
+    "card_title": "Paresseux Géant",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_354_9QP6FJMQC6W8_fr.png",
+    "card_text": "Vous ne pouvez pas utiliser cette carte à moins d’avoir défaussé une carte des Indomptés de votre main ce tour-ci. Action : Gagnez 3 A.",
+    "flavor_text": ""
+  },
+  "355": {
+    "card_title": "Halacor",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_355_XCPG4GRFR6PR_fr.png",
+    "card_text": "Chaque créature alliée située sur le flanc gagne Escarmouche. (Quand vous utilisez une créature possédant escarmouche en Combat, elle ne subit pas de dégâts en retour.)",
+    "flavor_text": "« Oubliez les autres. Matez-moi les dents de ce bestiau ! »"
+  },
+  "356": {
+    "card_title": "Inka l'Araignée",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_356_QW7GHMXR5HJ8_fr.png",
+    "card_text": "Poison. (Tout dégât infligé par la puissance de cette créature durant un combat détruit la créature blessée.) Jouez/Moisson : Sonnez une créature.",
+    "flavor_text": "« On se fait une toile ? »"
+  },
+  "357": {
+    "card_title": "Kindrith Longueflèche",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_357_CJVF7978M9W3_fr.png",
+    "card_text": "Insaisissable. Escarmouche. Moisson : Infligez 2 D à une créature.",
+    "flavor_text": ""
+  },
+  "358": {
+    "card_title": "Nasigator",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_358_C2FM8V788JM5_fr.png",
+    "card_text": "Escarmouche. (Quand vous utilisez cette créature en combat, elle ne subit pas de dégâts en retour.)",
+    "flavor_text": "« Pas de panique, c’est juste un nasigator… » – L'Anguille"
+  },
+  "359": {
+    "card_title": "Lupo le Balafré",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_359_RX86WM6596MC_fr.png",
+    "card_text": "Escarmouche. (Quand vous utilisez cette créature en Combat, elle ne subit pas de dégâts en retour.) Jouez : Infligez 2 D à une créature ennemie.",
+    "flavor_text": "« Un truc si gros ne devrait pas pouvoir se déplacer aussi silencieusement. » – Lukas Lawrence, L’Égaré"
+  },
+  "360": {
+    "card_title": "Tigre Féroce",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_360_88VX5H673QQ4_fr.png",
+    "card_text": "Jouez : Infligez 4 D à une créature ennemie.",
+    "flavor_text": ""
+  },
+  "361": {
+    "card_title": "Murmook",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_361_WHJM9F6QF2MF_fr.png",
+    "card_text": "Les clés de votre adversaire coûtent + 1 A.",
+    "flavor_text": "« Regardez la taille de ce crabe. Je crois qu’il en pince pour nous. » – Dr Escotera"
+  },
+  "362": {
+    "card_title": "Champignomme",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_362_HW3R4QRJGGMM_fr.png",
+    "card_text": "Le Champignomme gagne +3 en puissance pour chaque clé non forgée en votre possession.",
+    "flavor_text": "« C’est un gars marrant, quand on apprend à le connaître. » – Père des Ours"
+  },
+  "363": {
+    "card_title": "Singe Niffleur",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_363_3RCHH4F7H4XF_fr.png",
+    "card_text": "Quand le Singe Niffleur attaque, ignorez provocation et insaisissable.",
+    "flavor_text": "« Il a dit Niffleur ? Vraiment ? » – Capitaine Val Jericho"
+  },
+  "364": {
+    "card_title": "Reine des Niffleurs",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_364_F69VCQPX95RV_fr.png",
+    "card_text": "Chaque autre créature Bête alliée gagne +1 en puissance. Chaque autre créature Niffleur alliée gagne +1 en puissance.",
+    "flavor_text": ""
+  },
+  "365": {
+    "card_title": "Singes Piranhas",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_365_9WCFVMXQMVJG_fr.png",
+    "card_text": "Jouez/Moisson : Infligez 2 D à chaque autre créature.",
+    "flavor_text": "Ils peuvent ronger un nasigator jusqu’à l’os en deux minutes chrono."
+  },
+  "366": {
+    "card_title": "Teliga",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_366_F2PF3262P9XJ_fr.png",
+    "card_text": "Chaque fois que votre adversaire joue une créature, gagnez 1 A.",
+    "flavor_text": "« N’essayez pas d’adapter le Creuset à vos besoins. Adaptez-vous à lui. »"
+  },
+  "367": {
+    "card_title": "Sorcière Chasseresse",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_367_54RJ37XJPQ2_fr.png",
+    "card_text": "Chaque fois que vous jouez une autre créature, vous gagnez 1 A.",
+    "flavor_text": "« Qu’est-ce c’est ? Ça se mange ? »"
+  },
+  "368": {
+    "card_title": "Sorcière de l’Œil",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_368_MC5PG9FQ3766_fr.png",
+    "card_text": "Moisson : Renvoyez une carte de votre défausse dans votre main.",
+    "flavor_text": "« Pas de gaspillage. »"
+  },
+  "369": {
+    "card_title": "La Voie de l'Ours",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_369_3822X74RGM8F_fr.png",
+    "card_text": "Cette créature gagne assaut 2. (Avant que cette créature n’attaque, infligez 2 D à l’ennemi attaqué.)",
+    "flavor_text": ""
+  },
+  "370": {
+    "card_title": "La Voie du Loup",
+    "front_image": "https://cdn.keyforgegame.com/media/card_front/fr/341_370_J935FXX4XCJW_fr.png",
+    "card_text": "Cette créature gagne escarmouche. (Quand vous utilisez cette créature en combat, elle ne subit pas de dégâts en retour.)",
+    "flavor_text": ""
+  }
+}

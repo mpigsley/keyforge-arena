@@ -10,7 +10,7 @@ import {
 } from 'store/selectors/base.selectors';
 import { find, every, mapValues, size, keys, map } from 'constants/lodash';
 import CARD_MODAL_TYPES from 'constants/card-modal-types';
-import CARDS_BY_EXPANSION from 'constants/expansion-cards';
+import CARDS_BY_EXPANSION from 'constants/cards';
 import CARD_TYPES from 'constants/card-types';
 
 export const selectedGame = createSelector(

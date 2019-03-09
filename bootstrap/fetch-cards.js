@@ -74,13 +74,15 @@ const fetchCards = async () => {
             new Promise((resolve, reject) => {
               const formattedJson = prettier.format(
                 JSON.stringify(
-                  mapValues(cards, card => omit(card, 'is_maverick')),
+                  mapValues(cards, card =>
+                    omit(card, ...LANG_AGNOSTIC_KEYS, 'is_maverick'),
+                  ),
                 ),
                 {
                   parser: 'json',
                 },
               );
-              const directory = `./src/constants/cards/${lang}`;
+              const directory = `./src/constants/card-translations/${lang}`;
               if (!fs.existsSync(directory)) {
                 fs.mkdirSync(directory);
               }
@@ -117,7 +119,7 @@ const fetchCards = async () => {
                   parser: 'json',
                 },
               );
-              const directory = `./src/constants/expansions`;
+              const directory = `./src/constants/cards`;
               if (!fs.existsSync(directory)) {
                 fs.mkdirSync(directory);
               }
