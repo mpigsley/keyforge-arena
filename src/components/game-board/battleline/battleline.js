@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import FlexContainer from 'primitives/flex-container';
+import CardOutline from 'primitives/card-outline';
 import Card from 'components/card';
 
 import {
@@ -95,19 +96,20 @@ export default function Battleline({
       style={{ padding: `${VERTICAL_PADDING}px ${HORIZONTAL_PADDING}px` }}
     >
       <FlexContainer justify="center" className={styles.inner}>
-        {flank === FLANK.LEFT && (
-          <div
-            className={styles.cardOutline}
+        {isDraggedCreature && !isOpponent && (
+          <CardOutline
+            isActive={cards.length ? flank === FLANK.LEFT : !!flank}
+            title={cards.length ? 'Left Creature Flank' : 'Play Creature'}
+            width={scaledWidth}
+            height={scaledHeight}
             style={{
-              width: `${scaledWidth - 3}px`,
-              height: `${scaledHeight - 3}px`,
               paddingRight: cardNum > 1 ? `${CARD_PADDING / 2 + 3}px` : 0,
             }}
           />
         )}
-        {cards.map(({ expansion, card, house, isExhausted }, i) => (
+        {cards.map(({ key, expansion, card, house, isExhausted }, i) => (
           <div
-            key={`${card}-${i}` /* eslint-disable-line */}
+            key={key}
             className={styles.imgContainer}
             style={{
               height: `${scaledHeight}px`,
@@ -121,11 +123,11 @@ export default function Battleline({
             }}
           >
             <Card
-              expansion={expansion}
-              card={card}
               className={styles.card}
               isActive={!isOpponent && !isExhausted && house === playerHouse}
               isExhausted={isExhausted}
+              expansion={expansion}
+              card={card}
               onContextMenu={e => {
                 e.preventDefault();
                 const offset = (ZOOMED_WIDTH - scaledWidth) / (zoomScale * 2);
@@ -145,12 +147,13 @@ export default function Battleline({
             />
           </div>
         ))}
-        {flank === FLANK.RIGHT && (
-          <div
-            className={styles.cardOutline}
+        {isDraggedCreature && !isOpponent && !!cards.length && (
+          <CardOutline
+            isActive={flank === FLANK.RIGHT}
+            title="Right Creature Flank"
+            width={scaledWidth}
+            height={scaledHeight}
             style={{
-              width: `${scaledWidth - 3}px`,
-              height: `${scaledHeight - 3}px`,
               paddingLeft: cardNum > 1 ? `${CARD_PADDING / 2 + 3}px` : 0,
             }}
           />

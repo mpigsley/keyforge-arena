@@ -1,0 +1,24 @@
+@import '~styles/theme';
+
+.container {
+  border: 1.5px dashed $light;
+  border-radius: 8px;
+  transition: all 0.2s linear;
+
+  &--active {
+    border: 1.5px solid $active;
+    background-color: $active;
+
+    .title {
+      color: $veryLight;
+    }
+  }
+}
+
+.title {
+  color: $medium;
+  pointer-events: none;
+  font-size: 0.6rem;
+  font-weight: 600;
+  margin-bottom: 0.1rem;
+}

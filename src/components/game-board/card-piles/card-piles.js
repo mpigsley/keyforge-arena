@@ -4,6 +4,7 @@ import classNames from 'classnames';
 
 import FlexContainer from 'primitives/flex-container';
 import CardBack from 'primitives/card-back';
+import CardOutline from 'primitives/card-outline';
 import Card from 'components/card';
 
 import {
@@ -34,6 +35,7 @@ export default function CardPiles({
 }) {
   const [isAcceptingCard, setIsAcceptingCard] = useState(false);
   const { height, width } = useDimensions();
+
   const modifiedPileWidth = isOpponent
     ? STATIC_PILE_WIDTH * 0.7
     : STATIC_PILE_WIDTH;
@@ -123,7 +125,6 @@ export default function CardPiles({
   );
 
   const discardProps = {
-    style: { width: modifiedCardWidth, height: cardHeight },
     onDragEnter: () => setIsAcceptingCard(true),
     onDragLeave: () => setIsAcceptingCard(false),
     onDragOver: e => e.preventDefault(),
@@ -135,18 +136,14 @@ export default function CardPiles({
   };
 
   let discardElement = (
-    <FlexContainer
+    <CardOutline
+      className={styles.discardPile}
+      isActive={isAcceptingCard}
+      width={modifiedCardWidth}
+      height={cardHeight}
+      title="Discard Pile"
       {...discardProps}
-      align="center"
-      justify="center"
-      direction="column"
-      className={classNames(styles.emptyPile, {
-        [styles['emptyPile--accepting']]: isAcceptingCard,
-      })}
-      style={{ width: modifiedCardWidth - 3, height: cardHeight - 3 }}
-    >
-      <span className={styles.pileTitle}>Discard Pile</span>
-    </FlexContainer>
+    />
   );
   if (discarded.length) {
     const { expansion, card } = discarded[0];
@@ -154,6 +151,7 @@ export default function CardPiles({
       <Card
         expansion={expansion}
         card={card}
+        style={{ width: modifiedCardWidth, height: cardHeight }}
         className={classNames(styles.discardPile, {
           [styles['discardPile--accepting']]: isAcceptingCard,
         })}

@@ -58,23 +58,4 @@
 
 .discardPile {
   cursor: pointer;
-
-  &--accepting {
-    box-shadow: 0px 0px 10px 5px $active;
-  }
-}
-
-.emptyPile {
-  border: 1.5px dashed $light;
-  border-radius: 8px;
-  transition: all 0.2s linear;
-
-  &--accepting {
-    border: 0;
-    background-color: $active;
-
-    .pileTitle {
-      color: $veryLight;
-    }
-  }
 }

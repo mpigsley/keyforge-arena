@@ -186,4 +186,37 @@ module.exports = {
       };
     },
   },
+  [GAME_ACTION_TYPES.PLAY_ARTIFACT]: {
+    ...DEFAULT_CONFIG,
+    validate: ({ uid, game, metadata, personal }) => {
+      const { house } = game.state[uid];
+      const card = find(personal[uid].hand, { key: metadata.key });
+      return game.turn === uid && house && card && card.house === house;
+    },
+    invokeAction: ({ uid, game, metadata, personal }) => ({
+      personal: {
+        [uid]: {
+          ...personal[uid],
+          hand: filter(personal[uid].hand, ({ key }) => key !== metadata.key),
+        },
+      },
+      game: {
+        ...game,
+        state: {
+          ...game.state,
+          [uid]: {
+            ...game.state[uid],
+            handSize: game.state[uid].handSize - 1,
+            artifacts: [
+              {
+                ...find(personal[uid].hand, { key: metadata.key }),
+                isExhausted: true,
+              },
+              ...game.state[uid].artifacts,
+            ],
+          },
+        },
+      },
+    }),
+  },
 };

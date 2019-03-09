@@ -31,13 +31,6 @@
   pointer-events: all;
 }
 
-.cardOutline {
-  border: 1.5px dashed $light;
-  border-radius: 8px;
-  pointer-events: none;
-  transition: all 0.2s linear;
-}
-
 .drop {
   bottom: 0;
   position: absolute;
