@@ -11,8 +11,9 @@ import Spinner from 'primitives/spinner';
 import Button from 'primitives/button';
 
 import { map, sortBy, capitalize } from 'constants/lodash';
+import CARDS_BY_EXPANSION from 'constants/cards';
+import ENGLISH_COTA_CARDS from 'constants/card-translations/en/cota';
 import { Trash } from 'constants/icons';
-import coreCards from 'constants/cards/en/cota';
 
 import { ReactComponent as Common } from 'images/common.svg';
 import { ReactComponent as Uncommon } from 'images/uncommon.svg';
@@ -70,8 +71,10 @@ export default function DeckDetails({
     );
   }
 
-  const renderCard = (columnHouse, card, i) => {
-    const { name, rarity, house } = coreCards[card];
+  const renderCard = (columnHouse, card, expansion, i) => {
+    const cardNumber = Number(card);
+    const { rarity, house } = CARDS_BY_EXPANSION[expansion][cardNumber];
+    const { card_title } = ENGLISH_COTA_CARDS[cardNumber];
     const Rarity = RARITY[rarity];
     const isMaverick = house.toLowerCase() !== columnHouse;
     return (
@@ -83,13 +86,13 @@ export default function DeckDetails({
       >
         <Rarity className={styles.rarity} />
         <span className={styles.cardNum}>{card}</span>
-        <span>{name}</span>
+        <span>{card_title}</span>
         {isMaverick && <Maverick className={styles.maverick} />}
       </FlexContainer>
     );
   };
 
-  const { name, houses } = deck;
+  const { name, houses, expansion } = deck;
   const onRemove = () => {
     setConfirmDelete(false);
     deleteDeck(selected);
@@ -128,7 +131,7 @@ export default function DeckDetails({
                 </FlexContainer>
                 <FlexContainer direction="column" className={styles.cards}>
                   {sortBy(cards, parseInt).map((card, i) =>
-                    renderCard(house, card, i),
+                    renderCard(house, card, expansion, i),
                   )}
                 </FlexContainer>
               </FlexContainer>

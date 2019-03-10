@@ -1,6 +1,7 @@
 const GAME_ACTION_TYPES = require('../constants/game-action-types.json');
 const { shuffleAndDrawHand, removeExhaustion } = require('./common');
 const { find, filter, take, drop } = require('../constants/lodash');
+const CARDS_BY_EXPANSION = require('../constants/cards');
 
 const DEFAULT_CONFIG = {
   validate: () => true,
@@ -152,7 +153,13 @@ module.exports = {
     validate: ({ uid, game, metadata, personal }) => {
       const { house } = game.state[uid];
       const card = find(personal[uid].hand, { key: metadata.key });
-      return game.turn === uid && house && card && card.house === house;
+      return (
+        game.turn === uid &&
+        house &&
+        card &&
+        card.house === house &&
+        CARDS_BY_EXPANSION[card.expansion][Number(card.card)]
+      );
     },
     invokeAction: ({ uid, game, metadata, personal }) => {
       const card = {
@@ -178,6 +185,9 @@ module.exports = {
             ...game.state,
             [uid]: {
               ...game.state[uid],
+              aember:
+                game.state[uid].aember +
+                CARDS_BY_EXPANSION[card.expansion][Number(card.card)].amber,
               handSize: game.state[uid].handSize - 1,
               battleline,
             },
@@ -191,32 +201,41 @@ module.exports = {
     validate: ({ uid, game, metadata, personal }) => {
       const { house } = game.state[uid];
       const card = find(personal[uid].hand, { key: metadata.key });
-      return game.turn === uid && house && card && card.house === house;
+      return (
+        game.turn === uid &&
+        house &&
+        card &&
+        card.house === house &&
+        CARDS_BY_EXPANSION[card.expansion][Number(card.card)]
+      );
     },
-    invokeAction: ({ uid, game, metadata, personal }) => ({
-      personal: {
-        [uid]: {
-          ...personal[uid],
-          hand: filter(personal[uid].hand, ({ key }) => key !== metadata.key),
-        },
-      },
-      game: {
-        ...game,
-        state: {
-          ...game.state,
+    invokeAction: ({ uid, game, metadata, personal }) => {
+      const card = find(personal[uid].hand, { key: metadata.key });
+      return {
+        personal: {
           [uid]: {
-            ...game.state[uid],
-            handSize: game.state[uid].handSize - 1,
-            artifacts: [
-              {
-                ...find(personal[uid].hand, { key: metadata.key }),
-                isExhausted: true,
-              },
-              ...game.state[uid].artifacts,
-            ],
+            ...personal[uid],
+            hand: filter(personal[uid].hand, ({ key }) => key !== metadata.key),
           },
         },
-      },
-    }),
+        game: {
+          ...game,
+          state: {
+            ...game.state,
+            [uid]: {
+              ...game.state[uid],
+              handSize: game.state[uid].handSize - 1,
+              aember:
+                game.state[uid].aember +
+                CARDS_BY_EXPANSION[card.expansion][Number(card.card)].amber,
+              artifacts: [
+                { ...card, isExhausted: true },
+                ...game.state[uid].artifacts,
+              ],
+            },
+          },
+        },
+      };
+    },
   },
 };
