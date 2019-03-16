@@ -238,4 +238,54 @@ module.exports = {
       };
     },
   },
+  [GAME_ACTION_TYPES.PLAY_UPGRADE]: {
+    ...DEFAULT_CONFIG,
+    validate: ({ uid, game, metadata, personal }) => {
+      const { house, battleline } = game.state[uid];
+      const card = find(personal[uid].hand, { key: metadata.key });
+      const battlelineCard = find(battleline, { key: metadata.creature });
+      return (
+        game.turn === uid &&
+        house &&
+        card &&
+        card.house === house &&
+        battlelineCard &&
+        CARDS_BY_EXPANSION[card.expansion][Number(card.card)] &&
+        CARDS_BY_EXPANSION[battlelineCard.expansion][
+          Number(battlelineCard.card)
+        ]
+      );
+    },
+    invokeAction: ({ uid, game, metadata, personal }) => {
+      const card = find(personal[uid].hand, { key: metadata.key });
+      return {
+        personal: {
+          [uid]: {
+            ...personal[uid],
+            hand: filter(personal[uid].hand, ({ key }) => key !== metadata.key),
+          },
+        },
+        game: {
+          ...game,
+          state: {
+            ...game.state,
+            [uid]: {
+              ...game.state[uid],
+              handSize: game.state[uid].handSize - 1,
+              aember:
+                game.state[uid].aember +
+                CARDS_BY_EXPANSION[card.expansion][Number(card.card)].amber,
+              upgrades: {
+                ...game.state[uid].upgrades,
+                [metadata.creature]: [
+                  ...(game.state[uid].upgrades[metadata.creature] || []),
+                  card,
+                ],
+              },
+            },
+          },
+        },
+      };
+    },
+  },
 };
