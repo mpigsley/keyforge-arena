@@ -33,9 +33,12 @@ export default function Artifacts({
     (isOpponent ? height * 0.2 : height * 0.3 - ACTION_BUTTON_ROW_HEIGHT) -
     VERTICAL_PADDING * 2;
   const innerWidth = width * (2 / 7) - HORIZONTAL_PADDING * 2;
+  const exhaustedNum = artifacts.filter(({ isExhausted }) => isExhausted)
+    .length;
 
   const cardWidth = Math.min(
-    (innerWidth - (artifacts.length - 1) * VERTICAL_PADDING) / artifacts.length,
+    (innerWidth - (artifacts.length - 1) * VERTICAL_PADDING) /
+      (artifacts.length - exhaustedNum + exhaustedNum / CARD_RATIO),
     MAX_MINOR_CARD_WIDTH,
   );
   const cardHeight = Math.min(cardWidth / CARD_RATIO, innerHeight);
