@@ -21,6 +21,7 @@ const initialSharedState = () => ({
   battleline: [],
   purged: [],
   discard: [],
+  upgrades: {},
 });
 
 module.exports = functions.https.onCall(async ({ lobby, deck }, context) => {

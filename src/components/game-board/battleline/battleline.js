@@ -26,7 +26,9 @@ export default function Battleline({
   cards,
   isOpponent,
   isDraggedCreature,
+  isDraggedUpgrade,
   playCreature,
+  playUpgrade,
   playerHouse,
 }) {
   const [flank, setFlank] = useState();
@@ -124,10 +126,22 @@ export default function Battleline({
           >
             <Card
               className={styles.card}
-              isActive={!isOpponent && !isExhausted && house === playerHouse}
+              isActive={
+                !isOpponent &&
+                ((!isExhausted && house === playerHouse) || isDraggedUpgrade)
+              }
               isExhausted={isExhausted}
               expansion={expansion}
               card={card}
+              onDragOver={e => {
+                if (isDraggedUpgrade) {
+                  e.preventDefault();
+                }
+              }}
+              onDrop={e => {
+                e.preventDefault();
+                playUpgrade(e.dataTransfer.getData('card'), key);
+              }}
               onContextMenu={e => {
                 e.preventDefault();
                 const offset = (ZOOMED_WIDTH - scaledWidth) / (zoomScale * 2);
@@ -168,7 +182,9 @@ Battleline.propTypes = {
   isOpponent: PropTypes.bool,
   cards: CardsType.isRequired,
   isDraggedCreature: PropTypes.bool.isRequired,
+  isDraggedUpgrade: PropTypes.bool.isRequired,
   playCreature: PropTypes.func.isRequired,
+  playUpgrade: PropTypes.func.isRequired,
   playerHouse: PropTypes.string.isRequired,
 };
 
